@@ -1,2 +1,8 @@
 Fantasize/Library/
 Fantasize/Logs/
+Fantasize/.vs/
+Fantasize/Temp/
+Fantasize/obj/
+Fantasize/.vsconfig
+Fantasize/Assembly-CSharp.csproj
+Fantasize/Fantasize.sln

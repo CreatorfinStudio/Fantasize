@@ -1,16 +1,19 @@
 using System;
 
 namespace Definition
-{
+{    
     public class CharacterProperty
-    {        
-        protected float moveSpeed;
-        protected float attackPower;
-        protected float attackSpeed;
+    {
+        public int hp;
 
-        protected float rotationSpeed; //테스트용. 기획서에는 없음.
+        public float moveSpeed;
+        public float attackPower;
+        public float attackSpeed;
+
+        public float rotationSpeed; //테스트용. 기획서에는 없음.
 
         #region Property        
+        public int Hp { get { return hp; } set { hp = value; } }
         public float MoveSpeed { get { return moveSpeed; } set { moveSpeed = value; } }
         public float AttackPower { get { return attackPower; } set { attackPower = value; } }
         public float AttackSpeed { get { return attackSpeed; } set { attackSpeed = value; } }
@@ -19,9 +22,10 @@ namespace Definition
         #endregion
 
         public CharacterProperty() { }
-        public CharacterProperty(float moveSpeed, float attackPower, float attackSpeed)
+        public CharacterProperty(int hp, float moveSpeed, float attackPower, float attackSpeed)
         {
-            this.moveSpeed = moveSpeed;       
+            this.hp = hp;
+            this.moveSpeed = moveSpeed;
             this.moveSpeed = moveSpeed;
             this.attackPower = attackPower;
             this.attackSpeed = attackSpeed;
@@ -35,28 +39,36 @@ namespace Definition
         }
     }
 
+    [System.Serializable]
     public class PlayerInfo : CharacterProperty
     {
-        private float hungry;
-        private float hp;
-        private float view;
+        public int hungry;
+        public float rangedView;
+        public float forwardView;
+
+        public int maxHungy;
+        public int maxHP;
 
         #region Property
-        public float Hungry { get { return hungry; } set { hungry = value; } }
-        public float Hp { get { return hp; } set { hp = value; } }
-        public float View { get { return view; } set { view = value; } }
+        public int Hungry { get { return hungry; } set { hungry = value; } }
+        public float RangedView { get { return rangedView; } set { rangedView = value; } }
+        public float ForwardView { get { return forwardView; } set { forwardView = value; } }
+        public int MaxHungry { get { return maxHungy; } set { maxHungy = value; } }
+        public int MaxHP { get { return maxHP; } set { maxHP = value; } }
         #endregion
 
-        public PlayerInfo(float hungry, float hp, float view) 
+        public PlayerInfo(int hungry, float rangedView, float forwardView, int maxHungry, int maxHP)
         {
             this.hungry = hungry;
-            this.hp = hp;
-            this.view = view;            
+            this.rangedView = rangedView;
+            this.ForwardView = forwardView;
+            this.Hungry = maxHungry;
+            this.maxHP = maxHP;
         }
     }
 
     public class MonsterInfo : CharacterProperty
-    {        
+    {
 
     }
 

@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using Definition;
 
 public class ManagerUseTest : MonoBehaviour
 {
+    
     #region ½Ì±ÛÅæ
     private static ManagerUseTest instance;
 
@@ -31,4 +34,26 @@ public class ManagerUseTest : MonoBehaviour
 
     public GameObject reloadingTxt;
 
+    protected IPlayerInfo iplayerInfo;
+    [Header("ÇÃ·¹ÀÌ¾î")]
+    public Slider hpSlider;
+    public Slider hungrySlider;
+    private void Start()
+    {
+        StartCoroutine(SetIPlayerInfo());
+    }
+    private void Update()
+    {
+        if(iplayerInfo != null)            
+        {
+            hpSlider.value = iplayerInfo.GetHp() * .01f;
+            hungrySlider.value = iplayerInfo.GetHungry() * .01f;
+        }
+    }
+    IEnumerator SetIPlayerInfo()
+    {
+        while (iplayerInfo == null)
+            iplayerInfo = DefinitionManager.Instance.iplayerInfo;
+        yield return null;
+    }
 }

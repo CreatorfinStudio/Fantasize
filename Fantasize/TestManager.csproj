@@ -730,6 +730,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="Definition.csproj">
+      <Project>{D5351ED1-05D0-EFB6-42F6-47EA4E78A7CC}</Project>
+      <Name>Definition</Name>
+    </ProjectReference>
     <ProjectReference Include="UnityEditor.UI.csproj">
       <Project>{E5904860-67F8-9867-CB68-4FC4F6E745E4}</Project>
       <Name>UnityEditor.UI</Name>

@@ -657,6 +657,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="TestManager.Player.csproj">
+      <Project>{D6F56424-D6C9-9CBA-5287-AB88CEB3F0E5}</Project>
+      <Name>TestManager.Player</Name>
+    </ProjectReference>
+    <ProjectReference Include="Item.Player.csproj">
+      <Project>{318D2C8D-635F-5E8A-7DE6-987C1924633B}</Project>
+      <Name>Item.Player</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.Timeline.Player.csproj">
       <Project>{49122311-71E1-4BBE-54D7-24522A673667}</Project>
       <Name>Unity.Timeline.Player</Name>
@@ -688,10 +696,6 @@
     <ProjectReference Include="Unity.VisualScripting.Core.Player.csproj">
       <Project>{D766F03D-A1C8-918A-1783-0071F84D31DC}</Project>
       <Name>Unity.VisualScripting.Core.Player</Name>
-    </ProjectReference>
-    <ProjectReference Include="TestManager.Player.csproj">
-      <Project>{D6F56424-D6C9-9CBA-5287-AB88CEB3F0E5}</Project>
-      <Name>TestManager.Player</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

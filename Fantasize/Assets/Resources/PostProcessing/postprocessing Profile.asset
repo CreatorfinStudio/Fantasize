@@ -14,7 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   settings:
   - {fileID: 6509645782666769345}
-  - {fileID: 0}
 --- !u!114 &6509645782666769345
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -33,13 +32,13 @@ MonoBehaviour:
     value: 1
   focusDistance:
     overrideState: 1
-    value: 15
+    value: 45
   aperture:
     overrideState: 1
-    value: 5
+    value: 18.1
   focalLength:
     overrideState: 1
-    value: 50
+    value: 62
   kernelSize:
     overrideState: 1
     value: 1

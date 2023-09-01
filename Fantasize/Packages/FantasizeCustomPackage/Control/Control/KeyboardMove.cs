@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Definition;
 
 namespace Control
 {
@@ -10,15 +11,13 @@ namespace Control
         private float h;
         private float v;
 
-        [Header("이동 속도")]
-        public float moveSpeed = 3f;
-
         private Animator animator;   
 
 
         //모듈 목적에 따라 Start , Anim 구조는 수정해야 할 필요있음
-        void Start()
+        protected override void Start()
         {
+            base.Start();
             animator = AnimationManager.GetAnimator(this.gameObject);
         }
         private void Update()
@@ -34,7 +33,7 @@ namespace Control
             Vector3 moveDirection = new Vector3(h, 0f, v).normalized;
             if (moveDirection.magnitude > 0.1f)
             {
-                transform.Translate(moveDirection * moveSpeed * Time.deltaTime, Space.World);
+                transform.Translate(moveDirection * iplayerInfo.GetMoveSpeed() * Time.deltaTime, Space.World);
                 action?.Invoke(animator, "Walk",true);
             }
             else

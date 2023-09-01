@@ -62,7 +62,6 @@
     <Compile Include="Packages\FantasizeCustomPackage\Control\Attack\ComboAttack.cs" />
     <Compile Include="Packages\FantasizeCustomPackage\Control\Control\KeyboardMove.cs" />
     <Compile Include="Packages\FantasizeCustomPackage\Control\AnimationManager.cs" />
-    <Compile Include="Packages\FantasizeCustomPackage\Control\Interaction.cs" />
     <Compile Include="Packages\FantasizeCustomPackage\Control\Control\LongClick.cs" />
   </ItemGroup>
   <ItemGroup>

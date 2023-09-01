@@ -32,5 +32,6 @@ namespace Definition
         public void SetMaxHungry(int maxHungry);
         public void SetMaxHP(int maxHP);
 
+        public void SetItemInfo();
     }
 }

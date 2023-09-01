@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="Packages\FantasizeCustomPackage\Definition\ItemInfo.cs" />
     <Compile Include="Packages\FantasizeCustomPackage\Definition\CharacterInfo.cs" />
+    <Compile Include="Packages\FantasizeCustomPackage\Definition\IItemProcessing.cs" />
     <Compile Include="Packages\FantasizeCustomPackage\Definition\DefinitionManager.cs" />
     <Compile Include="Packages\FantasizeCustomPackage\Definition\IPlayerInfo.cs" />
   </ItemGroup>

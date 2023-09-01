@@ -30,13 +30,6 @@ namespace Definition
             this.attackPower = attackPower;
             this.attackSpeed = attackSpeed;
         }
-
-        //테스트용
-        public CharacterProperty(float moveSpeed, float rotationSpeed)
-        {
-            this.moveSpeed = moveSpeed;
-            this.rotationSpeed = rotationSpeed;
-        }
     }
 
     [System.Serializable]
@@ -72,43 +65,43 @@ namespace Definition
 
     }
 
-    //승원이 테스트 윈도우용
-    public struct TestWindowProperty
-    {
-        private float moveSpeed;
-        private float rotationSpeed;
-        private int maxComboAttacks;
+    ////승원이 테스트 윈도우용
+    //public struct TestWindowProperty
+    //{
+    //    private float moveSpeed;
+    //    private float rotationSpeed;
+    //    private int maxComboAttacks;
 
-        public float MoveSpeed
-        {
-            get { return moveSpeed; }
-            set
-            {
-                moveSpeed = value;
-                Test_ChangedMoveSpeed?.Invoke(value);
-            }
-        }
-        public float RotationSpeed
-        {
-            get { return rotationSpeed; }
-            set
-            {
-                rotationSpeed = value;
-                Test_ChangedRotationSpeed?.Invoke(value);
-            }
-        }
-        public int MaxComboAttacks
-        {
-            get { return maxComboAttacks; }
-            set
-            {
-                maxComboAttacks = value;
-                Test_ChangeMaxComboAttacks?.Invoke(value);
-            }
-        }
+    //    public float MoveSpeed
+    //    {
+    //        get { return moveSpeed; }
+    //        set
+    //        {
+    //            moveSpeed = value;
+    //            Test_ChangedMoveSpeed?.Invoke(value);
+    //        }
+    //    }
+    //    public float RotationSpeed
+    //    {
+    //        get { return rotationSpeed; }
+    //        set
+    //        {
+    //            rotationSpeed = value;
+    //            Test_ChangedRotationSpeed?.Invoke(value);
+    //        }
+    //    }
+    //    public int MaxComboAttacks
+    //    {
+    //        get { return maxComboAttacks; }
+    //        set
+    //        {
+    //            maxComboAttacks = value;
+    //            Test_ChangeMaxComboAttacks?.Invoke(value);
+    //        }
+    //    }
 
-        public event Action<float> Test_ChangedMoveSpeed;
-        public event Action<float> Test_ChangedRotationSpeed;
-        public event Action<int> Test_ChangeMaxComboAttacks;
-    }
+    //    public event Action<float> Test_ChangedMoveSpeed;
+    //    public event Action<float> Test_ChangedRotationSpeed;
+    //    public event Action<int> Test_ChangeMaxComboAttacks;
+    //}
 }

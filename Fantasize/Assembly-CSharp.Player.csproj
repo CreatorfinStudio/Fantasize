@@ -59,7 +59,7 @@
     <Compile Include="Assets\Script\Manager\GameSingleton.cs" />
     <Compile Include="Assets\Script\Player\PlayerService.cs" />
     <Compile Include="Assets\Script\CustomEditor\TestWindow.cs" />
-    <Compile Include="Assets\Script\InteractionObject\IntetractionObj.cs" />
+    <Compile Include="Assets\Script\Item\ItemService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

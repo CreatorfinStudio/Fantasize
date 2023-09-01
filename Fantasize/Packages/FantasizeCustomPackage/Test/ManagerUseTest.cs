@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Definition;
-
+using TMPro;
 public class ManagerUseTest : MonoBehaviour
-{
-    
+{    
     #region ΩÃ±€≈Ê
     private static ManagerUseTest instance;
 
@@ -35,12 +34,19 @@ public class ManagerUseTest : MonoBehaviour
     public GameObject reloadingTxt;
 
     protected IPlayerInfo iplayerInfo;
+    protected IItemProcessing iItemProcessing;
+
     [Header("«√∑π¿ÃæÓ")]
     public Slider hpSlider;
     public Slider hungrySlider;
+    public TMP_Text hpTxt;
+    public TMP_Text hungryTxt;
+    public TMP_Text plyerInfoTxt;
+    [Header("æ∆¿Ã≈€ ΩΩ∑‘")]
+    public TMP_Text itemTxt;
     private void Start()
     {
-        StartCoroutine(SetIPlayerInfo());
+        StartCoroutine(SetInterface());
     }
     private void Update()
     {
@@ -48,12 +54,33 @@ public class ManagerUseTest : MonoBehaviour
         {
             hpSlider.value = iplayerInfo.GetHp() * .01f;
             hungrySlider.value = iplayerInfo.GetHungry() * .01f;
+            SetPlayerInfoTxt();
         }
+       
     }
-    IEnumerator SetIPlayerInfo()
+    IEnumerator SetInterface()
     {
         while (iplayerInfo == null)
             iplayerInfo = DefinitionManager.Instance.iplayerInfo;
+        while (iItemProcessing == null)
+            iItemProcessing = DefinitionManager.Instance.iItemProcessing;
         yield return null;
     }
+    
+    // UI Ω∫≈» «•±‚øÎ
+    void SetPlayerInfoTxt()
+    {
+        plyerInfoTxt.text = (iplayerInfo?.GetMoveSpeed() + "\n" +
+                             iplayerInfo?.GetAttackPower() + "\n"+
+                             iplayerInfo?.GetAttackSpeed() + "\n" +
+                             iplayerInfo?.GetMaxHP() + "\n" +
+                             iplayerInfo?.GetMaxHungry() + "\n"      
+                             );
+
+        hpTxt.text = iplayerInfo.GetHp().ToString() + " / " + iplayerInfo.GetMaxHP().ToString();
+        hungryTxt.text = iplayerInfo.GetHungry().ToString() + " / " + iplayerInfo.GetMaxHungry().ToString();
+
+        itemTxt.text = iItemProcessing?.GetSlotItemName();
+    }
+
 }

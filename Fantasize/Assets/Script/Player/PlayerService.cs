@@ -1,16 +1,31 @@
 using Control;
 using Definition;
 using UnityEngine;
+using Item;
+using System;
 
 namespace Player
 {
     public class PlayerService : MonoBehaviour , IPlayerInfo
     {
         public PlayerInfo playerInfo;
+
+        private bool isCanUseItem => DefinitionManager.Instance.iItemProcessing.IsUseItem();
+        private Action useItem = () => DefinitionManager.Instance.iItemProcessing.UseItem();
+
         private void Start()
         {
             SetComponent();
-            SetInitInfo();
+        }
+
+        private void Update()
+        {
+            //슬롯 아이템 사용가능상태
+            if (isCanUseItem && Input.GetKeyDown(KeyCode.Space))
+            {
+                SetItemInfo();
+                useItem.Invoke();
+            }
         }
 
         private void SetComponent()
@@ -19,12 +34,6 @@ namespace Player
             this.gameObject.AddComponent<MouseRotation>();
             this.gameObject.AddComponent<ComboAttack>();
             this.gameObject.AddComponent<LongClick>();
-        }
-        private void SetInitInfo()
-        {
-            playerInfo.Hp = 100;
-            playerInfo.Hungry = 100;
-
         }
 
         #region PlayerInfo Data Interface
@@ -54,6 +63,23 @@ namespace Player
         public void SetForwardView(float forwardView) => playerInfo.ForwardView += forwardView;
         public void SetMaxHungry(int maxHungry) => playerInfo.MaxHungry += maxHungry;
         public void SetMaxHP(int maxHP) => playerInfo.MaxHP += maxHP;
+
+        public void SetItemInfo()
+        {
+            if(Item.Item.itemSlotInfo != null)
+            {
+                SetHp(Item.Item.itemSlotInfo.HP);
+                SetHungry(Item.Item.itemSlotInfo.Hungry);
+                SetMoveSpeed(Item.Item.itemSlotInfo.MoveSpeed);
+                SetAttackPower(Item.Item.itemSlotInfo.ApplicationTime);
+                SetAttackSpeed(Item.Item.itemSlotInfo.AttackSpeed);
+                //SetRotationSpeed(Item.Item.itemSlotInfo.);
+                SetRangedView(Item.Item.itemSlotInfo.RangedView);
+                SetForwardView(Item.Item.itemSlotInfo.ForwardView);
+               // SetMaxHungry(Item.Item.itemSlotInfo.maxh);
+               // SetMaxHP(Item.Item.itemSlotInfo.max);
+            }
+        }
         #endregion
     }
 }

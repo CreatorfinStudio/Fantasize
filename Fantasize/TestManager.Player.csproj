@@ -638,6 +638,10 @@
       <Project>{39DDCE53-E721-1320-5243-AC03C84863E7}</Project>
       <Name>Definition.Player</Name>
     </ProjectReference>
+    <ProjectReference Include="Unity.TextMeshPro.Player.csproj">
+      <Project>{D469E711-5916-5CCA-1BA9-9AA11AD37C12}</Project>
+      <Name>Unity.TextMeshPro.Player</Name>
+    </ProjectReference>
     <ProjectReference Include="UnityEngine.UI.Player.csproj">
       <Project>{B7A73E3F-C707-1383-3D73-0FD5E11E7721}</Project>
       <Name>UnityEngine.UI.Player</Name>

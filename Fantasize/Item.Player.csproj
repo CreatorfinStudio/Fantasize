@@ -57,7 +57,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Packages\FantasizeCustomPackage\Item\Item.cs" />
-    <Compile Include="Packages\FantasizeCustomPackage\Item\ItemCalculation.cs" />
     <Compile Include="Packages\FantasizeCustomPackage\Item\InteractionItem.cs" />
     <Compile Include="Packages\FantasizeCustomPackage\Item\FieldItem.cs" />
     <Compile Include="Packages\FantasizeCustomPackage\Item\PassiveItem.cs" />

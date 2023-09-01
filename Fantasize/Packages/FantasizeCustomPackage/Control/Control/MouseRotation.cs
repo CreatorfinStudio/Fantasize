@@ -6,8 +6,11 @@ namespace Control
 {
     public class MouseRotation : Controller
     {
-        [Header("회전 속도")]
-        public float rotationSpeed = 3f;
+        protected override void Start()
+        {
+            base.Start();
+        }
+
         void Update()
         {
             Rotation();
@@ -22,7 +25,7 @@ namespace Control
             lookAtDirection.y = 0f; // 캐릭터는 y축 회전하지 않으므로 y 좌표값은 0으로 설정
             Quaternion targetRotation = Quaternion.LookRotation(lookAtDirection);
 
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, iplayerInfo.GetRotationSpeed() * Time.deltaTime);
         }
     }
 }

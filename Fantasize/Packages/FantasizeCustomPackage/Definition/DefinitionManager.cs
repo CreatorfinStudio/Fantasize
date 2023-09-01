@@ -21,9 +21,10 @@ namespace Definition
         }
         #endregion
 
-
         public GameObject player;
+        public GameObject itemDummy;
         public IPlayerInfo iplayerInfo;
+        public IItemProcessing iItemProcessing;
 
         private void Awake()
         {
@@ -33,6 +34,7 @@ namespace Definition
         private void SetInit()
         {
             iplayerInfo = player.GetComponent<IPlayerInfo>();
+            iItemProcessing = itemDummy.GetComponent<IItemProcessing>();
         }
     }
 }

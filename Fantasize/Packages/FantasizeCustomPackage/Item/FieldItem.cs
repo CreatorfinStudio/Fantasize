@@ -8,16 +8,26 @@ namespace Item
 {
     public class FieldItem : Item
     {
+        public Definition.FieldItem itemInfo;
         private void Update()
         {
-            Test_SetInfo(ItemInfo.HP + "\n" + ItemInfo.hungry);
+            Test_SetInfo(itemInfo.HP + "\n" + itemInfo.hungry);
         }
         protected override void OnTriggerEnter(Collider other)
         {
             if (IsPlayerTrigger(other))
             {
-                this.gameObject.SetActive(false);
-                iplayerInfo.SetHp(ItemInfo.HP);
+                //최대 HP 능력치를 초과할 수 없다
+                if (!IsExcessHP())
+                {
+                    this.gameObject.SetActive(false);
+                    iplayerInfo.SetHp(itemInfo.HP);
+                }
+            }
+
+            bool IsExcessHP()
+            {
+                return iplayerInfo.GetHp() + itemInfo.HP > iplayerInfo.GetMaxHP();
             }
         }
 

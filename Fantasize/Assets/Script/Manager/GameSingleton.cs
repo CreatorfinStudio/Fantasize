@@ -2,6 +2,7 @@ using Definition;
 using System.Collections;
 using UnityEngine;
 using Control;
+using Definition;
 
 namespace Manager
 {
@@ -32,65 +33,72 @@ namespace Manager
         }
         #endregion
 
-        #region Components
+        //#region Components
 
-        #region Player
-        private KeyboardMove k;
-        private MouseRotation m;
-        private ComboAttack c;
-        #endregion
+        //#region Player
+        //private IPlayerInfo iplayerInfo;
+        //private MouseRotation m;
+        //private ComboAttack c;
+        //#endregion
 
-        #endregion
+        //#endregion
 
-        #region Test
+        //#region Test
 
-        #endregion
-        public TestWindowProperty testWindowProperty;
+        //#endregion
+        //public TestWindowProperty testWindowProperty;
 
-        private void Start()
-        {
-            testWindowProperty = new TestWindowProperty();
-            StartCoroutine(Test_AddEvent());
-        }
+        //private void Start()
+        //{
+        //    testWindowProperty = new TestWindowProperty();
+        //    StartCoroutine(Test_AddEvent());
+        //    StartCoroutine(SetIPlayerInfo());
+        //}
+        //IEnumerator SetIPlayerInfo()
+        //{
+        //    while (iplayerInfo == null)
+        //        iplayerInfo = DefinitionManager.Instance.iplayerInfo;
+        //    yield return null;
+        //}
 
-        #region 승원이 테스트용 (나중에 필요없으면 지울것)
+        //#region 승원이 테스트용 (나중에 필요없으면 지울것)
 
-        [SerializeField]
-        GameObject myUnit;
+        //[SerializeField]
+        //GameObject myUnit;
 
-        public void Test_SetPlayerValue(TestWindowProperty t)
-        {
-            testWindowProperty.MoveSpeed = t.MoveSpeed;
-            testWindowProperty.RotationSpeed = t.RotationSpeed;
-            testWindowProperty.MaxComboAttacks = t.MaxComboAttacks;
-        }
+        //public void Test_SetPlayerValue(TestWindowProperty t)
+        //{
+        //    testWindowProperty.MoveSpeed = t.MoveSpeed;
+        //    testWindowProperty.RotationSpeed = t.RotationSpeed;
+        //    testWindowProperty.MaxComboAttacks = t.MaxComboAttacks;
+        //}
 
-        IEnumerator Test_AddEvent()
-        {
-            while (k == null && m == null && c == null) 
-            {
-                k = myUnit?.GetComponent<KeyboardMove>();
-                m = myUnit?.GetComponent<MouseRotation>();
-                c = myUnit?.GetComponent<ComboAttack>();
+        //IEnumerator Test_AddEvent()
+        //{
+        //    while (k == null && m == null && c == null) 
+        //    {
+        //        k = myUnit?.GetComponent<KeyboardMove>();
+        //        m = myUnit?.GetComponent<MouseRotation>();
+        //        c = myUnit?.GetComponent<ComboAttack>();
 
-                if (k != null && m != null)
-                    AddEvent();
-                yield return new WaitForEndOfFrame();
-            }     
+        //        if (k != null && m != null)
+        //            AddEvent();
+        //        yield return new WaitForEndOfFrame();
+        //    }     
 
-            void AddEvent()
-            {
-                testWindowProperty.Test_ChangedMoveSpeed += HandleMoveSpeed;
-                testWindowProperty.Test_ChangedRotationSpeed += HandleRotationSpeed;
-                testWindowProperty.Test_ChangeMaxComboAttacks += HandleMaxComboAttacks;
-            }
-        }
-        private void HandleMoveSpeed(float newMoveSpeed) => k.moveSpeed = newMoveSpeed;
-        private void HandleRotationSpeed(float newRotationSpeed) => m.rotationSpeed = newRotationSpeed;
-        private void HandleMaxComboAttacks(int maxComboAttacks) => c.maxComboAttacks = maxComboAttacks;
+        //    void AddEvent()
+        //    {
+        //        testWindowProperty.Test_ChangedMoveSpeed += HandleMoveSpeed;
+        //        testWindowProperty.Test_ChangedRotationSpeed += HandleRotationSpeed;
+        //        testWindowProperty.Test_ChangeMaxComboAttacks += HandleMaxComboAttacks;
+        //    }
+        //}
+        //private void HandleMoveSpeed(float newMoveSpeed) => iplayerInfo.SetMoveSpeed(newMoveSpeed);
+        //private void HandleRotationSpeed(float newRotationSpeed) => m.rotationSpeed = newRotationSpeed;
+        //private void HandleMaxComboAttacks(int maxComboAttacks) => c.maxComboAttacks = maxComboAttacks;
 
 
-        #endregion
+        //#endregion
 
 
     }

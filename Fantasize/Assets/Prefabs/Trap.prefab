@@ -171,8 +171,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Trap
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 26a35bbfa25857843bd11114a65cba5d, type: 2}
+  m_sharedMaterial: {fileID: 1530128332624995933, guid: 26a35bbfa25857843bd11114a65cba5d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -202,7 +202,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -349,15 +349,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0b17c0013f56734dab8994871e6e98a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ItemInfo:
-    applicationTime: 0
-    hp: 0
-    hungry: 0
-    moveSpeed: 0
-    attackSpeed: 0
-    rangedView: 0
-    forwardView: 0
   infoTxt: {fileID: 6085882530682268963}
+  trapInfo:
+    name: Trap
+    icon: {fileID: 0}
+    hp: -20
+    hungry: 0
 --- !u!1 &6085882530682268965
 GameObject:
   m_ObjectHideFlags: 0
@@ -426,8 +423,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 26a35bbfa25857843bd11114a65cba5d, type: 2}
+  m_sharedMaterial: {fileID: 1530128332624995933, guid: 26a35bbfa25857843bd11114a65cba5d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -451,8 +448,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 0.2
-  m_fontSizeBase: 0.2
+  m_fontSize: 0.15
+  m_fontSizeBase: 0.15
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -563,8 +560,8 @@ MonoBehaviour:
 
     Hungry :'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 26a35bbfa25857843bd11114a65cba5d, type: 2}
+  m_sharedMaterial: {fileID: 1530128332624995933, guid: 26a35bbfa25857843bd11114a65cba5d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -588,8 +585,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 0.2
-  m_fontSizeBase: 0.2
+  m_fontSize: 0.15
+  m_fontSizeBase: 0.15
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

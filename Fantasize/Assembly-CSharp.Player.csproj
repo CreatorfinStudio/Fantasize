@@ -57,8 +57,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Script\Manager\GameSingleton.cs" />
-    <Compile Include="Assets\Script\Player\PlayerService.cs" />
+    <Compile Include="Assets\Script\CharacterService\MonsterService.cs" />
+    <Compile Include="Assets\Script\CharacterService\PlayerService.cs" />
     <Compile Include="Assets\Script\CustomEditor\TestWindow.cs" />
+    <Compile Include="Assets\Script\Camera\Camera.cs" />
     <Compile Include="Assets\Script\Item\ItemService.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -672,6 +674,10 @@
     <ProjectReference Include="Unity.TextMeshPro.Player.csproj">
       <Project>{D469E711-5916-5CCA-1BA9-9AA11AD37C12}</Project>
       <Name>Unity.TextMeshPro.Player</Name>
+    </ProjectReference>
+    <ProjectReference Include="Monster.Player.csproj">
+      <Project>{02419EEB-F476-CA92-787A-005E11E57FC6}</Project>
+      <Name>Monster.Player</Name>
     </ProjectReference>
     <ProjectReference Include="Control.Player.csproj">
       <Project>{617544AB-2B1F-A541-1FE0-B887FFC69A07}</Project>

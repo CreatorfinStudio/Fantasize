@@ -1,0 +1,16 @@
+{
+    "name": "Monster",
+    "rootNamespace": "",
+    "references": [
+        "GUID:ac81abe6ae55a97438b97c538aa53195"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

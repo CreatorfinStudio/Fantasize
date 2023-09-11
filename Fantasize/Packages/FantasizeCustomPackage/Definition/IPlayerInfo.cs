@@ -12,8 +12,18 @@ namespace Definition
         public float GetMoveSpeed();
         public float GetAttackPower();
         public float GetAttackSpeed();
-        public float GetRotationSpeed();
 
+        // 0905 기획에서 마우스 회전 관련 삭제됨
+        // public float GetRotationSpeed();
+
+        /// <summary>
+        /// 임시 추가
+        /// </summary>
+        /// <returns></returns>
+        public float GetJumpForce();
+
+        public float GetRunSpeed();
+        public float GetRunJumpForce();
         public float GetRangedView();
         public float GetForwardView();
 
@@ -26,7 +36,17 @@ namespace Definition
         public void SetMoveSpeed(float moveSpeed);
         public void SetAttackPower(float attackPower);
         public void SetAttackSpeed(float attackSpeed);
-        public void SetRotationSpeed(float rotationSpeed);
+
+        // 0905 기획에서 마우스 회전 관련 삭제됨
+        //public void SetRotationSpeed(float rotationSpeed);
+
+        /// <summary>
+        /// 임시 주가
+        /// </summary>
+        /// <param name="jumpForce"></param>
+        public void SetJumpForce(float jumpForce);
+        public void SetRunSpeed(float runSpeed);
+        public void SetRunJumpForce(float runJumpForce);
         public void SetRangedView(float rangedView);
         public void SetForwardView(float forwardView);
         public void SetMaxHungry(int maxHungry);

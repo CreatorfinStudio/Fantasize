@@ -12,9 +12,12 @@ namespace Control
         protected IPlayerInfo iplayerInfo;
         protected bool isLongClicking = false;
 
+        [SerializeField]
+        protected PlayerMove moveState;
 
         protected virtual void Start()
         {
+            moveState = PlayerMove.Idle;
             StartCoroutine(SetIPlayerInfo());
         }
         protected virtual IEnumerator SetIPlayerInfo()

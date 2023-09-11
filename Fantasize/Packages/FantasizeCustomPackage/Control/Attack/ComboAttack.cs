@@ -6,6 +6,8 @@ namespace Control
     public class ComboAttack : Attack
     {
         public float comboTimeThreshold = 2f;
+
+        //나중에 Definition의 값으로 변경할 것
         public float reloadTime = 2f;
         public int maxComboAttacks = 3;
         public enum AttackState

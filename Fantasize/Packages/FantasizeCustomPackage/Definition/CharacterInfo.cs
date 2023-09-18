@@ -6,7 +6,7 @@ namespace Definition
     {
         public int hp;
 
-        public float moveSpeed;
+        public float walkSpeed;
         public float attackPower;
         public float attackSpeed;
 
@@ -20,7 +20,7 @@ namespace Definition
 
         #region Property        
         public int Hp { get { return hp; } set { hp = value; } }
-        public float MoveSpeed { get { return moveSpeed; } set { moveSpeed = value; } }
+        public float WalkSpeed { get { return walkSpeed; } set { walkSpeed = value; } }
         public float AttackPower { get { return attackPower; } set { attackPower = value; } }
         public float AttackSpeed { get { return attackSpeed; } set { attackSpeed = value; } }
         // 0905 기획에서 마우스 회전 관련 삭제됨
@@ -32,8 +32,7 @@ namespace Definition
         public CharacterProperty(int hp, float moveSpeed, float attackPower, float attackSpeed)
         {
             this.hp = hp;
-            this.moveSpeed = moveSpeed;
-            this.moveSpeed = moveSpeed;
+            this.walkSpeed = moveSpeed;
             this.attackPower = attackPower;
             this.attackSpeed = attackSpeed;
         }
@@ -54,7 +53,7 @@ namespace Definition
         public float runSpeed;
         public float runJumpForce;
 
-        public int maxHungy;
+        public int maxHungry;
         public int maxHP;
 
         #region Property
@@ -64,7 +63,7 @@ namespace Definition
         public float JumpForce { get { return jumpForce; }set { jumpForce = value; } }
         public float RunSpeed {get { return runSpeed; } set { runSpeed = value; } }
         public float RunJumpForce { get { return runJumpForce; } set { runJumpForce = value; } }
-        public int MaxHungry { get { return maxHungy; } set { maxHungy = value; } }
+        public int MaxHungry { get { return maxHungry; } set { maxHungry = value; } }
         public int MaxHP { get { return maxHP; } set { maxHP = value; } }
         #endregion
 

@@ -9,28 +9,24 @@ namespace Item
     public class FieldItem : Item
     {
         public Definition.FieldItem itemInfo;
-        private void Update()
-        {
-            Test_SetInfo(itemInfo.HP + "\n" + itemInfo.hungry);
-        }
-        protected override void OnTriggerEnter(Collider other)
-        {
-            if (IsPlayerTrigger(other))
-            {
-                //최대 HP 능력치를 초과할 수 없다
-                if (!IsExcessHP())
-                {
-                    this.gameObject.SetActive(false);
-                    iplayerInfo.SetHp(itemInfo.HP);
-                }
-            }
 
-            bool IsExcessHP()
+        protected override void Start()
+        {
+            base.Start();
+        }
+
+        /// <summary>
+        /// 유저가 이 아이템을 습득하면
+        /// </summary>
+        /// <param name="collision"></param>
+        protected void OnTriggerStay2D(Collider2D collision)
+        {
+            if (IsPlayer(collision.gameObject))
             {
-                return iplayerInfo.GetHp() + itemInfo.HP > iplayerInfo.GetMaxHP();
+                iplayerInfo?.SetItemInfo(itemInfo);
+                this.gameObject.SetActive(false);
             }
         }
 
-        
     }
 }

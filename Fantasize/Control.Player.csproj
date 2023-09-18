@@ -60,8 +60,8 @@
     <Compile Include="Packages\FantasizeCustomPackage\Control\Control\MouseRotation.cs" />
     <Compile Include="Packages\FantasizeCustomPackage\Control\Attack\Attack.cs" />
     <Compile Include="Packages\FantasizeCustomPackage\Control\Attack\ComboAttack.cs" />
+    <Compile Include="Packages\FantasizeCustomPackage\Control\Control\InputKeyboardState.cs" />
     <Compile Include="Packages\FantasizeCustomPackage\Control\Control\KeyboardMove.cs" />
-    <Compile Include="Packages\FantasizeCustomPackage\Control\AnimationManager.cs" />
     <Compile Include="Packages\FantasizeCustomPackage\Control\Control\LongClick.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -268,6 +268,21 @@
     </Reference>
     <Reference Include="UnityEngine.XRModule">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.29f1\Editor\Data\PlaybackEngines\WindowsStandaloneSupport\Variations\mono\Managed\UnityEngine.XRModule.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Burst.Unsafe">
+      <HintPath>Library\PackageCache\com.unity.burst@1.6.6\Unity.Burst.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Burst.Cecil.Mdb">
+      <HintPath>Library\PackageCache\com.unity.burst@1.6.6\Unity.Burst.CodeGen\Unity.Burst.Cecil.Mdb.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Burst.Cecil.Pdb">
+      <HintPath>Library\PackageCache\com.unity.burst@1.6.6\Unity.Burst.CodeGen\Unity.Burst.Cecil.Pdb.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Burst.Cecil">
+      <HintPath>Library\PackageCache\com.unity.burst@1.6.6\Unity.Burst.CodeGen\Unity.Burst.Cecil.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Burst.Cecil.Rocks">
+      <HintPath>Library\PackageCache\com.unity.burst@1.6.6\Unity.Burst.CodeGen\Unity.Burst.Cecil.Rocks.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
       <HintPath>Library\PackageCache\com.unity.visualscripting@1.8.0\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
@@ -647,6 +662,10 @@
     <ProjectReference Include="TestManager.Player.csproj">
       <Project>{D6F56424-D6C9-9CBA-5287-AB88CEB3F0E5}</Project>
       <Name>TestManager.Player</Name>
+    </ProjectReference>
+    <ProjectReference Include="MonsterLove.StateMachine.Runtime.Player.csproj">
+      <Project>{54831A88-14FA-2F15-C54B-84EF44745922}</Project>
+      <Name>MonsterLove.StateMachine.Runtime.Player</Name>
     </ProjectReference>
     <ProjectReference Include="UnityEngine.UI.Player.csproj">
       <Project>{B7A73E3F-C707-1383-3D73-0FD5E11E7721}</Project>

@@ -10,14 +10,10 @@ namespace Control
     public class Controller : MonoBehaviour
     {
         protected IPlayerInfo iplayerInfo;
-        protected bool isLongClicking = false;
-
-        [SerializeField]
-        protected PlayerMove moveState;
+        protected bool isLongClicking = false;      
 
         protected virtual void Start()
         {
-            moveState = PlayerMove.Idle;
             StartCoroutine(SetIPlayerInfo());
         }
         protected virtual IEnumerator SetIPlayerInfo()

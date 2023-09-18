@@ -10,7 +10,8 @@ namespace Player
     {
         public PlayerInfo playerInfo;
 
-        private bool isCanUseItem => DefinitionManager.Instance.iItemProcessing.IsUseItem();
+        //FSM떄매 임시 주석
+       // private bool isCanUseItem => DefinitionManager.Instance.iItemProcessing.IsUseItem();
         private Action useItem = () => DefinitionManager.Instance.iItemProcessing.UseItem();
 
         private void Start()
@@ -20,27 +21,27 @@ namespace Player
 
         private void Update()
         {
-            //슬롯 아이템 사용가능상태
-            if (isCanUseItem && Input.GetKeyDown(KeyCode.Space))
-            {
-                SetItemInfo();
-                useItem.Invoke();
-            }
+            ////슬롯 아이템 사용가능상태
+            //if (isCanUseItem && Input.GetKeyDown(KeyCode.Space))
+            //{
+            //    SetItemInfo();
+            //    useItem.Invoke();
+            //}
         }
 
         private void SetComponent()
         {
-            this.gameObject.AddComponent<KeyboardMove>();
+            this.gameObject.AddComponent<InputKeyboardState>();
          //   this.gameObject.AddComponent<MouseRotation>();
-            this.gameObject.AddComponent<ComboAttack>();
-            this.gameObject.AddComponent<LongClick>();
+            //this.gameObject.AddComponent<ComboAttack>();
+            //this.gameObject.AddComponent<LongClick>();
         }
 
         #region PlayerInfo Data Interface
         public int GetHp() => playerInfo.Hp;
         public int GetHungry() => playerInfo.Hungry;
 
-        public float GetMoveSpeed() => playerInfo.MoveSpeed;
+        public float GetWalkSpeed() => playerInfo.WalkSpeed;
         public float GetAttackPower() => playerInfo.AttackPower;
         public float GetAttackSpeed() => playerInfo.AttackSpeed;
         // 0905 기획에서 마우스 회전 관련 삭제됨
@@ -55,10 +56,20 @@ namespace Player
         public int GetMaxHungry() => playerInfo.MaxHungry;
 
 
-        public void SetHp(int hp) => playerInfo.Hp += hp;
-        public void SetHungry(int hungry) => playerInfo.Hungry += hungry;
+        public void SetHp(int hp)
+        {
+            playerInfo.Hp += hp;
+            if(playerInfo.Hp > playerInfo.maxHP)
+                playerInfo.Hp = playerInfo.maxHP;
+        }
+        public void SetHungry(int hungry)
+        {
+            playerInfo.Hungry += hungry;
+            if(playerInfo.Hungry > playerInfo.MaxHungry)
+                playerInfo.Hungry = playerInfo.MaxHungry;
+        }
 
-        public void SetMoveSpeed(float moveSpeed) => playerInfo.MoveSpeed += moveSpeed;
+        public void SetWalkSpeed(float moveSpeed) => playerInfo.WalkSpeed += moveSpeed;
         public void SetAttackPower(float attackPower) => playerInfo.AttackPower += attackPower;
         public void SetAttackSpeed(float attackSpeed) => playerInfo.AttackSpeed += attackSpeed;
         // 0905 기획에서 마우스 회전 관련 삭제됨
@@ -77,7 +88,7 @@ namespace Player
             {
                 SetHp(Item.Item.itemSlotInfo.HP);
                 SetHungry(Item.Item.itemSlotInfo.Hungry);
-                SetMoveSpeed(Item.Item.itemSlotInfo.MoveSpeed);
+                SetWalkSpeed(Item.Item.itemSlotInfo.MoveSpeed);
                 SetAttackPower(Item.Item.itemSlotInfo.ApplicationTime);
                 SetAttackSpeed(Item.Item.itemSlotInfo.AttackSpeed);
                 //SetRotationSpeed(Item.Item.itemSlotInfo.);
@@ -86,6 +97,24 @@ namespace Player
                // SetMaxHungry(Item.Item.itemSlotInfo.maxh);
                // SetMaxHP(Item.Item.itemSlotInfo.max);
             }
+        }
+        public void SetItemInfo(Definition.InteractionItem item)
+        {
+            if(item != null)
+            {
+                SetHp(item.HP);
+                SetHungry(item.Hungry);
+                SetWalkSpeed(item.MoveSpeed);
+                SetAttackPower(item.ApplicationTime);
+                SetAttackSpeed(item.AttackSpeed);
+                SetRangedView(item.RangedView);
+                SetForwardView(item.ForwardView);
+            }
+        }    
+        public void SetItemInfo(Definition.FieldItem item)
+        {
+            SetHp(item.HP);
+            SetHungry(item.Hungry);
         }
 
 
@@ -100,6 +129,10 @@ namespace Player
         {
             playerInfo.JumpForce = jumpForce;
         }
+
+
+
+
         #endregion
 
     }

@@ -1,63 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Definition;
 
 namespace Item
 {
     public class ActiveItem : InteractionItem
     {
-        public GameObject interationObj;
-        
-        //protected override void Start()
-        //{
-        //   // base.Start();
-        //    StartCoroutine(CorUseItem());
-        //}
-
-        protected override void OnTriggerStay(Collider other)
+        Animator animator;
+        protected override void Start()
         {
-            if (IsPlayerTrigger(other))
+            base.Start();
+            animator = GetComponent<Animator>();
+
+        }
+
+        /// <summary>
+        /// 유저가 이 아이템을 습득하면
+        /// </summary>
+        /// <param name="collision"></param>
+        protected override void OnTriggerStay2D(Collider2D collision)
+        {
+            if (IsPlayer(collision.gameObject))
             {
-                ActiveInteractionPopup(interationObj, true);
-                if (Input.GetKeyDown(KeyCode.F))
+                if (Input.GetKey(KeyCode.F))
                 {
-                    GetItem(this.gameObject, itemInfo);
+                    iplayerInfo?.SetItemInfo(itemInfo);
+                    this.gameObject.SetActive(false);
                 }
             }
         }
-        protected void GetItem(GameObject obj, Definition.InteractionItem itemInfo)
-        {
-            isCanUseItem = true;
-            itemSlotInfo = itemInfo;
-            obj?.SetActive(false);
-        }
 
-        protected override void OnTriggerExit(Collider other)
-        {
-            ActiveInteractionPopup(interationObj, false);
-            canGetItem = false;
-        }
-
-        //protected IEnumerator CorUseItem()
-        //{
-        //    while (true)
-        //    {
-        //        Debug.Log(isCanUseItem);
-        //        if (isCanUseItem && Input.GetKeyDown(KeyCode.Space))
-        //        {
-        //            UseItem();
-        //            yield return null;
-        //        }
-        //        yield return new WaitForSeconds(.1f);
-        //    }
-        //}
-
-        //protected void UseItem()
-        //{
-        //    //현재 정보와 계산
-        //    iplayerInfo?.SetItemInfo();
-        //    itemSlotInfo = null;
-        //    isCanUseItem = false;
-        //}
     }
 }

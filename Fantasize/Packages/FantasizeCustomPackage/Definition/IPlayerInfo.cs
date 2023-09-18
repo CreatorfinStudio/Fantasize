@@ -9,7 +9,7 @@ namespace Definition
         public int GetHp();
         public int GetHungry();
 
-        public float GetMoveSpeed();
+        public float GetWalkSpeed();
         public float GetAttackPower();
         public float GetAttackSpeed();
 
@@ -33,7 +33,7 @@ namespace Definition
         public void SetHp(int hp);
         public void SetHungry(int hungry);
 
-        public void SetMoveSpeed(float moveSpeed);
+        public void SetWalkSpeed(float moveSpeed);
         public void SetAttackPower(float attackPower);
         public void SetAttackSpeed(float attackSpeed);
 
@@ -52,6 +52,12 @@ namespace Definition
         public void SetMaxHungry(int maxHungry);
         public void SetMaxHP(int maxHP);
 
+        /// <summary>
+        /// 슬롯 아이템 적용
+        /// </summary>
         public void SetItemInfo();
+
+        public void SetItemInfo(InteractionItem item);
+        public void SetItemInfo(FieldItem item);
     }
 }

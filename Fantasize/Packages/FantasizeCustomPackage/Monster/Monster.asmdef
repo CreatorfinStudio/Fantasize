@@ -2,7 +2,8 @@
     "name": "Monster",
     "rootNamespace": "",
     "references": [
-        "GUID:ac81abe6ae55a97438b97c538aa53195"
+        "GUID:ac81abe6ae55a97438b97c538aa53195",
+        "GUID:39f9fc2c98cf6654498562b4bdd17a1e"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

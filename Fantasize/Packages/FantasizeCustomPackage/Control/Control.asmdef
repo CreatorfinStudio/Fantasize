@@ -3,7 +3,9 @@
     "rootNamespace": "",
     "references": [
         "Definition",
-        "TestManager"
+        "TestManager",
+        "MonsterLove.StateMachine.Runtime",
+        ""
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

@@ -76,8 +76,29 @@ namespace Item
             itemSlotInfo = null;
             isCanUseItem = false;
         }
-
-
         #endregion
+
+        /// <summary>
+        /// 플레이어 접근 시 F 키 발동
+        /// </summary>
+        /// <param name="collision"></param>
+        protected virtual void OnTriggerEnter2D(Collider2D collision)
+        {
+            if(collision == null) return;
+        }
+        protected bool IsPlayer(GameObject obj)
+        {
+            if(obj.tag.Equals("Player"))
+                return true;
+            else return false;
+        }
+        /// <summary>
+        /// 플레이어가 떠날 시 F키 해제
+        /// </summary>
+        /// <param name="collision"></param>
+        protected virtual void OnTriggerExit2D(Collider2D collision)
+        {
+            if(collision == null) return;
+        }
     }
 }

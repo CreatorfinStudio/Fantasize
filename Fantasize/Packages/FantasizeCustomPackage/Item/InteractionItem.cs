@@ -15,6 +15,7 @@ namespace Item
 
         protected override void Start()
         {
+            base.Start();
             //StartCoroutine(CorGetItem());
          //   StartCoroutine(CorUseItem());
         }
@@ -28,13 +29,18 @@ namespace Item
         //    }
         //}
 
+        protected virtual void OnTriggerStay2D(Collider2D collision)
+        {
+            if(collision == null) return;
+        }
         protected virtual void OnTriggerStay(Collider other)
         {
+            if (other == null) return;
 
         }
         protected virtual void OnTriggerExit(Collider other)
         {
-
+            if (other == null) return;
         }
         protected virtual void ActiveInteractionPopup(GameObject obj, bool active) => obj.SetActive(active);
 

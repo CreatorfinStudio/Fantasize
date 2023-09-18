@@ -33,10 +33,15 @@ namespace Definition
         Medium,
         Boss,
     }
+
+    /// <summary>
+    /// ∏ÛΩ∫≈Õ State
+    /// </summary>
     public enum MonterState
     {
         None = -1,
         Live,
+        Attack,
         Die,
     }
 }

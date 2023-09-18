@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using Definition;
 
 namespace Control
 {
@@ -86,14 +87,14 @@ namespace Control
 
         private IEnumerator ReloadCountdown()//Action action)
         {
-            ManagerUseTest.Instance.reloadingTxt.SetActive(true);
+            ManagerUseTest.Instance.reloadingTxt?.SetActive(true);
             reloadingStart = true;
             yield return new WaitForSeconds(reloadTime);
             comboCount = 0;
 
             currentState = AttackState.ComboAvailable;
 
-            ManagerUseTest.Instance.reloadingTxt.SetActive(false);
+            ManagerUseTest.Instance.reloadingTxt?.SetActive(false);
             reloadingStart = false;
 
         }

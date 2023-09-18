@@ -70,7 +70,7 @@ public class ManagerUseTest : MonoBehaviour
     // UI ½ºÅÈ Ç¥±â¿ë
     void SetPlayerInfoTxt()
     {
-        plyerInfoTxt.text = (iplayerInfo?.GetMoveSpeed() + "\n" +
+        plyerInfoTxt.text = (iplayerInfo?.GetWalkSpeed() + "\n" +
                              iplayerInfo?.GetAttackPower() + "\n"+
                              iplayerInfo?.GetAttackSpeed() + "\n" +
                              iplayerInfo?.GetMaxHP() + "\n" +

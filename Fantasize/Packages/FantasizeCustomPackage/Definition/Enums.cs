@@ -12,6 +12,7 @@ namespace Definition
         None = -1,
         Idle,
         Walk,
+        //Jump,
         WalkJump,
         BackWalk,
         Run,

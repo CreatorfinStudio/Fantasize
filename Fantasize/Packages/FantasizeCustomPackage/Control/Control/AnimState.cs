@@ -27,6 +27,7 @@ namespace Control
                 AnimationManager.BoolAnim(animator, "Walk", false);
                 AnimationManager.BoolAnim(animator, "WalkJump", false);
                 AnimationManager.BoolAnim(animator, "Run", false);
+                AnimationManager.BoolAnim(animator, "RunJump", false);
             });
             statesDic.Add(PlayerMove.Walk, () => AnimationManager.BoolAnim(animator, "Walk", true));
             statesDic.Add(PlayerMove.Run, () => AnimationManager.BoolAnim(animator, "Run", true));
@@ -40,7 +41,6 @@ namespace Control
             {
                 yield return null;
 
-                //Debug.Log(iplayerInfo?.GetMoveFSM());
                 statesDic[PlayerMove.Idle]();
 
                 switch (iplayerInfo?.GetMoveFSM())
@@ -57,7 +57,10 @@ namespace Control
                         if (statesDic.ContainsKey(PlayerMove.WalkJump))
                             statesDic[PlayerMove.WalkJump]();
                         break;
-
+                    case PlayerMove.RunJump:
+                        if (statesDic.ContainsKey(PlayerMove.RunJump))
+                            statesDic[PlayerMove.RunJump]();
+                        break;
                     case PlayerMove.Run:
                         if (statesDic.ContainsKey(PlayerMove.Run))
                             statesDic[PlayerMove.Run]();

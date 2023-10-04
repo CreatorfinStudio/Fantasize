@@ -9,12 +9,9 @@ namespace Control
 {
     public class InputKeyboardState : Controller
     {       
-        StateMachine<PlayerMove> fsm;
-
         #region Componentx
         private Rigidbody2D rb;
-        private Animator animator;
-
+        private SpriteRenderer spriteRenderer;
         #endregion
         #region State Bools
         /// <summary>
@@ -35,69 +32,149 @@ namespace Control
         /// <summary>
         /// Dash
         /// </summary>
-        public float doubleClickTimeThreshold = 0.3f; // 더블 클릭 간격(초)
-        private KeyCode lastKey = KeyCode.None; // 마지막으로 눌린 키
+        //public float doubleClickTimeThreshold = 0.2f; // 더블 클릭 간격(초)
+        //private KeyCode lastKey = KeyCode.None; // 마지막으로 눌린 키
+        //private float lastKeyClickTime = 0f;
+
+        private bool isDashing = false;
+        private float doubleClickTimeThreshold = 0.3f; // 더블클릭 간격 (조절 가능)
+
+        private KeyCode lastKey = KeyCode.None;
         private float lastKeyClickTime = 0f;
 
+        //private float lastKeyPressTime = 0f;
+        //private bool isDashing = false;
+
+
+        /// <summary>
+        /// FSM
+        /// </summary>
+        private StateMachine<PlayerMove> moveFSM;
 
         private void Awake()
         {
-            fsm = StateMachine<PlayerMove>.Initialize(this);
+            spriteRenderer = GetComponent<SpriteRenderer>();
+            moveFSM = StateMachine<PlayerMove>.Initialize(this);
+            iplayerInfo?.SetMoveFSM(this.moveFSM.State);
             rb = GetComponent<Rigidbody2D>();
-            fsm.ChangeState(PlayerMove.Walk);
+            moveFSM.ChangeState(PlayerMove.Idle);
         }
 
+        private void Update()
+        {
+            iplayerInfo?.SetMoveFSM(this.moveFSM.State);
+
+            if (this.moveFSM.State != PlayerMove.Run && !isJump)
+            {
+                float currentTime = Time.time;
+
+                // 현재 입력 키
+                KeyCode currentKey = KeyCode.None;
+
+                if (Input.GetKeyDown(KeyCode.LeftArrow))
+                    currentKey = KeyCode.LeftArrow;
+                else if (Input.GetKeyDown(KeyCode.RightArrow))
+                    currentKey = KeyCode.RightArrow;
+
+                // 키 입력을 체크하고 대쉬 상태로 전환
+                if (currentKey != KeyCode.None)
+                {
+                    // 더블클릭 판정
+                    if (currentKey == lastKey && (currentTime - lastKeyClickTime) <= doubleClickTimeThreshold)
+                    {
+                        isDashing = true;
+                    }
+                    else
+                    {
+                        isDashing = false;
+                    }
+
+                    lastKey = currentKey;
+                    lastKeyClickTime = currentTime;
+                }
+                else
+                    isDashing = false;
+                if (isDashing)
+                {
+                    Debug.Log("Dash!");
+                    //isDashing = false;
+                    moveFSM.ChangeState(PlayerMove.Run);
+                }
+            }
+        }
+
+        void Idle_Update()
+        {
+            if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow))
+                moveFSM.ChangeState(PlayerMove.Walk);          
+        }
         /// <summary>
         /// 걷기
         /// </summary>
         void Walk_Update()
         {
+
             h = Input.GetAxis("Horizontal"); // 수평 입력 (A 및 D 키 또는 화살표 키)    
             if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow))
             {
-                if (Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.RightArrow)) //손가락이 떨어지면
+                if (Input.GetKey(KeyCode.LeftArrow))
                 {
-                    fsm.ChangeState(PlayerMove.Walk);
+                    spriteRenderer.flipX = true;
                 }
+                else
+                {
+                    spriteRenderer.flipX = false;
+                }
+
+                //if (Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.RightArrow)) //손가락이 떨어지면
+                //{
+                //    moveFSM.ChangeState(PlayerMove.Walk);
+                //}
 
                 Move(iplayerInfo.GetWalkSpeed());
-                KeyCode currentKey = KeyCode.None;
-
-                // 대쉬 여부
-                if (Input.GetKeyDown(KeyCode.LeftArrow)) currentKey = KeyCode.LeftArrow;
-                else if (Input.GetKeyDown(KeyCode.RightArrow)) currentKey = KeyCode.RightArrow;
-
-                if (currentKey != KeyCode.None)
-                {
-                    if (currentKey == lastKey && (Time.time - lastKeyClickTime) <= doubleClickTimeThreshold)
-                    {
-                        fsm.ChangeState(PlayerMove.Run);
-                    }
-                    else
-                    {
-                        lastKey = currentKey;
-                        lastKeyClickTime = Time.time;
-                    }
-                }
+                if (Input.GetKey(KeyCode.S) && canJump)
+                    moveFSM.ChangeState(PlayerMove.WalkJump);
             }
-            else if (Input.GetKey(KeyCode.S))
-                fsm.ChangeState(PlayerMove.Jump);
+            else if (iplayerInfo?.GetMoveFSM() != PlayerMove.Run)
+            {
+                moveFSM.ChangeState(PlayerMove.Idle);
+            }
+            //if (Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.RightArrow))
+            //{
+            //    isDashing = false;
+            //}
         }
-       
+
         /// <summary>
         /// 점프
         /// </summary>
-        void Jump_Update()
+        void WalkJump_Update()
         {
-            if (!isJump && canJump) //점프 중이 아니면서 지면일 때 점프 가능
+            float horizontalInput = Input.GetAxis("Horizontal");
+
+            // 캐릭터 이동
+            if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow))
             {
+                if (Input.GetKey(KeyCode.LeftArrow))
+                {
+                    spriteRenderer.flipX = true;
+                }
+                else
+                {
+                    spriteRenderer.flipX = false;
+                }
+            }
+            rb.velocity = new Vector2(horizontalInput * iplayerInfo.GetWalkSpeed(), rb.velocity.y);
+
+            if (!isJump && canJump) //점프 중이 아니면서 지면일 때 점프 가능
+            {                
                 rb.velocity = new Vector3(rb.velocity.x, iplayerInfo.GetJumpForce());
                 isJump = true;
             }
-            else
-            {
-                fsm.ChangeState(PlayerMove.Walk);
-            }
+            //else
+            //{
+            //    moveFSM.ChangeState(PlayerMove.Walk);
+            //}
         }
 
         /// <summary>
@@ -105,13 +182,33 @@ namespace Control
         /// </summary>
         void Run_Update()
         {
-            if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow))
+
+            if (Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.RightArrow))
             {
-                Move(iplayerInfo.GetRunSpeed());
+                isDashing = false;
+                moveFSM.ChangeState(PlayerMove.Walk);
+            }
+            else if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow))
+            {
+                if (isDashing)
+                {
+                    if (Input.GetKey(KeyCode.LeftArrow))
+                    {
+                        spriteRenderer.flipX = true;
+                    }
+                    else
+                    {
+                        spriteRenderer.flipX = false;
+                    }
+
+                    Move(iplayerInfo.GetRunSpeed());
+                    moveFSM.ChangeState(PlayerMove.Run);
+                }
             }
             else
             {
-                fsm.ChangeState(PlayerMove.Walk);
+                isDashing = false;
+                moveFSM.ChangeState(PlayerMove.Walk);
             }
         }
 
@@ -121,7 +218,7 @@ namespace Control
             moveDirection.Normalize();
             transform.Translate(moveDirection * moveSpeed * Time.deltaTime);
             if (Input.GetKey(KeyCode.S))
-                fsm.ChangeState(PlayerMove.Jump);
+                moveFSM.ChangeState(PlayerMove.RunJump);
         }
        
         /// <summary>
@@ -134,6 +231,10 @@ namespace Control
             {
                 canJump = true;
                 isJump = false;
+                if(iplayerInfo?.GetMoveFSM() == PlayerMove.WalkJump)
+                    moveFSM.ChangeState(PlayerMove.Walk);
+                else if(iplayerInfo?.GetMoveFSM() == PlayerMove.RunJump)
+                    moveFSM.ChangeState(PlayerMove.Run);
             }
         }
 

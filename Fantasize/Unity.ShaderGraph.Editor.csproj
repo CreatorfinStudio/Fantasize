@@ -107,8 +107,8 @@
     <Compile Include="Library\PackageCache\com.unity.shadergraph@12.1.12\Editor\Drawing\Inspector\PropertyDrawers\SampleTexture2DNodePropertyDrawer.cs" />
     <Compile Include="Library\PackageCache\com.unity.shadergraph@12.1.12\Editor\Data\Graphs\VectorShaderProperty.cs" />
     <Compile Include="Library\PackageCache\com.unity.shadergraph@12.1.12\Editor\Data\Nodes\Input\Texture\SamplerStateNode.cs" />
-    <Compile Include="Library\PackageCache\com.unity.shadergraph@12.1.12\Editor\Generation\Enumerations\Cull.cs" />
     <Compile Include="Library\PackageCache\com.unity.shadergraph@12.1.12\Editor\Data\Interfaces\IHasCustomDeprecationMessage.cs" />
+    <Compile Include="Library\PackageCache\com.unity.shadergraph@12.1.12\Editor\Generation\Enumerations\Cull.cs" />
     <Compile Include="Library\PackageCache\com.unity.shadergraph@12.1.12\Editor\Generation\Enumerations\BlendOp.cs" />
     <Compile Include="Library\PackageCache\com.unity.shadergraph@12.1.12\Editor\Data\Util\PooledHashSet.cs" />
     <Compile Include="Library\PackageCache\com.unity.shadergraph@12.1.12\Editor\Data\Nodes\Math\Round\CeilingNode.cs" />
@@ -122,8 +122,8 @@
     <Compile Include="Library\PackageCache\com.unity.shadergraph@12.1.12\Editor\Data\Nodes\Procedural\Noise\VoronoiNode.cs" />
     <Compile Include="Library\PackageCache\com.unity.shadergraph@12.1.12\Editor\Drawing\ViewModels\ShaderInputViewModel.cs" />
     <Compile Include="Library\PackageCache\com.unity.shadergraph@12.1.12\Editor\Data\Nodes\Input\Texture\Texture3DAssetNode.cs" />
-    <Compile Include="Library\PackageCache\com.unity.shadergraph@12.1.12\Editor\Generation\Collections\DependencyCollection.cs" />
     <Compile Include="Library\PackageCache\com.unity.shadergraph@12.1.12\Editor\Serialization\FakeJsonObject.cs" />
+    <Compile Include="Library\PackageCache\com.unity.shadergraph@12.1.12\Editor\Generation\Collections\DependencyCollection.cs" />
     <Compile Include="Library\PackageCache\com.unity.shadergraph@12.1.12\Editor\Drawing\Views\HelpBoxRow.cs" />
     <Compile Include="Library\PackageCache\com.unity.shadergraph@12.1.12\Editor\Data\Graphs\DynamicValueMaterialSlot.cs" />
     <Compile Include="Library\PackageCache\com.unity.shadergraph@12.1.12\Editor\AssetCallbacks\CreateShaderGraph.cs" />
@@ -451,10 +451,10 @@
     <Compile Include="Library\PackageCache\com.unity.shadergraph@12.1.12\Editor\Drawing\ViewModels\BlackboardViewModel.cs" />
     <Compile Include="Library\PackageCache\com.unity.shadergraph@12.1.12\Editor\Generation\Targets\BuiltIn\Editor\ShaderGraph\Targets\BuiltInUnlitSubTarget.cs" />
     <Compile Include="Library\PackageCache\com.unity.shadergraph@12.1.12\Editor\Data\Nodes\Math\Wave\SawtoothWaveNode.cs" />
-    <Compile Include="Library\PackageCache\com.unity.shadergraph@12.1.12\Editor\Data\Nodes\FormerNameAttribute.cs" />
     <Compile Include="Library\PackageCache\com.unity.shadergraph@12.1.12\Editor\Data\Graphs\Matrix3ShaderProperty.cs" />
     <Compile Include="Library\PackageCache\com.unity.shadergraph@12.1.12\Editor\Drawing\Views\MaterialGraphView.cs" />
     <Compile Include="Library\PackageCache\com.unity.shadergraph@12.1.12\Editor\Data\Nodes\Input\Texture\SampleVirtualTextureNode.cs" />
+    <Compile Include="Library\PackageCache\com.unity.shadergraph@12.1.12\Editor\Data\Nodes\FormerNameAttribute.cs" />
     <Compile Include="Library\PackageCache\com.unity.shadergraph@12.1.12\Editor\Generation\Target.cs" />
     <Compile Include="Library\PackageCache\com.unity.shadergraph@12.1.12\Editor\Data\Util\TextUtil.cs" />
     <Compile Include="Library\PackageCache\com.unity.shadergraph@12.1.12\Editor\Drawing\Controls\TextureControl.cs" />
@@ -516,8 +516,8 @@
     <Compile Include="Library\PackageCache\com.unity.shadergraph@12.1.12\Editor\Data\Graphs\SerializableTextureArray.cs" />
     <Compile Include="Library\PackageCache\com.unity.shadergraph@12.1.12\Editor\Data\Nodes\Math\Range\MaximumNode.cs" />
     <Compile Include="Library\PackageCache\com.unity.shadergraph@12.1.12\Editor\Data\Graphs\PropertyConnectionStateMaterialSlot.cs" />
-    <Compile Include="Library\PackageCache\com.unity.shadergraph@12.1.12\Editor\Data\Legacy\VisualEffectMasterNode1.cs" />
     <Compile Include="Library\PackageCache\com.unity.shadergraph@12.1.12\Editor\Data\Graphs\BooleanMaterialSlot.cs" />
+    <Compile Include="Library\PackageCache\com.unity.shadergraph@12.1.12\Editor\Data\Legacy\VisualEffectMasterNode1.cs" />
     <Compile Include="Library\PackageCache\com.unity.shadergraph@12.1.12\Editor\Generation\TargetResources\Fields.cs" />
     <Compile Include="Library\PackageCache\com.unity.shadergraph@12.1.12\Editor\Data\Nodes\Math\Range\SaturateNode.cs" />
     <Compile Include="Library\PackageCache\com.unity.shadergraph@12.1.12\Editor\Drawing\Inspector\PropertyDrawers\FloatPropertyDrawer.cs" />
@@ -678,9 +678,9 @@
     <Compile Include="Library\PackageCache\com.unity.shadergraph@12.1.12\Editor\Drawing\Controls\EnumConversionControl.cs" />
     <Compile Include="Library\PackageCache\com.unity.shadergraph@12.1.12\Editor\Data\Nodes\Utility\RedirectNodeData.cs" />
     <Compile Include="Library\PackageCache\com.unity.shadergraph@12.1.12\Editor\Drawing\Views\PropertyNodeView.cs" />
+    <Compile Include="Library\PackageCache\com.unity.shadergraph@12.1.12\Editor\Data\Nodes\Math\Wave\NoiseSineWaveNode.cs" />
     <Compile Include="Library\PackageCache\com.unity.shadergraph@12.1.12\Editor\Drawing\Controls\ChannelEnumMaskControl.cs" />
     <Compile Include="Library\PackageCache\com.unity.shadergraph@12.1.12\Editor\Interface\IConditional.cs" />
-    <Compile Include="Library\PackageCache\com.unity.shadergraph@12.1.12\Editor\Data\Nodes\Math\Wave\NoiseSineWaveNode.cs" />
     <Compile Include="Library\PackageCache\com.unity.shadergraph@12.1.12\Editor\Data\Nodes\Input\Gradient\GradientNode.cs" />
     <Compile Include="Library\PackageCache\com.unity.shadergraph@12.1.12\Editor\Drawing\Inspector\PropertyDrawers\Texture2DArrayPropertyDrawer.cs" />
     <Compile Include="Library\PackageCache\com.unity.shadergraph@12.1.12\Editor\Util\CompatibilityExtensions.cs" />

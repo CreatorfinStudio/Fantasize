@@ -4,8 +4,7 @@
     "references": [
         "Definition",
         "TestManager",
-        "MonsterLove.StateMachine.Runtime",
-        ""
+        "MonsterLove.StateMachine.Runtime"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

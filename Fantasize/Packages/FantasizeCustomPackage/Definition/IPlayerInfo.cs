@@ -1,11 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using MonsterLove.StateMachine;
 
 namespace Definition
 {
     public interface IPlayerInfo
     {
+        ////////////////// GET //////////////////
+        public PlayerMove GetMoveFSM();
         public int GetHp();
         public int GetHungry();
 
@@ -29,6 +29,9 @@ namespace Definition
 
         public int GetMaxHP();
         public int GetMaxHungry();
+
+        ////////////////// SET //////////////////
+        public void SetMoveFSM(PlayerMove moveFsm);
 
         public void SetHp(int hp);
         public void SetHungry(int hungry);
@@ -56,7 +59,6 @@ namespace Definition
         /// 슬롯 아이템 적용
         /// </summary>
         public void SetItemInfo();
-
         public void SetItemInfo(InteractionItem item);
         public void SetItemInfo(FieldItem item);
     }

@@ -9,9 +9,30 @@ namespace Monster
     {
         // 몬스터 List는 다른곳에서 관리해야 좋을 듯
 
-        protected MonsterInfo monsterInfo;
+        public Transform playerPosi;
 
-        
+        //protected MonsterInfo monsterInfo;
+        protected IMonsterInfo imonsterInfo;
+
+        protected virtual void Start()
+        {
+            StartCoroutine(SetIPlayerInfo());
+        }
+
+        private void Update()
+        {
+           // playerPosi = DefinitionManager.Instance.player.transform;
+        }
+
+        protected virtual IEnumerator SetIPlayerInfo()
+        {
+            while (imonsterInfo == null)
+            {
+                imonsterInfo = DefinitionManager.Instance.imonsterInfo;
+                yield return null;
+            }
+            //yield return null;
+        }
 
     }
 }

@@ -58,10 +58,10 @@
   <ItemGroup>
     <Compile Include="Assets\FSM\Runtime\StateMachineRunner.cs" />
     <Compile Include="Assets\FSM\Runtime\Drivers\StateDriverRunner.cs" />
-    <Compile Include="Assets\FSM\Runtime\Drivers\StateDriverUnity.cs" />
-    <Compile Include="Assets\FSM\Runtime\StateMachine.cs" />
     <Compile Include="Assets\FSM\Runtime\Events\StateEvent.cs" />
     <Compile Include="Assets\FSM\Runtime\StateMapping.cs" />
+    <Compile Include="Assets\FSM\Runtime\Drivers\StateDriverUnity.cs" />
+    <Compile Include="Assets\FSM\Runtime\StateMachine.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\FSM\Runtime\MonsterLove.StateMachine.Runtime.asmdef" />

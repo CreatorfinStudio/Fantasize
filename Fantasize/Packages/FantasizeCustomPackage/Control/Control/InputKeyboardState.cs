@@ -51,8 +51,6 @@ namespace Control
         private void Update()
         {
             iplayerInfo?.SetMoveFSM(this.moveFSM.State);
-            Debug.Log(this.moveFSM.State.ToString());
-
             if (h < 0)
             {
                 spriteRenderer.flipX = true;
@@ -108,7 +106,7 @@ namespace Control
         /// </summary>
         void Walk_Update()
         {
-            h = Input.GetAxis("Horizontal"); // 수평 입력 (A 및 D 키 또는 화살표 키)    
+            h = Input.GetAxis("Horizontal");  
             if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow))
             {
                 Move(iplayerInfo.GetWalkSpeed());

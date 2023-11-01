@@ -13,7 +13,7 @@ namespace Control
         private void Awake()
         {
             animator = GetComponent<Animator>();
-            StartCoroutine(SetAnimation());
+            StartCoroutine(SetPlayerAnimation());
         }
 
         /// <summary>
@@ -34,7 +34,7 @@ namespace Control
             statesDic.Add(PlayerMove.WalkJump, () => AnimationManager.BoolAnim(animator, "WalkJump", true));
             statesDic.Add(PlayerMove.RunJump, () => AnimationManager.BoolAnim(animator, "RunJump", true));
         }
-        IEnumerator SetAnimation()
+        IEnumerator SetPlayerAnimation()
         {
             SetStateEnumDic();
             while (true)

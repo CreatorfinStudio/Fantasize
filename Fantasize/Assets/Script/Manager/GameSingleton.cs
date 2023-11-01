@@ -2,7 +2,6 @@ using Definition;
 using System.Collections;
 using UnityEngine;
 using Control;
-using Definition;
 
 namespace Manager
 {

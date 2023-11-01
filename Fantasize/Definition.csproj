@@ -56,12 +56,12 @@
     <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Packages\FantasizeCustomPackage\Definition\Coroutine.cs" />
     <Compile Include="Packages\FantasizeCustomPackage\Definition\IMonsterInfo.cs" />
-    <Compile Include="Packages\FantasizeCustomPackage\Definition\ItemInfo.cs" />
     <Compile Include="Packages\FantasizeCustomPackage\Definition\CharacterInfo.cs" />
     <Compile Include="Packages\FantasizeCustomPackage\Definition\Enums.cs" />
     <Compile Include="Packages\FantasizeCustomPackage\Definition\AnimationManager.cs" />
+    <Compile Include="Packages\FantasizeCustomPackage\Definition\Coroutine.cs" />
+    <Compile Include="Packages\FantasizeCustomPackage\Definition\ItemInfo.cs" />
     <Compile Include="Packages\FantasizeCustomPackage\Definition\IItemProcessing.cs" />
     <Compile Include="Packages\FantasizeCustomPackage\Definition\DefinitionManager.cs" />
     <Compile Include="Packages\FantasizeCustomPackage\Definition\IPlayerInfo.cs" />

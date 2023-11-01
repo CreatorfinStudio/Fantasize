@@ -25,7 +25,7 @@ namespace Definition
 
 
     /// <summary>
-    /// 몬스터
+    /// 몬스터 종류
     /// </summary>
     public enum MonsterType
     {
@@ -41,7 +41,7 @@ namespace Definition
     public enum MonterState
     {
         None = -1,
-        Live,
+        Roam,
         Attack,
         Die,
     }

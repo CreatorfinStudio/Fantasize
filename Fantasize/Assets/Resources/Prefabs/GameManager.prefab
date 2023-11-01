@@ -58,4 +58,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  itemDummy: {fileID: 8043609872940528544, guid: 76f90f75fc31c1d40991b988e11afda1, type: 3}
+  itemDummy: {fileID: 0}

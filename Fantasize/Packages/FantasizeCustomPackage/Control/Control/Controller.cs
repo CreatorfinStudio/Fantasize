@@ -10,9 +10,6 @@ namespace Control
 
     public class Controller : MonoBehaviour
     {        
-        private StateMachine<PlayerMove> animFSM;
-
-
         protected IPlayerInfo iplayerInfo;
         protected bool isLongClicking = false;      
 

@@ -87,6 +87,7 @@ namespace Definition
     [System.Serializable]
     public class MonsterInfo : CharacterProperty
     {
+        public float moveSpeed;
         /// <summary>
         /// 이 범위 내로 들어오면 플레이어를 따라가기 시작함
         /// </summary>
@@ -106,7 +107,8 @@ namespace Definition
         public MonsterType monsterType;
 
         #region Property
-        public float FollowRange { get { return followRange; } set {  followRange = value; } }
+        public float MoveSpeed { get { return moveSpeed; } set { moveSpeed = value; } }
+        public float FollowRange { get { return followRange; } set { followRange = value; } }
         public float AtackRange { get { return atackRange; } set { atackRange = value; } }
         public MonterState AtackState { get {  return attackState; } set {  attackState = value; } }
         public MonsterType MonsterType { get {  return monsterType; } set {  monsterType = value; } }

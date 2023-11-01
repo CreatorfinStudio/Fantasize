@@ -57,12 +57,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Packages\FantasizeCustomPackage\Item\Item.cs" />
-    <Compile Include="Packages\FantasizeCustomPackage\Item\InteractionItem.cs" />
-    <Compile Include="Packages\FantasizeCustomPackage\Item\FieldItem.cs" />
-    <Compile Include="Packages\FantasizeCustomPackage\Item\PassiveItem.cs" />
     <Compile Include="Packages\FantasizeCustomPackage\Item\Trap.cs" />
     <Compile Include="Packages\FantasizeCustomPackage\Item\ItemBox.cs" />
     <Compile Include="Packages\FantasizeCustomPackage\Item\ActiveItem.cs" />
+    <Compile Include="Packages\FantasizeCustomPackage\Item\InteractionItem.cs" />
+    <Compile Include="Packages\FantasizeCustomPackage\Item\FieldItem.cs" />
+    <Compile Include="Packages\FantasizeCustomPackage\Item\PassiveItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Packages\FantasizeCustomPackage\Item\Item.asmdef" />

@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 1795004616}
   - component: {fileID: 1795004615}
   m_Layer: 0
-  m_Name: Character
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -79,7 +79,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: -2063978972, guid: 1fba0744d9d7adb418b47d454fbd2cc6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -126,18 +126,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerInfo:
     hp: 50
-    walkSpeed: 2
+    walkSpeed: 1
     attackPower: 0
     attackSpeed: 0
     reloadTime: 0
     hungry: 0
     rangedView: 0
     forwardView: 0
-    jumpForce: 2
-    runSpeed: 4
-    runJumpForce: 4
+    jumpForce: 5
+    runSpeed: 2
+    runJumpForce: 3
     maxHungry: 100
     maxHP: 100
+    moveFSM: 0
 --- !u!114 &4376931647868371204
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,7 +163,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f86532b6210165240a522e2d051d62da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doubleClickTimeThreshold: 0.3
 --- !u!114 &1795004612
 MonoBehaviour:
   m_ObjectHideFlags: 0

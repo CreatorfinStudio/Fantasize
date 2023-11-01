@@ -57,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Packages\FantasizeCustomPackage\Monster\MediumMonster.cs" />
+    <Compile Include="Packages\FantasizeCustomPackage\Monster\MosterService.cs" />
     <Compile Include="Packages\FantasizeCustomPackage\Monster\SmallMonster.cs" />
     <Compile Include="Packages\FantasizeCustomPackage\Monster\BossMonster.cs" />
     <Compile Include="Packages\FantasizeCustomPackage\Monster\Monster.cs" />

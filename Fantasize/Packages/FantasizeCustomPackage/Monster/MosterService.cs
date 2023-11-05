@@ -20,10 +20,11 @@ namespace Monster
 
         #region MonsterInfo Data Interface
         public float GetHp() => monsterInfo.Hp;
-        public float GetMoveSpeed() => monsterInfo.MoveSpeed;
+        public float GetMoveSpeed() => monsterInfo.WalkSpeed;
         public float GetAttackPower() => monsterInfo.AttackPower;
         public float GetAttackSpeed() => monsterInfo.AttackSpeed;
         public float GetFollowRange() => monsterInfo.FollowRange;
+        public float GetFollowSpeed() => monsterInfo.FollowSpeed;
         public float GetAtackRange() => monsterInfo.AtackRange;
         public MonterState GetAtackState() => monsterInfo.AtackState;       
         public MonsterType GetMonsterType() => monsterInfo.MonsterType;
@@ -35,7 +36,7 @@ namespace Monster
 
         public void SetMoveSpeed(float moveSpeed)
         {
-            monsterInfo.MoveSpeed = moveSpeed;
+            monsterInfo.WalkSpeed = moveSpeed;
         }
 
         public void SetAttackPower(float attackPower)
@@ -51,6 +52,10 @@ namespace Monster
         public void SetFollowRange(float rangedView)
         {
             monsterInfo.FollowRange = rangedView;
+        }
+        public void SetFollowSpeed(float followSpeed)
+        {
+            monsterInfo.FollowSpeed = followSpeed;
         }
 
         public void SetAtackRange(float rangedView)

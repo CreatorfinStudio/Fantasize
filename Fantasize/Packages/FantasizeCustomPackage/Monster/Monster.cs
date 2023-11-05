@@ -11,7 +11,6 @@ namespace Monster
 
         public Transform playerPosi;
 
-        //protected MonsterInfo monsterInfo;
         protected IMonsterInfo imonsterInfo;
 
         protected virtual void Start()
@@ -21,7 +20,7 @@ namespace Monster
 
         private void Update()
         {
-           // playerPosi = DefinitionManager.Instance.player.transform;
+           playerPosi = DefinitionManager.Instance.player.transform;
         }
 
         protected virtual IEnumerator SetIPlayerInfo()
@@ -31,7 +30,6 @@ namespace Monster
                 imonsterInfo = DefinitionManager.Instance.imonsterInfo;
                 yield return null;
             }
-            //yield return null;
         }
 
     }

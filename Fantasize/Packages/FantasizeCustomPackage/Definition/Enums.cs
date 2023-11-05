@@ -41,6 +41,7 @@ namespace Definition
     public enum MonterState
     {
         None = -1,
+        Idle,
         Roam,
         Attack,
         Die,

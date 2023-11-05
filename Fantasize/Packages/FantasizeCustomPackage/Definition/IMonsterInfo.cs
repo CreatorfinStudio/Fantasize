@@ -8,6 +8,7 @@ namespace Definition
         public float GetAttackSpeed();
 
         public float GetFollowRange();
+        public float GetFollowSpeed();
         public float GetAtackRange();
 
         public MonterState GetAtackState();
@@ -19,6 +20,7 @@ namespace Definition
         public void SetAttackSpeed(float attackSpeed);
 
         public void SetFollowRange(float rangedView);
+        public void SetFollowSpeed(float followSpeed);
         public void SetAtackRange(float rangedView);
 
         public void SetAtackState(MonterState monterState);

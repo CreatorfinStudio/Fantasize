@@ -1,12 +1,13 @@
 using System;
 using MonsterLove.StateMachine;
+using UnityEditor;
+using UnityEngine;
 
 namespace Definition
-{    
-    public class CharacterProperty
+{
+    public class CharacterProperty 
     {
         public int hp;
-
         public float walkSpeed;
         public float attackPower;
         public float attackSpeed;
@@ -17,6 +18,7 @@ namespace Definition
         /// <summary>
         /// 스킬 재사용 대기시간
         /// </summary>
+        [Header("스킬 재사용 대기시간")]
         public float reloadTime; 
 
         #region Property        
@@ -42,6 +44,7 @@ namespace Definition
     [System.Serializable]
     public class PlayerInfo : CharacterProperty
     {
+        [Space(10)]
         public int hungry;
         public float rangedView;
         public float forwardView;
@@ -87,19 +90,26 @@ namespace Definition
     [System.Serializable]
     public class MonsterInfo : CharacterProperty
     {
-        public float moveSpeed;
         /// <summary>
         /// 이 범위 내로 들어오면 플레이어를 따라가기 시작함
         /// </summary>
+        [Header ("추적을 시작하는 거리")]
         public float followRange;
+        /// <summary>
+        /// 추적 속도
+        /// </summary>
+        [Header ("추적 속도")]
+        public float followSpeed;
         /// <summary>
         /// 이 범위 내로 들어오면 플레이어에게 공격 시전
         /// </summary>
+        [Header("공격을 시작하는 거리")]
         public float atackRange;
         /// <summary>
         /// 쿨타임 체크용 State Enum
         /// 수정해야 할수도 있음
         /// </summary>
+        [Header("이 몬스터의 현재 상태")]
         public MonterState attackState;
         /// <summary>
         /// 어떤 종류의 몬스터인지
@@ -107,8 +117,8 @@ namespace Definition
         public MonsterType monsterType;
 
         #region Property
-        public float MoveSpeed { get { return moveSpeed; } set { moveSpeed = value; } }
         public float FollowRange { get { return followRange; } set { followRange = value; } }
+        public float FollowSpeed { get { return followSpeed; } set { followSpeed = value; } }
         public float AtackRange { get { return atackRange; } set { atackRange = value; } }
         public MonterState AtackState { get {  return attackState; } set {  attackState = value; } }
         public MonsterType MonsterType { get {  return monsterType; } set {  monsterType = value; } }

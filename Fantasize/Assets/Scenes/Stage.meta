@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Fantasize/Assets/Scenes/Stage.meta
 guid: a3f5130fa25787443a19bfbb0555d6bb
+========
+guid: c7f23ffa0d4157844b2103226626d28f
+>>>>>>>> Draft/0827:Fantasize/Assets/TestAssets.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Definition;
 
 namespace Control
 {
@@ -8,7 +9,7 @@ namespace Control
     {
         protected Animator animator;
 
-        void Start()
+        protected override void Start()
         {
             animator = AnimationManager.GetAnimator(this.gameObject);
         }

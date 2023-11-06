@@ -1,7 +1,9 @@
 {
     "name": "Definition",
     "rootNamespace": "",
-    "references": [],
+    "references": [
+        "GUID:39f9fc2c98cf6654498562b4bdd17a1e"
+    ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,

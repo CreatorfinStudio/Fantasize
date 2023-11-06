@@ -2,29 +2,29 @@ namespace Definition
 {
     public interface IMonsterInfo
     {
-        public int GetHp();
-        public int GetHungry();
-
-        //public float GetMoveSpeed();
+        public float GetHp();
+        public float GetMoveSpeed();
         public float GetAttackPower();
         public float GetAttackSpeed();
 
         public float GetFollowRange();
+        public float GetFollowSpeed();
         public float GetAtackRange();
 
         public MonterState GetAtackState();
         public MonsterType GetMonsterType();
 
         public void SetHp(int hp);
-        //public void SetMoveSpeed(float moveSpeed);
+        public void SetMoveSpeed(float moveSpeed);
         public void SetAttackPower(float attackPower);
         public void SetAttackSpeed(float attackSpeed);
 
         public void SetFollowRange(float rangedView);
-        public void SetAtackRange(float forwardView);
+        public void SetFollowSpeed(float followSpeed);
+        public void SetAtackRange(float rangedView);
 
-        public MonterState SetAtackState(MonterState monterState);
-        public MonsterType SetMonsterType(MonsterType monsterType);
-        public void SetItemInfo();
+        public void SetAtackState(MonterState monterState);
+        public void SetMonsterType(MonsterType monsterType);
+        public void SetDropItemInfo();
     }
 }

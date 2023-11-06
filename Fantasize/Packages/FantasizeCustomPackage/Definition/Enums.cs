@@ -12,19 +12,20 @@ namespace Definition
         None = -1,
         Idle,
         Walk,
+        //Jump,
+        WalkJump,
         BackWalk,
         Run,
         RunStop,
         RunJump,
         Sit,
         SitWalk,
-        Jump,
       //  Attack, //이거는 Move쪽보다는 다른곳으로 가야할듯. 현재는 Combo 스크립트에도 있다.
     }
 
 
     /// <summary>
-    /// 몬스터
+    /// 몬스터 종류
     /// </summary>
     public enum MonsterType
     {
@@ -40,7 +41,8 @@ namespace Definition
     public enum MonterState
     {
         None = -1,
-        Live,
+        Idle,
+        Roam,
         Attack,
         Die,
     }

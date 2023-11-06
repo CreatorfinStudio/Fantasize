@@ -3,6 +3,7 @@ using Definition;
 using UnityEngine;
 using Item;
 using System;
+using MonsterLove.StateMachine;
 
 namespace Player
 {
@@ -116,7 +117,15 @@ namespace Player
             SetHp(item.HP);
             SetHungry(item.Hungry);
         }
+        PlayerMove IPlayerInfo.GetMoveFSM()
+        {
+            return playerInfo.MOVEFSM;
+        }
 
+        public void SetMoveFSM(PlayerMove moveFsm)
+        {
+            playerInfo.MOVEFSM = moveFsm;
+        }
 
         /// <summary>
         /// 임시 추가
@@ -129,9 +138,6 @@ namespace Player
         {
             playerInfo.JumpForce = jumpForce;
         }
-
-
-
 
         #endregion
 

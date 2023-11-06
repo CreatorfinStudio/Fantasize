@@ -57,16 +57,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Library\PackageCache\com.unity.render-pipelines.universal@12.1.12\Editor\Converter\PPv2\EffectConverters\GrainConverter.cs" />
-    <Compile Include="Library\PackageCache\com.unity.render-pipelines.universal@12.1.12\Editor\Converter\PPv2\EffectConverters\ChromaticAberrationConverter.cs" />
     <Compile Include="Library\PackageCache\com.unity.render-pipelines.universal@12.1.12\Editor\Converter\PPv2\EffectConverters\BloomConverter.cs" />
     <Compile Include="Library\PackageCache\com.unity.render-pipelines.universal@12.1.12\Editor\Converter\PPv2\EffectConverters\ColorGradingConverter.cs" />
     <Compile Include="Library\PackageCache\com.unity.render-pipelines.universal@12.1.12\Editor\Converter\PPv2\EffectConverters\PostProcessEffectSettingsConverter.cs" />
-    <Compile Include="Library\PackageCache\com.unity.render-pipelines.universal@12.1.12\Editor\Converter\PPv2\EffectConverters\VignetteConverter.cs" />
-    <Compile Include="Library\PackageCache\com.unity.render-pipelines.universal@12.1.12\Editor\Converter\PPv2\PPv2Converter.cs" />
     <Compile Include="Library\PackageCache\com.unity.render-pipelines.universal@12.1.12\Editor\Converter\PPv2\EffectConverters\DepthOfFieldConverter.cs" />
-    <Compile Include="Library\PackageCache\com.unity.render-pipelines.universal@12.1.12\Editor\Converter\PPv2\EffectConverters\LensDistortionConverter.cs" />
     <Compile Include="Library\PackageCache\com.unity.render-pipelines.universal@12.1.12\Editor\Converter\PPv2\EffectConverters\PropertyConversions.cs" />
     <Compile Include="Library\PackageCache\com.unity.render-pipelines.universal@12.1.12\Editor\Converter\PPv2\EffectConverters\MotionBlurConverter.cs" />
+    <Compile Include="Library\PackageCache\com.unity.render-pipelines.universal@12.1.12\Editor\Converter\PPv2\EffectConverters\ChromaticAberrationConverter.cs" />
+    <Compile Include="Library\PackageCache\com.unity.render-pipelines.universal@12.1.12\Editor\Converter\PPv2\EffectConverters\VignetteConverter.cs" />
+    <Compile Include="Library\PackageCache\com.unity.render-pipelines.universal@12.1.12\Editor\Converter\PPv2\PPv2Converter.cs" />
+    <Compile Include="Library\PackageCache\com.unity.render-pipelines.universal@12.1.12\Editor\Converter\PPv2\EffectConverters\LensDistortionConverter.cs" />
     <Compile Include="Library\PackageCache\com.unity.render-pipelines.universal@12.1.12\Editor\Converter\PPv2\PPv2ConversionIndexers.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -788,13 +788,13 @@
       <Project>{CAD09A3D-638A-F095-FC27-119CE7516DB5}</Project>
       <Name>UnityEngine.UI</Name>
     </ProjectReference>
-    <ProjectReference Include="UnityEngine.TestRunner.csproj">
-      <Project>{6D3BA1F6-08B9-26D6-E4AD-6DFDA78F3289}</Project>
-      <Name>UnityEngine.TestRunner</Name>
-    </ProjectReference>
     <ProjectReference Include="UnityEditor.TestRunner.csproj">
       <Project>{4EE49987-2C92-6090-F270-6C6789710E05}</Project>
       <Name>UnityEditor.TestRunner</Name>
+    </ProjectReference>
+    <ProjectReference Include="UnityEngine.TestRunner.csproj">
+      <Project>{6D3BA1F6-08B9-26D6-E4AD-6DFDA78F3289}</Project>
+      <Name>UnityEngine.TestRunner</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

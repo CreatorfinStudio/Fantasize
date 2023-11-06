@@ -3,9 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - Ground
-  - ItemBox
+  tags: []
   layers:
   - Default
   - TransparentFX
@@ -13,15 +11,9 @@ TagManager:
   - 
   - Water
   - UI
-<<<<<<< HEAD
-  - Flat
-  - Bush
-  - Swamp
-=======
   - 
-  - Item
-  - ItemBox
->>>>>>> Draft/0827
+  - 
+  - 
   - 
   - 
   - 
@@ -48,31 +40,4 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: ItemBox
-    uniqueID: 312505405
-    locked: 0
-  - name: Item
-    uniqueID: 1798021311
-    locked: 0
-  - name: 
-    uniqueID: 40173491
-    locked: 0
-  - name: New Layer 4
-    uniqueID: 106561279
-    locked: 0
-  - name: New Layer 5
-    uniqueID: 410919453
-    locked: 0
-  - name: New Layer 6
-    uniqueID: 3188829925
-    locked: 0
-  - name: New Layer 7
-    uniqueID: 3788207013
-    locked: 0
-  - name: Monsters
-    uniqueID: 1297305359
-    locked: 0
-  - name: Player
-    uniqueID: 1965295231
     locked: 0

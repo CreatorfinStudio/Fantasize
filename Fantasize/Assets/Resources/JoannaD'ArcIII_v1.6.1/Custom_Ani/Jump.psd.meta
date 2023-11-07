@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6a76672a27ded1a45a4952649ce78d6c
+guid: f869cf37fdf5bd846adef4617d6a2246
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,11 +48,11 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
-  spriteBorder: {x: 0, y: 21, z: 737, w: 0}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
-  spriteTessellationDetail: 0
+  spriteTessellationDetail: -1
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
@@ -105,425 +105,346 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: IdleRunStop_0
+      name: Jump_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 22
+        y: 19
         width: 31
-        height: 42
+        height: 45
       alignment: 9
-      pivot: {x: 0.548, y: 0}
+      pivot: {x: 0.54662275, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 61c1d1e75b2a01842be1239bb1e8bcc6
-      internalID: -555312030
+      spriteID: c136fbeb505f1da4baf3b1721feb8209
+      internalID: 1597957015
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: IdleRunStop_1
+      name: Jump_1
       rect:
         serializedVersion: 2
         x: 32
-        y: 22
-        width: 29
-        height: 42
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bd520490290500f45a796f671bb1dc77
-      internalID: -942762067
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: IdleRunStop_2
-      rect:
-        serializedVersion: 2
-        x: 62
-        y: 22
-        width: 33
-        height: 42
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 89c2c0576c7aca343a9c4200ddcb95fa
-      internalID: 1484951388
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: IdleRunStop_3
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 22
-        width: 42
-        height: 42
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 468f79102fe36ae4694c26ff0635530b
-      internalID: -1235756872
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: IdleRunStop_4
-      rect:
-        serializedVersion: 2
-        x: 139
-        y: 22
-        width: 39
-        height: 42
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7e61a2e751cdf0b4698f08a986dcd143
-      internalID: 514623912
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: IdleRunStop_5
-      rect:
-        serializedVersion: 2
-        x: 179
-        y: 22
-        width: 37
-        height: 42
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 29a62e2afd399404b9bead3ace8509d2
-      internalID: 303026638
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: IdleRunStop_6
-      rect:
-        serializedVersion: 2
-        x: 217
-        y: 22
-        width: 35
-        height: 42
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 97d2a9dbac12098469b618f575cd8448
-      internalID: 74586854
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: IdleRunStop_7
-      rect:
-        serializedVersion: 2
-        x: 253
-        y: 22
-        width: 39
-        height: 42
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8851978e4445b11459f163f51bfa5a54
-      internalID: -1417826780
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: IdleRunStop_8
-      rect:
-        serializedVersion: 2
-        x: 293
-        y: 22
-        width: 38
-        height: 42
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 844e9e4696fea8347a725c44898180ba
-      internalID: -35491206
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: IdleRunStop_9
-      rect:
-        serializedVersion: 2
-        x: 332
-        y: 22
-        width: 41
-        height: 42
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 281c838f0fba09649b595b0bf467422c
-      internalID: 1838099920
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: IdleRunStop_10
-      rect:
-        serializedVersion: 2
-        x: 374
-        y: 22
-        width: 41
-        height: 42
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e12cf586b05952c47b523713dc6f5ea7
-      internalID: 364960331
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: IdleRunStop_11
-      rect:
-        serializedVersion: 2
-        x: 416
-        y: 22
-        width: 30
-        height: 42
+        y: 19
+        width: 28
+        height: 45
       alignment: 9
-      pivot: {x: 0.53252256, y: 0}
+      pivot: {x: 0.46148136, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bb920b19c014dd74abcf6ef1495e04a2
-      internalID: -1842841187
+      spriteID: e03d42547debe5d4d87a4d80cb779bb1
+      internalID: 1704067548
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: IdleRunStop_12
+      name: Jump_ing_0
       rect:
         serializedVersion: 2
-        x: 447
-        y: 22
-        width: 33
-        height: 42
+        x: 61
+        y: 19
+        width: 28
+        height: 45
       alignment: 9
-      pivot: {x: 0.6060264, y: 0}
+      pivot: {x: 0.4661748, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 960091a972e40bd4a81476e8c7d7ddb5
-      internalID: 2104807100
+      spriteID: f2ad01940a235b045ab76ddb011326ef
+      internalID: -2013717686
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: IdleRunStop_13
+      name: Jump_ing_1
       rect:
         serializedVersion: 2
-        x: 481
-        y: 22
-        width: 27
-        height: 42
+        x: 90
+        y: 19
+        width: 28
+        height: 45
       alignment: 9
-      pivot: {x: 0.7449341, y: 0}
+      pivot: {x: 0.46109554, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4c79162795eb1f74281da7023598282f
-      internalID: -1755578724
+      spriteID: e2dfb98760586c342adab84e6d2a5e68
+      internalID: 1272080092
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: IdleRunStop_14
+      name: Jump_ing_2
       rect:
         serializedVersion: 2
-        x: 509
-        y: 22
-        width: 27
-        height: 42
+        x: 119
+        y: 19
+        width: 28
+        height: 45
       alignment: 9
-      pivot: {x: 0.8168177, y: 0}
+      pivot: {x: 0.46200126, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3888b6a988f37824aaf0a7e70450c2ef
-      internalID: -1094054155
+      spriteID: c195748ff06db524aa89ebe5e92f04c8
+      internalID: -1509168553
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: IdleRunStop_15
+      name: Jump_fall_0
       rect:
         serializedVersion: 2
-        x: 537
-        y: 22
-        width: 33
-        height: 42
-      alignment: 9
-      pivot: {x: 0.7584691, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 40f27cf0a6a00d347a93370d57930016
-      internalID: -1171359208
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: IdleRunStop_16
-      rect:
-        serializedVersion: 2
-        x: 571
-        y: 22
+        x: 148
+        y: 19
         width: 31
-        height: 42
+        height: 45
       alignment: 9
-      pivot: {x: 0.7751445, y: 0}
+      pivot: {x: 0.5147651, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d6708b00914e031478eff18efc0538c3
-      internalID: 1070498852
+      spriteID: b130204e8f9e0d44bbcdf4658a37da28
+      internalID: -360877720
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: IdleRunStop_17
+      name: Jump_fall_1
       rect:
         serializedVersion: 2
-        x: 603
-        y: 22
-        width: 27
-        height: 42
+        x: 180
+        y: 19
+        width: 37
+        height: 45
       alignment: 9
-      pivot: {x: 0.590488, y: 0}
+      pivot: {x: 0.59401476, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b3d0e9b263b88d447b313f474dd75d6e
-      internalID: 2059974990
+      spriteID: 7492fe313d991a04e81dcda25684def6
+      internalID: 671272459
       vertices: []
       indices: 
       edges: []
       weights: []
-    outline:
-    - - {x: -226, y: -28}
-      - {x: -226, y: -13}
-      - {x: -177, y: -13}
-      - {x: -177, y: -28}
-    - - {x: -245, y: -11}
-      - {x: -245, y: 17}
-      - {x: -227, y: 17}
-      - {x: -227, y: -11}
-    - - {x: -272, y: -11}
-      - {x: -272, y: -3}
-      - {x: -251, y: 14}
-      - {x: -237, y: -3}
-      - {x: -237, y: -11}
+    - serializedVersion: 2
+      name: Jump_fall_ing_0
+      rect:
+        serializedVersion: 2
+        x: 218
+        y: 19
+        width: 35
+        height: 45
+      alignment: 9
+      pivot: {x: 0.6006945, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d30049ee97c94c46a1cbd820c4c41eb
+      internalID: -1546945008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jump_fall_ing_1
+      rect:
+        serializedVersion: 2
+        x: 254
+        y: 19
+        width: 35
+        height: 45
+      alignment: 9
+      pivot: {x: 0.59938705, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5da51e7461c76f409aff748fcc85a04
+      internalID: -1391502887
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jump_fall_ing_2
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 19
+        width: 35
+        height: 45
+      alignment: 9
+      pivot: {x: 0.59938705, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0424865d279138148945e5c698e8dab8
+      internalID: -529759645
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landing_0
+      rect:
+        serializedVersion: 2
+        x: 326
+        y: 19
+        width: 35
+        height: 45
+      alignment: 9
+      pivot: {x: 0.62800205, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a41f20494fa29244b022e19a57093be
+      internalID: -357931014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landing_1
+      rect:
+        serializedVersion: 2
+        x: 362
+        y: 19
+        width: 37
+        height: 45
+      alignment: 9
+      pivot: {x: 0.6762811, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1dc804ce7b3af1418ecd078c037a88f
+      internalID: 1341810403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landing_2
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 19
+        width: 31
+        height: 45
+      alignment: 9
+      pivot: {x: 0.51624227, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ec2d6a97d9c0dd44876e7e754f8b01d
+      internalID: -1335590665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landing_3
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 19
+        width: 28
+        height: 45
+      alignment: 9
+      pivot: {x: 0.534329, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d55ae48a205694469939d0398cd115a
+      internalID: -76486230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Landing_4
+      rect:
+        serializedVersion: 2
+        x: 461
+        y: 19
+        width: 30
+        height: 45
+      alignment: 9
+      pivot: {x: 0.5335653, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85105ef0b84d1aa4394253529ef99d14
+      internalID: -1058158179
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
-    internalID: 1537655665
+    internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      IdleRunStop_0: -555312030
-      IdleRunStop_1: -942762067
-      IdleRunStop_10: 364960331
-      IdleRunStop_11: -1842841187
-      IdleRunStop_12: 2104807100
-      IdleRunStop_13: -1755578724
-      IdleRunStop_14: -1094054155
-      IdleRunStop_15: -1171359208
-      IdleRunStop_16: 1070498852
-      IdleRunStop_17: 2059974990
-      IdleRunStop_2: 1484951388
-      IdleRunStop_3: -1235756872
-      IdleRunStop_4: 514623912
-      IdleRunStop_5: 303026638
-      IdleRunStop_6: 74586854
-      IdleRunStop_7: -1417826780
-      IdleRunStop_8: -35491206
-      IdleRunStop_9: 1838099920
+      Jump_0: 1995695939
+      Jump_1: 1244563737
+      Jump_fall_0: -360877720
+      Jump_fall_1: 671272459
+      Jump_fall_ing_0: -1546945008
+      Jump_fall_ing_1: -1391502887
+      Jump_fall_ing_2: -529759645
+      Jump_ing_0: -2013717686
+      Jump_ing_1: 1272080092
+      Jump_ing_2: -1509168553
+      Landing_0: -357931014
+      Landing_1: 1341810403
+      Landing_2: -1335590665
+      Landing_3: -76486230
+      Landing_4: -1058158179
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 1

@@ -117,12 +117,12 @@ namespace Player
             SetHp(item.HP);
             SetHungry(item.Hungry);
         }
-        PlayerMove IPlayerInfo.GetMoveFSM()
+        PlayerState IPlayerInfo.GetMoveFSM()
         {
             return playerInfo.MOVEFSM;
         }
 
-        public void SetMoveFSM(PlayerMove moveFsm)
+        public void SetMoveFSM(PlayerState moveFsm)
         {
             playerInfo.MOVEFSM = moveFsm;
         }

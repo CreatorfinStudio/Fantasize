@@ -5,7 +5,7 @@ namespace Definition
     public interface IPlayerInfo
     {
         ////////////////// GET //////////////////
-        public PlayerMove GetMoveFSM();
+        public PlayerState GetMoveFSM();
         public int GetHp();
         public int GetHungry();
 
@@ -31,7 +31,7 @@ namespace Definition
         public int GetMaxHungry();
 
         ////////////////// SET //////////////////
-        public void SetMoveFSM(PlayerMove moveFsm);
+        public void SetMoveFSM(PlayerState moveFsm);
 
         public void SetHp(int hp);
         public void SetHungry(int hungry);

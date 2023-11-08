@@ -7,20 +7,22 @@ namespace Definition
     /// <summary>
     /// 플레이어
     /// </summary>
-    public enum PlayerMove
+    public enum PlayerState
     {
         None = -1,
         Idle,
-        Walk,
+        //Walk,
         //Jump,
-        WalkJump,
-        BackWalk,
+        //WalkJump,
+        //BackWalk,
         Run,
         RunStop,
         RunJump,
-        Sit,
-        SitWalk,
-      //  Attack, //이거는 Move쪽보다는 다른곳으로 가야할듯. 현재는 Combo 스크립트에도 있다.
+        Jump,
+        Block,    
+        Attack,
+        //Sit,
+        //SitWalk,      
     }
 
 

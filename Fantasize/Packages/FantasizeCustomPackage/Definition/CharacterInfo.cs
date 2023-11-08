@@ -63,7 +63,7 @@ namespace Definition
         /// <summary>
         /// Move FSM
         /// </summary>
-        public PlayerMove moveFSM;
+        public PlayerState moveFSM;
 
         #region Property
         public int Hungry { get { return hungry; } set { hungry = value; } }
@@ -74,7 +74,7 @@ namespace Definition
         public float RunJumpForce { get { return runJumpForce; } set { runJumpForce = value; } }
         public int MaxHungry { get { return maxHungry; } set { maxHungry = value; } }
         public int MaxHP { get { return maxHP; } set { maxHP = value; } }
-        public PlayerMove MOVEFSM { get { return moveFSM; } set { moveFSM = value; } }
+        public PlayerState MOVEFSM { get { return moveFSM; } set { moveFSM = value; } }
         #endregion
 
         public PlayerInfo(int hungry, float rangedView, float forwardView, int maxHungry, int maxHP)

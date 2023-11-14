@@ -20,6 +20,10 @@ namespace Control
         ///지면을 밟아 재점프가 가능한지 여부
         /// </summary>
         bool canJump = false;
+        /// <summary>
+        /// 대시 중인지 여부
+        /// </summary>
+        bool isDashing = false;
         #endregion
         #region State floats
 
@@ -48,6 +52,7 @@ namespace Control
         private void Update()
         {
             iplayerInfo?.SetMoveFSM(this.moveFSM.State);
+            Debug.Log(this.moveFSM.State);
             h = Input.GetAxis("Horizontal");
             if (h < 0)
             {
@@ -58,53 +63,59 @@ namespace Control
                 spriteRenderer.flipX = false;
             }
 
-            #region 대쉬 달리기 판정
-            //if (this.moveFSM.State != PlayerMove.Run && !isJump)
-            //{
-            //    float currentTime = Time.time;
+            #region 대쉬 판정
+            //if (this.moveFSM.State != PlayerState.Run && !isJump)
+            if (!isJump)
+            {
+                float currentTime = Time.time;
 
-            //    // 현재 입력 키
-            //    KeyCode currentKey = KeyCode.None;
+                // 현재 입력 키
+                KeyCode currentKey = KeyCode.None;
 
-            //    if (Input.GetKeyDown(KeyCode.LeftArrow))
-            //        currentKey = KeyCode.LeftArrow;
-            //    else if (Input.GetKeyDown(KeyCode.RightArrow))
-            //        currentKey = KeyCode.RightArrow;
+                if (Input.GetKeyDown(KeyCode.LeftArrow))
+                    currentKey = KeyCode.LeftArrow;
+                else if (Input.GetKeyDown(KeyCode.RightArrow))
+                    currentKey = KeyCode.RightArrow;
 
-            //    // 키 입력을 체크하고 대쉬 상태로 전환
-            //    if (currentKey != KeyCode.None)
-            //    {
-            //        // 더블클릭 판정
-            //        if (currentKey == lastKey && (currentTime - lastKeyClickTime) <= doubleClickTimeThreshold)
-            //        {
-            //            isDashing = true;
-            //        }
-            //        else
-            //        {
-            //            isDashing = false;
-            //            moveFSM.ChangeState(PlayerMove.Walk);
-            //        }
+                // 키 입력을 체크하고 대쉬 상태로 전환
+                if (currentKey != KeyCode.None)
+                {
+                    // 더블클릭 판정
+                    if (currentKey == lastKey && (currentTime - lastKeyClickTime) <= doubleClickTimeThreshold)
+                    {
+                        isDashing = true;          
+                        isDashDone = false;
+                        moveFSM.ChangeState(PlayerState.Dash);
+                    }
+                    else
+                    {
+                        isDashing = false;
+                      //  moveFSM.ChangeState(PlayerState.Run);
+                    }
 
-            //        lastKey = currentKey;
-            //        lastKeyClickTime = currentTime;
-            //    }
-            //    else
-            //    {
-            //        if(this.moveFSM.State != PlayerMove.RunJump)
-            //            isDashing = false;
-            //    }
-            //    if (isDashing && this.moveFSM.State != PlayerMove.RunJump)
-            //    {
-            //        moveFSM.ChangeState(PlayerMove.Run);
-            //    }
-            // }
+                    lastKey = currentKey;
+                    lastKeyClickTime = currentTime;
+                }
+                //else
+                //{
+                //    if (this.moveFSM.State != PlayerState.RunJump)
+                //        isDashing = false;
+                //}
+                //if (isDashing && this.moveFSM.State != PlayerState.RunJump)
+                //{
+                //    moveFSM.ChangeState(PlayerState.Run);
+                //}
+            }
             #endregion
         }
 
         void Idle_Update()
         {
-            if (h != 0)
+            if (h != 0 && (this.moveFSM.State != PlayerState.Dash) && isDashDone)
+            {
+                Debug.Log("////Run");
                 moveFSM.ChangeState(PlayerState.Run);
+            }
             else if (Input.GetKey(KeyCode.Space))
                 moveFSM.ChangeState(PlayerState.Jump);
             if (Input.GetKey(KeyCode.D))
@@ -177,10 +188,10 @@ namespace Control
         /// 달리기 멈춤 대기 시간
         /// </summary>
         /// <returns></returns>        
-        float waitTime = .1f;
+        float runStopWaitTime = .1f;
         IEnumerator WaitRunStopMotion()
         {
-            yield return new WaitForSeconds(waitTime);
+            yield return new WaitForSeconds(runStopWaitTime);
             moveFSM.ChangeState(PlayerState.Idle);
         }
         /// <summary>
@@ -213,6 +224,29 @@ namespace Control
             //if(Input.GetKey(KeyCode.D))
 
         }
+        #endregion
+
+        #region 대시
+
+        bool isDashDone = true;
+        void Dash_Enter()
+        {      
+            StartCoroutine(Dash());         
+        }
+
+        /// <summary>
+        /// 대시 후 달리기로 전환되기까지 대기 시간
+        /// </summary>
+        float dashTime = .4f;
+        IEnumerator Dash()
+        {
+            float dashDirection = Input.GetKeyDown(KeyCode.LeftArrow) ? -1f : 1f;
+            rb.velocity = new Vector2(iplayerInfo.GetDashSpeed() * dashDirection, rb.velocity.y);
+            yield return new WaitForSeconds(dashTime);
+            isDashDone = true;
+            moveFSM.ChangeState(PlayerState.Run);
+        }
+
         #endregion
 
         #region 점프

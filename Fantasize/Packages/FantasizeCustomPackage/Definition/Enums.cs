@@ -19,6 +19,7 @@ namespace Definition
         RunStop,
         RunJump,
         Jump,
+        Dash,
         Block,    
         Attack,
         //Sit,

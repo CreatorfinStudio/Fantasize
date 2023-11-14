@@ -21,7 +21,7 @@ namespace Definition
         /// </summary>
         /// <returns></returns>
         public float GetJumpForce();
-
+        public float GetDashSpeed();
         public float GetRunSpeed();
         public float GetRunJumpForce();
         public float GetRangedView();
@@ -48,6 +48,8 @@ namespace Definition
         /// </summary>
         /// <param name="jumpForce"></param>
         public void SetJumpForce(float jumpForce);
+        public void SetDashSpeed(float dashSpeed);
+
         public void SetRunSpeed(float runSpeed);
         public void SetRunJumpForce(float runJumpForce);
         public void SetRangedView(float rangedView);

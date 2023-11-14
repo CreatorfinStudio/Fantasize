@@ -49,10 +49,12 @@ namespace Definition
         public float rangedView;
         public float forwardView;
 
+        [Space(10)]
         /// <summary>
         /// 임시 추가.
         /// </summary>
         public float jumpForce;
+        public float dashSpeed;
                 
         public float runSpeed;
         public float runJumpForce;
@@ -70,6 +72,8 @@ namespace Definition
         public float RangedView { get { return rangedView; } set { rangedView = value; } }
         public float ForwardView { get { return forwardView; } set { forwardView = value; } }
         public float JumpForce { get { return jumpForce; }set { jumpForce = value; } }
+        public float DashSpeed { get { return dashSpeed; }set { dashSpeed = value; } }
+        
         public float RunSpeed {get { return runSpeed; } set { runSpeed = value; } }
         public float RunJumpForce { get { return runJumpForce; } set { runJumpForce = value; } }
         public int MaxHungry { get { return maxHungry; } set { maxHungry = value; } }

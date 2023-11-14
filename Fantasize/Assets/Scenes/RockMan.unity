@@ -140,15 +140,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7437179745677672157, guid: ed88d84460c24b5439052c91aabb7ed1, type: 3}
       propertyPath: m_LocalScale.x
-      value: 8
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7437179745677672157, guid: ed88d84460c24b5439052c91aabb7ed1, type: 3}
       propertyPath: m_LocalScale.y
-      value: 8
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7437179745677672157, guid: ed88d84460c24b5439052c91aabb7ed1, type: 3}
       propertyPath: m_LocalScale.z
-      value: 8
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7437179745677672157, guid: ed88d84460c24b5439052c91aabb7ed1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1187,6 +1187,7 @@ MonoBehaviour:
     rangedView: 0
     forwardView: 0
     jumpForce: 5
+    dashSpeed: 8
     runSpeed: 2
     runJumpForce: 3
     maxHungry: 100

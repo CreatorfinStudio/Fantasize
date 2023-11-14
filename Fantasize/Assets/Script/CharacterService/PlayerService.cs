@@ -50,6 +50,8 @@ namespace Player
 
         public float GetRunSpeed() => playerInfo.RunSpeed;
         public float GetRunJumpForce() => playerInfo.RunJumpForce;
+        public float GetDashSpeed() => playerInfo.DashSpeed;
+
         public float GetRangedView() => playerInfo.RangedView;
         public float GetForwardView() => playerInfo.ForwardView;
 
@@ -137,6 +139,10 @@ namespace Player
         public void SetJumpForce(float jumpForce)
         {
             playerInfo.JumpForce = jumpForce;
+        }
+        public void SetDashSpeed(float dashSpeed)
+        {
+            playerInfo.DashSpeed = dashSpeed;
         }
 
         #endregion

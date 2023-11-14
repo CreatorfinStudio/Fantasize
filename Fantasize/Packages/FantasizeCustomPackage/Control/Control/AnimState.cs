@@ -28,6 +28,7 @@ namespace Control
              //   AnimationManager.BoolAnim(animator, "WalkJump", false);
                 AnimationManager.BoolAnim(animator, "Run", false);
                 AnimationManager.BoolAnim(animator, "RunJump", false);
+                AnimationManager.BoolAnim(animator, "Dash", false);
                 AnimationManager.BoolAnim(animator, "Jump", false);
                 AnimationManager.BoolAnim(animator, "Attack", false);
             });
@@ -36,6 +37,7 @@ namespace Control
             statesDic.Add(PlayerState.Run, () => AnimationManager.BoolAnim(animator, "Run", true));         
             statesDic.Add(PlayerState.RunStop, () => AnimationManager.BoolAnim(animator, "Run", false));         
             statesDic.Add(PlayerState.RunJump, () => AnimationManager.BoolAnim(animator, "RunJump", true));
+            statesDic.Add(PlayerState.Dash, () => AnimationManager.BoolAnim(animator, "Dash", true));
             statesDic.Add(PlayerState.Jump, () => AnimationManager.BoolAnim(animator, "Jump", true));
             statesDic.Add(PlayerState.Attack, () => AnimationManager.BoolAnim(animator, "Attack", true));
         }
@@ -73,7 +75,11 @@ namespace Control
                     case PlayerState.RunJump:
                         if (statesDic.ContainsKey(PlayerState.RunJump))
                             statesDic[PlayerState.RunJump]();
-                        break;       
+                        break;
+                    case PlayerState.Dash:
+                        if (statesDic.ContainsKey(PlayerState.Dash))
+                            statesDic[PlayerState.Dash]();
+                        break;
                     case PlayerState.Jump:
                         if (statesDic.ContainsKey(PlayerState.Jump))
                             statesDic[PlayerState.Jump]();
@@ -83,11 +89,6 @@ namespace Control
                             statesDic[PlayerState.Attack]();
                         break;
                 }
-            }
-
-            void SetOFFAnim()
-            {
-
             }
         }
 

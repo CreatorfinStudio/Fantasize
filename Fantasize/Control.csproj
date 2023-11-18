@@ -62,6 +62,7 @@
     <Compile Include="Packages\FantasizeCustomPackage\Control\Control\InputKeyboardState.cs" />
     <Compile Include="Packages\FantasizeCustomPackage\Control\Control\AnimState.cs" />
     <Compile Include="Packages\FantasizeCustomPackage\Control\Control\KeyboardMove.cs" />
+    <Compile Include="Packages\FantasizeCustomPackage\Control\Control\PlayerCollisionChecker.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Packages\FantasizeCustomPackage\Control\Control.asmdef" />

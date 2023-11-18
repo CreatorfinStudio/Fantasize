@@ -31,7 +31,7 @@ namespace Control
                 AnimationManager.BoolAnim(animator, "Attack", false);
                 AnimationManager.BoolAnim(animator, "SpecialAttack", false);
                 AnimationManager.BoolAnim(animator, "Block", false);
-                AnimationManager.BoolAnim(animator, "BlockSucess", false);
+                AnimationManager.BoolAnim(animator, "BlockSuccess", false);
                 AnimationManager.BoolAnim(animator, "BlockFail", false);
             });
             statesDic.Add(PlayerState.Run, () => AnimationManager.BoolAnim(animator, "Run", true));         
@@ -42,7 +42,7 @@ namespace Control
             statesDic.Add(PlayerState.Attack, () => AnimationManager.BoolAnim(animator, "Attack", true));
             statesDic.Add(PlayerState.SpecialAttack, () => AnimationManager.BoolAnim(animator, "SpecialAttack", true));
             statesDic.Add(PlayerState.Block, () => AnimationManager.BoolAnim(animator, "Block", true));
-            statesDic.Add(PlayerState.BlockSucess, () => AnimationManager.BoolAnim(animator, "BlockSucess", true));
+            statesDic.Add(PlayerState.BlockSuccess, () => AnimationManager.BoolAnim(animator, "BlockSuccess", true));
             statesDic.Add(PlayerState.BlockFail, () => AnimationManager.BoolAnim(animator, "BlockFail", true));
         }
         IEnumerator SetPlayerAnimation()
@@ -92,9 +92,9 @@ namespace Control
                         if (statesDic.ContainsKey(PlayerState.Block))
                             statesDic[PlayerState.Block]();
                         break;        
-                    case PlayerState.BlockSucess:
-                        if (statesDic.ContainsKey(PlayerState.BlockSucess))
-                            statesDic[PlayerState.BlockSucess]();
+                    case PlayerState.BlockSuccess:
+                        if (statesDic.ContainsKey(PlayerState.BlockSuccess))
+                            statesDic[PlayerState.BlockSuccess]();
                         break;                  
                     case PlayerState.BlockFail:
                         if (statesDic.ContainsKey(PlayerState.BlockFail))

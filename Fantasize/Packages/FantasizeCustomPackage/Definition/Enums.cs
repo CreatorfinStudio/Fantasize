@@ -23,7 +23,7 @@ namespace Definition
         Attack,
         SpecialAttack,
         Block,
-        BlockSucess,
+        BlockSuccess,
         BlockFail,
         //Sit,
         //SitWalk,      

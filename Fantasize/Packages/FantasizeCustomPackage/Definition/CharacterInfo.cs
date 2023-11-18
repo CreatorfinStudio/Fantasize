@@ -55,7 +55,7 @@ namespace Definition
         /// </summary>
         public float jumpForce;
         public float dashSpeed;
-                
+
         public float runSpeed;
         public float runJumpForce;
 
@@ -71,14 +71,15 @@ namespace Definition
         public int Hungry { get { return hungry; } set { hungry = value; } }
         public float RangedView { get { return rangedView; } set { rangedView = value; } }
         public float ForwardView { get { return forwardView; } set { forwardView = value; } }
-        public float JumpForce { get { return jumpForce; }set { jumpForce = value; } }
-        public float DashSpeed { get { return dashSpeed; }set { dashSpeed = value; } }
-        
-        public float RunSpeed {get { return runSpeed; } set { runSpeed = value; } }
+        public float JumpForce { get { return jumpForce; } set { jumpForce = value; } }
+        public float DashSpeed { get { return dashSpeed; } set { dashSpeed = value; } }
+
+        public float RunSpeed { get { return runSpeed; } set { runSpeed = value; } }
         public float RunJumpForce { get { return runJumpForce; } set { runJumpForce = value; } }
         public int MaxHungry { get { return maxHungry; } set { maxHungry = value; } }
         public int MaxHP { get { return maxHP; } set { maxHP = value; } }
         public PlayerState MOVEFSM { get { return moveFSM; } set { moveFSM = value; } }
+
         #endregion
 
         public PlayerInfo(int hungry, float rangedView, float forwardView, int maxHungry, int maxHP)

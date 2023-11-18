@@ -56,8 +56,7 @@ namespace Player
         public float GetForwardView() => playerInfo.ForwardView;
 
         public int GetMaxHP() => playerInfo.MaxHP;
-        public int GetMaxHungry() => playerInfo.MaxHungry;
-
+        public int GetMaxHungry() => playerInfo.MaxHungry;     
 
         public void SetHp(int hp)
         {
@@ -84,7 +83,6 @@ namespace Player
         public void SetForwardView(float forwardView) => playerInfo.ForwardView += forwardView;
         public void SetMaxHungry(int maxHungry) => playerInfo.MaxHungry += maxHungry;
         public void SetMaxHP(int maxHP) => playerInfo.MaxHP += maxHP;
-
         public void SetItemInfo()
         {
             if(Item.Item.itemSlotInfo != null)

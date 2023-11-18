@@ -130,10 +130,6 @@ namespace Control
             }
             #endregion
 
-            #region 방어
-//            if (Input.GetKeyDown(KeyCode.S))
-
-            #endregion
         }
 
         /// <summary>
@@ -277,7 +273,6 @@ namespace Control
             rb.velocity = new Vector2(iplayerInfo.GetDashSpeed() * dashDirection, rb.velocity.y);
             yield return new WaitForSeconds(dashTime);
             rb.velocity = Vector2.zero;
-            //yield return new WaitForSeconds(dashTime);
             isDashDone = true;
             moveFSM.ChangeState(PlayerState.Run);
         }
@@ -306,7 +301,7 @@ namespace Control
         /// <returns></returns>
         IEnumerator WaitAttack()
         {
-            yield return new WaitForSeconds(.5f);
+            yield return CoroutineWait.wait05;
             moveFSM.ChangeState(beforeState);
         }
         #endregion
@@ -320,29 +315,32 @@ namespace Control
         #endregion
 
         #region 방어
+        private bool blockSuccess = false;
 
-        void Block_Update()
+        void Block_Enter()
         {
-            moveFSM.ChangeState(PlayerState.BlockSucess);
             StartCoroutine(WaitBlockMotion());
         }
-        //void BlockSucess_Update()
-        //{
-        //    moveFSM.ChangeState(PlayerState.Idle);
-        //}        
-        //void BlockFail_Update()
-        //{
-        //    moveFSM.ChangeState(PlayerState.Idle);
-        //}
-
-        /// <summary>
-        /// 방어 애니메이션 종료까지 대기 시간
-        /// </summary>
-        /// <returns></returns>        
-        float blockWaitTime = 1f;
         IEnumerator WaitBlockMotion()
         {
-            yield return new WaitForSeconds(blockWaitTime);
+            yield return new WaitForSeconds(.4f);
+
+            if (blockSuccess)
+                moveFSM.ChangeState(PlayerState.BlockSuccess);
+            else
+                moveFSM.ChangeState(PlayerState.BlockFail);
+        }
+        void BlockSuccess_Enter()
+        {
+            StartCoroutine(WaitBlockMotion(1f));
+        }
+        void BlockFail_Enter()
+        {
+            StartCoroutine(WaitBlockMotion(1f));
+        }
+        IEnumerator WaitBlockMotion(float waitTime)
+        {
+            yield return new WaitForSeconds(waitTime);
             moveFSM.ChangeState(PlayerState.Idle);
         }
 
@@ -366,15 +364,16 @@ namespace Control
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if(collision.gameObject.tag == "ItemBox")
+            switch (collision.tag)
             {
-
-                //var anim = collision.gameObject.GetComponent<Animator>();
-                //if (anim != null)
-                //    anim.SetTrigger("Open");
-                //else
-                //    Debug.Log("--비었음");
+                case "Bullet":
+                    if (iplayerInfo?.GetMoveFSM() == PlayerState.Block)
+                        blockSuccess = true;
+                    else
+                        blockSuccess = false;
+                    break;
             }
         }
+
     }
 }

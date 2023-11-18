@@ -24,22 +24,26 @@ namespace Control
             statesDic.Clear();
             statesDic.Add(PlayerState.Idle, () =>
             {
-             //   AnimationManager.BoolAnim(animator, "Walk", false);
-             //   AnimationManager.BoolAnim(animator, "WalkJump", false);
                 AnimationManager.BoolAnim(animator, "Run", false);
                 AnimationManager.BoolAnim(animator, "RunJump", false);
                 AnimationManager.BoolAnim(animator, "Dash", false);
                 AnimationManager.BoolAnim(animator, "Jump", false);
                 AnimationManager.BoolAnim(animator, "Attack", false);
+                AnimationManager.BoolAnim(animator, "SpecialAttack", false);
+                AnimationManager.BoolAnim(animator, "Block", false);
+                AnimationManager.BoolAnim(animator, "BlockSucess", false);
+                AnimationManager.BoolAnim(animator, "BlockFail", false);
             });
-            //  statesDic.Add(PlayerMove.Walk, () => AnimationManager.BoolAnim(animator, "Walk", true));
-            //  statesDic.Add(PlayerMove.WalkJump, () => AnimationManager.BoolAnim(animator, "WalkJump", true));
             statesDic.Add(PlayerState.Run, () => AnimationManager.BoolAnim(animator, "Run", true));         
             statesDic.Add(PlayerState.RunStop, () => AnimationManager.BoolAnim(animator, "Run", false));         
             statesDic.Add(PlayerState.RunJump, () => AnimationManager.BoolAnim(animator, "RunJump", true));
             statesDic.Add(PlayerState.Dash, () => AnimationManager.BoolAnim(animator, "Dash", true));
-            statesDic.Add(PlayerState.Jump, () => AnimationManager.BoolAnim(animator, "Jump", true));
+            statesDic.Add(PlayerState.Jump, () => AnimationManager.BoolAnim(animator, "Jump", true));         
             statesDic.Add(PlayerState.Attack, () => AnimationManager.BoolAnim(animator, "Attack", true));
+            statesDic.Add(PlayerState.SpecialAttack, () => AnimationManager.BoolAnim(animator, "SpecialAttack", true));
+            statesDic.Add(PlayerState.Block, () => AnimationManager.BoolAnim(animator, "Block", true));
+            statesDic.Add(PlayerState.BlockSucess, () => AnimationManager.BoolAnim(animator, "BlockSucess", true));
+            statesDic.Add(PlayerState.BlockFail, () => AnimationManager.BoolAnim(animator, "BlockFail", true));
         }
         IEnumerator SetPlayerAnimation()
         {
@@ -56,14 +60,6 @@ namespace Control
                         if (statesDic.ContainsKey(PlayerState.Idle))
                             statesDic[PlayerState.Idle]();
                         break;
-                    //case PlayerMove.Walk:
-                    //    if (statesDic.ContainsKey(PlayerMove.Walk))
-                    //        statesDic[PlayerMove.Walk]();
-                    //    break;
-                    //case PlayerMove.WalkJump:
-                    //    if (statesDic.ContainsKey(PlayerMove.WalkJump))
-                    //        statesDic[PlayerMove.WalkJump]();
-                    //   break;   
                     case PlayerState.Run:
                         if (statesDic.ContainsKey(PlayerState.Run))
                             statesDic[PlayerState.Run]();
@@ -83,10 +79,26 @@ namespace Control
                     case PlayerState.Jump:
                         if (statesDic.ContainsKey(PlayerState.Jump))
                             statesDic[PlayerState.Jump]();
-                        break;
+                        break;      
                     case PlayerState.Attack:
                         if (statesDic.ContainsKey(PlayerState.Attack))
                             statesDic[PlayerState.Attack]();
+                        break;    
+                    case PlayerState.SpecialAttack:
+                        if (statesDic.ContainsKey(PlayerState.SpecialAttack))
+                            statesDic[PlayerState.SpecialAttack]();
+                        break;         
+                    case PlayerState.Block:
+                        if (statesDic.ContainsKey(PlayerState.Block))
+                            statesDic[PlayerState.Block]();
+                        break;        
+                    case PlayerState.BlockSucess:
+                        if (statesDic.ContainsKey(PlayerState.BlockSucess))
+                            statesDic[PlayerState.BlockSucess]();
+                        break;                  
+                    case PlayerState.BlockFail:
+                        if (statesDic.ContainsKey(PlayerState.BlockFail))
+                            statesDic[PlayerState.BlockFail]();
                         break;
                 }
             }

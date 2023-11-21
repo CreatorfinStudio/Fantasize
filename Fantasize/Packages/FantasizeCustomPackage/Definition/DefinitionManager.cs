@@ -24,9 +24,10 @@ namespace Definition
         public GameObject player;
         public GameObject itemDummy;
         public GameObject monsters;
+
         public IPlayerInfo iplayerInfo;
         public IMonsterInfo imonsterInfo;
-        public IItemProcessing iItemProcessing;
+        public IItemProcessing iItemProcessing; 
 
         private void Awake()
         {
@@ -37,7 +38,7 @@ namespace Definition
         {
             iplayerInfo = player.GetComponent<IPlayerInfo>();
             imonsterInfo = monsters.GetComponent<IMonsterInfo>();
-            iItemProcessing = itemDummy.GetComponent<IItemProcessing>();
+            iItemProcessing = itemDummy.GetComponent<IItemProcessing>();            
         }
     }
 }

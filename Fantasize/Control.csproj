@@ -60,6 +60,7 @@
     <Compile Include="Packages\FantasizeCustomPackage\Control\Attack\Attack.cs" />
     <Compile Include="Packages\FantasizeCustomPackage\Control\Attack\ComboAttack.cs" />
     <Compile Include="Packages\FantasizeCustomPackage\Control\Control\InputKeyboardState.cs" />
+    <Compile Include="Packages\FantasizeCustomPackage\Control\Control\PlayerCollisionChecker.cs" />
     <Compile Include="Packages\FantasizeCustomPackage\Control\Control\AnimState.cs" />
     <Compile Include="Packages\FantasizeCustomPackage\Control\Control\KeyboardMove.cs" />
   </ItemGroup>

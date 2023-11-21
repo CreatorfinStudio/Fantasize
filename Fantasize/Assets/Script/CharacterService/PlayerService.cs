@@ -50,12 +50,13 @@ namespace Player
 
         public float GetRunSpeed() => playerInfo.RunSpeed;
         public float GetRunJumpForce() => playerInfo.RunJumpForce;
+        public float GetDashSpeed() => playerInfo.DashSpeed;
+
         public float GetRangedView() => playerInfo.RangedView;
         public float GetForwardView() => playerInfo.ForwardView;
 
         public int GetMaxHP() => playerInfo.MaxHP;
-        public int GetMaxHungry() => playerInfo.MaxHungry;
-
+        public int GetMaxHungry() => playerInfo.MaxHungry;     
 
         public void SetHp(int hp)
         {
@@ -82,7 +83,6 @@ namespace Player
         public void SetForwardView(float forwardView) => playerInfo.ForwardView += forwardView;
         public void SetMaxHungry(int maxHungry) => playerInfo.MaxHungry += maxHungry;
         public void SetMaxHP(int maxHP) => playerInfo.MaxHP += maxHP;
-
         public void SetItemInfo()
         {
             if(Item.Item.itemSlotInfo != null)
@@ -117,12 +117,12 @@ namespace Player
             SetHp(item.HP);
             SetHungry(item.Hungry);
         }
-        PlayerMove IPlayerInfo.GetMoveFSM()
+        PlayerState IPlayerInfo.GetMoveFSM()
         {
             return playerInfo.MOVEFSM;
         }
 
-        public void SetMoveFSM(PlayerMove moveFsm)
+        public void SetMoveFSM(PlayerState moveFsm)
         {
             playerInfo.MOVEFSM = moveFsm;
         }
@@ -137,6 +137,10 @@ namespace Player
         public void SetJumpForce(float jumpForce)
         {
             playerInfo.JumpForce = jumpForce;
+        }
+        public void SetDashSpeed(float dashSpeed)
+        {
+            playerInfo.DashSpeed = dashSpeed;
         }
 
         #endregion

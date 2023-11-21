@@ -2108,6 +2108,14 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 787157306464862960, guid: 875a7655d3de06a489203af4bf9c8022, type: 3}
+      propertyPath: playerInfo.jumpForce
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 787157306464862960, guid: 875a7655d3de06a489203af4bf9c8022, type: 3}
+      propertyPath: playerInfo.runJumpForce
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 787157306464862964, guid: 875a7655d3de06a489203af4bf9c8022, type: 3}
       propertyPath: m_Size.x
       value: 0.17178512

@@ -25,7 +25,6 @@ namespace Control
             statesDic.Add(PlayerState.Idle, () =>
             {
                 AnimationManager.BoolAnim(animator, "Run", false);
-                AnimationManager.BoolAnim(animator, "RunJump", false);
                 AnimationManager.BoolAnim(animator, "Dash", false);
                 AnimationManager.BoolAnim(animator, "Jump", false);
                 AnimationManager.BoolAnim(animator, "Attack", false);
@@ -35,8 +34,7 @@ namespace Control
                 AnimationManager.BoolAnim(animator, "BlockFail", false);
             });
             statesDic.Add(PlayerState.Run, () => AnimationManager.BoolAnim(animator, "Run", true));         
-            statesDic.Add(PlayerState.RunStop, () => AnimationManager.BoolAnim(animator, "Run", false));         
-            statesDic.Add(PlayerState.RunJump, () => AnimationManager.BoolAnim(animator, "RunJump", true));
+            statesDic.Add(PlayerState.RunStop, () => AnimationManager.BoolAnim(animator, "Run", false));    
             statesDic.Add(PlayerState.Dash, () => AnimationManager.BoolAnim(animator, "Dash", true));
             statesDic.Add(PlayerState.Jump, () => AnimationManager.BoolAnim(animator, "Jump", true));         
             statesDic.Add(PlayerState.Attack, () => AnimationManager.BoolAnim(animator, "Attack", true));
@@ -68,10 +66,6 @@ namespace Control
                         if (statesDic.ContainsKey(PlayerState.RunStop))
                             statesDic[PlayerState.RunStop]();
                         break;
-                    case PlayerState.RunJump:
-                        if (statesDic.ContainsKey(PlayerState.RunJump))
-                            statesDic[PlayerState.RunJump]();
-                        break;
                     case PlayerState.Dash:
                         if (statesDic.ContainsKey(PlayerState.Dash))
                             statesDic[PlayerState.Dash]();
@@ -83,7 +77,7 @@ namespace Control
                     case PlayerState.Attack:
                         if (statesDic.ContainsKey(PlayerState.Attack))
                             statesDic[PlayerState.Attack]();
-                        break;    
+                        break;           
                     case PlayerState.SpecialAttack:
                         if (statesDic.ContainsKey(PlayerState.SpecialAttack))
                             statesDic[PlayerState.SpecialAttack]();

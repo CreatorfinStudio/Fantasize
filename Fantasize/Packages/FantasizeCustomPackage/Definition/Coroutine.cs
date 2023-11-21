@@ -13,8 +13,6 @@ namespace Definition
         public static WaitForSeconds wait05 = new WaitForSeconds(.5f);
         public static WaitForSeconds wait1 = new WaitForSeconds(1f);
         public static WaitForSeconds wait15 = new WaitForSeconds(1.5f);
-        public static WaitForSeconds wait20 = new WaitForSeconds(2f);
-
-
+        public static WaitForSeconds wait20 = new WaitForSeconds(2f);                
     }
 }

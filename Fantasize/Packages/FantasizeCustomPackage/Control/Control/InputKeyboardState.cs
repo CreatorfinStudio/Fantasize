@@ -1,7 +1,7 @@
 using Definition;
-using MonsterLove.StateMachine;
 using System.Collections;
 using UnityEngine;
+using MonsterLove.StateMachine;
 
 namespace Control
 {
@@ -124,7 +124,7 @@ namespace Control
                     moveFSM.ChangeState(PlayerState.Attack);
                 }
                 else
-                {
+                {                    
                     moveFSM.ChangeState(PlayerState.SpecialAttack);
                 }
             }
@@ -141,7 +141,7 @@ namespace Control
             {
                 moveFSM.ChangeState(PlayerState.Run);
             }
-            else if (Input.GetKey(KeyCode.Space))
+            else if (Input.GetKeyDown(KeyCode.Space))
                 moveFSM.ChangeState(PlayerState.Jump);
             if (Input.GetKeyDown(KeyCode.D))
                 beforeState = PlayerState.Idle;
@@ -227,20 +227,6 @@ namespace Control
             yield return new WaitForSeconds(runStopWaitTime);
             moveFSM.ChangeState(PlayerState.Idle);
         }
-        /// <summary>
-        /// 달리기 점프
-        /// </summary>
-        void RunJump_Update()
-        {
-            rb.velocity = new Vector2(h * iplayerInfo.GetRunSpeed(), rb.velocity.y);
-
-            if (!isJump && canJump) //점프 중이 아니면서 지면일 때 점프 가능
-            {
-                rb.velocity = new Vector3(rb.velocity.x, iplayerInfo.GetJumpForce());
-                isJump = true;
-            }
-        }
-
         void Move(float moveSpeed)
         {
             Vector2 moveDirection = new Vector3(h, 0f);
@@ -248,7 +234,7 @@ namespace Control
             transform.Translate(moveDirection * moveSpeed * Time.deltaTime);
             if (Input.GetKey(KeyCode.Space) && canJump)
             {
-                moveFSM.ChangeState(PlayerState.RunJump);
+                moveFSM.ChangeState(PlayerState.Jump);
             }
             //if(Input.GetKey(KeyCode.D))
 
@@ -280,37 +266,52 @@ namespace Control
         #endregion
 
         #region 점프
-        void Jump_Enter()
+        /// <summary>
+        /// 점프
+        /// </summary>
+        void Jump_Update()
         {
-            rb.velocity = new Vector3(rb.velocity.x, iplayerInfo.GetJumpForce());
+            rb.velocity = new Vector2(h * iplayerInfo.GetRunSpeed(), rb.velocity.y);
+
+            if (!isJump && canJump) //점프 중이 아니면서 지면일 때 점프 가능
+            {
+                rb.velocity = new Vector3(rb.velocity.x, iplayerInfo.GetJumpForce());
+                isJump = true;
+            }
+            if (Input.GetKeyDown(KeyCode.D))
+            {
+                beforeState = PlayerState.None;             
+            }
         }
         #endregion
 
-        #region 공격 (일반)
+        #region 공격
         /// <summary>
-        /// 현재 임시 단일공격. 나중에 콤보로 변경되거나 해서 코드 수정 될 수 있음
+        /// 현재 일반 단일공격. 나중에 콤보로 변경되거나 해서 코드 수정 될 수 있음
+        /// 점프중에 시전될 시, 공중 공격으로 전환된다.
         /// </summary>
         void Attack_Enter()
         {
-            StartCoroutine(WaitAttack());
+            StartCoroutine(WaitAttack(CoroutineWait.wait05));
         }
 
         /// <summary>
-        /// 임시 공격 후 대기시간 (애니메이션 끝날때까지 대기 -> Idle 전환)
+        /// 특수 공격
         /// </summary>
-        /// <returns></returns>
-        IEnumerator WaitAttack()
-        {
-            yield return CoroutineWait.wait05;
-            moveFSM.ChangeState(beforeState);
-        }
-        #endregion
-
-        #region 공격 (특수)
-
         void SpecialAttack_Enter()
         {
-            StartCoroutine(WaitAttack());
+            StartCoroutine(WaitAttack(CoroutineWait.wait05));
+        }
+
+        /// <summary>
+        /// 임시 공격 후 대기시간 (애니메이션 끝날때까지 대기 -> 원래 상태로 다시 전환)
+        /// </summary>
+        /// <returns></returns>
+        IEnumerator WaitAttack(WaitForSeconds time)
+        {
+            yield return time;
+            if(beforeState !=  PlayerState.None)
+                moveFSM.ChangeState(beforeState);
         }
         #endregion
 
@@ -355,7 +356,7 @@ namespace Control
             {
                 canJump = true;
                 isJump = false;
-                if (iplayerInfo?.GetMoveFSM() == PlayerState.RunJump)
+                if (iplayerInfo?.GetMoveFSM() == PlayerState.Jump)
                     moveFSM.ChangeState(PlayerState.Run);
                 else
                     moveFSM.ChangeState(PlayerState.Idle);

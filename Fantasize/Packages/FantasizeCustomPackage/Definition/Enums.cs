@@ -17,11 +17,10 @@ namespace Definition
         //BackWalk,
         Run,
         RunStop,
-        RunJump,
         Jump,
         Dash,        
         Attack,
-        SpecialAttack,
+        SpecialAttack, //특수공격
         Block,
         BlockSuccess,
         BlockFail,

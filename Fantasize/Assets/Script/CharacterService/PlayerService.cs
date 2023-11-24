@@ -39,6 +39,10 @@ namespace Player
         }
 
         #region PlayerInfo Data Interface
+        PlayerState IPlayerInfo.GetMoveFSM()
+        {
+            return playerInfo.MOVEFSM;
+        }
         public int GetHp() => playerInfo.Hp;
         public int GetHungry() => playerInfo.Hungry;
 
@@ -56,7 +60,8 @@ namespace Player
         public float GetForwardView() => playerInfo.ForwardView;
 
         public int GetMaxHP() => playerInfo.MaxHP;
-        public int GetMaxHungry() => playerInfo.MaxHungry;     
+        public int GetMaxHungry() => playerInfo.MaxHungry;
+        public float GetAirAttackPower() => playerInfo.AirAttackPower;
 
         public void SetHp(int hp)
         {
@@ -117,11 +122,9 @@ namespace Player
             SetHp(item.HP);
             SetHungry(item.Hungry);
         }
-        PlayerState IPlayerInfo.GetMoveFSM()
+        public void SetAirAttackPower()
         {
-            return playerInfo.MOVEFSM;
         }
-
         public void SetMoveFSM(PlayerState moveFsm)
         {
             playerInfo.MOVEFSM = moveFsm;

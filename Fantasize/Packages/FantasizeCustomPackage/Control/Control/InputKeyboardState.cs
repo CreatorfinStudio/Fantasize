@@ -55,6 +55,7 @@ namespace Control
         private float dPressTime = 0f;
         private void Update()
         {
+            Debug.Log(beforeState);
             iplayerInfo?.SetMoveFSM(this.moveFSM.State);
             h = Input.GetAxis("Horizontal");
             if (h < 0)
@@ -121,10 +122,11 @@ namespace Control
                 float elapsedTime = Time.time - dPressTime;
                 if (elapsedTime <= .5f)
                 {
+                    Debug.Log("어택 진입");
                     moveFSM.ChangeState(PlayerState.Attack);
                 }
                 else
-                {                    
+                {
                     moveFSM.ChangeState(PlayerState.SpecialAttack);
                 }
             }
@@ -143,10 +145,13 @@ namespace Control
             }
             else if (Input.GetKeyDown(KeyCode.Space))
                 moveFSM.ChangeState(PlayerState.Jump);
-            if (Input.GetKeyDown(KeyCode.D))
+            else if (Input.GetKeyDown(KeyCode.D))
                 beforeState = PlayerState.Idle;
-            if (Input.GetKeyDown(KeyCode.S))
+            else if (Input.GetKeyDown(KeyCode.S))
+            {
+                beforeState = PlayerState.Idle;
                 moveFSM.ChangeState(PlayerState.Block);
+            }
         }
         #region 걷기 (삭제)
         /*
@@ -208,7 +213,10 @@ namespace Control
                 moveFSM.ChangeState(PlayerState.RunStop);
             }
             if (Input.GetKeyDown(KeyCode.S))
+            {
+                beforeState = PlayerState.Run;
                 moveFSM.ChangeState(PlayerState.Block);
+            }
         }
         /// <summary>
         /// 달리기 멈춤
@@ -280,7 +288,7 @@ namespace Control
             }
             if (Input.GetKeyDown(KeyCode.D))
             {
-                beforeState = PlayerState.None;             
+                beforeState = PlayerState.None;
             }
         }
         #endregion
@@ -310,8 +318,12 @@ namespace Control
         IEnumerator WaitAttack(WaitForSeconds time)
         {
             yield return time;
-            if(beforeState !=  PlayerState.None)
+            if(beforeState != PlayerState.None)            
                 moveFSM.ChangeState(beforeState);
+            else
+            {                // 이전 상태가 None이면 기본 상태로 변경
+                moveFSM.ChangeState(PlayerState.Idle);
+            }
         }
         #endregion
 
@@ -333,16 +345,17 @@ namespace Control
         }
         void BlockSuccess_Enter()
         {
-            StartCoroutine(WaitBlockMotion(1f));
+            StartCoroutine(WaitBlockMotion(.1f));
         }
         void BlockFail_Enter()
         {
-            StartCoroutine(WaitBlockMotion(1f));
+            StartCoroutine(WaitBlockMotion(.1f));
         }
         IEnumerator WaitBlockMotion(float waitTime)
         {
             yield return new WaitForSeconds(waitTime);
-            moveFSM.ChangeState(PlayerState.Idle);
+            if(beforeState == PlayerState.Idle || beforeState == PlayerState.Run)
+                moveFSM.ChangeState(beforeState);
         }
 
         #endregion
@@ -356,9 +369,9 @@ namespace Control
             {
                 canJump = true;
                 isJump = false;
-                if (iplayerInfo?.GetMoveFSM() == PlayerState.Jump)
-                    moveFSM.ChangeState(PlayerState.Run);
-                else
+                //if (iplayerInfo?.GetMoveFSM() == PlayerState.Jump)
+                //    moveFSM.ChangeState(PlayerState.Run);
+                //else
                     moveFSM.ChangeState(PlayerState.Idle);
             }
         }

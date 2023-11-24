@@ -7,6 +7,7 @@ namespace Definition
     {
         ////////////////// GET //////////////////
         public PlayerState GetMoveFSM();
+        public float GetAirAttackPower();
         public int GetHp();
         public int GetHungry();
 
@@ -33,6 +34,8 @@ namespace Definition
 
         ////////////////// SET //////////////////
         public void SetMoveFSM(PlayerState moveFsm);
+        public void SetAirAttackPower();
+
 
         public void SetHp(int hp);
         public void SetHungry(int hungry);

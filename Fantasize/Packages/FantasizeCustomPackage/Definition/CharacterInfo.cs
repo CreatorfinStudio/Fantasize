@@ -10,6 +10,7 @@ namespace Definition
         public int hp;
         public float walkSpeed;
         public float attackPower;
+        public float specialAttackPower;
         public float attackSpeed;
 
         // 0905 기획에서 마우스 회전 관련 삭제됨
@@ -44,6 +45,15 @@ namespace Definition
     [System.Serializable]
     public class PlayerInfo : CharacterProperty
     {
+        /// <summary>
+        /// Move FSM
+        /// </summary>
+        [Space(10)]
+        [Header("============== Move FSM ==============")]
+        public PlayerState moveFSM;
+        [Header("============= Battle Status =============")]
+        public float airAttackPower;
+
         [Space(10)]
         public int hungry;
         public float rangedView;
@@ -62,12 +72,12 @@ namespace Definition
         public int maxHungry;
         public int maxHP;
 
-        /// <summary>
-        /// Move FSM
-        /// </summary>
-        public PlayerState moveFSM;
+
 
         #region Property
+        public PlayerState MOVEFSM { get { return moveFSM; } set { moveFSM = value; } }
+        public float AirAttackPower { get { return airAttackPower; } set { airAttackPower = value; } }
+
         public int Hungry { get { return hungry; } set { hungry = value; } }
         public float RangedView { get { return rangedView; } set { rangedView = value; } }
         public float ForwardView { get { return forwardView; } set { forwardView = value; } }
@@ -78,7 +88,7 @@ namespace Definition
         public float RunJumpForce { get { return runJumpForce; } set { runJumpForce = value; } }
         public int MaxHungry { get { return maxHungry; } set { maxHungry = value; } }
         public int MaxHP { get { return maxHP; } set { maxHP = value; } }
-        public PlayerState MOVEFSM { get { return moveFSM; } set { moveFSM = value; } }
+    
 
         #endregion
 

@@ -345,11 +345,11 @@ namespace Control
         }
         void BlockSuccess_Enter()
         {
-            StartCoroutine(WaitBlockMotion(.4f));
+            StartCoroutine(WaitBlockMotion(.37f));
         }
         void BlockFail_Enter()
         {
-            StartCoroutine(WaitBlockMotion(.4f));
+            StartCoroutine(WaitBlockMotion(.37f));
         }
         IEnumerator WaitBlockMotion(float waitTime)
         {

@@ -336,7 +336,7 @@ namespace Control
         }
         IEnumerator WaitBlockMotion()
         {
-            yield return new WaitForSeconds(.4f);
+            yield return new WaitForSeconds(.6f);
 
             if (blockSuccess)
                 moveFSM.ChangeState(PlayerState.BlockSuccess);
@@ -345,17 +345,20 @@ namespace Control
         }
         void BlockSuccess_Enter()
         {
-            StartCoroutine(WaitBlockMotion(.1f));
+            StartCoroutine(WaitBlockMotion(.4f));
         }
         void BlockFail_Enter()
         {
-            StartCoroutine(WaitBlockMotion(.1f));
+            StartCoroutine(WaitBlockMotion(.4f));
         }
         IEnumerator WaitBlockMotion(float waitTime)
         {
             yield return new WaitForSeconds(waitTime);
+            
             if(beforeState == PlayerState.Idle || beforeState == PlayerState.Run)
                 moveFSM.ChangeState(beforeState);
+            else
+                moveFSM.ChangeState(PlayerState.Run);
         }
 
         #endregion

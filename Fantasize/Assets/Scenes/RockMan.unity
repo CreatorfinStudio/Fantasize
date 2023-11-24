@@ -2211,6 +2211,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 866213789199810425}
     m_Modifications:
+    - target: {fileID: 3490843643953468145, guid: 8c8fabccc37929548b2fc8c1816a5e04, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8475598678910278199, guid: 8c8fabccc37929548b2fc8c1816a5e04, type: 3}
       propertyPath: m_Name
       value: Dooggups

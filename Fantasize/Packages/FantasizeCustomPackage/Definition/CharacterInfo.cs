@@ -10,6 +10,7 @@ namespace Definition
         public int hp;
         public float walkSpeed;
         public float attackPower;
+        public float specialAttackPower;
         public float attackSpeed;
 
         // 0905 기획에서 마우스 회전 관련 삭제됨
@@ -44,37 +45,51 @@ namespace Definition
     [System.Serializable]
     public class PlayerInfo : CharacterProperty
     {
+        /// <summary>
+        /// Move FSM
+        /// </summary>
+        [Space(10)]
+        [Header("============== Move FSM ==============")]
+        public PlayerState moveFSM;
+        [Header("============= Battle Status =============")]
+        public float airAttackPower;
+
         [Space(10)]
         public int hungry;
         public float rangedView;
         public float forwardView;
 
+        [Space(10)]
         /// <summary>
         /// 임시 추가.
         /// </summary>
         public float jumpForce;
-                
+        public float dashSpeed;
+
         public float runSpeed;
         public float runJumpForce;
 
         public int maxHungry;
         public int maxHP;
 
-        /// <summary>
-        /// Move FSM
-        /// </summary>
-        public PlayerMove moveFSM;
+
 
         #region Property
+        public PlayerState MOVEFSM { get { return moveFSM; } set { moveFSM = value; } }
+        public float AirAttackPower { get { return airAttackPower; } set { airAttackPower = value; } }
+
         public int Hungry { get { return hungry; } set { hungry = value; } }
         public float RangedView { get { return rangedView; } set { rangedView = value; } }
         public float ForwardView { get { return forwardView; } set { forwardView = value; } }
-        public float JumpForce { get { return jumpForce; }set { jumpForce = value; } }
-        public float RunSpeed {get { return runSpeed; } set { runSpeed = value; } }
+        public float JumpForce { get { return jumpForce; } set { jumpForce = value; } }
+        public float DashSpeed { get { return dashSpeed; } set { dashSpeed = value; } }
+
+        public float RunSpeed { get { return runSpeed; } set { runSpeed = value; } }
         public float RunJumpForce { get { return runJumpForce; } set { runJumpForce = value; } }
         public int MaxHungry { get { return maxHungry; } set { maxHungry = value; } }
         public int MaxHP { get { return maxHP; } set { maxHP = value; } }
-        public PlayerMove MOVEFSM { get { return moveFSM; } set { moveFSM = value; } }
+    
+
         #endregion
 
         public PlayerInfo(int hungry, float rangedView, float forwardView, int maxHungry, int maxHP)

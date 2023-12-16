@@ -1,11 +1,13 @@
 using MonsterLove.StateMachine;
+using UnityEngine;
 
 namespace Definition
 {
     public interface IPlayerInfo
     {
         ////////////////// GET //////////////////
-        public PlayerMove GetMoveFSM();
+        public PlayerState GetMoveFSM();
+        public float GetAirAttackPower();
         public int GetHp();
         public int GetHungry();
 
@@ -21,7 +23,7 @@ namespace Definition
         /// </summary>
         /// <returns></returns>
         public float GetJumpForce();
-
+        public float GetDashSpeed();
         public float GetRunSpeed();
         public float GetRunJumpForce();
         public float GetRangedView();
@@ -31,7 +33,9 @@ namespace Definition
         public int GetMaxHungry();
 
         ////////////////// SET //////////////////
-        public void SetMoveFSM(PlayerMove moveFsm);
+        public void SetMoveFSM(PlayerState moveFsm);
+        public void SetAirAttackPower();
+
 
         public void SetHp(int hp);
         public void SetHungry(int hungry);
@@ -48,6 +52,8 @@ namespace Definition
         /// </summary>
         /// <param name="jumpForce"></param>
         public void SetJumpForce(float jumpForce);
+        public void SetDashSpeed(float dashSpeed);
+
         public void SetRunSpeed(float runSpeed);
         public void SetRunJumpForce(float runJumpForce);
         public void SetRangedView(float rangedView);

@@ -55,7 +55,7 @@ namespace Control
         private float dPressTime = 0f;
         private void Update()
         {
-            Debug.Log(beforeState);
+            //Debug.Log(beforeState);
             iplayerInfo?.SetMoveFSM(this.moveFSM.State);
             h = Input.GetAxis("Horizontal");
             if (h < 0)
@@ -122,7 +122,7 @@ namespace Control
                 float elapsedTime = Time.time - dPressTime;
                 if (elapsedTime <= .5f)
                 {
-                    Debug.Log("어택 진입");
+                    //Debug.Log("어택 진입");
                     moveFSM.ChangeState(PlayerState.Attack);
                 }
                 else

@@ -55,7 +55,7 @@ namespace Control
         private float dPressTime = 0f;
         private void Update()
         {
-            Debug.Log(beforeState);
+            //Debug.Log(beforeState);
             iplayerInfo?.SetMoveFSM(this.moveFSM.State);
             h = Input.GetAxis("Horizontal");
             if (h < 0)
@@ -122,7 +122,7 @@ namespace Control
                 float elapsedTime = Time.time - dPressTime;
                 if (elapsedTime <= .5f)
                 {
-                    Debug.Log("어택 진입");
+                    //Debug.Log("어택 진입");
                     moveFSM.ChangeState(PlayerState.Attack);
                 }
                 else
@@ -345,11 +345,11 @@ namespace Control
         }
         void BlockSuccess_Enter()
         {
-            StartCoroutine(WaitBlockMotion(.4f));
+            StartCoroutine(WaitBlockMotion(.37f));
         }
         void BlockFail_Enter()
         {
-            StartCoroutine(WaitBlockMotion(.4f));
+            StartCoroutine(WaitBlockMotion(.37f));
         }
         IEnumerator WaitBlockMotion(float waitTime)
         {

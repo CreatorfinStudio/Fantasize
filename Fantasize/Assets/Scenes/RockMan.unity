@@ -10785,7 +10785,7 @@ MonoBehaviour:
     canSeePlayer: 0
     followSpeed: 0
     atackRange: 0
-    rushSpeed: 7
+    rushSpeed: 5
     isCanRush: 1
     attackState: 0
     monsterType: 0

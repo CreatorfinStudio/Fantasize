@@ -38,9 +38,29 @@ namespace Monster
             if (collision.gameObject.CompareTag("Wall"))
             {
                 imonsterInfo?.SetIsCanRush(false);
-                SetSpriteFlipX(DefinitionManager.Instance.player.transform);
+                //SetSpriteFlipX(DefinitionManager.Instance.player.transform);
+                StartCoroutine(ReRushToWall());
             }
         }
+
+        IEnumerator ReRushToWall()
+        {
+            yield return new WaitForSeconds(1f);
+            SetSpriteFlipX(DefinitionManager.Instance.player.transform);
+            imonsterInfo?.SetIsCanRush(true);
+        }
+
+
+        //private void OnCollisionExit2D(Collision2D collision)
+        //{
+        //    if (collision.gameObject.CompareTag("Wall"))
+        //    {
+        //        Debug.Log("º® ³¡---");
+
+        //        imonsterInfo?.SetIsCanRush(true);
+
+        //    }
+        //}
 
         private void OnTriggerEnter2D(Collider2D other)
         {

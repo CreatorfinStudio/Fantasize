@@ -3,21 +3,38 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Definition;
+using static UnityEngine.GraphicsBuffer;
 
 namespace AI
 {
     public class RushToWall : Action
     {
         private Rigidbody2D rb; 
-        private Vector3 rushDirection; 
+        private Vector3 rushDirection;
+        Vector2 playerPosition;
+        private int direction = 1;
+        private SpriteRenderer spriteRenderer;
 
         public override void OnStart()
         {
-            DefinitionManager.Instance.imonsterInfo.SetIsCanRush(true);
+            spriteRenderer = GetComponent<SpriteRenderer>();
             rb = GetComponent<Rigidbody2D>();
-  
-            Vector2 playerPosition = DefinitionManager.Instance.player.transform.position;
-            rushDirection = (playerPosition - (Vector2)transform.position).normalized;
+
+            playerPosition = DefinitionManager.Instance.player.transform.position;
+
+            if (transform.position.x <= playerPosition.x)
+            {
+                direction = 1;
+                spriteRenderer.flipX = false;
+            }
+            else// if (transform.position.x > playerPosition.x)
+            { 
+                direction = -1;
+                spriteRenderer.flipX = true;
+            }
+
+            ///Fly Monster
+            //rushDirection = (playerPosition - (Vector2)transform.position).normalized;
         }
 
         public override TaskStatus OnUpdate()
@@ -29,8 +46,14 @@ namespace AI
 
             if (DefinitionManager.Instance.imonsterInfo.GetIsCanRush())
             {
-                rb.MovePosition(transform.position + rushDirection * 
-                    DefinitionManager.Instance.imonsterInfo.GetRushSpeed() * Time.deltaTime);
+                //rb.MovePosition(transform.position + rushDirection *
+                //    DefinitionManager.Instance.imonsterInfo.GetRushSpeed() * Time.deltaTime);
+
+                rb.AddForce(new Vector2(DefinitionManager.Instance.imonsterInfo.GetRushSpeed() * direction,
+                    rb.velocity.y));
+
+                //rb.velocity = new Vector2(DefinitionManager.Instance.imonsterInfo.GetRushSpeed() * direction,
+                //    rb.velocity.y);
                 return TaskStatus.Running;
             }
             else

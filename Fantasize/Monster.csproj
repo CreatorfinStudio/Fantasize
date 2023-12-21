@@ -56,12 +56,12 @@
     <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Packages\FantasizeCustomPackage\Monster\MonsterCollisionChecker.cs" />
     <Compile Include="Packages\FantasizeCustomPackage\Monster\MediumMonster.cs" />
     <Compile Include="Packages\FantasizeCustomPackage\Monster\MosterService.cs" />
     <Compile Include="Packages\FantasizeCustomPackage\Monster\SmallMonster.cs" />
     <Compile Include="Packages\FantasizeCustomPackage\Monster\BossMonster.cs" />
     <Compile Include="Packages\FantasizeCustomPackage\Monster\Monster.cs" />
-    <Compile Include="Packages\FantasizeCustomPackage\Monster\MonsterCollisionChecker.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Packages\FantasizeCustomPackage\Monster\Monster.asmdef" />

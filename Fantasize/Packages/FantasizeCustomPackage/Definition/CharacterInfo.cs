@@ -12,6 +12,7 @@ namespace Definition
         public float attackPower;
         public float specialAttackPower;
         public float attackSpeed;
+        public float jumpForce;
 
         // 0905 기획에서 마우스 회전 관련 삭제됨
         // public float rotationSpeed; 
@@ -27,6 +28,7 @@ namespace Definition
         public float WalkSpeed { get { return walkSpeed; } set { walkSpeed = value; } }
         public float AttackPower { get { return attackPower; } set { attackPower = value; } }
         public float AttackSpeed { get { return attackSpeed; } set { attackSpeed = value; } }
+        public float JumpForce { get { return jumpForce; } set { jumpForce = value; } }
         // 0905 기획에서 마우스 회전 관련 삭제됨
        // public float RotationSpeed { get { return rotationSpeed; } set { rotationSpeed = value; } }
 
@@ -60,10 +62,6 @@ namespace Definition
         public float forwardView;
 
         [Space(10)]
-        /// <summary>
-        /// 임시 추가.
-        /// </summary>
-        public float jumpForce;
         public float dashSpeed;
 
         public float runSpeed;
@@ -72,8 +70,6 @@ namespace Definition
         public int maxHungry;
         public int maxHP;
 
-
-
         #region Property
         public PlayerState MOVEFSM { get { return moveFSM; } set { moveFSM = value; } }
         public float AirAttackPower { get { return airAttackPower; } set { airAttackPower = value; } }
@@ -81,7 +77,6 @@ namespace Definition
         public int Hungry { get { return hungry; } set { hungry = value; } }
         public float RangedView { get { return rangedView; } set { rangedView = value; } }
         public float ForwardView { get { return forwardView; } set { forwardView = value; } }
-        public float JumpForce { get { return jumpForce; } set { jumpForce = value; } }
         public float DashSpeed { get { return dashSpeed; } set { dashSpeed = value; } }
 
         public float RunSpeed { get { return runSpeed; } set { runSpeed = value; } }
@@ -106,10 +101,10 @@ namespace Definition
     public class MonsterInfo : CharacterProperty
     {
         /// <summary>
-        /// 이 범위 내로 들어오면 플레이어를 따라가기 시작함
+        /// 플레이어가 인식되었는지 여부
         /// </summary>
-        [Header ("추적을 시작하는 거리")]
-        public float followRange;
+        [Header("플레이어 인식 여부")]
+        public bool canSeePlayer;
         /// <summary>
         /// 추적 속도
         /// </summary>
@@ -119,7 +114,15 @@ namespace Definition
         /// 이 범위 내로 들어오면 플레이어에게 공격 시전
         /// </summary>
         [Header("공격을 시작하는 거리")]
-        public float atackRange;
+        public float atackRange;   
+        
+        [Header("돌진속도")]
+        public float rushSpeed;
+        /// <summary>
+        /// 돌진 가능 여부
+        /// </summary>
+        public bool isCanRush;
+
         /// <summary>
         /// 쿨타임 체크용 State Enum
         /// 수정해야 할수도 있음
@@ -132,9 +135,11 @@ namespace Definition
         public MonsterType monsterType;
 
         #region Property
-        public float FollowRange { get { return followRange; } set { followRange = value; } }
+        public bool CanSeePlayer { get { return canSeePlayer; } set { canSeePlayer = value; } }
         public float FollowSpeed { get { return followSpeed; } set { followSpeed = value; } }
         public float AtackRange { get { return atackRange; } set { atackRange = value; } }
+        public float RushSpeed { get { return rushSpeed; } set { rushSpeed = value; } }
+        public bool IsCanRush { get { return isCanRush; } set { isCanRush = value; } }
         public MonterState AtackState { get {  return attackState; } set {  attackState = value; } }
         public MonsterType MonsterType { get {  return monsterType; } set {  monsterType = value; } }
         #endregion

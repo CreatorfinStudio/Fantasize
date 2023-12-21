@@ -56,6 +56,7 @@
     <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Packages\FantasizeCustomPackage\Monster\MonsterCollisionChecker.cs" />
     <Compile Include="Packages\FantasizeCustomPackage\Monster\MediumMonster.cs" />
     <Compile Include="Packages\FantasizeCustomPackage\Monster\MosterService.cs" />
     <Compile Include="Packages\FantasizeCustomPackage\Monster\SmallMonster.cs" />
@@ -266,6 +267,9 @@
     </Reference>
     <Reference Include="UnityEngine.XRModule">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.29f1\Editor\Data\PlaybackEngines\WindowsStandaloneSupport\Variations\mono\Managed\UnityEngine.XRModule.dll</HintPath>
+    </Reference>
+    <Reference Include="BehaviorDesigner.Runtime">
+      <HintPath>Assets\Behavior Designer\Runtime\BehaviorDesigner.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
       <HintPath>Library\PackageCache\com.unity.visualscripting@1.8.0\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>

@@ -4,14 +4,29 @@ using UnityEngine;
 using MonsterLove.StateMachine;
 using Definition;
 using System;
+using Codice.Client.BaseCommands;
 
 namespace Monster
 {
     public class SmallMonster : Monster
     {
-        private StateMachine<MonterState> fsm;
         private SpriteRenderer spriteRenderer;
-        #region Roaming Around
+        private bool movingRight = true;
+
+        private void Awake()
+        {
+            spriteRenderer = GetComponent<SpriteRenderer>();
+        }
+        private void Update()
+        {
+            movingRight = !movingRight;
+            //  이동 방향에 따라 y 회전값 초기화
+            spriteRenderer.flipX = !movingRight;
+        }
+
+        #region FSM
+        /*
+        #region Roaming Around (FSM)
         public float patrolDistance = 5f;
         public float patrolSpeed = 1f;
         public float stopDuration = 1f;
@@ -22,16 +37,8 @@ namespace Monster
         private bool movingRight = true;
         #endregion
 
-        private void Awake()
-        {
-            startPosi = transform.position;
-
-            spriteRenderer = GetComponent<SpriteRenderer>();
-            fsm = StateMachine<MonterState>.Initialize(this);
-            fsm.ChangeState(MonterState.Idle);
-        }
-
         #region 로머 몬스터
+        /*
         // 4초 동안 이동
         float elapsedTime = 0f;
         bool stopRoam = false;
@@ -97,6 +104,7 @@ namespace Monster
             return false;
         }
 
-
+        */
+        #endregion
     }
 }

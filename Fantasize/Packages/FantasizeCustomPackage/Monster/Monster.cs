@@ -10,12 +10,11 @@ namespace Monster
         // 몬스터 List는 다른곳에서 관리해야 좋을 듯
 
         public Transform playerPosi;
+        public IMonsterInfo imonsterInfo;
 
-        protected IMonsterInfo imonsterInfo;
-
-        protected virtual void Start()
+        protected void Start()
         {
-            StartCoroutine(SetIPlayerInfo());
+            StartCoroutine(SetIMonsterInfo());
         }
 
         private void Update()
@@ -23,7 +22,7 @@ namespace Monster
            playerPosi = DefinitionManager.Instance.player.transform;
         }
 
-        protected virtual IEnumerator SetIPlayerInfo()
+        protected IEnumerator SetIMonsterInfo()
         {
             while (imonsterInfo == null)
             {
@@ -31,6 +30,9 @@ namespace Monster
                 yield return null;
             }
         }
+        protected virtual void SetSpriteFlipX(Transform trans)
+        {
 
+        }
     }
 }

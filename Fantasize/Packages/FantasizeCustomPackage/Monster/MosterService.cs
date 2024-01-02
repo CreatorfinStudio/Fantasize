@@ -8,24 +8,19 @@ namespace Monster
     public class MosterService : MonoBehaviour, IMonsterInfo
     {
         public MonsterInfo monsterInfo;
-        private void Start()
-        {
-            SetComponent();
-        }
-
-        private void SetComponent()
-        {
-            this.gameObject.AddComponent<SmallMonster>();
-        }
 
         #region MonsterInfo Data Interface
         public float GetHp() => monsterInfo.Hp;
         public float GetMoveSpeed() => monsterInfo.WalkSpeed;
         public float GetAttackPower() => monsterInfo.AttackPower;
         public float GetAttackSpeed() => monsterInfo.AttackSpeed;
-        public float GetFollowRange() => monsterInfo.FollowRange;
+        public float GetJumpForce() => monsterInfo.JumpForce;
+        public bool GetCanSeePlayer() => monsterInfo.CanSeePlayer;
         public float GetFollowSpeed() => monsterInfo.FollowSpeed;
         public float GetAtackRange() => monsterInfo.AtackRange;
+        public float GetRushSpeed() => monsterInfo.RushSpeed;
+        public bool GetIsCanRush() => monsterInfo.IsCanRush;
+
         public MonterState GetAtackState() => monsterInfo.AtackState;       
         public MonsterType GetMonsterType() => monsterInfo.MonsterType;
 
@@ -43,15 +38,23 @@ namespace Monster
         {
             monsterInfo.AttackPower = attackPower;
         }
-
         public void SetAttackSpeed(float attackSpeed)
         {
             monsterInfo.AttackSpeed = attackSpeed;
         }
 
-        public void SetFollowRange(float rangedView)
+        //public void SetFollowRange(float rangedView)
+        //{
+        //    monsterInfo.FollowRange = rangedView;
+        //}
+
+        public void SetJumpForce(float jumpForce)
         {
-            monsterInfo.FollowRange = rangedView;
+            monsterInfo.JumpForce = jumpForce;
+        }
+        public void SetCanSeePlayer(bool isCanSee)
+        {
+            monsterInfo.CanSeePlayer = isCanSee;
         }
         public void SetFollowSpeed(float followSpeed)
         {
@@ -63,6 +66,14 @@ namespace Monster
             monsterInfo.AtackRange = rangedView;
         }
 
+        public void SetRushSpeed(float rushSpeed)
+        {
+            monsterInfo.RushSpeed = rushSpeed;
+        }
+        public void SetIsCanRush(bool isCanRush)
+        {
+            monsterInfo.IsCanRush = isCanRush;
+        }
         public void SetAtackState(MonterState monterState)
         {
             monsterInfo.AtackState = monterState;
@@ -81,6 +92,7 @@ namespace Monster
         {
             throw new System.NotImplementedException();
         }
+
         #endregion
     }
 }

@@ -126,6 +126,9 @@ GameObject:
   - component: {fileID: 5189111407052748542}
   - component: {fileID: 5189111407052748547}
   - component: {fileID: 4375521899024007658}
+  - component: {fileID: 5189111407052748553}
+  - component: {fileID: 5189111407052748558}
+  - component: {fileID: 5189111407052748559}
   m_Layer: 7
   m_Name: Dooggups 1
   m_TagString: Untagged
@@ -291,13 +294,13 @@ MonoBehaviour:
   externalBehavior: {fileID: 11400000, guid: 79ee6f9e8b103554ab11bdee09a89170, type: 2}
   mBehaviorSource:
     behaviorName: FrogiBehavior
-    behaviorDescription: 
+    behaviorDescription: "\uAC8C\uC784 \uC0AC\uC774\uD074\n"
     mTaskData:
       types: []
       parentIndex: 
       startIndex: 
       variableStartIndex: 
-      JSONSerialization: 
+      JSONSerialization: '{"Variables":[{"Type":"BehaviorDesigner.Runtime.SharedAnimationCurve","Name":"IDLE","IsShared":true,"AnimationCurvemValue":{"Keys":[[0,0,0,0],[1,1,0,0]],"PreWrapMode":"ClampForever","PostWrapMode":"ClampForever"}}]}'
       fieldSerializationData:
         typeName: []
         fieldNameHash: 
@@ -306,9 +309,66 @@ MonoBehaviour:
         unityObjects: []
         byteData: 
         byteDataArray: 
-      Version: 
+      Version: 1.7.7
   gizmoViewMode: 2
   showBehaviorDesignerGizmo: 1
+--- !u!58 &5189111407052748553
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8475598678910278199}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.25}
+  serializedVersion: 2
+  m_Radius: 0.25
+--- !u!114 &5189111407052748558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8475598678910278199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 924b97212b8a05b44940aaa876c06a58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monsterInfo:
+    hp: 0
+    walkSpeed: 2
+    attackPower: 1
+    specialAttackPower: 0
+    attackSpeed: 0
+    jumpForce: 6
+    reloadTime: 0
+    canSeePlayer: 0
+    followSpeed: 0
+    atackRange: 0
+    rushSpeed: 3
+    isCanRush: 1
+    isSpriteCheck: 1
+    attackState: 0
+    monsterType: 0
+--- !u!114 &5189111407052748559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8475598678910278199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3cd0e39f83c2b44b9a8f07da4108519, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerPosi: {fileID: 0}
 --- !u!1001 &3490843645138285307
 PrefabInstance:
   m_ObjectHideFlags: 0

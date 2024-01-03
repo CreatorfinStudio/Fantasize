@@ -5,12 +5,12 @@ using Definition;
 
 namespace AI
 {
-    public class IsTriggerWall : Conditional
+    public class IsCanRush : Conditional
     {
         public override TaskStatus OnUpdate()
         {
             return DefinitionManager.Instance.imonsterInfo.GetIsCanRush()
-                ? TaskStatus.Failure : TaskStatus.Success;
+                ? TaskStatus.Success : TaskStatus.Failure;
         }
 
     }

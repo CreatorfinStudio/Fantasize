@@ -8,6 +8,8 @@ namespace AI
 {
     public class PlayerPursuit : Action
     {
+        [Header("정찰 종료 판정 거리")]
+        public float distance = 1.2f;
         public override TaskStatus OnUpdate()
         {
             Transform transform = this.transform; 
@@ -18,13 +20,10 @@ namespace AI
             tmp.y = 0;
             transform.position = tmp;
 
-            // 목표지점에 도착했는지 확인
-
             Debug.Log(Mathf.Abs(transform.position.x - DefinitionManager.Instance.player.transform.position.x));
-            if (Mathf.Abs(transform.position.x - DefinitionManager.Instance.player.transform.position.x) < .5f) // 도착 판정 거리
-            {
+            if (Mathf.Abs(transform.position.x - DefinitionManager.Instance.player.transform.position.x) <= distance) 
                 return TaskStatus.Success; // 목표에 도착했으면 Success 반환
-            }
+    
 
             return TaskStatus.Running; 
         }

@@ -38,13 +38,22 @@ namespace Monster
         }
 
         /////////////////////   충돌 관련   /////////////////////
+
+
         private void OnCollisionEnter2D(Collision2D collision)
         {
             if (collision.gameObject.CompareTag("Wall") || collision.gameObject.CompareTag("Player"))
             {
+                if(collision.gameObject.CompareTag("Player"))
+                    imonsterInfo.SetIsCollisionPlayer(true);
                 imonsterInfo?.SetIsCanRush(false);
                 StartCoroutine(ReRushToWall());
             }
+        }
+        private void OnCollisionExit2D(Collision2D collision)
+        {
+            if (collision.gameObject.CompareTag("Player"))
+                imonsterInfo.SetIsCollisionPlayer(false);
         }
 
         IEnumerator ReRushToWall()
@@ -55,18 +64,22 @@ namespace Monster
             DefinitionManager.Instance.imonsterInfo.SetIsSpriteCheck(true);
         }
 
+        /// <summary>
+        /// 나중에 충돌 , 공격판정 좀더 세분화 시켜야함
+        /// </summary>
+        /// <param name="other"></param>
         private void OnTriggerEnter2D(Collider2D other)
         {
             if (checkCollider.IsTouching(other) && other.CompareTag("Player"))
             {
-                imonsterInfo?.SetCanSeePlayer(true);
+                imonsterInfo?.SetIsCanAttack(true);
             }
         }
         private void OnTriggerExit2D(Collider2D other)
         {
             if (other.CompareTag("Player"))
             {
-                imonsterInfo?.SetCanSeePlayer(false);
+                imonsterInfo?.SetIsCanAttack(false);
             }
         }
     }

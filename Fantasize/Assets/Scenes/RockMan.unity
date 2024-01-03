@@ -11221,6 +11221,10 @@ PrefabInstance:
       value: 1.7.7
       objectReference: {fileID: 0}
     - target: {fileID: 4375521899024007658, guid: 8c8fabccc37929548b2fc8c1816a5e04, type: 3}
+      propertyPath: mBehaviorSource.behaviorDescription
+      value: "\uAC8C\uC784 \uC0AC\uC774\uD074\n"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4375521899024007658, guid: 8c8fabccc37929548b2fc8c1816a5e04, type: 3}
       propertyPath: mBehaviorSource.mTaskData.JSONSerialization
       value: '{"Variables":[{"Type":"BehaviorDesigner.Runtime.SharedAnimationCurve","Name":"IDLE","IsShared":true,"AnimationCurvemValue":{"Keys":[[0,0,0,0],[1,1,0,0]],"PreWrapMode":"ClampForever","PostWrapMode":"ClampForever"}}]}'
       objectReference: {fileID: 0}
@@ -11408,7 +11412,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.25}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.25
 --- !u!114 &5189111407052748558
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11423,7 +11427,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   monsterInfo:
     hp: 0
-    walkSpeed: 1
+    walkSpeed: 2
     attackPower: 0
     specialAttackPower: 0
     attackSpeed: 0
@@ -11432,7 +11436,7 @@ MonoBehaviour:
     canSeePlayer: 0
     followSpeed: 0
     atackRange: 0
-    rushSpeed: 5
+    rushSpeed: 3
     isCanRush: 1
     attackState: 0
     monsterType: 0

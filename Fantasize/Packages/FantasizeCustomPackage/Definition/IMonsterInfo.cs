@@ -11,8 +11,9 @@ namespace Definition
 
         public float GetJumpForce();
         public bool GetCanSeePlayer();
+        public bool GetIsCanAttack();
+        public bool GetIsCollisionPlayer();
         public float GetFollowSpeed();
-        public float GetAtackRange();
         public float GetRushSpeed();
         public bool GetIsCanRush();
         public bool GetIsSpriteCheck();
@@ -26,8 +27,9 @@ namespace Definition
 
         public void SetJumpForce(float jumpForce);
         public void SetCanSeePlayer(bool isCanSee);
+        public void SetIsCanAttack(bool isCanAttack);
+        public void SetIsCollisionPlayer(bool isCollisionPlayer);
         public void SetFollowSpeed(float followSpeed);
-        public void SetAtackRange(float rangedView);
         public void SetRushSpeed(float rushSpeed);
         public void SetIsCanRush(bool isCanRush);
         public void SetIsSpriteCheck(bool isSpriteCheck);

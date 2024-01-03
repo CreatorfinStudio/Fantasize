@@ -13,6 +13,7 @@ namespace Control
             switch(collision.gameObject.tag)
             {
                 case "Monster":
+                    DefinitionManager.Instance.iplayerInfo.SetHp(-1);
                     break;
             }
         }

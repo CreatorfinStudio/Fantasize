@@ -101,20 +101,26 @@ namespace Definition
     public class MonsterInfo : CharacterProperty
     {
         /// <summary>
-        /// 플레이어가 인식되었는지 여부
+        /// 플레이어가 인식 되었는지 여부
         /// </summary>
         [Header("플레이어 인식 여부")]
         public bool canSeePlayer;
         /// <summary>
+        /// 플레이어가 충돌 되었는지 여부
+        /// </summary>
+        [Header("플레이어 충돌 여부")]
+        public bool isCollisionPlayer;
+        /// <summary>
+        /// 특정 범위 내로 들어오면 플레이어에게 공격 시전
+        /// </summary>
+        [Header("플레이어 공격 가능/시작")]
+        public bool isCanAttack;
+
+        /// <summary>
         /// 추적 속도
         /// </summary>
         [Header ("추적 속도")]
-        public float followSpeed;
-        /// <summary>
-        /// 이 범위 내로 들어오면 플레이어에게 공격 시전
-        /// </summary>
-        [Header("공격을 시작하는 거리")]
-        public float atackRange;   
+        public float followSpeed;   
         
         [Header("돌진 속도")]
         public float rushSpeed;
@@ -139,8 +145,9 @@ namespace Definition
 
         #region Property
         public bool CanSeePlayer { get { return canSeePlayer; } set { canSeePlayer = value; } }
+        public bool IsCollisionPlayer { get { return isCollisionPlayer; } set { isCollisionPlayer = value; } }
         public float FollowSpeed { get { return followSpeed; } set { followSpeed = value; } }
-        public float AtackRange { get { return atackRange; } set { atackRange = value; } }
+        public bool IsCanAttack { get { return isCanAttack; } set { isCanAttack = value; } }
         public float RushSpeed { get { return rushSpeed; } set { rushSpeed = value; } }
         public bool IsCanRush { get { return isCanRush; } set { isCanRush = value; } }
         public bool IsSpriteCheck { get { return isSpriteCheck; } set { isSpriteCheck = value; } }

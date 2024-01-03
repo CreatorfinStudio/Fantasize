@@ -234,7 +234,7 @@
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Timeline\Resume.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\NavMeshAgent\SetAcceleration.cs" />
     <Compile Include="Assets\Behavior Designer Movement\Scripts\Tasks\NavMeshMovement.cs" />
-    <Compile Include="Assets\Script\BehaviorScripts\EnemyAI\Attack.cs" />
+    <Compile Include="Assets\Script\BehaviorScripts\EnemyAI\CanAttack.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Variables\SharedRect.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Actions\Log.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Conditionals\Reflection\CompareFieldValue.cs" />
@@ -716,6 +716,7 @@
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Transform\LookAt.cs" />
     <Compile Include="Assets\Pixel\Test\BackGround\Cainos\Third Party\Lucid Editor\Runtime\Attributes\DisableLucidEditorAttribute.cs" />
     <Compile Include="Assets\Script\Manager\UIManager.cs" />
+    <Compile Include="Assets\Script\Manager\GameManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Pixel\Test\BackGround\Cainos\Third Party\Lucid Editor\License.txt" />

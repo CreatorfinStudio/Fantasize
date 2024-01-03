@@ -15,6 +15,7 @@ namespace Definition
         public float GetAtackRange();
         public float GetRushSpeed();
         public bool GetIsCanRush();
+        public bool GetIsSpriteCheck();
         public MonterState GetAtackState();
         public MonsterType GetMonsterType();
 
@@ -29,6 +30,8 @@ namespace Definition
         public void SetAtackRange(float rangedView);
         public void SetRushSpeed(float rushSpeed);
         public void SetIsCanRush(bool isCanRush);
+        public void SetIsSpriteCheck(bool isSpriteCheck);
+
 
         public void SetAtackState(MonterState monterState);
         public void SetMonsterType(MonsterType monsterType);

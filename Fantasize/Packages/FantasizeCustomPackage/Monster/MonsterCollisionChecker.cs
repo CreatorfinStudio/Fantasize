@@ -7,7 +7,6 @@ namespace Monster
 {
     public class MonsterCollisionChecker : Monster
     {
-        [SerializeField]
         private CircleCollider2D checkCollider;
         private SpriteRenderer spriteRenderer;
 
@@ -16,6 +15,12 @@ namespace Monster
         {
             checkCollider = GetComponent<CircleCollider2D>();
             spriteRenderer = GetComponent<SpriteRenderer>();
+        }
+
+        private void Update()
+        {
+            if (DefinitionManager.Instance.imonsterInfo.GetIsSpriteCheck())
+                SetSpriteFlipX(DefinitionManager.Instance.player.transform);
         }
 
         /// <summary>
@@ -27,40 +32,28 @@ namespace Monster
         {
             if (trans != null && spriteRenderer != null)
             {
-                bool isObjectALeft = trans.position.x < transform.position.x;
-                spriteRenderer.flipX = isObjectALeft;
+                bool isObjectLeft = trans.position.x < transform.position.x;
+                spriteRenderer.flipX = isObjectLeft;
             }
         }
 
         /////////////////////   충돌 관련   /////////////////////
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            if (collision.gameObject.CompareTag("Wall"))
+            if (collision.gameObject.CompareTag("Wall") || collision.gameObject.CompareTag("Player"))
             {
                 imonsterInfo?.SetIsCanRush(false);
-                //SetSpriteFlipX(DefinitionManager.Instance.player.transform);
                 StartCoroutine(ReRushToWall());
             }
         }
 
         IEnumerator ReRushToWall()
         {
-            yield return new WaitForSeconds(1f);
-            SetSpriteFlipX(DefinitionManager.Instance.player.transform);
-            imonsterInfo?.SetIsCanRush(true);
+            yield return new WaitForSeconds(.1f);
+
+            imonsterInfo?.SetIsCanRush(true); 
+            DefinitionManager.Instance.imonsterInfo.SetIsSpriteCheck(true);
         }
-
-
-        //private void OnCollisionExit2D(Collision2D collision)
-        //{
-        //    if (collision.gameObject.CompareTag("Wall"))
-        //    {
-        //        Debug.Log("벽 끝---");
-
-        //        imonsterInfo?.SetIsCanRush(true);
-
-        //    }
-        //}
 
         private void OnTriggerEnter2D(Collider2D other)
         {

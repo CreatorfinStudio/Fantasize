@@ -8,6 +8,14 @@ namespace Control
 {
     public class PlayerCollisionChecker : Controller
     {
+        private void OnCollisionEnter2D(Collision2D collision)
+        {
+            switch(collision.gameObject.tag)
+            {
+                case "Monster":
+                    break;
+            }
+        }
         //private void OnTriggerEnter2D(Collider2D collision)
         //{
         //    switch (collision.tag)
@@ -15,7 +23,7 @@ namespace Control
         //        case "Bullet":
         //            if (iplayerInfo?.GetMoveFSM() == PlayerState.Block)
 
-        //            break;
+        //                break;
         //    }
         //}
 

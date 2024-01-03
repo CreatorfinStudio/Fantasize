@@ -8,7 +8,7 @@ namespace Monster
     public class MosterService : MonoBehaviour, IMonsterInfo
     {
         public MonsterInfo monsterInfo;
-
+  
         #region MonsterInfo Data Interface
         public float GetHp() => monsterInfo.Hp;
         public float GetMoveSpeed() => monsterInfo.WalkSpeed;
@@ -20,6 +20,7 @@ namespace Monster
         public float GetAtackRange() => monsterInfo.AtackRange;
         public float GetRushSpeed() => monsterInfo.RushSpeed;
         public bool GetIsCanRush() => monsterInfo.IsCanRush;
+        public bool GetIsSpriteCheck() => monsterInfo.IsSpriteCheck;
 
         public MonterState GetAtackState() => monsterInfo.AtackState;       
         public MonsterType GetMonsterType() => monsterInfo.MonsterType;
@@ -73,6 +74,10 @@ namespace Monster
         public void SetIsCanRush(bool isCanRush)
         {
             monsterInfo.IsCanRush = isCanRush;
+        }
+        public void SetIsSpriteCheck(bool isSpriteCheck)
+        {
+            monsterInfo.IsSpriteCheck = isSpriteCheck;
         }
         public void SetAtackState(MonterState monterState)
         {

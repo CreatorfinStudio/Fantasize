@@ -116,12 +116,15 @@ namespace Definition
         [Header("공격을 시작하는 거리")]
         public float atackRange;   
         
-        [Header("돌진속도")]
+        [Header("돌진 속도")]
         public float rushSpeed;
         /// <summary>
         /// 돌진 가능 여부
         /// </summary>
         public bool isCanRush;
+        [Header("실시간 스프라이트 반전시킬건지")]
+        public bool isSpriteCheck;
+
 
         /// <summary>
         /// 쿨타임 체크용 State Enum
@@ -140,6 +143,7 @@ namespace Definition
         public float AtackRange { get { return atackRange; } set { atackRange = value; } }
         public float RushSpeed { get { return rushSpeed; } set { rushSpeed = value; } }
         public bool IsCanRush { get { return isCanRush; } set { isCanRush = value; } }
+        public bool IsSpriteCheck { get { return isSpriteCheck; } set { isSpriteCheck = value; } }
         public MonterState AtackState { get {  return attackState; } set {  attackState = value; } }
         public MonsterType MonsterType { get {  return monsterType; } set {  monsterType = value; } }
         #endregion

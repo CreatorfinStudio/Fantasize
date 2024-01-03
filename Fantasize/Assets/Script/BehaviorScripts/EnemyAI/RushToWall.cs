@@ -4,60 +4,55 @@ using System.Collections.Generic;
 using UnityEngine;
 using Definition;
 using static UnityEngine.GraphicsBuffer;
+using Unity.VisualScripting;
 
 namespace AI
 {
     public class RushToWall : Action
     {
-        private Rigidbody2D rb; 
-        private Vector3 rushDirection;
-        Vector2 playerPosition;
-        private int direction = 1;
+        private float currentSpeed; // 현재 속도
         private SpriteRenderer spriteRenderer;
 
+        bool isDirectionChecked = false;
+        Vector3 moveDirection;
+
         public override void OnStart()
-        {
+        {           
+            currentSpeed = 0;
+            isDirectionChecked = false;
             spriteRenderer = GetComponent<SpriteRenderer>();
-            rb = GetComponent<Rigidbody2D>();
-
-            playerPosition = DefinitionManager.Instance.player.transform.position;
-
-            if (transform.position.x <= playerPosition.x)
-            {
-                direction = 1;
-                spriteRenderer.flipX = false;
-            }
-            else// if (transform.position.x > playerPosition.x)
-            { 
-                direction = -1;
-                spriteRenderer.flipX = true;
-            }
-
-            ///Fly Monster
-            //rushDirection = (playerPosition - (Vector2)transform.position).normalized;
         }
-
         public override TaskStatus OnUpdate()
         {
-            if (rb == null)
+            if (!DefinitionManager.Instance.imonsterInfo.GetIsCanRush())
             {
-                return TaskStatus.Failure;
-            }
-
-            if (DefinitionManager.Instance.imonsterInfo.GetIsCanRush())
-            {
-                //rb.MovePosition(transform.position + rushDirection *
-                //    DefinitionManager.Instance.imonsterInfo.GetRushSpeed() * Time.deltaTime);
-
-                rb.AddForce(new Vector2(DefinitionManager.Instance.imonsterInfo.GetRushSpeed() * direction,
-                    rb.velocity.y));
-
-                //rb.velocity = new Vector2(DefinitionManager.Instance.imonsterInfo.GetRushSpeed() * direction,
-                //    rb.velocity.y);
-                return TaskStatus.Running;
-            }
-            else
                 return TaskStatus.Success;
+            }
+
+            if (!isDirectionChecked)
+            {
+                DefinitionManager.Instance.imonsterInfo.SetIsSpriteCheck(false);
+
+                if (DefinitionManager.Instance.player.transform.position.x <
+                    this.transform.position.x)
+                {
+                    moveDirection = Vector3.left;
+                    spriteRenderer.flipX = true;
+                }
+                else
+                {
+                    moveDirection = Vector3.right;
+                    spriteRenderer.flipX = false;
+                }
+                isDirectionChecked = true;
+            }
+            // 지정된 방향으로 점차 가속
+            currentSpeed += DefinitionManager.Instance.imonsterInfo.GetRushSpeed() * Time.deltaTime;
+            transform.position += moveDirection * currentSpeed * Time.deltaTime;          
+
+
+            return TaskStatus.Running;       
+
         }
     }
 }

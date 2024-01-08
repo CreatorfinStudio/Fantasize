@@ -12397,35 +12397,19 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 787157306464862960, guid: 875a7655d3de06a489203af4bf9c8022, type: 3}
-      propertyPath: playerInfo.hp
-      value: 6
+      propertyPath: playerInfo.runSpeed
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 787157306464862960, guid: 875a7655d3de06a489203af4bf9c8022, type: 3}
-      propertyPath: playerInfo.jumpForce
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 787157306464862964, guid: 875a7655d3de06a489203af4bf9c8022, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 787157306464862964, guid: 875a7655d3de06a489203af4bf9c8022, type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3664311708724224617, guid: 875a7655d3de06a489203af4bf9c8022, type: 3}
-      propertyPath: m_SortingOrder
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 6933109633662002661, guid: 875a7655d3de06a489203af4bf9c8022, type: 3}
-      propertyPath: m_Name
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 6933109633662002661, guid: 875a7655d3de06a489203af4bf9c8022, type: 3}
-      propertyPath: m_IsActive
+      propertyPath: playerInfo.walkSpeed
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1194945894967000901, guid: 875a7655d3de06a489203af4bf9c8022, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: dc32e8c9bed6aa142b387c83a41a3a71, type: 2}
     - target: {fileID: 6933109633662002661, guid: 875a7655d3de06a489203af4bf9c8022, type: 3}
-      propertyPath: m_TagString
+      propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 7915816269470010752, guid: 875a7655d3de06a489203af4bf9c8022, type: 3}
@@ -12495,7 +12479,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &866213789199810425
 Transform:
   m_ObjectHideFlags: 0
@@ -14905,34 +14889,43 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6933109633662002661, guid: 875a7655d3de06a489203af4bf9c8022, type: 3}
   m_PrefabInstance: {fileID: 787157305980425419}
   m_PrefabAsset: {fileID: 0}
---- !u!111 &7699977909096821049
-Animation:
+--- !u!114 &7699977909096821069
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7699977909096821038}
   m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!70 &7699977909096821059
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7699977909096821038}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.0150012225, y: 0.225}
-  m_Size: {x: 0.2, y: 0.42}
-  m_Direction: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d7b55c7ecdb49a4a89fa5e6f9022861, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startWhenEnabled: 1
+  asynchronousLoad: 0
+  pauseWhenDisabled: 0
+  restartWhenComplete: 0
+  logTaskChanges: 0
+  group: 0
+  resetValuesOnRestart: 0
+  externalBehavior: {fileID: 11400000, guid: 5af99474b8592cc4bb1d1e97793a4d83, type: 2}
+  mBehaviorSource:
+    behaviorName: PlayerBehavior
+    behaviorDescription: 
+    mTaskData:
+      types: []
+      parentIndex: 
+      startIndex: 
+      variableStartIndex: 
+      JSONSerialization: '{"Variables":[{"Type":"BehaviorDesigner.Runtime.SharedAnimationCurve","Name":"IDLE","IsShared":true,"AnimationCurvemValue":{"Keys":[[0,0,0,0],[1,1,0,0]],"PreWrapMode":"ClampForever","PostWrapMode":"ClampForever"}}]}'
+      fieldSerializationData:
+        typeName: []
+        fieldNameHash: 
+        startIndex: 
+        dataPosition: 
+        unityObjects: []
+        byteData: 
+        byteDataArray: 
+      Version: 1.7.7
+  gizmoViewMode: 2
+  showBehaviorDesignerGizmo: 1

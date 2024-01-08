@@ -47,6 +47,10 @@ namespace Definition
     [System.Serializable]
     public class PlayerInfo : CharacterProperty
     {
+        [Header("Behavior")]
+        public bool isDashing;
+        public float dashDirection;
+        public AttackType attackType;
         /// <summary>
         /// Move FSM
         /// </summary>
@@ -71,6 +75,11 @@ namespace Definition
         public int maxHP;
 
         #region Property
+        public bool IsDashing { get { return isDashing; } set { isDashing = value; } }
+        public float DashDirection { get { return dashDirection; } set { dashDirection = value; } }
+        public AttackType AttackType { get { return attackType; } set { attackType = value; } }
+        
+ 
         public PlayerState MOVEFSM { get { return moveFSM; } set { moveFSM = value; } }
         public float AirAttackPower { get { return airAttackPower; } set { airAttackPower = value; } }
 

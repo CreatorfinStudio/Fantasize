@@ -6,6 +6,10 @@ namespace Definition
     public interface IPlayerInfo
     {
         ////////////////// GET //////////////////
+        public bool GetIsDashing();
+        public float GetDashDirection();
+        public AttackType GetAttackType();
+
         public PlayerState GetMoveFSM();
         public float GetAirAttackPower();
         public int GetHp();
@@ -33,6 +37,10 @@ namespace Definition
         public int GetMaxHungry();
 
         ////////////////// SET //////////////////
+        public void SetIsDashing(bool isDashing);
+        public void SetDashDirection(float dashDirection);
+        public void SetAttackType(AttackType attackType);
+
         public void SetMoveFSM(PlayerState moveFsm);
         public void SetAirAttackPower();
 

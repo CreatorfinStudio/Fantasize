@@ -6,15 +6,12 @@ using Definition;
 
 namespace AI
 {
-    public class CanAttack : Conditional
+    public class IsCanAttack : Conditional
     {
-
         public override TaskStatus OnUpdate()
         {
             return DefinitionManager.Instance.imonsterInfo.GetIsCanAttack()
                 ? TaskStatus.Success : TaskStatus.Failure;
         }
-
-
     }
 }

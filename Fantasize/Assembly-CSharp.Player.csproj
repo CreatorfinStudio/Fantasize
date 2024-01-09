@@ -186,7 +186,7 @@
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Vector2\GetMagnitude.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Rigidbody2D\SetIsKinematic.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Animator\CrossFade.cs" />
-    <Compile Include="Assets\Script\BehaviorScripts\Player\1Action\Move.cs" />
+    <Compile Include="Assets\Script\BehaviorScripts\Player\1_Action\Move.cs" />
     <Compile Include="Assets\UniBulletHell\Script\ShotPattern\UbhLinearShot.cs" />
     <Compile Include="Assets\Behavior Designer Movement\Scripts\Tasks\Wander.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Rigidbody2D\GetIsKinematic.cs" />
@@ -236,7 +236,7 @@
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Timeline\Resume.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\NavMeshAgent\SetAcceleration.cs" />
     <Compile Include="Assets\Behavior Designer Movement\Scripts\Tasks\NavMeshMovement.cs" />
-    <Compile Include="Assets\Script\BehaviorScripts\EnemyAI\CanAttack.cs" />
+    <Compile Include="Assets\Script\BehaviorScripts\EnemyAI\0_Conditional(bool)\IsCanAttack.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Variables\SharedRect.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Actions\Log.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Conditionals\Reflection\CompareFieldValue.cs" />
@@ -346,7 +346,7 @@
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Light\SetColor.cs" />
     <Compile Include="Assets\s4m_ur4i_2D-metroidvania-tileset\Scripts\movement.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Vector3\ClampMagnitude.cs" />
-    <Compile Include="Assets\Script\BehaviorScripts\Player\0Conditional(bool)\IsMove.cs" />
+    <Compile Include="Assets\Script\BehaviorScripts\Player\0_Conditional(bool)\IsMove.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Variables\SharedString.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\String\GetSubstring.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Composites\ParallelSelector.cs" />
@@ -354,6 +354,7 @@
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Animator\GetDeltaRotation.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Rigidbody\SetIsKinematic.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\SharedVariables\SetSharedGameObject.cs" />
+    <Compile Include="Assets\Script\BehaviorScripts\Player\1_Action\Dash.cs" />
     <Compile Include="Assets\UniBulletHell\Script\ShotPattern\UbhSpiralNwayShot.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Transform\SetForwardVector.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Animator\StartRecording.cs" />
@@ -374,7 +375,7 @@
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Physics\Linecast.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Vector3\Normalize.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\ParticleSystem\Play.cs" />
-    <Compile Include="Assets\Script\BehaviorScripts\EnemyAI\IsCanRush.cs" />
+    <Compile Include="Assets\Script\BehaviorScripts\EnemyAI\0_Conditional(bool)\IsCanRush.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Conditionals\Reflection\ComparePropertyValue.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Transform\GetLocalEulerAngles.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Math\RandomBool.cs" />
@@ -443,6 +444,7 @@
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\AudioSource\PlayScheduled.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Animator\GetBoolParameter.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Rigidbody\SetRotation.cs" />
+    <Compile Include="Assets\Script\BehaviorScripts\Player\0_Conditional(bool)\IsAttack.cs" />
     <Compile Include="Assets\UniBulletHell\Script\Attribute\UbhConditionalHideAttribute.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\AudioSource\SetRolloffMode.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Rigidbody2D\GetAngularDrag.cs" />
@@ -482,6 +484,7 @@
     <Compile Include="Assets\UniBulletHell\Script\ShotPattern\UbhSpiralMultiNwayShot.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\NavMeshAgent\SetSpeed.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Rigidbody\IsSleeping.cs" />
+    <Compile Include="Assets\Script\BehaviorScripts\Player\1_Action\Block.cs" />
     <Compile Include="Assets\UniBulletHell\Example\Script\UbhAutoScaleGUIText.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Collider\SetEnabled.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Transform\SetLocalScale.cs" />
@@ -506,7 +509,7 @@
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Rigidbody\AddForce.cs" />
     <Compile Include="Assets\UniBulletHell\Example\Script\UbhEmitter.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\SharedVariables\CompareSharedObject.cs" />
-    <Compile Include="Assets\Script\BehaviorScripts\EnemyAI\PlayerPursuit.cs" />
+    <Compile Include="Assets\Script\BehaviorScripts\EnemyAI\1_Action\PlayerPursuit.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\ParticleSystem\Pause.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\AudioSource\SetVolume.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\SharedVariables\SetSharedInt.cs" />
@@ -596,6 +599,7 @@
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\AudioSource\Play.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\NavMeshAgent\SetAngularSpeed.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Light\GetSpotAngle.cs" />
+    <Compile Include="Assets\Script\BehaviorScripts\Player\1_Action\Attack.cs" />
     <Compile Include="Assets\Pixel\Test\BackGround\Cainos\Third Party\Lucid Editor\Runtime\Attributes\LabelTextAttribute.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Debug\LogValue.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Conditionals\Physics\HasEnteredTrigger2D.cs" />
@@ -611,7 +615,7 @@
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\CharacterController\SetCenter.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Conditionals\Physics\HasExitedCollision2D.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Behaviour\SetEnabled.cs" />
-    <Compile Include="Assets\Script\BehaviorScripts\EnemyAI\Jump.cs" />
+    <Compile Include="Assets\Script\BehaviorScripts\EnemyAI\1_Action\M_Jump.cs" />
     <Compile Include="Assets\UniBulletHell\Script\Singleton\UbhShotManager.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\ExternalBehaviorTree.cs" />
     <Compile Include="Assets\Behavior Designer Movement\Scripts\Tasks\Flock.cs" />
@@ -667,7 +671,7 @@
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\String\GetLength.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Composites\SelectorEvaluator.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\SharedVariables\SetSharedColor.cs" />
-    <Compile Include="Assets\Script\BehaviorScripts\Player\0Conditional(bool)\IsDash.cs" />
+    <Compile Include="Assets\Script\BehaviorScripts\Player\0_Conditional(bool)\IsDash.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Vector2\Dot.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Quaternion\FromToRotation.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\AudioSource\GetMinDistance.cs" />
@@ -689,6 +693,7 @@
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\ParticleSystem\GetMaxParticles.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\AudioSource\GetIgnoreListenerVolume.cs" />
     <Compile Include="Assets\UniBulletHell\Example\Script\UbhBackground.cs" />
+    <Compile Include="Assets\Script\BehaviorScripts\Player\0_Conditional(bool)\IsBlock.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\ParticleSystem\GetPlaybackSpeed.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Rigidbody2D\IsKinematic.cs" />
     <Compile Include="Assets\UniBulletHell\Script\ShotPattern\UbhCircleShot.cs" />
@@ -708,7 +713,7 @@
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\AudioSource\GetMaxDistance.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\SharedVariables\SetSharedFloat.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Light\GetIntensity.cs" />
-    <Compile Include="Assets\Script\BehaviorScripts\EnemyAI\RushToWall.cs" />
+    <Compile Include="Assets\Script\BehaviorScripts\EnemyAI\1_Action\RushToWall.cs" />
     <Compile Include="Assets\UniBulletHell\Script\ShotPattern\UbhHoleCircleLockOnShot.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Decorators\ConditionalEvaluator.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\SharedVariables\CompareSharedGameObject.cs" />
@@ -716,15 +721,12 @@
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Renderer\SetMaterial.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\BoxCollider\GetSize.cs" />
     <Compile Include="Assets\UniBulletHell\Script\Bullet\UbhTentacleBullet.cs" />
-    <Compile Include="Assets\Script\BehaviorScripts\EnemyAI\EnemyAction.cs" />
     <Compile Include="Assets\Pixel\Test\BackGround\Cainos\Third Party\Lucid Editor\Runtime\Attributes\FoldoutGroupAttribute.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Transform\LookAt.cs" />
     <Compile Include="Assets\Pixel\Test\BackGround\Cainos\Third Party\Lucid Editor\Runtime\Attributes\DisableLucidEditorAttribute.cs" />
-    <Compile Include="Assets\Script\BehaviorScripts\Player\1Action\Dash.cs" />
-    <Compile Include="Assets\Script\BehaviorScripts\Player\0Conditional(bool)\IsAttack.cs" />
-    <Compile Include="Assets\Script\BehaviorScripts\Player\1Action\Attack.cs" />
-    <Compile Include="Assets\Script\BehaviorScripts\Player\0Conditional(bool)\IsBlock.cs" />
-    <Compile Include="Assets\Script\BehaviorScripts\Player\1Action\Block.cs" />
+    <Compile Include="Assets\Script\BehaviorScripts\Player\0_Conditional(bool)\IsJump.cs" />
+    <Compile Include="Assets\Script\BehaviorScripts\Player\1_Action\Jump.cs" />
+    <Compile Include="Assets\Script\BehaviorScripts\EnemyAI\1_Action\M_Attack.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Pixel\Test\BackGround\Cainos\Third Party\Lucid Editor\License.txt" />

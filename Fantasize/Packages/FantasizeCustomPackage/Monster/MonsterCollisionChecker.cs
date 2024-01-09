@@ -75,6 +75,13 @@ namespace Monster
                 imonsterInfo?.SetIsCanAttack(true);
             }
         }
+        private void OnTriggerStay2D(Collider2D collision)
+        {
+            if (checkCollider.IsTouching(collision) && collision.CompareTag("Player"))
+            {
+                imonsterInfo?.SetIsCanAttack(true);
+            }
+        }
         private void OnTriggerExit2D(Collider2D other)
         {
             if (other.CompareTag("Player"))

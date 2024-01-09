@@ -18,7 +18,7 @@ namespace PlayerBehavior
 
         public override TaskStatus OnUpdate()
         {
-            if (Time.time - startTime >= 0.6f)
+            if (Time.time - startTime >= 0.6f || Input.GetKeyDown(KeyCode.Space))
             {
                 rb.velocity = Vector2.zero;
                 DefinitionManager.Instance.iplayerInfo.SetIsDashing(false);

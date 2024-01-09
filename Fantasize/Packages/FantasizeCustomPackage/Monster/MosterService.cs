@@ -22,6 +22,7 @@ namespace Monster
         public float GetRushSpeed() => monsterInfo.RushSpeed;
         public bool GetIsCanRush() => monsterInfo.IsCanRush;
         public bool GetIsSpriteCheck() => monsterInfo.IsSpriteCheck;
+        public BoxCollider2D[] GetAttackCollider() => monsterInfo.AttackCollider;
 
         public MonterState GetAtackState() => monsterInfo.AtackState;       
         public MonsterType GetMonsterType() => monsterInfo.MonsterType;
@@ -84,6 +85,12 @@ namespace Monster
         {
             monsterInfo.IsSpriteCheck = isSpriteCheck;
         }
+        public void SetAttackCollider(BoxCollider2D[] attackCollider)
+        {
+            monsterInfo.AttackCollider = attackCollider;
+        }
+
+
         public void SetAtackState(MonterState monterState)
         {
             monsterInfo.AtackState = monterState;

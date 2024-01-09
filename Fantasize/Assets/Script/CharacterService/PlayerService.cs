@@ -73,6 +73,8 @@ namespace Player
 
         #region PlayerInfo Data Interface
         public bool GetIsDashing() => playerInfo.IsDashing;
+        public bool GetIsJumping() => playerInfo.IsJumping;
+        public bool GetIsCanJump() => playerInfo.IsCanJump;
         public float GetDashDirection() => playerInfo.DashDirection;
         public AttackType GetAttackType() => playerInfo.AttackType;
 
@@ -102,6 +104,8 @@ namespace Player
 
 
         public void SetIsDashing(bool isDashing) => playerInfo.IsDashing = isDashing;
+        public void SetIsJumping(bool isJumping) => playerInfo.IsJumping = isJumping;
+        public void SetIsCanJump(bool isCanJump) => playerInfo.IsCanJump = isCanJump;
         public void SetDashDirection(float dashDirection) => playerInfo.DashDirection = dashDirection;
         public void SetAttackType(AttackType attackType) => playerInfo.AttackType = attackType;
 

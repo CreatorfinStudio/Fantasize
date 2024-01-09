@@ -7,6 +7,8 @@ namespace Definition
     {
         ////////////////// GET //////////////////
         public bool GetIsDashing();
+        public bool GetIsJumping();
+        public bool GetIsCanJump();
         public float GetDashDirection();
         public AttackType GetAttackType();
 
@@ -38,6 +40,8 @@ namespace Definition
 
         ////////////////// SET //////////////////
         public void SetIsDashing(bool isDashing);
+        public void SetIsJumping(bool isJumping);
+        public void SetIsCanJump(bool isCanJump);
         public void SetDashDirection(float dashDirection);
         public void SetAttackType(AttackType attackType);
 

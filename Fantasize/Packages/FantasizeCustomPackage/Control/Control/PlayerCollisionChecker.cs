@@ -6,19 +6,27 @@ namespace Control
 {
     public class PlayerCollisionChecker : Controller
     {
+        [SerializeField]
+        private BoxCollider2D floorCheckCollider;
+
+        /// <summary>
+        /// 점프 가능한 상태로 변환
+        /// </summary>
+        private void CanBeJump()
+        {
+            DefinitionManager.Instance.iplayerInfo.SetIsCanJump(true);
+            DefinitionManager.Instance.iplayerInfo.SetIsJumping(false);
+        }
         private void OnCollisionEnter2D(Collision2D collision)
         {
             switch (collision.gameObject.tag)
             {
                 case "M_Body":
                     DefinitionManager.Instance.iplayerInfo.SetHp(-1);
-
-                    DefinitionManager.Instance.iplayerInfo.SetIsCanJump(true);
-                    DefinitionManager.Instance.iplayerInfo.SetIsJumping(false);
+                    CanBeJump();
                     break;
                 case "Floor":
-                    DefinitionManager.Instance.iplayerInfo.SetIsCanJump(true);
-                    DefinitionManager.Instance.iplayerInfo.SetIsJumping(false);
+                    CanBeJump();
                     break;
             }
         }
@@ -28,8 +36,7 @@ namespace Control
             switch (collision.gameObject.tag)
             {
                 case "Floor":
-                    DefinitionManager.Instance.iplayerInfo.SetIsCanJump(true);
-                    DefinitionManager.Instance.iplayerInfo.SetIsJumping(false);
+                    CanBeJump();
                     break;
             }
         }
@@ -52,6 +59,14 @@ namespace Control
             isHit = true;
             yield return new WaitForSeconds(hitCooldown);
             isHit = false;
+        }
+
+        private void OnTriggerStay2D(Collider2D collision)
+        {
+            if (floorCheckCollider.IsTouching(collision) && collision.CompareTag("Floor"))
+            {
+                CanBeJump();
+            }
         }
     }
 }

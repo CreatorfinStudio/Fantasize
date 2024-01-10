@@ -348,6 +348,64 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.77269, y: 3.2056797}
   m_EdgeRadius: 0
+--- !u!1 &1862470746
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1862470747}
+  - component: {fileID: 1862470748}
+  m_Layer: 0
+  m_Name: FloorCheckCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1862470747
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1862470746}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7915816269470010752}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1862470748
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1862470746}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.011117414, y: 0.20966397}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.28689405, y: 0.44758394}
+  m_EdgeRadius: 0
 --- !u!1 &787157305216694178
 GameObject:
   m_ObjectHideFlags: 0
@@ -399,6 +457,7 @@ GameObject:
   - component: {fileID: 2864279689435715553}
   - component: {fileID: 7699977909096821059}
   - component: {fileID: 7699977909096821049}
+  - component: {fileID: 7699977909096821069}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -425,6 +484,7 @@ Transform:
   - {fileID: 462696454}
   - {fileID: 1506689499}
   - {fileID: 667971390}
+  - {fileID: 1862470747}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -602,18 +662,24 @@ MonoBehaviour:
     attackPower: 0
     specialAttackPower: 0
     attackSpeed: 0
-    jumpForce: 10
+    jumpForce: 7
     reloadTime: 0
+    isDashing: 0
+    isJumping: 0
+    isCanJump: 1
+    dashDirection: 0
+    attackType: 0
     moveFSM: 0
     airAttackPower: 0
     hungry: 0
     rangedView: 0
     forwardView: 0
     dashSpeed: 8
-    runSpeed: 2
+    runSpeed: 4
     runJumpForce: 6
     maxHungry: 100
     maxHP: 100
+  dPressTime: 0
 --- !u!114 &2864279689435715553
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -626,6 +692,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dd3849d7886141458e99d0ffc530a85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  floorCheckCollider: {fileID: 1862470748}
 --- !u!70 &7699977909096821059
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -639,8 +706,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0150012225, y: 0.225}
-  m_Size: {x: 0.2, y: 0.42}
+  m_Offset: {x: 0.0150012225, y: 0.21}
+  m_Size: {x: 0.24, y: 0.42}
   m_Direction: 0
 --- !u!111 &7699977909096821049
 Animation:
@@ -657,3 +724,43 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!114 &7699977909096821069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6933109633662002661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d7b55c7ecdb49a4a89fa5e6f9022861, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startWhenEnabled: 1
+  asynchronousLoad: 0
+  pauseWhenDisabled: 0
+  restartWhenComplete: 0
+  logTaskChanges: 0
+  group: 0
+  resetValuesOnRestart: 0
+  externalBehavior: {fileID: 11400000, guid: 5af99474b8592cc4bb1d1e97793a4d83, type: 2}
+  mBehaviorSource:
+    behaviorName: PlayerBehavior
+    behaviorDescription: 
+    mTaskData:
+      types: []
+      parentIndex: 
+      startIndex: 
+      variableStartIndex: 
+      JSONSerialization: '{"Variables":[{"Type":"BehaviorDesigner.Runtime.SharedAnimationCurve","Name":"IDLE","IsShared":true,"AnimationCurvemValue":{"Keys":[[0,0,0,0],[1,1,0,0]],"PreWrapMode":"ClampForever","PostWrapMode":"ClampForever"}},{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":"dashStartTime","IsShared":true,"SinglemValue":-0.66}]}'
+      fieldSerializationData:
+        typeName: []
+        fieldNameHash: 
+        startIndex: 
+        dataPosition: 
+        unityObjects: []
+        byteData: 
+        byteDataArray: 
+      Version: 1.7.7
+  gizmoViewMode: 2
+  showBehaviorDesignerGizmo: 1

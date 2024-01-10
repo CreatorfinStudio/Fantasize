@@ -308,6 +308,7 @@
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\CharacterController\GetVelocity.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Transform\SetLocalRotation.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\NavMeshAgent\GetDestination.cs" />
+    <Compile Include="Assets\Script\BehaviorScripts\EnemyAI\1_Action\M_Attack.cs" />
     <Compile Include="Assets\Pixel\Test\BackGround\Cainos\Third Party\Lucid Editor\Runtime\Attributes\BlockquoteAttribute.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\SharedVariables\SetSharedVector2.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Variables\SharedVector4.cs" />
@@ -318,6 +319,7 @@
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\CharacterController\GetStepOffset.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Conditionals\Physics\HasEnteredTrigger.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\CircleCollider2D\GetOffset.cs" />
+    <Compile Include="Assets\Script\BehaviorScripts\Player\0_Conditional(bool)\IsJump.cs" />
     <Compile Include="Assets\UniBulletHell\Script\ShotPattern\UbhSpiralMultiShot.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\CharacterController\SimpleMove.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Transform\SetLocalEulerAngles.cs" />
@@ -500,6 +502,7 @@
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\NavMeshAgent\SetIsStopped.cs" />
     <Compile Include="Assets\Behavior Designer Movement\Scripts\Tasks\Seek.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\CharacterController\SetHeight.cs" />
+    <Compile Include="Assets\Script\BehaviorScripts\Player\1_Action\Jump.cs" />
     <Compile Include="Assets\UniBulletHell\Example\Script\UbhPlayerBullet.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\AudioSource\SetIgnoreListenerVolume.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\SharedVariables\CompareSharedVector3.cs" />
@@ -724,9 +727,6 @@
     <Compile Include="Assets\Pixel\Test\BackGround\Cainos\Third Party\Lucid Editor\Runtime\Attributes\FoldoutGroupAttribute.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Transform\LookAt.cs" />
     <Compile Include="Assets\Pixel\Test\BackGround\Cainos\Third Party\Lucid Editor\Runtime\Attributes\DisableLucidEditorAttribute.cs" />
-    <Compile Include="Assets\Script\BehaviorScripts\Player\0_Conditional(bool)\IsJump.cs" />
-    <Compile Include="Assets\Script\BehaviorScripts\Player\1_Action\Jump.cs" />
-    <Compile Include="Assets\Script\BehaviorScripts\EnemyAI\1_Action\M_Attack.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Pixel\Test\BackGround\Cainos\Third Party\Lucid Editor\License.txt" />

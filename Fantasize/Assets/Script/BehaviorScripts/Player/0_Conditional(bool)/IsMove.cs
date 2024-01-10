@@ -1,5 +1,6 @@
 using UnityEngine;
 using BehaviorDesigner.Runtime.Tasks;
+using Definition;
 
 namespace PlayerBehavior
 {
@@ -7,7 +8,8 @@ namespace PlayerBehavior
     {
         public override TaskStatus OnUpdate()
         {
-            if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow))
+            if ((Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow))
+                && !DefinitionManager.Instance.iplayerInfo.GetIsDashing())
             {
                 return TaskStatus.Success;
             }

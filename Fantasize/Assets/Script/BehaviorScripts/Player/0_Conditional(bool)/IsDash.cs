@@ -14,6 +14,11 @@ namespace AI
         {
             float currentTime = Time.time;
 
+            if (DefinitionManager.Instance.iplayerInfo.GetIsDashing())
+            {
+                return TaskStatus.Failure;
+            }
+
             if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
                 if (lastLeftClickTime > 0 && (currentTime - lastLeftClickTime) <= doubleClickTimeThreshold)
@@ -33,14 +38,7 @@ namespace AI
                 lastRightClickTime = currentTime;
             }
 
-            //입력이 없더라도 지금 대시 상태면 성공 반환
-            if(DefinitionManager.Instance.iplayerInfo.GetIsDashing())
-            {
-                return TaskStatus.Success;
-            }
-
             return TaskStatus.Failure;
-
         }
     }
 

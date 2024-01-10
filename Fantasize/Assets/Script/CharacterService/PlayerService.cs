@@ -4,6 +4,8 @@ using UnityEngine;
 using Item;
 using System;
 using MonsterLove.StateMachine;
+using PlayerBehavior;
+using BehaviorDesigner.Runtime;
 
 namespace Player
 {
@@ -11,6 +13,7 @@ namespace Player
     {
         private float h;
         private SpriteRenderer spriteRenderer;
+        private Rigidbody2D rb;
 
         public PlayerInfo playerInfo;
 
@@ -21,17 +24,26 @@ namespace Player
         //특수공격 판정용
         public float dPressTime = 0f;
 
+        [Header("대시 유지 시간")]
+        [SerializeField]
+        private float playDashTime = 0.8f;
+        //대시 재시전 가능여부 판정용
+        private BehaviorTree behaviorTree;
+        private bool isDashSet = false;      
 
         private void Start()
         {
             dPressTime = 0f;
             spriteRenderer = GetComponent<SpriteRenderer>();
+            behaviorTree = GetComponent<BehaviorTree>();
+            rb = GetComponent<Rigidbody2D>();
         }
 
         private void Update()
         {
             CheckFlipX();
             SetCurrAttackType();
+            SetCanBeDash();
         }
 
         /// <summary>
@@ -39,15 +51,18 @@ namespace Player
         /// </summary>
         private void CheckFlipX()
         {
-            h = Input.GetAxis("Horizontal");
+            if (!DefinitionManager.Instance.iplayerInfo.GetIsDashing())
+            { 
+                h = Input.GetAxis("Horizontal");
 
-            if (h < 0)
-            {
-                spriteRenderer.flipX = true;
-            }
-            else if (h > 0)
-            {
-                spriteRenderer.flipX = false;
+                if (h < 0)
+                {
+                    spriteRenderer.flipX = true;
+                }
+                else if (h > 0)
+                {
+                    spriteRenderer.flipX = false;
+                }
             }
         }
         private void SetCurrAttackType()
@@ -67,9 +82,33 @@ namespace Player
                 {
                     DefinitionManager.Instance.iplayerInfo.SetAttackType(AttackType.SpecialAttack);
                 }
-            }
+            }          
         }
 
+        /// <summary>
+        /// 대시 기능 보완 (대시 중 대시시전 X , 대시 종료 판정 및 후처리)
+        /// </summary>
+        private void SetCanBeDash()
+        {
+            if (DefinitionManager.Instance.iplayerInfo.GetIsDashing())
+            {
+                var startTime = behaviorTree.GetVariable("dashStartTime");
+                if (!isDashSet)
+                {
+                    startTime?.SetValue(Time.time);
+                    isDashSet = true;
+                }
+                if (Time.time - (float)startTime?.GetValue() >= playDashTime || Input.GetKeyDown(KeyCode.Space))
+                {
+                    rb.velocity = Vector2.zero;
+                    DefinitionManager.Instance.iplayerInfo.SetDashDirection(0);
+                    DefinitionManager.Instance.iplayerInfo.SetIsDashing(false);
+                }
+                rb.velocity = new Vector2(10f * DefinitionManager.Instance.iplayerInfo.GetDashDirection(), rb.velocity.y);
+            }
+            else
+                isDashSet = false;
+        }
 
         #region PlayerInfo Data Interface
         public bool GetIsDashing() => playerInfo.IsDashing;

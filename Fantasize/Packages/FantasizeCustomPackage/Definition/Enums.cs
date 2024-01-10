@@ -28,6 +28,13 @@ namespace Definition
         //SitWalk,      
     }
 
+    public enum AttackType
+    {
+        None = -1,
+        Attack,
+        SpecialAttack,
+    }
+
 
     /// <summary>
     /// 몬스터 종류

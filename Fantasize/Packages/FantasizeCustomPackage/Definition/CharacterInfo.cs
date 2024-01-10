@@ -47,6 +47,14 @@ namespace Definition
     [System.Serializable]
     public class PlayerInfo : CharacterProperty
     {
+        [Header("Behavior")]
+        public bool isDashing;
+        public bool isJumping;
+
+        public bool isCanJump;
+        public float dashDirection;
+
+        public AttackType attackType;
         /// <summary>
         /// Move FSM
         /// </summary>
@@ -71,6 +79,14 @@ namespace Definition
         public int maxHP;
 
         #region Property
+        public bool IsDashing { get { return isDashing; } set { isDashing = value; } }
+        public bool IsJumping { get { return isJumping; } set { isJumping = value; } }
+        public bool IsCanJump { get { return isCanJump; } set { isCanJump = value; } }
+
+        public float DashDirection { get { return dashDirection; } set { dashDirection = value; } }
+        public AttackType AttackType { get { return attackType; } set { attackType = value; } }
+        
+ 
         public PlayerState MOVEFSM { get { return moveFSM; } set { moveFSM = value; } }
         public float AirAttackPower { get { return airAttackPower; } set { airAttackPower = value; } }
 
@@ -101,20 +117,26 @@ namespace Definition
     public class MonsterInfo : CharacterProperty
     {
         /// <summary>
-        /// 플레이어가 인식되었는지 여부
+        /// 플레이어가 인식 되었는지 여부
         /// </summary>
         [Header("플레이어 인식 여부")]
         public bool canSeePlayer;
         /// <summary>
+        /// 플레이어가 충돌 되었는지 여부
+        /// </summary>
+        [Header("플레이어 충돌 여부")]
+        public bool isCollisionPlayer;
+        /// <summary>
+        /// 특정 범위 내로 들어오면 플레이어에게 공격 시전
+        /// </summary>
+        [Header("플레이어 공격 가능/시작")]
+        public bool isCanAttack;
+
+        /// <summary>
         /// 추적 속도
         /// </summary>
         [Header ("추적 속도")]
-        public float followSpeed;
-        /// <summary>
-        /// 이 범위 내로 들어오면 플레이어에게 공격 시전
-        /// </summary>
-        [Header("공격을 시작하는 거리")]
-        public float atackRange;   
+        public float followSpeed;   
         
         [Header("돌진 속도")]
         public float rushSpeed;
@@ -122,9 +144,12 @@ namespace Definition
         /// 돌진 가능 여부
         /// </summary>
         public bool isCanRush;
+
         [Header("실시간 스프라이트 반전시킬건지")]
         public bool isSpriteCheck;
 
+        [Header("공격판정 콜라이더 (무기 콜라이더) ")]
+        public BoxCollider2D[] attackCollider;
 
         /// <summary>
         /// 쿨타임 체크용 State Enum
@@ -139,11 +164,14 @@ namespace Definition
 
         #region Property
         public bool CanSeePlayer { get { return canSeePlayer; } set { canSeePlayer = value; } }
+        public bool IsCollisionPlayer { get { return isCollisionPlayer; } set { isCollisionPlayer = value; } }
         public float FollowSpeed { get { return followSpeed; } set { followSpeed = value; } }
-        public float AtackRange { get { return atackRange; } set { atackRange = value; } }
+        public bool IsCanAttack { get { return isCanAttack; } set { isCanAttack = value; } }
         public float RushSpeed { get { return rushSpeed; } set { rushSpeed = value; } }
         public bool IsCanRush { get { return isCanRush; } set { isCanRush = value; } }
         public bool IsSpriteCheck { get { return isSpriteCheck; } set { isSpriteCheck = value; } }
+        public BoxCollider2D[] AttackCollider { get { return attackCollider; } set { attackCollider = value; } }
+
         public MonterState AtackState { get {  return attackState; } set {  attackState = value; } }
         public MonsterType MonsterType { get {  return monsterType; } set {  monsterType = value; } }
         #endregion

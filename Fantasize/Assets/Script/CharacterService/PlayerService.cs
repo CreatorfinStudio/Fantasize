@@ -9,36 +9,75 @@ namespace Player
 {
     public class PlayerService : MonoBehaviour , IPlayerInfo
     {
+        private float h;
+        private SpriteRenderer spriteRenderer;
+
         public PlayerInfo playerInfo;
 
         //FSM떄매 임시 주석
        // private bool isCanUseItem => DefinitionManager.Instance.iItemProcessing.IsUseItem();
         private Action useItem = () => DefinitionManager.Instance.iItemProcessing.UseItem();
 
+        //특수공격 판정용
+        public float dPressTime = 0f;
+
+
         private void Start()
         {
-            SetComponent();
+            dPressTime = 0f;
+            spriteRenderer = GetComponent<SpriteRenderer>();
         }
 
         private void Update()
         {
-            ////슬롯 아이템 사용가능상태
-            //if (isCanUseItem && Input.GetKeyDown(KeyCode.Space))
-            //{
-            //    SetItemInfo();
-            //    useItem.Invoke();
-            //}
+            CheckFlipX();
+            SetCurrAttackType();
         }
 
-        private void SetComponent()
+        /// <summary>
+        /// 실시간 스프라이트 flipX 방향체크
+        /// </summary>
+        private void CheckFlipX()
         {
-            this.gameObject.AddComponent<InputKeyboardState>();
-         //   this.gameObject.AddComponent<MouseRotation>();
-            //this.gameObject.AddComponent<ComboAttack>();
-            //this.gameObject.AddComponent<LongClick>();
+            h = Input.GetAxis("Horizontal");
+
+            if (h < 0)
+            {
+                spriteRenderer.flipX = true;
+            }
+            else if (h > 0)
+            {
+                spriteRenderer.flipX = false;
+            }
         }
+        private void SetCurrAttackType()
+        {
+            if (Input.GetKeyDown(KeyCode.D))
+            {
+                dPressTime = Time.time;
+            }
+            if (Input.GetKeyUp(KeyCode.D))
+            {
+                float elapsedTime = Time.time - dPressTime;
+                if (elapsedTime <= .5f)
+                {
+                    DefinitionManager.Instance.iplayerInfo.SetAttackType(AttackType.Attack);
+                }
+                else
+                {
+                    DefinitionManager.Instance.iplayerInfo.SetAttackType(AttackType.SpecialAttack);
+                }
+            }
+        }
+
 
         #region PlayerInfo Data Interface
+        public bool GetIsDashing() => playerInfo.IsDashing;
+        public bool GetIsJumping() => playerInfo.IsJumping;
+        public bool GetIsCanJump() => playerInfo.IsCanJump;
+        public float GetDashDirection() => playerInfo.DashDirection;
+        public AttackType GetAttackType() => playerInfo.AttackType;
+
         PlayerState IPlayerInfo.GetMoveFSM()
         {
             return playerInfo.MOVEFSM;
@@ -62,6 +101,13 @@ namespace Player
         public int GetMaxHP() => playerInfo.MaxHP;
         public int GetMaxHungry() => playerInfo.MaxHungry;
         public float GetAirAttackPower() => playerInfo.AirAttackPower;
+
+
+        public void SetIsDashing(bool isDashing) => playerInfo.IsDashing = isDashing;
+        public void SetIsJumping(bool isJumping) => playerInfo.IsJumping = isJumping;
+        public void SetIsCanJump(bool isCanJump) => playerInfo.IsCanJump = isCanJump;
+        public void SetDashDirection(float dashDirection) => playerInfo.DashDirection = dashDirection;
+        public void SetAttackType(AttackType attackType) => playerInfo.AttackType = attackType;
 
         public void SetHp(int hp)
         {

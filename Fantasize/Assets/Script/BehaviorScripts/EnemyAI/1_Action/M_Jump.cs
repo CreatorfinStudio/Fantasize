@@ -1,12 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using BehaviorDesigner.Runtime.Tasks;
 using Definition;
+using UnityEngine;
 
 namespace AI
 {
-    public class Jump : Action
+    public class M_Jump : Action
     {
         private Rigidbody2D rb;
 
@@ -27,6 +25,5 @@ namespace AI
 
             return TaskStatus.Success;
         }
-
     }
 }

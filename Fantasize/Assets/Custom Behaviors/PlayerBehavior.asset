@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b23f08d2ae4cba14087c1ed36193d82b, type: 3}
+  m_Name: PlayerBehavior
+  m_EditorClassIdentifier: 
+  mBehaviorSource:
+    behaviorName: FrogiBehavior
+    behaviorDescription: 
+    mTaskData:
+      types: []
+      parentIndex: 
+      startIndex: 
+      variableStartIndex: 
+      JSONSerialization: '{"EntryTask":{"Type":"BehaviorDesigner.Runtime.Tasks.EntryTask","NodeData":{"Offset":"(-56.16547,-86.50986)"},"ID":0,"Name":"Entry","Instant":true},"RootTask":{"Type":"BehaviorDesigner.Runtime.Tasks.Repeater","NodeData":{"Offset":"(-4.646961,162.645157)"},"ID":1,"Name":"Repeater","Instant":true,"SharedIntcount":{"Type":"BehaviorDesigner.Runtime.SharedInt","Name":null,"Int32mValue":0},"SharedBoolrepeatForever":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"SharedBoolendOnFailure":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Selector","NodeData":{"Offset":"(3.8345356,143.856628)"},"ID":2,"Name":"Selector","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(-730.0198,186.409912)"},"ID":3,"Name":"\ub300\uc2dc","Instant":true,"AbortTypeabortType":"Self","Children":[{"Type":"AI.IsDash","NodeData":{"Offset":"(-140,140)"},"ID":4,"Name":"Is
+        Dash","Instant":true},{"Type":"BehaviorDesigner.Runtime.Tasks.Log","NodeData":{"Offset":"(-1.8918457,144.3244)","Comment":"\ub300\uc2dc
+        \uc560\ub2c8\uba54\uc774\uc158"},"ID":5,"Name":"Log","Instant":true,"SharedStringtext":{"Type":"BehaviorDesigner.Runtime.SharedString","Name":null,"StringmValue":""},"SharedBoollogError":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false},"SharedBoollogTime":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false}},{"Type":"PlayerBehavior.Dash","NodeData":{"Offset":"(127.005249,145.441391)"},"ID":6,"Name":"Dash","Instant":true}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(-492.151917,792.128052)"},"ID":7,"Name":"\uc774\ub3d9","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"PlayerBehavior.IsMove","NodeData":{"Offset":"(-333.85202,130.075577)"},"ID":8,"Name":"Is
+        Move","Instant":true},{"Type":"BehaviorDesigner.Runtime.Tasks.Log","NodeData":{"Offset":"(-185.559357,115.712341)","Comment":"\ub2ec\ub9ac\uae30
+        \uc560\ub2c8\uba54\uc774\uc158"},"ID":9,"Name":"Log","Instant":true,"SharedStringtext":{"Type":"BehaviorDesigner.Runtime.SharedString","Name":null,"StringmValue":""},"SharedBoollogError":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false},"SharedBoollogTime":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false}},{"Type":"PlayerBehavior.Move","NodeData":{"Offset":"(-41.1691132,130.075439)"},"ID":10,"Name":"Move","Instant":true},{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(28.3334084,371.111237)","ColorIndex":1},"ID":11,"Name":"\uacf5\uaca9","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"PlayerBehavior.IsAttack","NodeData":{"Offset":"(-133.571289,124.286011)"},"ID":12,"Name":"Is
+        Attack","Instant":true},{"Type":"PlayerBehavior.Attack","NodeData":{"Offset":"(0,119.999939)"},"ID":13,"Name":"Attack","Instant":true},{"Type":"BehaviorDesigner.Runtime.Tasks.Log","NodeData":{"Offset":"(180,119.999939)","Comment":"\uc5ec\uae30
+        \uc560\ub2c8\uba54\uc774\uc158\uc740 \ucf54\ub4dc\ub2e8\uc5d0\uc11c \uc2e4\ud589\ud560\uae4c\ud568"},"ID":14,"Name":"Log","Instant":true,"SharedStringtext":{"Type":"BehaviorDesigner.Runtime.SharedString","Name":null,"StringmValue":""},"SharedBoollogError":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false},"SharedBoollogTime":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false}}]}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(-238.4154,193.705933)","ColorIndex":1},"ID":15,"Name":"\uacf5\uaca9","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"PlayerBehavior.IsAttack","NodeData":{"Offset":"(-115.714294,115.714294)"},"ID":16,"Name":"Is
+        Attack","Instant":true},{"Type":"PlayerBehavior.Attack","NodeData":{"Offset":"(1.00187874,122.009468)"},"ID":17,"Name":"Attack","Instant":true},{"Type":"BehaviorDesigner.Runtime.Tasks.Log","NodeData":{"Offset":"(181.672531,121.371)","Comment":"\uc5ec\uae30
+        \uc560\ub2c8\uba54\uc774\uc158\uc740 \ucf54\ub4dc\ub2e8\uc5d0\uc11c \uc2e4\ud589\ud560\uae4c\ud568"},"ID":18,"Name":"Log","Instant":true,"SharedStringtext":{"Type":"BehaviorDesigner.Runtime.SharedString","Name":null,"StringmValue":""},"SharedBoollogError":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false},"SharedBoollogTime":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false}}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(61.46378,523.5292)","ColorIndex":7},"ID":19,"Name":"\ubc29\uc5b4","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"PlayerBehavior.IsBlock","NodeData":{"Offset":"(-131.669983,130.4909)"},"ID":20,"Name":"Is
+        Block","Instant":true},{"Type":"BehaviorDesigner.Runtime.Tasks.Log","NodeData":{"Offset":"(2.6884613,125.034973)","Comment":"\ubc29\uc5b4
+        \uc560\ub2c8\uba54\uc774\uc158"},"ID":21,"Name":"Log","Instant":true,"SharedStringtext":{"Type":"BehaviorDesigner.Runtime.SharedString","Name":null,"StringmValue":""},"SharedBoollogError":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false},"SharedBoollogTime":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false}},{"Type":"PlayerBehavior.Block","NodeData":{"Offset":"(129.19342,129.791748)"},"ID":22,"Name":"Block","Instant":true}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(293.809326,179.04715)"},"ID":23,"Name":"\uc810\ud504","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"PlayerBehavior.IsJump","NodeData":{"Offset":"(-100.451355,129.4422)"},"ID":24,"Name":"Is
+        Jump","Instant":true},{"Type":"BehaviorDesigner.Runtime.Tasks.Log","NodeData":{"Offset":"(18.0951538,134.761353)","Comment":"\uc810\ud504
+        \uc560\ub2c8\uba54\uc774\uc158"},"ID":25,"Name":"Log","Instant":true,"SharedStringtext":{"Type":"BehaviorDesigner.Runtime.SharedString","Name":null,"StringmValue":""},"SharedBoollogError":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false},"SharedBoollogTime":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false}},{"Type":"PlayerBehavior.Jump","NodeData":{"Offset":"(142.405792,135.394775)"},"ID":26,"Name":"Jump","Instant":true}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Log","NodeData":{"Offset":"(588.727844,196.8212)"},"ID":27,"Name":"Log","Instant":false,"SharedStringtext":{"Type":"BehaviorDesigner.Runtime.SharedString","Name":null,"StringmValue":""},"SharedBoollogError":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false},"SharedBoollogTime":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false}}]}]},"DetachedTasks":[{"Type":"BehaviorDesigner.Runtime.Tasks.Log","NodeData":{"Offset":"(-773.33374,210.0004)","Comment":"\ub300\uc2dc\uc911
+        \uc810\ud504\uc2dc \uc810\ud504\uc18d\ub3c4\ub294 \ub300\uc2dc \uc18d\ub3c4\ub97c
+        \uc801\uc6a9\ud558\ub294\uc9c0? \uc544\ub2c8\uba74 \uc77c\ubc18\uc810\ud504\uc640
+        \ub3d9\uc77c\ud558\uac8c?(\ud604\uc7ac \uc77c\ubc18\uc810\ud504 \uc801\uc6a9)"},"ID":28,"Name":"Log","Instant":true,"SharedStringtext":{"Type":"BehaviorDesigner.Runtime.SharedString","Name":null,"StringmValue":""},"SharedBoollogError":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false},"SharedBoollogTime":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false}},{"Type":"BehaviorDesigner.Runtime.Tasks.Log","NodeData":{"Offset":"(215.36322,32.8928833)","Comment":"\uacf5\uaca9\uc5d0
+        \uc131\uacf5\ud558\uba74 \ub2e4\uc2dc \uacf5\uc911\uc73c\ub85c \uc790\ub3d9
+        \uc810\ud504 - \ud14c\uc2a4\ud2b8 \uac00\ub2a5\ud574\uc9c0\uba74 \ub098\uc911\uc5d0
+        \uad6c\ud604"},"ID":29,"Name":"Log","Instant":true,"SharedStringtext":{"Type":"BehaviorDesigner.Runtime.SharedString","Name":null,"StringmValue":""},"SharedBoollogError":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false},"SharedBoollogTime":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false}},{"Type":"BehaviorDesigner.Runtime.Tasks.Log","NodeData":{"Offset":"(215.714264,172.857208)","Comment":"\ud604\uc7ac
+        M_Body\uc640 \ucda9\ub3cc\uc2dc \uc7ac\uc810\ud504 \uac00\ub2a5\ud558\ub3c4\ub85d
+        \ud574\ub460. (ex. \ubaac\uc2a4\ud130\uc758 \uba38\ub9ac\ub97c \ubc1e\uc73c\uba74
+        \ub2e4\uc2dc \uc810\ud504 \uac00\ub2a5) \ucd94\ud6c4 \uae30\ud68d\uc5d0 \ub530\ub77c
+        \uc7ac\uc810\ud504 \uac00\ub2a5\ud558\uac8c\ud558\ub294 \ucda9\ub3cc\ubc94\uc704
+        \uc124\uc815 \ub4f1 \ubcc0\ub3d9\uac00\ub2a5\uc131 \uc788\uc74c"},"ID":30,"Name":"Log","Instant":true,"SharedStringtext":{"Type":"BehaviorDesigner.Runtime.SharedString","Name":null,"StringmValue":""},"SharedBoollogError":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false},"SharedBoollogTime":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false}}],"Variables":[{"Type":"BehaviorDesigner.Runtime.SharedAnimationCurve","Name":"IDLE","IsShared":true,"AnimationCurvemValue":{"Keys":[[0,0,0,0],[1,1,0,0]],"PreWrapMode":"ClampForever","PostWrapMode":"ClampForever"}}]}'
+      fieldSerializationData:
+        typeName: []
+        fieldNameHash: 
+        startIndex: 
+        dataPosition: 
+        unityObjects: []
+        byteData: 
+        byteDataArray: 
+      Version: 1.7.7

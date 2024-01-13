@@ -34,6 +34,12 @@ namespace Definition
         Attack,
         SpecialAttack,
     }
+    public enum BlockType
+    {
+        None = -1,
+        BlockSuccess,
+        BlockFail,
+    }
 
 
     /// <summary>

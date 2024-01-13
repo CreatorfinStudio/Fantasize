@@ -34,7 +34,7 @@ namespace Item
             //F키가 활성화 되어있을때 누르면
             if (openKey.activeSelf && Input.GetKey(KeyCode.F))
             {
-                AnimationManager.TriggerAnim(animator,"Open");
+              //  AnimationManager.TriggerAnim(animator,"Open");
                 item.SetActive(true);
                 getTryCount--;
                 if (getTryCount <= 0)

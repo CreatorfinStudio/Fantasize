@@ -29,7 +29,9 @@ namespace Player
         private float playDashTime = 0.8f;
         //대시 재시전 가능여부 판정용
         private BehaviorTree behaviorTree;
-        private bool isDashSet = false;      
+        private bool isDashSet = false;
+
+        public static bool canUseRunAnim = false;
 
         private void Start()
         {
@@ -127,9 +129,6 @@ namespace Player
         public float GetWalkSpeed() => playerInfo.WalkSpeed;
         public float GetAttackPower() => playerInfo.AttackPower;
         public float GetAttackSpeed() => playerInfo.AttackSpeed;
-        // 0905 기획에서 마우스 회전 관련 삭제됨
-        //public float GetRotationSpeed() => playerInfo.RotationSpeed;
-
         public float GetRunSpeed() => playerInfo.RunSpeed;
         public float GetRunJumpForce() => playerInfo.RunJumpForce;
         public float GetDashSpeed() => playerInfo.DashSpeed;

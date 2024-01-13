@@ -11,7 +11,7 @@ namespace Control
 
         protected override void Start()
         {
-            animator = AnimationManager.GetAnimator(this.gameObject);
+          //  animator = AnimationManager.GetAnimator(this.gameObject);
         }
     }
 }

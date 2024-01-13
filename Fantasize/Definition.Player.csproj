@@ -59,7 +59,6 @@
     <Compile Include="Packages\FantasizeCustomPackage\Definition\IMonsterInfo.cs" />
     <Compile Include="Packages\FantasizeCustomPackage\Definition\CharacterInfo.cs" />
     <Compile Include="Packages\FantasizeCustomPackage\Definition\Enums.cs" />
-    <Compile Include="Packages\FantasizeCustomPackage\Definition\AnimationManager.cs" />
     <Compile Include="Packages\FantasizeCustomPackage\Definition\Coroutine.cs" />
     <Compile Include="Packages\FantasizeCustomPackage\Definition\ItemInfo.cs" />
     <Compile Include="Packages\FantasizeCustomPackage\Definition\IItemProcessing.cs" />

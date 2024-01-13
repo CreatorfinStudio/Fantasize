@@ -20,10 +20,6 @@ namespace Control
         ///지면을 밟아 재점프가 가능한지 여부
         /// </summary>
         bool canJump = false;
-        /// <summary>
-        /// 대시 중인지 여부
-        /// </summary>
-        bool isDashing = false;
         #endregion
         #region State 
         /// <summary>
@@ -87,13 +83,11 @@ namespace Control
                     // 더블클릭 판정
                     if (currentKey == lastKey && (currentTime - lastKeyClickTime) <= doubleClickTimeThreshold)
                     {
-                        isDashing = true;
                         isDashDone = false;
                         moveFSM.ChangeState(PlayerState.Dash);
                     }
                     else
                     {
-                        isDashing = false;
                         //  moveFSM.ChangeState(PlayerState.Run);
                     }
 

@@ -68,7 +68,7 @@ namespace Control
             //현재 클릭한 시점 저장
             lastComboTime = Time.time;
             //콤보 애니메이션 실행
-            PlayComboAnimation(comboCount);
+            //PlayComboAnimation(comboCount);
             //다음 콤보 카운트
             comboCount++;
 
@@ -98,23 +98,23 @@ namespace Control
             reloadingStart = false;
 
         }
-        private void PlayComboAnimation(int _comboCount)
-        {
-            switch (_comboCount)
-            {
-                case 0:
-                    //Debug.Log("공격 1");
-                    AnimationManager.TriggerAnim(animator, "Attack1");
-                    break;
-                case 1:
-                    // Debug.Log("공격 2");
-                    AnimationManager.TriggerAnim(animator, "Attack2");
-                    break;
-                case 2:
-                    // Debug.Log("공격 3");
-                    AnimationManager.TriggerAnim(animator, "Attack3");
-                    break;
-            }
-        }
+        //private void PlayComboAnimation(int _comboCount)
+        //{
+        //    switch (_comboCount)
+        //    {
+        //        case 0:
+        //            //Debug.Log("공격 1");
+        //            AnimationManager.TriggerAnim(animator, "Attack1");
+        //            break;
+        //        case 1:
+        //            // Debug.Log("공격 2");
+        //            AnimationManager.TriggerAnim(animator, "Attack2");
+        //            break;
+        //        case 2:
+        //            // Debug.Log("공격 3");
+        //            AnimationManager.TriggerAnim(animator, "Attack3");
+        //            break;
+        //    }
+        //}
     }
 }

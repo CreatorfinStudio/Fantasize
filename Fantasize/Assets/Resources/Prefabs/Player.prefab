@@ -452,7 +452,6 @@ GameObject:
   - component: {fileID: 787157306464862964}
   - component: {fileID: 787157306464862963}
   - component: {fileID: 787157306464862962}
-  - component: {fileID: 787157306464862961}
   - component: {fileID: 787157306464862960}
   - component: {fileID: 2864279689435715553}
   - component: {fileID: 7699977909096821059}
@@ -632,18 +631,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f86532b6210165240a522e2d051d62da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &787157306464862961
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6933109633662002661}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb0704a4837ffde468568927f0de1bfa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &787157306464862960
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -680,6 +667,7 @@ MonoBehaviour:
     maxHungry: 100
     maxHP: 100
   dPressTime: 0
+  playDashTime: 0.8
 --- !u!114 &2864279689435715553
 MonoBehaviour:
   m_ObjectHideFlags: 0

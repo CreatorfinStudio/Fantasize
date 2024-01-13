@@ -73,11 +73,5 @@ namespace Definition
         public void SetMaxHungry(int maxHungry);
         public void SetMaxHP(int maxHP);
 
-        /// <summary>
-        /// 슬롯 아이템 적용
-        /// </summary>
-        public void SetItemInfo();
-        public void SetItemInfo(InteractionItem item);
-        public void SetItemInfo(FieldItem item);
     }
 }

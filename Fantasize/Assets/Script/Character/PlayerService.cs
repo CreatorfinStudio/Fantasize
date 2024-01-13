@@ -172,6 +172,7 @@ namespace Player
         public void SetForwardView(float forwardView) => playerInfo.ForwardView += forwardView;
         public void SetMaxHungry(int maxHungry) => playerInfo.MaxHungry += maxHungry;
         public void SetMaxHP(int maxHP) => playerInfo.MaxHP += maxHP;
+        /*
         public void SetItemInfo()
         {
             if(Item.Item.itemSlotInfo != null)
@@ -206,6 +207,8 @@ namespace Player
             SetHp(item.HP);
             SetHungry(item.Hungry);
         }
+        */
+
         public void SetAirAttackPower()
         {
         }

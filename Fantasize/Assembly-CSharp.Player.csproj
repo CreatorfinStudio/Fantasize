@@ -156,7 +156,7 @@
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Composites\UtilitySelector.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\ParticleSystem\GetTime.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Light\SetSpotAngle.cs" />
-    <Compile Include="Assets\Script\CharacterService\PlayerService.cs" />
+    <Compile Include="Assets\Script\Character\PlayerService.cs" />
     <Compile Include="Assets\Behavior Designer Movement\Scripts\Tasks\Cover.cs" />
     <Compile Include="Assets\UniBulletHell\Script\Utility\UbhUtil.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Transform\GetEulerAngles.cs" />
@@ -626,7 +626,6 @@
     <Compile Include="Assets\Behavior Designer\Runtime\ExternalBehaviorTree.cs" />
     <Compile Include="Assets\Behavior Designer Movement\Scripts\Tasks\Flock.cs" />
     <Compile Include="Assets\Behavior Designer Movement\Scripts\Tasks\Patrol.cs" />
-    <Compile Include="Assets\Script\CustomEditor\TestWindow.cs" />
     <Compile Include="Assets\Pixel\Test\BackGround\Cainos\Third Party\Lucid Editor\Runtime\Attributes\ShowIfAttribute.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Light\SetCookieSize.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\GameObject\GetComponent.cs" />
@@ -730,6 +729,7 @@
     <Compile Include="Assets\Pixel\Test\BackGround\Cainos\Third Party\Lucid Editor\Runtime\Attributes\FoldoutGroupAttribute.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Transform\LookAt.cs" />
     <Compile Include="Assets\Pixel\Test\BackGround\Cainos\Third Party\Lucid Editor\Runtime\Attributes\DisableLucidEditorAttribute.cs" />
+    <Compile Include="Assets\Script\Item\IItemProcessing.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Pixel\Test\BackGround\Cainos\Third Party\Lucid Editor\License.txt" />
@@ -1342,10 +1342,6 @@
     <ProjectReference Include="Unity.InternalAPIEngineBridge.001.Player.csproj">
       <Project>{B73AC5B2-08DB-7C3F-8F0D-EE68B6D85EC9}</Project>
       <Name>Unity.InternalAPIEngineBridge.001.Player</Name>
-    </ProjectReference>
-    <ProjectReference Include="Item.Player.csproj">
-      <Project>{318D2C8D-635F-5E8A-7DE6-987C1924633B}</Project>
-      <Name>Item.Player</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.2D.PixelPerfect.Player.csproj">
       <Project>{21C4766F-576F-752B-6C49-2743DBE8443B}</Project>

@@ -16,7 +16,6 @@ namespace Definition
         /// </summary>
         public void SetActiveItemInfo();
 
-        public Definition.InteractionItem InteractionItem();
         public string GetSlotItemName();
 
         /// <summary>

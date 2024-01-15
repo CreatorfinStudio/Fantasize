@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using MonsterLove.StateMachine;
 using UnityEditor;
 using UnityEngine;
@@ -54,13 +55,17 @@ namespace Definition
         public bool isCanJump;
         public float dashDirection;
 
+        [Space(10)]
         public AttackType attackType;
+        [Space(10)]
+        public List<BoxCollider2D> weaponPosi;
+
         /// <summary>
         /// Move FSM
         /// </summary>
-        [Space(10)]
-        [Header("============== Move FSM ==============")]
-        public PlayerState moveFSM;
+        //[Space(10)]
+        //[Header("============== Move FSM ==============")]
+        //public PlayerState moveFSM;
         [Header("============= Battle Status =============")]
         public float airAttackPower;
 
@@ -85,9 +90,10 @@ namespace Definition
 
         public float DashDirection { get { return dashDirection; } set { dashDirection = value; } }
         public AttackType AttackType { get { return attackType; } set { attackType = value; } }
+        public List<BoxCollider2D> WeaponPosi { get { return weaponPosi; } set { weaponPosi = value; } }
         
  
-        public PlayerState MOVEFSM { get { return moveFSM; } set { moveFSM = value; } }
+       // public PlayerState MOVEFSM { get { return moveFSM; } set { moveFSM = value; } }
         public float AirAttackPower { get { return airAttackPower; } set { airAttackPower = value; } }
 
         public int Hungry { get { return hungry; } set { hungry = value; } }

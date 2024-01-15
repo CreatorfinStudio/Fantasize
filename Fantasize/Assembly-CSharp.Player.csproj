@@ -509,6 +509,7 @@
     <Compile Include="Assets\UniBulletHell\Example\Script\UbhPlayerBullet.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\AudioSource\SetIgnoreListenerVolume.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\SharedVariables\CompareSharedVector3.cs" />
+    <Compile Include="Assets\Script\Item\IItemProcessing.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Math\IntOperator.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Vector2\Multiply.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\CharacterController\IsGrounded.cs" />
@@ -729,7 +730,7 @@
     <Compile Include="Assets\Pixel\Test\BackGround\Cainos\Third Party\Lucid Editor\Runtime\Attributes\FoldoutGroupAttribute.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Transform\LookAt.cs" />
     <Compile Include="Assets\Pixel\Test\BackGround\Cainos\Third Party\Lucid Editor\Runtime\Attributes\DisableLucidEditorAttribute.cs" />
-    <Compile Include="Assets\Script\Item\IItemProcessing.cs" />
+    <Compile Include="Assets\TestCollision.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Pixel\Test\BackGround\Cainos\Third Party\Lucid Editor\License.txt" />

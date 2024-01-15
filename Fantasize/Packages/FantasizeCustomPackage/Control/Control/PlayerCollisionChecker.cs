@@ -48,12 +48,15 @@ namespace Control
         {
             if (collision.tag == "M_Weapon" && !isHit)
             {
-                StartCoroutine(HitCooldown());
-                Debug.LogError("ÇÇ°Ý");
-                DefinitionManager.Instance.iplayerInfo.SetHp(-1);
+               // Attacked();
             }
         }
 
+        private void Attacked()
+        {
+            StartCoroutine(HitCooldown());
+            DefinitionManager.Instance.iplayerInfo.SetHp(-1);
+        }
         private IEnumerator HitCooldown()
         {
             isHit = true;

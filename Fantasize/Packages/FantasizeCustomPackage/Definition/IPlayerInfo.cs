@@ -1,4 +1,5 @@
 using MonsterLove.StateMachine;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Definition
@@ -11,8 +12,9 @@ namespace Definition
         public bool GetIsCanJump();
         public float GetDashDirection();
         public AttackType GetAttackType();
+        public List<BoxCollider2D> GetWeaponPosi();
 
-        public PlayerState GetMoveFSM();
+      //  public PlayerState GetMoveFSM();
         public float GetAirAttackPower();
         public int GetHp();
         public int GetHungry();
@@ -44,8 +46,9 @@ namespace Definition
         public void SetIsCanJump(bool isCanJump);
         public void SetDashDirection(float dashDirection);
         public void SetAttackType(AttackType attackType);
+        public void SetWeaponPosi(List<BoxCollider2D> weaponPosi);
 
-        public void SetMoveFSM(PlayerState moveFsm);
+     //   public void SetMoveFSM(PlayerState moveFsm);
         public void SetAirAttackPower();
 
 

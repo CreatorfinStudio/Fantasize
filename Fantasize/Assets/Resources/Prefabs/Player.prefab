@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 19407668}
   m_Layer: 0
   m_Name: Attack_L
-  m_TagString: Untagged
+  m_TagString: P_Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -70,7 +70,7 @@ GameObject:
   - component: {fileID: 462696455}
   m_Layer: 0
   m_Name: Attack_R
-  m_TagString: Untagged
+  m_TagString: P_Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -128,7 +128,7 @@ GameObject:
   - component: {fileID: 667971391}
   m_Layer: 0
   m_Name: SpecialAttack_R
-  m_TagString: Untagged
+  m_TagString: P_Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -185,8 +185,8 @@ GameObject:
   - component: {fileID: 1048767509}
   - component: {fileID: 1048767510}
   m_Layer: 0
-  m_Name: AirAtack_L
-  m_TagString: Untagged
+  m_Name: AirAttack_L
+  m_TagString: P_Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -244,7 +244,7 @@ GameObject:
   - component: {fileID: 1506689500}
   m_Layer: 0
   m_Name: SpecialAttack_L
-  m_TagString: Untagged
+  m_TagString: P_Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -301,8 +301,8 @@ GameObject:
   - component: {fileID: 1747277704}
   - component: {fileID: 1747277705}
   m_Layer: 0
-  m_Name: AirAtack_R
-  m_TagString: Untagged
+  m_Name: AirAttack_R
+  m_TagString: P_Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -452,7 +452,6 @@ GameObject:
   - component: {fileID: 787157306464862964}
   - component: {fileID: 787157306464862963}
   - component: {fileID: 787157306464862962}
-  - component: {fileID: 787157306464862961}
   - component: {fileID: 787157306464862960}
   - component: {fileID: 2864279689435715553}
   - component: {fileID: 7699977909096821059}
@@ -632,18 +631,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f86532b6210165240a522e2d051d62da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &787157306464862961
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6933109633662002661}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb0704a4837ffde468568927f0de1bfa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &787157306464862960
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -669,7 +656,13 @@ MonoBehaviour:
     isCanJump: 1
     dashDirection: 0
     attackType: 0
-    moveFSM: 0
+    weaponPosi:
+    - {fileID: 19407668}
+    - {fileID: 462696455}
+    - {fileID: 1506689500}
+    - {fileID: 667971391}
+    - {fileID: 1048767510}
+    - {fileID: 1747277705}
     airAttackPower: 0
     hungry: 0
     rangedView: 0
@@ -680,6 +673,7 @@ MonoBehaviour:
     maxHungry: 100
     maxHP: 100
   dPressTime: 0
+  playDashTime: 0.8
 --- !u!114 &2864279689435715553
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -752,7 +746,7 @@ MonoBehaviour:
       parentIndex: 
       startIndex: 
       variableStartIndex: 
-      JSONSerialization: '{"Variables":[{"Type":"BehaviorDesigner.Runtime.SharedAnimationCurve","Name":"IDLE","IsShared":true,"AnimationCurvemValue":{"Keys":[[0,0,0,0],[1,1,0,0]],"PreWrapMode":"ClampForever","PostWrapMode":"ClampForever"}},{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":"dashStartTime","IsShared":true,"SinglemValue":-0.66}]}'
+      JSONSerialization: '{"Variables":[{"Type":"BehaviorDesigner.Runtime.SharedAnimationCurve","Name":"IDLE","IsShared":true,"AnimationCurvemValue":{"Keys":[[0,0,0,0],[1,1,0,0]],"PreWrapMode":"ClampForever","PostWrapMode":"ClampForever"}},{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":"dashStartTime","IsShared":true,"SinglemValue":0.8}]}'
       fieldSerializationData:
         typeName: []
         fieldNameHash: 

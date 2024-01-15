@@ -20,10 +20,6 @@ namespace Control
         ///지면을 밟아 재점프가 가능한지 여부
         /// </summary>
         bool canJump = false;
-        /// <summary>
-        /// 대시 중인지 여부
-        /// </summary>
-        bool isDashing = false;
         #endregion
         #region State 
         /// <summary>
@@ -47,7 +43,7 @@ namespace Control
         {
             spriteRenderer = GetComponent<SpriteRenderer>();
             moveFSM = StateMachine<PlayerState>.Initialize(this);
-            iplayerInfo?.SetMoveFSM(this.moveFSM.State);
+         //   iplayerInfo?.SetMoveFSM(this.moveFSM.State);
             rb = GetComponent<Rigidbody2D>();
             moveFSM.ChangeState(PlayerState.Idle);
         }
@@ -56,7 +52,7 @@ namespace Control
         private void Update()
         {
             //Debug.Log(beforeState);
-            iplayerInfo?.SetMoveFSM(this.moveFSM.State);
+           // iplayerInfo?.SetMoveFSM(this.moveFSM.State);
             h = Input.GetAxis("Horizontal");
             if (h < 0)
             {
@@ -87,13 +83,11 @@ namespace Control
                     // 더블클릭 판정
                     if (currentKey == lastKey && (currentTime - lastKeyClickTime) <= doubleClickTimeThreshold)
                     {
-                        isDashing = true;
                         isDashDone = false;
                         moveFSM.ChangeState(PlayerState.Dash);
                     }
                     else
                     {
-                        isDashing = false;
                         //  moveFSM.ChangeState(PlayerState.Run);
                     }
 
@@ -384,10 +378,10 @@ namespace Control
             switch (collision.tag)
             {
                 case "Bullet":
-                    if (iplayerInfo?.GetMoveFSM() == PlayerState.Block)
-                        blockSuccess = true;
-                    else
-                        blockSuccess = false;
+                    //if (iplayerInfo?.GetMoveFSM() == PlayerState.Block)
+                    //    blockSuccess = true;
+                    //else
+                    //    blockSuccess = false;
                     break;
             }
         }

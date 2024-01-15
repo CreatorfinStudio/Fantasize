@@ -156,7 +156,7 @@
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Composites\UtilitySelector.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\ParticleSystem\GetTime.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Light\SetSpotAngle.cs" />
-    <Compile Include="Assets\Script\CharacterService\PlayerService.cs" />
+    <Compile Include="Assets\Script\Character\PlayerService.cs" />
     <Compile Include="Assets\Behavior Designer Movement\Scripts\Tasks\Cover.cs" />
     <Compile Include="Assets\UniBulletHell\Script\Utility\UbhUtil.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Transform\GetEulerAngles.cs" />
@@ -293,6 +293,7 @@
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\SharedVariables\SharedTransformToGameObject.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Variables\SharedBehaviour.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Rigidbody2D\AddForce.cs" />
+    <Compile Include="Assets\Script\Stage\StageUI.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\PlayerPrefs\GetString.cs" />
     <Compile Include="Assets\UniBulletHell\Example\Script\UbhGameManager.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\SharedVariables\CompareSharedObjectList.cs" />
@@ -364,6 +365,7 @@
     <Compile Include="Assets\Pixel\Test\BackGround\Cainos\Third Party\Lucid Editor\Runtime\Attributes\DisableInEditModeAttribute.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\SharedVariables\CompareSharedQuaternion.cs" />
     <Compile Include="Assets\Pixel\Test\BackGround\Cainos\Common\Script\Utils\SecondOrderDynamics.cs" />
+    <Compile Include="Assets\Script\Stage\StageService.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Vector3\GetRightVector.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\CharacterController\GetHeight.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Quaternion\Dot.cs" />
@@ -447,6 +449,7 @@
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Animator\GetBoolParameter.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Rigidbody\SetRotation.cs" />
     <Compile Include="Assets\Script\BehaviorScripts\Player\0_Conditional(bool)\IsAttack.cs" />
+    <Compile Include="Assets\Script\Stage\StageInfo.cs" />
     <Compile Include="Assets\UniBulletHell\Script\Attribute\UbhConditionalHideAttribute.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\AudioSource\SetRolloffMode.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Rigidbody2D\GetAngularDrag.cs" />
@@ -506,6 +509,7 @@
     <Compile Include="Assets\UniBulletHell\Example\Script\UbhPlayerBullet.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\AudioSource\SetIgnoreListenerVolume.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\SharedVariables\CompareSharedVector3.cs" />
+    <Compile Include="Assets\Script\Item\IItemProcessing.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Math\IntOperator.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Vector2\Multiply.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\CharacterController\IsGrounded.cs" />
@@ -623,7 +627,6 @@
     <Compile Include="Assets\Behavior Designer\Runtime\ExternalBehaviorTree.cs" />
     <Compile Include="Assets\Behavior Designer Movement\Scripts\Tasks\Flock.cs" />
     <Compile Include="Assets\Behavior Designer Movement\Scripts\Tasks\Patrol.cs" />
-    <Compile Include="Assets\Script\CustomEditor\TestWindow.cs" />
     <Compile Include="Assets\Pixel\Test\BackGround\Cainos\Third Party\Lucid Editor\Runtime\Attributes\ShowIfAttribute.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Light\SetCookieSize.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\GameObject\GetComponent.cs" />
@@ -727,6 +730,7 @@
     <Compile Include="Assets\Pixel\Test\BackGround\Cainos\Third Party\Lucid Editor\Runtime\Attributes\FoldoutGroupAttribute.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Transform\LookAt.cs" />
     <Compile Include="Assets\Pixel\Test\BackGround\Cainos\Third Party\Lucid Editor\Runtime\Attributes\DisableLucidEditorAttribute.cs" />
+    <Compile Include="Assets\TestCollision.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Pixel\Test\BackGround\Cainos\Third Party\Lucid Editor\License.txt" />
@@ -1339,10 +1343,6 @@
     <ProjectReference Include="Unity.InternalAPIEngineBridge.001.Player.csproj">
       <Project>{B73AC5B2-08DB-7C3F-8F0D-EE68B6D85EC9}</Project>
       <Name>Unity.InternalAPIEngineBridge.001.Player</Name>
-    </ProjectReference>
-    <ProjectReference Include="Item.Player.csproj">
-      <Project>{318D2C8D-635F-5E8A-7DE6-987C1924633B}</Project>
-      <Name>Item.Player</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.2D.PixelPerfect.Player.csproj">
       <Project>{21C4766F-576F-752B-6C49-2743DBE8443B}</Project>

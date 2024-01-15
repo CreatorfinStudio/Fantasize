@@ -6,6 +6,8 @@ using System;
 using MonsterLove.StateMachine;
 using PlayerBehavior;
 using BehaviorDesigner.Runtime;
+using System.Collections.Generic;
+using System.Collections;
 
 namespace Player
 {
@@ -29,14 +31,65 @@ namespace Player
         private float playDashTime = 0.8f;
         //대시 재시전 가능여부 판정용
         private BehaviorTree behaviorTree;
-        private bool isDashSet = false;      
+        private bool isDashSet = false;
 
+        public static bool canUseRunAnim = false;
+
+        public static Action<AttackType> setCurrWeaponPosi;
+
+
+        private void SetCurrWeaponPosi(AttackType attackType)
+        {
+           //StartCoroutine(WeaponPosiON(attackType));
+        }
+
+        IEnumerator WeaponPosiON(AttackType attackType)
+        {
+            switch (attackType)
+            {
+                case AttackType.Attack:
+                    if (spriteRenderer.flipX)
+                    {
+                        yield return CoroutineWait.wait05;
+                        GetWeaponPosi()[(int)PWeaponPosi.Attack_L].enabled = true;
+                        yield return CoroutineWait.wait01;
+                        GetWeaponPosi()[(int)PWeaponPosi.Attack_L].enabled = false;
+                    }
+                    else
+                    {
+                        yield return CoroutineWait.wait05;
+                        GetWeaponPosi()[(int)PWeaponPosi.Attack_R].enabled = true;
+                        yield return CoroutineWait.wait01;
+                        GetWeaponPosi()[(int)PWeaponPosi.Attack_R].enabled = false;
+                    }
+                    break;
+                case AttackType.SpecialAttack:
+                    if (spriteRenderer.flipX)
+                    {
+                        yield return CoroutineWait.wait02;
+                        GetWeaponPosi()[(int)PWeaponPosi.SpecialAttack_L].enabled = true;
+                        yield return CoroutineWait.wait04;
+                        GetWeaponPosi()[(int)PWeaponPosi.SpecialAttack_L].enabled = false;
+                    }
+                    else
+                    {
+                        yield return CoroutineWait.wait02;
+                        GetWeaponPosi()[(int)PWeaponPosi.SpecialAttack_R].enabled = true;
+                        yield return CoroutineWait.wait04;
+                        GetWeaponPosi()[(int)PWeaponPosi.SpecialAttack_R].enabled = false;
+                    }
+                    break;
+            }
+
+        }
         private void Start()
         {
             dPressTime = 0f;
             spriteRenderer = GetComponent<SpriteRenderer>();
             behaviorTree = GetComponent<BehaviorTree>();
             rb = GetComponent<Rigidbody2D>();
+
+            setCurrWeaponPosi = SetCurrWeaponPosi;
         }
 
         private void Update()
@@ -51,7 +104,7 @@ namespace Player
         /// </summary>
         private void CheckFlipX()
         {
-            if (!DefinitionManager.Instance.iplayerInfo.GetIsDashing())
+            if (!GetIsDashing())
             { 
                 h = Input.GetAxis("Horizontal");
 
@@ -76,13 +129,13 @@ namespace Player
                 float elapsedTime = Time.time - dPressTime;
                 if (elapsedTime <= .5f)
                 {
-                    DefinitionManager.Instance.iplayerInfo.SetAttackType(AttackType.Attack);
+                    SetAttackType(AttackType.Attack);
                 }
                 else
                 {
-                    DefinitionManager.Instance.iplayerInfo.SetAttackType(AttackType.SpecialAttack);
+                    SetAttackType(AttackType.SpecialAttack);
                 }
-            }          
+            }
         }
 
         /// <summary>
@@ -90,7 +143,7 @@ namespace Player
         /// </summary>
         private void SetCanBeDash()
         {
-            if (DefinitionManager.Instance.iplayerInfo.GetIsDashing())
+            if (GetIsDashing())
             {
                 var startTime = behaviorTree.GetVariable("dashStartTime");
                 if (!isDashSet)
@@ -101,8 +154,8 @@ namespace Player
                 if (Time.time - (float)startTime?.GetValue() >= playDashTime || Input.GetKeyDown(KeyCode.Space))
                 {
                     rb.velocity = Vector2.zero;
-                    DefinitionManager.Instance.iplayerInfo.SetDashDirection(0);
-                    DefinitionManager.Instance.iplayerInfo.SetIsDashing(false);
+                    SetDashDirection(0);
+                    SetIsDashing(false);
                 }
                 rb.velocity = new Vector2(10f * DefinitionManager.Instance.iplayerInfo.GetDashDirection(), rb.velocity.y);
             }
@@ -116,20 +169,18 @@ namespace Player
         public bool GetIsCanJump() => playerInfo.IsCanJump;
         public float GetDashDirection() => playerInfo.DashDirection;
         public AttackType GetAttackType() => playerInfo.AttackType;
+        public List<BoxCollider2D> GetWeaponPosi() => playerInfo.WeaponPosi;
 
-        PlayerState IPlayerInfo.GetMoveFSM()
-        {
-            return playerInfo.MOVEFSM;
-        }
+        //PlayerState IPlayerInfo.GetMoveFSM()
+        //{
+        //    return playerInfo.MOVEFSM;
+        //}
         public int GetHp() => playerInfo.Hp;
         public int GetHungry() => playerInfo.Hungry;
 
         public float GetWalkSpeed() => playerInfo.WalkSpeed;
         public float GetAttackPower() => playerInfo.AttackPower;
         public float GetAttackSpeed() => playerInfo.AttackSpeed;
-        // 0905 기획에서 마우스 회전 관련 삭제됨
-        //public float GetRotationSpeed() => playerInfo.RotationSpeed;
-
         public float GetRunSpeed() => playerInfo.RunSpeed;
         public float GetRunJumpForce() => playerInfo.RunJumpForce;
         public float GetDashSpeed() => playerInfo.DashSpeed;
@@ -147,6 +198,7 @@ namespace Player
         public void SetIsCanJump(bool isCanJump) => playerInfo.IsCanJump = isCanJump;
         public void SetDashDirection(float dashDirection) => playerInfo.DashDirection = dashDirection;
         public void SetAttackType(AttackType attackType) => playerInfo.AttackType = attackType;
+        public void SetWeaponPosi(List<BoxCollider2D> weaponPosi) => playerInfo.WeaponPosi = weaponPosi;
 
         public void SetHp(int hp)
         {
@@ -173,6 +225,7 @@ namespace Player
         public void SetForwardView(float forwardView) => playerInfo.ForwardView += forwardView;
         public void SetMaxHungry(int maxHungry) => playerInfo.MaxHungry += maxHungry;
         public void SetMaxHP(int maxHP) => playerInfo.MaxHP += maxHP;
+        /*
         public void SetItemInfo()
         {
             if(Item.Item.itemSlotInfo != null)
@@ -207,13 +260,15 @@ namespace Player
             SetHp(item.HP);
             SetHungry(item.Hungry);
         }
+        */
+
         public void SetAirAttackPower()
         {
         }
-        public void SetMoveFSM(PlayerState moveFsm)
-        {
-            playerInfo.MOVEFSM = moveFsm;
-        }
+        //public void SetMoveFSM(PlayerState moveFsm)
+        //{
+        //    playerInfo.MOVEFSM = moveFsm;
+        //}
 
         /// <summary>
         /// 임시 추가

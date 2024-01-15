@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Lobby.unity
+    guid: 281759d2d5d2dc44abe26e6f7c49e8cb
+  - enabled: 1
+    path: Assets/Scenes/RockMan.unity
+    guid: fb508cb84719d5e4aabc7aaaeb5c16cf
   m_configObjects: {}

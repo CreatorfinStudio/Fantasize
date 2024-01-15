@@ -105,16 +105,27 @@ namespace Player
         private void CheckFlipX()
         {
             if (!GetIsDashing())
-            { 
+            {
                 h = Input.GetAxis("Horizontal");
+                Vector3 currentScale = transform.localScale;
 
                 if (h < 0)
                 {
-                    spriteRenderer.flipX = true;
+                    if (currentScale.x < 0)
+                    {
+                        currentScale.x *= -1;
+                        transform.localScale = currentScale;
+                    }
+                    // spriteRenderer.flipX = true;
                 }
                 else if (h > 0)
                 {
-                    spriteRenderer.flipX = false;
+                    if (currentScale.x > 0)
+                    {
+                        currentScale.x *= -1;
+                        transform.localScale = currentScale;
+                    }
+                    // spriteRenderer.flipX = false;
                 }
             }
         }

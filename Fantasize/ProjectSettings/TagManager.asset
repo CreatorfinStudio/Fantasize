@@ -10,6 +10,7 @@ TagManager:
   - Floor
   - M_Weapon
   - M_Body
+  - P_Weapon
   layers:
   - Default
   - TransparentFX

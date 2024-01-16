@@ -1,19 +1,20 @@
 using Definition;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Monster
 {
     public class MonsterCollisionChecker : Monster
     {
-        private CircleCollider2D checkCollider;
+        [SerializeField]
+        private CircleCollider2D canSeeCollider;
+        [SerializeField]
+        private CapsuleCollider2D bodyCollider;
         private SpriteRenderer spriteRenderer;
 
 
         private void Awake()
         {
-            checkCollider = GetComponent<CircleCollider2D>();
             spriteRenderer = GetComponent<SpriteRenderer>();
         }
 
@@ -38,13 +39,14 @@ namespace Monster
         }
 
         /////////////////////   충돌 관련   /////////////////////
-
+        private float lastHitTime = 0f;
+        private float hitCooldown = 0.2f; // 콜라이더 간의 충돌 대기 시간.
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
             if (collision.gameObject.CompareTag("Wall") || collision.gameObject.CompareTag("Player"))
             {
-                if(collision.gameObject.CompareTag("Player"))
+                if (collision.gameObject.CompareTag("Player"))
                     imonsterInfo.SetIsCollisionPlayer(true);
                 imonsterInfo?.SetIsCanRush(false);
                 StartCoroutine(ReRushToWall());
@@ -60,7 +62,7 @@ namespace Monster
         {
             yield return new WaitForSeconds(.1f);
 
-            imonsterInfo?.SetIsCanRush(true); 
+            imonsterInfo?.SetIsCanRush(true);
             DefinitionManager.Instance.imonsterInfo.SetIsSpriteCheck(true);
         }
 
@@ -70,14 +72,25 @@ namespace Monster
         /// <param name="other"></param>
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (checkCollider.IsTouching(other) && other.CompareTag("Player"))
+            var attackType = DefinitionManager.Instance.iplayerInfo.GetAttackType();
+
+            if (canSeeCollider.IsTouching(other) && other.CompareTag("Player"))
             {
                 imonsterInfo?.SetIsCanAttack(true);
+            }
+            if (Time.time - lastHitTime > hitCooldown && bodyCollider.IsTouching(other) && other.CompareTag("P_Weapon"))
+            {
+                if(attackType.Equals(AttackType.Attack))
+                    imonsterInfo?.SetHp(-DefinitionManager.Instance.iplayerInfo.GetAttackPower());
+                else if(attackType.Equals(AttackType.SpecialAttack))
+                    imonsterInfo?.SetHp(-DefinitionManager.Instance.iplayerInfo.GetSpecialAttackPower());
+
+                lastHitTime = Time.time; // 마지막 히트 시간 업데이트
             }
         }
         private void OnTriggerStay2D(Collider2D collision)
         {
-            if (checkCollider.IsTouching(collision) && collision.CompareTag("Player"))
+            if (canSeeCollider.IsTouching(collision) && collision.CompareTag("Player"))
             {
                 imonsterInfo?.SetIsCanAttack(true);
             }
@@ -89,5 +102,6 @@ namespace Monster
                 imonsterInfo?.SetIsCanAttack(false);
             }
         }
+
     }
 }

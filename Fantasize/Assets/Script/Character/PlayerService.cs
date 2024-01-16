@@ -1,26 +1,19 @@
-using Control;
-using Definition;
-using UnityEngine;
-using Item;
-using System;
-using MonsterLove.StateMachine;
-using PlayerBehavior;
 using BehaviorDesigner.Runtime;
-using System.Collections.Generic;
-using System.Collections;
+using Definition;
+using System;
+using UnityEngine;
 
 namespace Player
 {
-    public class PlayerService : MonoBehaviour , IPlayerInfo
+    public class PlayerService : MonoBehaviour, IPlayerInfo
     {
         private float h;
-        private SpriteRenderer spriteRenderer;
         private Rigidbody2D rb;
 
         public PlayerInfo playerInfo;
 
         //FSM떄매 임시 주석
-       // private bool isCanUseItem => DefinitionManager.Instance.iItemProcessing.IsUseItem();
+        // private bool isCanUseItem => DefinitionManager.Instance.iItemProcessing.IsUseItem();
         private Action useItem = () => DefinitionManager.Instance.iItemProcessing.UseItem();
 
         //특수공격 판정용
@@ -35,61 +28,13 @@ namespace Player
 
         public static bool canUseRunAnim = false;
 
-        public static Action<AttackType> setCurrWeaponPosi;
-
-
-        private void SetCurrWeaponPosi(AttackType attackType)
-        {
-           //StartCoroutine(WeaponPosiON(attackType));
-        }
-
-        IEnumerator WeaponPosiON(AttackType attackType)
-        {
-            switch (attackType)
-            {
-                case AttackType.Attack:
-                    if (spriteRenderer.flipX)
-                    {
-                        yield return CoroutineWait.wait05;
-                        GetWeaponPosi()[(int)PWeaponPosi.Attack_L].enabled = true;
-                        yield return CoroutineWait.wait01;
-                        GetWeaponPosi()[(int)PWeaponPosi.Attack_L].enabled = false;
-                    }
-                    else
-                    {
-                        yield return CoroutineWait.wait05;
-                        GetWeaponPosi()[(int)PWeaponPosi.Attack_R].enabled = true;
-                        yield return CoroutineWait.wait01;
-                        GetWeaponPosi()[(int)PWeaponPosi.Attack_R].enabled = false;
-                    }
-                    break;
-                case AttackType.SpecialAttack:
-                    if (spriteRenderer.flipX)
-                    {
-                        yield return CoroutineWait.wait02;
-                        GetWeaponPosi()[(int)PWeaponPosi.SpecialAttack_L].enabled = true;
-                        yield return CoroutineWait.wait04;
-                        GetWeaponPosi()[(int)PWeaponPosi.SpecialAttack_L].enabled = false;
-                    }
-                    else
-                    {
-                        yield return CoroutineWait.wait02;
-                        GetWeaponPosi()[(int)PWeaponPosi.SpecialAttack_R].enabled = true;
-                        yield return CoroutineWait.wait04;
-                        GetWeaponPosi()[(int)PWeaponPosi.SpecialAttack_R].enabled = false;
-                    }
-                    break;
-            }
-
-        }
         private void Start()
         {
             dPressTime = 0f;
-            spriteRenderer = GetComponent<SpriteRenderer>();
             behaviorTree = GetComponent<BehaviorTree>();
             rb = GetComponent<Rigidbody2D>();
 
-            setCurrWeaponPosi = SetCurrWeaponPosi;
+            SetHp(GetMaxHP());
         }
 
         private void Update()
@@ -100,7 +45,7 @@ namespace Player
         }
 
         /// <summary>
-        /// 실시간 스프라이트 flipX 방향체크
+        /// 실시간 스프라이트 방향체크
         /// </summary>
         private void CheckFlipX()
         {
@@ -116,7 +61,6 @@ namespace Player
                         currentScale.x *= -1;
                         transform.localScale = currentScale;
                     }
-                    // spriteRenderer.flipX = true;
                 }
                 else if (h > 0)
                 {
@@ -125,7 +69,6 @@ namespace Player
                         currentScale.x *= -1;
                         transform.localScale = currentScale;
                     }
-                    // spriteRenderer.flipX = false;
                 }
             }
         }
@@ -140,7 +83,10 @@ namespace Player
                 float elapsedTime = Time.time - dPressTime;
                 if (elapsedTime <= .5f)
                 {
-                    SetAttackType(AttackType.Attack);
+                    if (GetIsJumping())
+                        SetAttackType(AttackType.AirAttack);
+                    else
+                        SetAttackType(AttackType.Attack);
                 }
                 else
                 {
@@ -175,22 +121,20 @@ namespace Player
         }
 
         #region PlayerInfo Data Interface
+
+        /////////////////////// GET ///////////////////////     
+        public float GetHp() => playerInfo.Hp;
+        public float GetMaxHP() => playerInfo.MaxHP;
+
         public bool GetIsDashing() => playerInfo.IsDashing;
         public bool GetIsJumping() => playerInfo.IsJumping;
         public bool GetIsCanJump() => playerInfo.IsCanJump;
         public float GetDashDirection() => playerInfo.DashDirection;
         public AttackType GetAttackType() => playerInfo.AttackType;
-        public List<BoxCollider2D> GetWeaponPosi() => playerInfo.WeaponPosi;
-
-        //PlayerState IPlayerInfo.GetMoveFSM()
-        //{
-        //    return playerInfo.MOVEFSM;
-        //}
-        public int GetHp() => playerInfo.Hp;
-        public int GetHungry() => playerInfo.Hungry;
 
         public float GetWalkSpeed() => playerInfo.WalkSpeed;
         public float GetAttackPower() => playerInfo.AttackPower;
+        public float GetSpecialAttackPower() => playerInfo.SpecialAttackPower;
         public float GetAttackSpeed() => playerInfo.AttackSpeed;
         public float GetRunSpeed() => playerInfo.RunSpeed;
         public float GetRunJumpForce() => playerInfo.RunJumpForce;
@@ -199,87 +143,29 @@ namespace Player
         public float GetRangedView() => playerInfo.RangedView;
         public float GetForwardView() => playerInfo.ForwardView;
 
-        public int GetMaxHP() => playerInfo.MaxHP;
-        public int GetMaxHungry() => playerInfo.MaxHungry;
-        public float GetAirAttackPower() => playerInfo.AirAttackPower;
-
-
+        /////////////////////// SET ///////////////////////     
+        public void SetHp(float hp)
+        {
+            playerInfo.Hp += hp;
+            if (playerInfo.Hp > playerInfo.MaxHP)
+                playerInfo.Hp = playerInfo.MaxHP;
+        }
         public void SetIsDashing(bool isDashing) => playerInfo.IsDashing = isDashing;
         public void SetIsJumping(bool isJumping) => playerInfo.IsJumping = isJumping;
         public void SetIsCanJump(bool isCanJump) => playerInfo.IsCanJump = isCanJump;
         public void SetDashDirection(float dashDirection) => playerInfo.DashDirection = dashDirection;
         public void SetAttackType(AttackType attackType) => playerInfo.AttackType = attackType;
-        public void SetWeaponPosi(List<BoxCollider2D> weaponPosi) => playerInfo.WeaponPosi = weaponPosi;
-
-        public void SetHp(int hp)
-        {
-            playerInfo.Hp += hp;
-            if(playerInfo.Hp > playerInfo.maxHP)
-                playerInfo.Hp = playerInfo.maxHP;
-        }
-        public void SetHungry(int hungry)
-        {
-            playerInfo.Hungry += hungry;
-            if(playerInfo.Hungry > playerInfo.MaxHungry)
-                playerInfo.Hungry = playerInfo.MaxHungry;
-        }
 
         public void SetWalkSpeed(float moveSpeed) => playerInfo.WalkSpeed += moveSpeed;
         public void SetAttackPower(float attackPower) => playerInfo.AttackPower += attackPower;
+        public void SetSpecialAttackPower(float specialAttackPower) => playerInfo.SpecialAttackPower += specialAttackPower;
         public void SetAttackSpeed(float attackSpeed) => playerInfo.AttackSpeed += attackSpeed;
-        // 0905 기획에서 마우스 회전 관련 삭제됨
-        //public void SetRotationSpeed(float rotationSpeed) => playerInfo.RotationSpeed += rotationSpeed;
 
         public void SetRunSpeed(float runSpeed) => playerInfo.RunSpeed += runSpeed;
         public void SetRunJumpForce(float jumpForce) => playerInfo.JumpForce += jumpForce;
         public void SetRangedView(float rangedView) => playerInfo.RangedView += rangedView;
         public void SetForwardView(float forwardView) => playerInfo.ForwardView += forwardView;
-        public void SetMaxHungry(int maxHungry) => playerInfo.MaxHungry += maxHungry;
-        public void SetMaxHP(int maxHP) => playerInfo.MaxHP += maxHP;
-        /*
-        public void SetItemInfo()
-        {
-            if(Item.Item.itemSlotInfo != null)
-            {
-                SetHp(Item.Item.itemSlotInfo.HP);
-                SetHungry(Item.Item.itemSlotInfo.Hungry);
-                SetWalkSpeed(Item.Item.itemSlotInfo.MoveSpeed);
-                SetAttackPower(Item.Item.itemSlotInfo.ApplicationTime);
-                SetAttackSpeed(Item.Item.itemSlotInfo.AttackSpeed);
-                //SetRotationSpeed(Item.Item.itemSlotInfo.);
-                SetRangedView(Item.Item.itemSlotInfo.RangedView);
-                SetForwardView(Item.Item.itemSlotInfo.ForwardView);
-               // SetMaxHungry(Item.Item.itemSlotInfo.maxh);
-               // SetMaxHP(Item.Item.itemSlotInfo.max);
-            }
-        }
-        public void SetItemInfo(Definition.InteractionItem item)
-        {
-            if(item != null)
-            {
-                SetHp(item.HP);
-                SetHungry(item.Hungry);
-                SetWalkSpeed(item.MoveSpeed);
-                SetAttackPower(item.ApplicationTime);
-                SetAttackSpeed(item.AttackSpeed);
-                SetRangedView(item.RangedView);
-                SetForwardView(item.ForwardView);
-            }
-        }    
-        public void SetItemInfo(Definition.FieldItem item)
-        {
-            SetHp(item.HP);
-            SetHungry(item.Hungry);
-        }
-        */
-
-        public void SetAirAttackPower()
-        {
-        }
-        //public void SetMoveFSM(PlayerState moveFsm)
-        //{
-        //    playerInfo.MOVEFSM = moveFsm;
-        //}
+        public void SetMaxHP(float maxHP) => playerInfo.MaxHP += maxHP;
 
         /// <summary>
         /// 임시 추가

@@ -8,9 +8,15 @@ namespace Monster
     public class MosterService : MonoBehaviour, IMonsterInfo
     {
         public MonsterInfo monsterInfo;
-  
+
+        private void Start()
+        {
+            SetHp(monsterInfo.MaxHP);
+        }
+
         #region MonsterInfo Data Interface
         public float GetHp() => monsterInfo.Hp;
+        public float GetMaxHp() => monsterInfo.MaxHP;
         public float GetMoveSpeed() => monsterInfo.WalkSpeed;
         public float GetAttackPower() => monsterInfo.AttackPower;
         public float GetAttackSpeed() => monsterInfo.AttackSpeed;
@@ -27,10 +33,14 @@ namespace Monster
         public MonterState GetAtackState() => monsterInfo.AtackState;       
         public MonsterType GetMonsterType() => monsterInfo.MonsterType;
 
-        public void SetHp(int hp)
+        public void SetHp(float hp)
         {
-            monsterInfo.Hp = hp;
+            monsterInfo.Hp += hp;
+            if(monsterInfo.Hp > monsterInfo.MaxHP)
+                monsterInfo.Hp = monsterInfo.MaxHP;
         }
+
+        public void SetMaxHp(float maxHp) => monsterInfo.MaxHP = maxHp;            
 
         public void SetMoveSpeed(float moveSpeed)
         {

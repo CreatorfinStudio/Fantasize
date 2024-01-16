@@ -7,19 +7,40 @@ using UnityEditor;
 
 public class UIManager : MonoBehaviour
 {
+    [Header("플레이어 HP 슬롯")]
     [SerializeField]
-    private Slider[] sliders;
+    private Slider[] hpSlots;
+
+    [Space(10)]
+    [Header("몬스터 HP 슬라이더")]
+    [SerializeField]
+    private Slider monsterHpSlider;
+
     [SerializeField]
     private GameObject gameOverUI;
+
+    private void Start()
+    {
+        Init();
+    }
 
     private void Update()
     {
         CurrHPToUISlot();
-        if(DefinitionManager.Instance.iplayerInfo.GetHp() <= 0)
+        CurrMonsterHPToUI();
+        if (DefinitionManager.Instance.iplayerInfo.GetHp() <= 0)
         {
             gameOverUI.SetActive(true);
             PauseEditor();
         }
+    }
+
+    /// <summary>
+    /// UI 초기화
+    /// </summary>
+    private void Init()
+    {
+        monsterHpSlider.value = 1;
     }
 
     public void PauseEditor()
@@ -34,9 +55,9 @@ public class UIManager : MonoBehaviour
     /// </summary>
     private void CurrHPToUISlot()
     {
-        int hp = DefinitionManager.Instance.iplayerInfo.GetHp();
+        float hp = DefinitionManager.Instance.iplayerInfo.GetHp();
 
-        for (int i = 0; i < sliders.Length; i++)
+        for (int i = 0; i < hpSlots.Length; i++)
         {
             // 현재 슬라이더가 나타내야 하는 HP 범위 계산
             int sliderHpRangeStart = i * 2;
@@ -45,21 +66,27 @@ public class UIManager : MonoBehaviour
             // HP가 슬라이더 범위를 초과하는 경우 슬라이더를 완전히 채움.
             if (hp > sliderHpRangeEnd)
             {
-                if (!sliders[i].gameObject.activeSelf)
-                    sliders[i].gameObject.SetActive(true);
-                sliders[i].value = 1f;
+                if (!hpSlots[i].gameObject.activeSelf)
+                    hpSlots[i].gameObject.SetActive(true);
+                hpSlots[i].value = 1f;
             }
             // HP가 슬라이더 범위 내에 있는 경우
             else if (hp > sliderHpRangeStart)
             {
-                if (!sliders[i].gameObject.activeSelf)
-                    sliders[i].gameObject.SetActive(true);
-                sliders[i].value = (hp % 2 != 0) ? 0.5f : 1f; 
+                if (!hpSlots[i].gameObject.activeSelf)
+                    hpSlots[i].gameObject.SetActive(true);
+                hpSlots[i].value = (hp % 2 != 0) ? 0.5f : 1f; 
             }
             else
             {
-                sliders[i].value = 0f;
+                hpSlots[i].value = 0f;
             }
         }
+    }
+
+    private void CurrMonsterHPToUI()
+    {
+        monsterHpSlider.value = DefinitionManager.Instance.imonsterInfo.GetHp() /
+             DefinitionManager.Instance.imonsterInfo.GetMaxHp();
     }
 }

@@ -276,8 +276,6 @@ GameObject:
   - component: {fileID: 1194945894967000901}
   - component: {fileID: 787157306464862859}
   - component: {fileID: 787157306464862964}
-  - component: {fileID: 787157306464862963}
-  - component: {fileID: 787157306464862962}
   - component: {fileID: 787157306464862960}
   - component: {fileID: 2864279689435715553}
   - component: {fileID: 7699977909096821059}
@@ -430,30 +428,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.17178512, y: 0.39113462}
   m_EdgeRadius: 0
---- !u!114 &787157306464862963
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6933109633662002661}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e2a0c63ef281b44a823365c3d5bffcd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &787157306464862962
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6933109633662002661}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f86532b6210165240a522e2d051d62da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &787157306464862960
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -468,6 +442,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerInfo:
     hp: 6
+    maxHP: 100
     walkSpeed: 1
     attackPower: 0
     specialAttackPower: 0
@@ -494,7 +469,6 @@ MonoBehaviour:
     runSpeed: 4
     runJumpForce: 6
     maxHungry: 100
-    maxHP: 100
   dPressTime: 0
   playDashTime: 0.8
 --- !u!114 &2864279689435715553

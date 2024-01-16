@@ -672,6 +672,7 @@
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\String\GetRandomString.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Input\GetMouseButton.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Vector2\Normalize.cs" />
+    <Compile Include="Assets\TestCollision.cs" />
     <Compile Include="Assets\UniBulletHell\Script\ShotPattern\UbhWavingNwayLockOnShot.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Rigidbody\SetCenterOfMass.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\String\GetLength.cs" />
@@ -730,7 +731,6 @@
     <Compile Include="Assets\Pixel\Test\BackGround\Cainos\Third Party\Lucid Editor\Runtime\Attributes\FoldoutGroupAttribute.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Transform\LookAt.cs" />
     <Compile Include="Assets\Pixel\Test\BackGround\Cainos\Third Party\Lucid Editor\Runtime\Attributes\DisableLucidEditorAttribute.cs" />
-    <Compile Include="Assets\TestCollision.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Pixel\Test\BackGround\Cainos\Third Party\Lucid Editor\License.txt" />
@@ -1356,10 +1356,6 @@
       <Project>{617544AB-2B1F-A541-1FE0-B887FFC69A07}</Project>
       <Name>Control.Player</Name>
     </ProjectReference>
-    <ProjectReference Include="MonsterLove.StateMachine.Runtime.Player.csproj">
-      <Project>{54831A88-14FA-2F15-C54B-84EF44745922}</Project>
-      <Name>MonsterLove.StateMachine.Runtime.Player</Name>
-    </ProjectReference>
     <ProjectReference Include="Unity.RenderPipelines.Core.ShaderLibrary.Player.csproj">
       <Project>{DD62A73A-6E77-F661-1DEE-F5023CF5230D}</Project>
       <Name>Unity.RenderPipelines.Core.ShaderLibrary.Player</Name>
@@ -1379,10 +1375,6 @@
     <ProjectReference Include="Unity.2D.Tilemap.Extras.Player.csproj">
       <Project>{3BF517A7-8700-2981-B71F-7FEBD63C97D6}</Project>
       <Name>Unity.2D.Tilemap.Extras.Player</Name>
-    </ProjectReference>
-    <ProjectReference Include="TestManager.Player.csproj">
-      <Project>{D6F56424-D6C9-9CBA-5287-AB88CEB3F0E5}</Project>
-      <Name>TestManager.Player</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.RenderPipelines.Universal.Runtime.Player.csproj">
       <Project>{EEC6FD32-2D1D-B2DF-3D94-029423D761D5}</Project>

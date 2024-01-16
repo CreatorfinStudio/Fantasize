@@ -644,10 +644,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="MonsterLove.StateMachine.Runtime.Player.csproj">
-      <Project>{54831A88-14FA-2F15-C54B-84EF44745922}</Project>
-      <Name>MonsterLove.StateMachine.Runtime.Player</Name>
-    </ProjectReference>
     <ProjectReference Include="UnityEngine.UI.Player.csproj">
       <Project>{B7A73E3F-C707-1383-3D73-0FD5E11E7721}</Project>
       <Name>UnityEngine.UI.Player</Name>

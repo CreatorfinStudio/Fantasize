@@ -647,14 +647,6 @@
       <Project>{39DDCE53-E721-1320-5243-AC03C84863E7}</Project>
       <Name>Definition.Player</Name>
     </ProjectReference>
-    <ProjectReference Include="TestManager.Player.csproj">
-      <Project>{D6F56424-D6C9-9CBA-5287-AB88CEB3F0E5}</Project>
-      <Name>TestManager.Player</Name>
-    </ProjectReference>
-    <ProjectReference Include="MonsterLove.StateMachine.Runtime.Player.csproj">
-      <Project>{54831A88-14FA-2F15-C54B-84EF44745922}</Project>
-      <Name>MonsterLove.StateMachine.Runtime.Player</Name>
-    </ProjectReference>
     <ProjectReference Include="UnityEngine.UI.Player.csproj">
       <Project>{B7A73E3F-C707-1383-3D73-0FD5E11E7721}</Project>
       <Name>UnityEngine.UI.Player</Name>

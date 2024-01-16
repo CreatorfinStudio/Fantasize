@@ -1,26 +1,20 @@
-using MonsterLove.StateMachine;
-using System.Collections.Generic;
-using UnityEngine;
-
 namespace Definition
 {
     public interface IPlayerInfo
     {
         ////////////////// GET //////////////////
+        public float GetHp();
+        public float GetMaxHP();
+
         public bool GetIsDashing();
         public bool GetIsJumping();
         public bool GetIsCanJump();
         public float GetDashDirection();
         public AttackType GetAttackType();
-        public List<BoxCollider2D> GetWeaponPosi();
-
-      //  public PlayerState GetMoveFSM();
-        public float GetAirAttackPower();
-        public int GetHp();
-        public int GetHungry();
 
         public float GetWalkSpeed();
         public float GetAttackPower();
+        public float GetSpecialAttackPower();
         public float GetAttackSpeed();
 
         // 0905 기획에서 마우스 회전 관련 삭제됨
@@ -37,30 +31,21 @@ namespace Definition
         public float GetRangedView();
         public float GetForwardView();
 
-        public int GetMaxHP();
-        public int GetMaxHungry();
-
         ////////////////// SET //////////////////
+        public void SetHp(float hp);
+        public void SetMaxHP(float maxHP);
+
         public void SetIsDashing(bool isDashing);
         public void SetIsJumping(bool isJumping);
         public void SetIsCanJump(bool isCanJump);
         public void SetDashDirection(float dashDirection);
         public void SetAttackType(AttackType attackType);
-        public void SetWeaponPosi(List<BoxCollider2D> weaponPosi);
 
-     //   public void SetMoveFSM(PlayerState moveFsm);
-        public void SetAirAttackPower();
-
-
-        public void SetHp(int hp);
-        public void SetHungry(int hungry);
-
+        //   public void SetMoveFSM(PlayerState moveFsm);
         public void SetWalkSpeed(float moveSpeed);
         public void SetAttackPower(float attackPower);
+        public void SetSpecialAttackPower(float specialAttackPower);
         public void SetAttackSpeed(float attackSpeed);
-
-        // 0905 기획에서 마우스 회전 관련 삭제됨
-        //public void SetRotationSpeed(float rotationSpeed);
 
         /// <summary>
         /// 임시 주가
@@ -73,8 +58,6 @@ namespace Definition
         public void SetRunJumpForce(float runJumpForce);
         public void SetRangedView(float rangedView);
         public void SetForwardView(float forwardView);
-        public void SetMaxHungry(int maxHungry);
-        public void SetMaxHP(int maxHP);
 
     }
 }

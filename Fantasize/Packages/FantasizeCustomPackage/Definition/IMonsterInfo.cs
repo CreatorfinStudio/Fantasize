@@ -5,6 +5,7 @@ namespace Definition
     public interface IMonsterInfo
     {
         public float GetHp();
+        public float GetMaxHp();
         public float GetMoveSpeed();
         public float GetAttackPower();
         public float GetAttackSpeed();
@@ -22,7 +23,8 @@ namespace Definition
         public MonterState GetAtackState();
         public MonsterType GetMonsterType();
 
-        public void SetHp(int hp);
+        public void SetHp(float hp);
+        public void SetMaxHp(float maxhp);
         public void SetMoveSpeed(float moveSpeed);
         public void SetAttackPower(float attackPower);
         public void SetAttackSpeed(float attackSpeed);

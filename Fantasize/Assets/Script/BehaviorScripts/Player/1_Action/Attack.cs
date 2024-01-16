@@ -22,13 +22,13 @@ namespace PlayerBehavior
                 case AttackType.Attack:
                     animator.Play("Attack", -1);
                     break;
+                case AttackType.AirAttack:
+                    animator.Play("AirAttack", -1);
+                    break;
                 case AttackType.SpecialAttack:
                     animator.Play("SpecialAttack", -1);
                     break;
             }
-
-            PlayerService.setCurrWeaponPosi?.Invoke(attackType);
-
             //attackType에 따라서 애니메이션 재생하든지 파티클넣든지 등등
             return TaskStatus.Success;
         }

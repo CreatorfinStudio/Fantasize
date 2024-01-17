@@ -6,8 +6,8 @@ public interface IItemProcessing
     public string GetName();
     public Sprite GetImage();
     public int GetPrice();
-    public int GetHp();
-    public int GetMaxHp();
+    public float GetHp();
+    public float GetMaxHp();
     public float GetAttackDamage();
     public float GetAttackSpeed();
     public float GetMoveSpeed();
@@ -20,8 +20,8 @@ public interface IItemProcessing
     public void SetName(string name);
     public void SetImage(Sprite img);
     public void SetPrice(int price);
-    public void SetHp(int hp);
-    public void SetMaxHp(int maxhp);
+    public void SetHp(float hp);
+    public void SetMaxHp(float maxhp);
     public void SetAttackDamage(float attackdamage);
     public void SetAttackSpeed(float attackspeed);
     public void SetMoveSpeed(float movespeed);

@@ -1,9 +1,9 @@
 using Definition;
-using System.Collections;
-using System.Collections.Generic;
+using Item;
+using TMPro;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEditor;
 
 public class UIManager : MonoBehaviour
 {
@@ -16,8 +16,17 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private Slider monsterHpSlider;
 
+    [Space(10)]
     [SerializeField]
     private GameObject gameOverUI;
+
+    [Space(10)]
+    [Header("드롭 아이템 UI")]
+    [SerializeField]
+    private GameObject dropItemParent;
+    [SerializeField]
+    private GameObject[] dropItems;
+
 
     private void Start()
     {
@@ -33,6 +42,8 @@ public class UIManager : MonoBehaviour
             gameOverUI.SetActive(true);
             PauseEditor();
         }
+
+        SetDropItemInfo();
     }
 
     /// <summary>
@@ -62,7 +73,7 @@ public class UIManager : MonoBehaviour
             // 현재 슬라이더가 나타내야 하는 HP 범위 계산
             int sliderHpRangeStart = i * 2;
             int sliderHpRangeEnd = sliderHpRangeStart + 1;
-            
+
             // HP가 슬라이더 범위를 초과하는 경우 슬라이더를 완전히 채움.
             if (hp > sliderHpRangeEnd)
             {
@@ -75,7 +86,7 @@ public class UIManager : MonoBehaviour
             {
                 if (!hpSlots[i].gameObject.activeSelf)
                     hpSlots[i].gameObject.SetActive(true);
-                hpSlots[i].value = (hp % 2 != 0) ? 0.5f : 1f; 
+                hpSlots[i].value = (hp % 2 != 0) ? 0.5f : 1f;
             }
             else
             {
@@ -89,4 +100,29 @@ public class UIManager : MonoBehaviour
         monsterHpSlider.value = DefinitionManager.Instance.imonsterInfo.GetHp() /
              DefinitionManager.Instance.imonsterInfo.GetMaxHp();
     }
+
+
+    //드랍 아이템 정보 초기화해줘야하는지 여부
+    bool initDropItems = false;
+    /// <summary>
+    /// 드랍 아이템 정보 세팅
+    /// </summary>
+    private void SetDropItemInfo()
+    {
+        if (!ReadSheetService.itemDataLoadDone)
+            return;
+        if (dropItemParent.activeSelf && !initDropItems)
+        {
+            var data = ItemService.GetRandomItems(3);
+            for (int i = 0; i < data.Count; i++)
+            {
+                dropItems[i].GetComponent<ItemService>().itemInfo = data[i];
+            }
+            initDropItems = true;
+        }
+        if (!dropItemParent.activeSelf)
+            initDropItems = false;
+    }
+
+
 }

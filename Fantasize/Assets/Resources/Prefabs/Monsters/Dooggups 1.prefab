@@ -1,63 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &188314943
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 188314944}
-  - component: {fileID: 188314945}
-  m_Layer: 7
-  m_Name: RAttack
-  m_TagString: M_Weapon
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &188314944
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 188314943}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 8679169410955489874}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &188314945
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 188314943}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.1623497, y: 0.3399051}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.3157895, y: -0.5588235}
-    oldSize: {x: 0.38, y: 0.34}
-    newSize: {x: 0.26, y: 0.35}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.16690353, y: 0.22585249}
-  m_EdgeRadius: 0
 --- !u!1 &845575596
 GameObject:
   m_ObjectHideFlags: 0
@@ -266,7 +208,6 @@ Transform:
   m_Children:
   - {fileID: 3490843643953468150}
   - {fileID: 845575597}
-  - {fileID: 188314944}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -450,6 +391,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   monsterInfo:
     hp: 0
+    maxHP: 0
     walkSpeed: 2
     attackPower: 1
     specialAttackPower: 0
@@ -465,7 +407,7 @@ MonoBehaviour:
     isSpriteCheck: 1
     attackCollider:
     - {fileID: 845575598}
-    - {fileID: 188314945}
+    - {fileID: 0}
     attackState: 0
     monsterType: 0
 --- !u!114 &5189111407052748559

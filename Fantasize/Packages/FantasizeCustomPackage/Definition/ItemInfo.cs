@@ -12,8 +12,8 @@ namespace Definition
         [Space(10)]
         public int price;
         [Space(10)]
-        public int hp;
-        public int maxHp;
+        public float hp;
+        public float maxHp;
         public float attackDamage;
         public float attackSpeed;
         public float moveSpeed;
@@ -25,8 +25,8 @@ namespace Definition
         public string Name { get { return name; } set { name = value; } }
         public Sprite Image { get { return image; } set { image = value; } }
         public int Price { get { return price; } set { price = value; } }
-        public int Hp { get { return hp; } set { hp = value; } }
-        public int MaxHp { get { return maxHp; } set { maxHp = value; } }
+        public float Hp { get { return hp; } set { hp = value; } }
+        public float MaxHp { get { return maxHp; } set { maxHp = value; } }
         public float AttackDamage { get { return attackDamage; } set { attackDamage = value; } }
         public float AttackSpeed { get { return attackSpeed; } set { attackSpeed = value; } }
         public float MoveSpeed { get { return moveSpeed; } set { moveSpeed = value; } }

@@ -1,14 +1,27 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using Definition;
-using System.Diagnostics;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
 
 namespace Item
 {
     public class ItemService : MonoBehaviour, IItemProcessing
     {
         public ItemInfo itemInfo;
+        public static List<ItemInfo> itemInfoList = new List<ItemInfo>();
+
+        public static List<ItemInfo> GetRandomItems(int numberOfItems)
+        {
+            if (itemInfoList.Count < numberOfItems)
+            {
+                Debug.LogError("랜덤 추출할 수보다 리스트 크기가 작음");
+            }
+
+            System.Random ran = new System.Random();
+
+            return itemInfoList.OrderBy(x => ran.Next()).Take(numberOfItems).ToList();
+        }
 
         #region Interface
 
@@ -16,8 +29,8 @@ namespace Item
         public string GetName() => itemInfo.Name;
         public Sprite GetImage() => itemInfo.Image;
         public int GetPrice() => itemInfo.Price;
-        public int GetHp() => itemInfo.Hp;
-        public int GetMaxHp() => itemInfo.MaxHp;
+        public float GetHp() => itemInfo.Hp;
+        public float GetMaxHp() => itemInfo.MaxHp;
         public float GetAttackDamage() => itemInfo.AttackDamage;
         public float GetAttackSpeed() => itemInfo.AttackSpeed;
         public float GetMoveSpeed() => itemInfo.MoveSpeed;
@@ -29,8 +42,8 @@ namespace Item
         public void SetName(string name) => itemInfo.Name = name;
         public void SetImage(Sprite img) => itemInfo.image = img;
         public void SetPrice(int price) => itemInfo.Price = price;
-        public void SetHp(int hp) => itemInfo.Hp = hp;
-        public void SetMaxHp(int maxhp) => itemInfo.MaxHp = maxhp;
+        public void SetHp(float hp) => itemInfo.Hp = hp;
+        public void SetMaxHp(float maxhp) => itemInfo.MaxHp = maxhp;
         public void SetAttackDamage(float attackdamage) => itemInfo.AttackDamage = attackdamage;
         public void SetAttackSpeed(float attackspeed) => itemInfo.AttackSpeed = attackspeed;
         public void SetMoveSpeed(float movespeed) => itemInfo.MoveSpeed = movespeed;

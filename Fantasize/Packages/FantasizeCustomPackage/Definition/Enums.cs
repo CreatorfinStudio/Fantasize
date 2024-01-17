@@ -79,4 +79,19 @@ namespace Definition
         Die,
     }
 
+    public enum ItemInfoTable
+    {
+        None = -1,
+        Name,
+        Image,
+        Price,
+        HP,
+        MaxHP,
+        AttackDamage,
+        AttackSpeed,
+        MoveSpeed,
+        SpecialAttackDamage,
+        CastingSpeed,
+        Calculation,
+    }
 }

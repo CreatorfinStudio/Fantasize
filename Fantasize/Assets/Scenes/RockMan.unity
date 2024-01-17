@@ -13642,9 +13642,57 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 845575596, guid: 8c8fabccc37929548b2fc8c1816a5e04, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 845575597, guid: 8c8fabccc37929548b2fc8c1816a5e04, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 845575597, guid: 8c8fabccc37929548b2fc8c1816a5e04, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 845575597, guid: 8c8fabccc37929548b2fc8c1816a5e04, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 845575597, guid: 8c8fabccc37929548b2fc8c1816a5e04, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 845575597, guid: 8c8fabccc37929548b2fc8c1816a5e04, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 845575597, guid: 8c8fabccc37929548b2fc8c1816a5e04, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 845575597, guid: 8c8fabccc37929548b2fc8c1816a5e04, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 845575598, guid: 8c8fabccc37929548b2fc8c1816a5e04, type: 3}
+      propertyPath: m_Size.x
+      value: 0.16690353
+      objectReference: {fileID: 0}
+    - target: {fileID: 845575598, guid: 8c8fabccc37929548b2fc8c1816a5e04, type: 3}
+      propertyPath: m_Size.y
+      value: 0.22585249
+      objectReference: {fileID: 0}
     - target: {fileID: 845575598, guid: 8c8fabccc37929548b2fc8c1816a5e04, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 845575598, guid: 8c8fabccc37929548b2fc8c1816a5e04, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.16234966
+      objectReference: {fileID: 0}
+    - target: {fileID: 845575598, guid: 8c8fabccc37929548b2fc8c1816a5e04, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.3399051
       objectReference: {fileID: 0}
     - target: {fileID: 5189111407052748558, guid: 8c8fabccc37929548b2fc8c1816a5e04, type: 3}
       propertyPath: monsterInfo.hp

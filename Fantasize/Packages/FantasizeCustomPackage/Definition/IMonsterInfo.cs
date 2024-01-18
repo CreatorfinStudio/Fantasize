@@ -17,8 +17,8 @@ namespace Definition
         public float GetFollowSpeed();
         public float GetRushSpeed();
         public bool GetIsCanRush();
-        public bool GetIsSpriteCheck();
-        public BoxCollider2D[] GetAttackCollider();
+        public bool GetIsDirectionCheck();
+        public BoxCollider2D GetAttackCollider();
 
         public MonterState GetAtackState();
         public MonsterType GetMonsterType();
@@ -36,8 +36,8 @@ namespace Definition
         public void SetFollowSpeed(float followSpeed);
         public void SetRushSpeed(float rushSpeed);
         public void SetIsCanRush(bool isCanRush);
-        public void SetIsSpriteCheck(bool isSpriteCheck);
-        public void SetAttackCollider(BoxCollider2D[] attackCollider);
+        public void SetIsDirectionCheck(bool isDirectionCheck);
+        public void SetAttackCollider(BoxCollider2D attackCollider);
 
 
         public void SetAtackState(MonterState monterState);

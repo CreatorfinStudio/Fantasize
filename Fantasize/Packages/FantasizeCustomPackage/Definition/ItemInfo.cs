@@ -1,4 +1,4 @@
-
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -37,5 +37,13 @@ namespace Definition
         #endregion
     }
 
+    [System.Serializable]
+    public class StatusSlotInfo
+    {   
+        public Image itemIcon;
+        public Image arrowIcon;
 
+        public Image ItemIcon { get { return itemIcon; } set { itemIcon = value; } }
+        public Image ArrowIcon { get { return arrowIcon; } set { arrowIcon = value; } }
+    }
 }

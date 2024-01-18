@@ -1,7 +1,9 @@
 using Definition;
-using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
+using UnityEditor.Presets;
 using UnityEngine;
 
 namespace Item
@@ -11,6 +13,26 @@ namespace Item
         public ItemInfo itemInfo;
         public static List<ItemInfo> itemInfoList = new List<ItemInfo>();
 
+        [SerializeField]
+        private GameObject[] statusSlot;
+        [SerializeField]
+        public TMP_Text priceTxt;
+
+        public delegate void ProcessItemStatusEventHandler<T>(T item);
+        public static event ProcessItemStatusEventHandler<bool> processItemStatus;
+
+
+        private void Start()
+        {
+            StartCoroutine(SetItemData());
+            processItemStatus += ProcessItemStatus;
+        }
+
+        /// <summary>
+        /// n개의 아이템 데이터 추출
+        /// </summary>
+        /// <param name="numberOfItems"></param>
+        /// <returns></returns>
         public static List<ItemInfo> GetRandomItems(int numberOfItems)
         {
             if (itemInfoList.Count < numberOfItems)
@@ -21,6 +43,84 @@ namespace Item
             System.Random ran = new System.Random();
 
             return itemInfoList.OrderBy(x => ran.Next()).Take(numberOfItems).ToList();
+        }
+
+        IEnumerator SetItemData()
+        {
+            while (this.itemInfo.Name.Equals(""))
+                yield return null;
+
+            OnProcessItemStatus(false); 
+        }
+
+        public static void OnProcessItemStatus(bool isReset) => processItemStatus?.Invoke(isReset);
+
+        public void ProcessItemStatus(bool isReset = false)
+        {
+            if(isReset)
+            {
+                for(int i = 0; i < statusSlot.Length; i++)
+                {
+                    statusSlot[i].SetActive(false);
+                }
+
+                isReset = false;
+            }
+
+            int countA = 0;
+            if (itemInfo == null || statusSlot == null)
+            {
+                Debug.LogError("itemInfo 또는 statusSlot이 null입니다.");
+                return;
+            }
+
+            if (itemInfo.Hp != 0 && countA < 4)
+            {
+                UISetting(itemInfo.Hp);
+                countA++;
+            }
+            if (itemInfo.MaxHp != 0 && countA < 4)
+            {
+                UISetting(itemInfo.MaxHp);
+                countA++;
+            }
+            if (itemInfo.AttackDamage != 0 && countA < 4)
+            {
+                UISetting(itemInfo.AttackDamage);
+                countA++;
+            }
+            if (itemInfo.AttackSpeed != 0 && countA < 4)
+            {
+                UISetting(itemInfo.AttackSpeed);
+                countA++;
+            }
+            if (itemInfo.MoveSpeed != 0 && countA < 4)
+            {
+                UISetting(itemInfo.MoveSpeed);
+                countA++;
+            }
+            if (itemInfo.SpecialAttackDamage != 0 && countA < 4)
+            {
+                UISetting(itemInfo.SpecialAttackDamage);
+                countA++;
+            }
+            if (itemInfo.CastingSpeed != 0 && countA < 4)
+            {
+                UISetting(itemInfo.CastingSpeed);
+                countA++;
+            }
+
+            priceTxt.text = itemInfo.price.ToString();
+
+            void UISetting(float data, string itemIconName = "none")
+            {
+                //일단 none
+
+                statusSlot[countA].SetActive(true);
+                var itemStatusSlot = statusSlot[countA].GetComponent<IItemStatusSlot>();
+                itemStatusSlot?.SetItemImage(itemIconName);
+                itemStatusSlot?.SetArrowImage(data > 0 ? "UPArrow" : "DownArrow");
+            }
         }
 
         #region Interface

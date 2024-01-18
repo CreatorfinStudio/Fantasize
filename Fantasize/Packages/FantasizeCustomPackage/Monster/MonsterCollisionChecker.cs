@@ -10,17 +10,11 @@ namespace Monster
         private CircleCollider2D canSeeCollider;
         [SerializeField]
         private CapsuleCollider2D bodyCollider;
-        private SpriteRenderer spriteRenderer;
 
-
-        private void Awake()
-        {
-            spriteRenderer = GetComponent<SpriteRenderer>();
-        }
 
         private void Update()
         {
-            if (DefinitionManager.Instance.imonsterInfo.GetIsSpriteCheck())
+            if (DefinitionManager.Instance.imonsterInfo.GetIsDirectionCheck())
                 SetSpriteFlipX(DefinitionManager.Instance.player.transform);
         }
 
@@ -31,10 +25,11 @@ namespace Monster
         /// <param name="trans"></param>
         protected override void SetSpriteFlipX(Transform trans)
         {
-            if (trans != null && spriteRenderer != null)
+            if (trans != null)
             {
-                bool isObjectLeft = trans.position.x < transform.position.x;
-                spriteRenderer.flipX = isObjectLeft;
+                Vector3 currentScale = transform.localScale;
+                currentScale.x = trans.position.x < transform.position.x ? Mathf.Abs(currentScale.x) : -Mathf.Abs(currentScale.x);
+                this.transform.localScale = currentScale;
             }
         }
 
@@ -63,7 +58,7 @@ namespace Monster
             yield return new WaitForSeconds(.1f);
 
             imonsterInfo?.SetIsCanRush(true);
-            DefinitionManager.Instance.imonsterInfo.SetIsSpriteCheck(true);
+            DefinitionManager.Instance.imonsterInfo.SetIsDirectionCheck(true);
         }
 
         /// <summary>
@@ -80,9 +75,9 @@ namespace Monster
             }
             if (Time.time - lastHitTime > hitCooldown && bodyCollider.IsTouching(other) && other.CompareTag("P_Weapon"))
             {
-                if(attackType.Equals(AttackType.Attack))
+                if (attackType.Equals(AttackType.Attack) || attackType.Equals(AttackType.AirAttack))
                     imonsterInfo?.SetHp(-DefinitionManager.Instance.iplayerInfo.GetAttackPower());
-                else if(attackType.Equals(AttackType.SpecialAttack))
+                else if (attackType.Equals(AttackType.SpecialAttack))
                     imonsterInfo?.SetHp(-DefinitionManager.Instance.iplayerInfo.GetSpecialAttackPower());
 
                 lastHitTime = Time.time; // 마지막 히트 시간 업데이트

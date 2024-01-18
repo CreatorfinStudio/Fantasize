@@ -9,6 +9,11 @@ namespace Control
         [SerializeField]
         private BoxCollider2D floorCheckCollider;
 
+        ///테스트용 _ 무적
+        private bool invincibilit = false;
+
+        public void Invincibilit() => invincibilit = !invincibilit;
+
         /// <summary>
         /// 점프 가능한 상태로 변환
         /// </summary>
@@ -19,15 +24,18 @@ namespace Control
         }
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            switch (collision.gameObject.tag)
+            if (!invincibilit)
             {
-                case "M_Body":
-                    DefinitionManager.Instance.iplayerInfo.SetHp(-1);
-                    CanBeJump();
-                    break;
-                case "Floor":
-                    CanBeJump();
-                    break;
+                switch (collision.gameObject.tag)
+                {
+                    case "M_Body":
+                        DefinitionManager.Instance.iplayerInfo.SetHp(-DefinitionManager.Instance.imonsterInfo.GetAttackPower());
+                        CanBeJump();
+                        break;
+                    case "Floor":
+                        CanBeJump();
+                        break;
+                }
             }
         }
 
@@ -46,16 +54,19 @@ namespace Control
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.tag == "M_Weapon" && !isHit)
+            if (!invincibilit)
             {
-               // Attacked();
+                if (collision.tag == "M_Weapon" && !isHit)
+                {
+                    Attacked();
+                }
             }
         }
 
         private void Attacked()
         {
             StartCoroutine(HitCooldown());
-            DefinitionManager.Instance.iplayerInfo.SetHp(-1);
+            DefinitionManager.Instance.iplayerInfo.SetHp(-DefinitionManager.Instance.imonsterInfo.GetAttackPower());
         }
         private IEnumerator HitCooldown()
         {

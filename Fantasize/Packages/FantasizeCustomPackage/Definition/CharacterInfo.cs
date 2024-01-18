@@ -122,11 +122,11 @@ namespace Definition
         /// </summary>
         public bool isCanRush;
 
-        [Header("실시간 스프라이트 반전시킬건지")]
-        public bool isSpriteCheck;
+        [Header("실시간 방향 반전시킬건지")]
+        public bool isDirectionCheck;
 
         [Header("공격판정 콜라이더 (무기 콜라이더) ")]
-        public BoxCollider2D[] attackCollider;
+        public BoxCollider2D attackCollider;
 
         /// <summary>
         /// 쿨타임 체크용 State Enum
@@ -146,8 +146,8 @@ namespace Definition
         public bool IsCanAttack { get { return isCanAttack; } set { isCanAttack = value; } }
         public float RushSpeed { get { return rushSpeed; } set { rushSpeed = value; } }
         public bool IsCanRush { get { return isCanRush; } set { isCanRush = value; } }
-        public bool IsSpriteCheck { get { return isSpriteCheck; } set { isSpriteCheck = value; } }
-        public BoxCollider2D[] AttackCollider { get { return attackCollider; } set { attackCollider = value; } }
+        public bool IsDirectionCheck { get { return isDirectionCheck; } set { isDirectionCheck = value; } }
+        public BoxCollider2D AttackCollider { get { return attackCollider; } set { attackCollider = value; } }
 
         public MonterState AtackState { get { return attackState; } set { attackState = value; } }
         public MonsterType MonsterType { get { return monsterType; } set { monsterType = value; } }

@@ -1,6 +1,6 @@
 using Definition;
 using Item;
-using TMPro;
+using System.Collections;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
@@ -107,10 +107,10 @@ public class UIManager : MonoBehaviour
     /// <summary>
     /// 드랍 아이템 정보 세팅
     /// </summary>
-    private void SetDropItemInfo()
+    IEnumerator SetDropItemInfo()
     {
-        if (!ReadSheetService.itemDataLoadDone)
-            return;
+        while (!ReadSheetService.itemDataLoadDone)
+            yield return null;
         if (dropItemParent.activeSelf && !initDropItems)
         {
             var data = ItemService.GetRandomItems(3);

@@ -8,7 +8,6 @@ namespace PlayerBehavior
     public class Attack : Action
     {
         private Animator animator;
-        private SpriteRenderer spriteRenderer;
         public override void OnStart()
         {           
             animator = GetComponent<Animator>();

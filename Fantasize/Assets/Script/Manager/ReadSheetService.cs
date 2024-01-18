@@ -8,7 +8,7 @@ using Item;
 public class ReadSheetService : MonoBehaviour
 {
     public readonly string ADDRESS = "https://docs.google.com/spreadsheets/d/1pbjnBbcSnE9KC8wAdTDPMVrk7MTEApr83h4D0D4jFO4";
-    public readonly string RANGE = "C5:M9";
+    public readonly string RANGE = "C5:M15";
     public readonly long SHEET_ID = 0;
 
     public static bool itemDataLoadDone = false;

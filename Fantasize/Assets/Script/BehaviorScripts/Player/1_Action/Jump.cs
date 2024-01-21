@@ -21,7 +21,7 @@ namespace PlayerBehavior
                 if (DefinitionManager.Instance.iplayerInfo.GetIsJumping())
                 {
                     rb.velocity =
-                   new Vector2(h * DefinitionManager.Instance.iplayerInfo.GetRunSpeed(), rb.velocity.y);
+                   new Vector2(h * DefinitionManager.Instance.iplayerInfo.GetMoveSpeed(), rb.velocity.y);
                 }         
                 else
                 {

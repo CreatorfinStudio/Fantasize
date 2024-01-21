@@ -17,7 +17,7 @@ namespace Monster
         #region MonsterInfo Data Interface
         public float GetHp() => monsterInfo.Hp;
         public float GetMaxHp() => monsterInfo.MaxHP;
-        public float GetMoveSpeed() => monsterInfo.WalkSpeed;
+        public float GetMoveSpeed() => monsterInfo.MoveSpeed;
         public float GetAttackPower() => monsterInfo.AttackPower;
         public float GetAttackSpeed() => monsterInfo.AttackSpeed;
         public float GetJumpForce() => monsterInfo.JumpForce;
@@ -44,7 +44,7 @@ namespace Monster
 
         public void SetMoveSpeed(float moveSpeed)
         {
-            monsterInfo.WalkSpeed = moveSpeed;
+            monsterInfo.MoveSpeed = moveSpeed;
         }
 
         public void SetAttackPower(float attackPower)

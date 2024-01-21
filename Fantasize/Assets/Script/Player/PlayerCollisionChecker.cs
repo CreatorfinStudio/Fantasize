@@ -10,9 +10,10 @@ namespace Control
         private BoxCollider2D floorCheckCollider;
 
         ///테스트용 _ 무적
-        private bool invincibilit = false;
+        public bool invincibilit = false;
 
         public void Invincibilit() => invincibilit = !invincibilit;
+                
 
         /// <summary>
         /// 점프 가능한 상태로 변환
@@ -22,13 +23,15 @@ namespace Control
             DefinitionManager.Instance.iplayerInfo.SetIsCanJump(true);
             DefinitionManager.Instance.iplayerInfo.SetIsJumping(false);
         }
+
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            if (!invincibilit)
+            if (!invincibilit && !isHit)
             {
                 switch (collision.gameObject.tag)
                 {
                     case "M_Body":
+                        StartCoroutine(HitCooldown());
                         DefinitionManager.Instance.iplayerInfo.SetHp(-DefinitionManager.Instance.imonsterInfo.GetAttackPower());
                         CanBeJump();
                         break;

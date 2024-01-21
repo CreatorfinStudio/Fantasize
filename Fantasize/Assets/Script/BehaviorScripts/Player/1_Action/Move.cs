@@ -23,7 +23,7 @@ namespace PlayerBehavior
                 animator.SetBool("Running", true); // 달리기 상태 활성화
                 Vector2 moveDirection = new Vector2(h, 0f);
                 moveDirection.Normalize();
-                transform.Translate(moveDirection * DefinitionManager.Instance.iplayerInfo.GetRunSpeed() * Time.deltaTime);
+                transform.Translate(moveDirection * DefinitionManager.Instance.iplayerInfo.GetMoveSpeed() * Time.deltaTime);
 
                 return TaskStatus.Success;
             }

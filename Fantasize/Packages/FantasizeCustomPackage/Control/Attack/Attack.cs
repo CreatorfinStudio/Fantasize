@@ -9,9 +9,9 @@ namespace Control
     {
         protected Animator animator;
 
-        protected override void Start()
-        {
-          //  animator = AnimationManager.GetAnimator(this.gameObject);
-        }
+        //protected override void Start()
+        //{
+        //  //  animator = AnimationManager.GetAnimator(this.gameObject);
+        //}
     }
 }

@@ -19,7 +19,9 @@ namespace Definition
         public float moveSpeed;
         public float specialAttackDamage;
         public float castingSpeed; //특수공격 D꾹 시전시간
-        public int calculation; //연산구조
+        public ItemCalculation calculation; //연산구조
+
+        public ItemSource itemSource;
 
         #region Property
         public string Name { get { return name; } set { name = value; } }
@@ -32,7 +34,8 @@ namespace Definition
         public float MoveSpeed { get { return moveSpeed; } set { moveSpeed = value; } }
         public float SpecialAttackDamage { get { return specialAttackDamage; } set { specialAttackDamage = value; } }
         public float CastingSpeed { get { return castingSpeed; } set { castingSpeed = value; } }
-        public int Calculation { get { return calculation; } set { calculation = value; } }
+        public ItemCalculation Calculation { get { return calculation; } set { calculation = value; } }
+        public ItemSource ItemSource { get { return itemSource; } set { itemSource = value; } }
 
         #endregion
     }

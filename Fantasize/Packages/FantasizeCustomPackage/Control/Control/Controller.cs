@@ -12,16 +12,16 @@ namespace Control
         protected IPlayerInfo iplayerInfo;
         protected bool isLongClicking = false;      
 
-        protected virtual void Start()
-        {
-            StartCoroutine(SetIPlayerInfo());
-        }
-        protected virtual IEnumerator SetIPlayerInfo()
-        {
-            while (iplayerInfo == null)
-                iplayerInfo = DefinitionManager.Instance.iplayerInfo;
-            yield return null;
-        }
+        //protected virtual void Start()
+        //{
+        //    StartCoroutine(SetIPlayerInfo());
+        //}
+        //protected virtual IEnumerator SetIPlayerInfo()
+        //{
+        //    while (iplayerInfo == null)
+        //        iplayerInfo = DefinitionManager.Instance.iplayerInfo;
+        //    yield return null;
+        //}
 
 
     }

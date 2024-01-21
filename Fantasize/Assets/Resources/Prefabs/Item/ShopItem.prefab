@@ -258,6 +258,7 @@ MonoBehaviour:
     specialAttackDamage: 0
     castingSpeed: 0
     calculation: 0
+    itemSource: -1
   statusSlot:
   - {fileID: 5672165193525093738}
   - {fileID: 3002022879187412698}
@@ -550,7 +551,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 448638617616731584, guid: 41342e88e1da0384389345979255b3bc, type: 3}
       propertyPath: m_Name
-      value: StatusDummy (1)
+      value: Status (1)
       objectReference: {fileID: 0}
     - target: {fileID: 448638617616731584, guid: 41342e88e1da0384389345979255b3bc, type: 3}
       propertyPath: m_IsActive
@@ -661,7 +662,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 448638617616731584, guid: 41342e88e1da0384389345979255b3bc, type: 3}
       propertyPath: m_Name
-      value: StatusDummy
+      value: Status
       objectReference: {fileID: 0}
     - target: {fileID: 8127052068731407358, guid: 41342e88e1da0384389345979255b3bc, type: 3}
       propertyPath: m_Sprite
@@ -772,7 +773,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 448638617616731584, guid: 41342e88e1da0384389345979255b3bc, type: 3}
       propertyPath: m_Name
-      value: StatusDummy (3)
+      value: Status (3)
       objectReference: {fileID: 0}
     - target: {fileID: 448638617616731584, guid: 41342e88e1da0384389345979255b3bc, type: 3}
       propertyPath: m_IsActive
@@ -878,7 +879,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 448638617616731584, guid: 41342e88e1da0384389345979255b3bc, type: 3}
       propertyPath: m_Name
-      value: StatusDummy (2)
+      value: Status (2)
       objectReference: {fileID: 0}
     - target: {fileID: 448638617616731584, guid: 41342e88e1da0384389345979255b3bc, type: 3}
       propertyPath: m_IsActive

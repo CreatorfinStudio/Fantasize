@@ -1,3 +1,4 @@
+using Definition;
 using System.Collections;
 using UnityEngine;
 
@@ -23,7 +24,7 @@ namespace Item
             while (!ReadSheetService.itemDataLoadDone)
                 yield return null;
 
-            var data = ItemService.GetRandomItems(10);
+            var data = ItemService.GetRandomItems(10, ItemSource.ShopItem);
             for (int i = 0; i < data.Count; i++)
             {
                 shopItems[i].SetActive(true);
@@ -33,7 +34,7 @@ namespace Item
 
         public void ResetShopItemInfo()
         {
-            var data = ItemService.GetRandomItems(10);
+            var data = ItemService.GetRandomItems(10, ItemSource.ShopItem);
             for (int i = 0; i < data.Count; i++)
             {
                 shopItems[i].GetComponent<ItemService>().itemInfo = data[i];

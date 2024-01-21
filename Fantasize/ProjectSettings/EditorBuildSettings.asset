@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Lobby.unity
+    path: Assets/Scenes/StageMap.unity
     guid: 281759d2d5d2dc44abe26e6f7c49e8cb
   - enabled: 1
     path: Assets/Scenes/RockMan.unity

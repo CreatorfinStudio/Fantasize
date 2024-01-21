@@ -94,4 +94,28 @@ namespace Definition
         CastingSpeed,
         Calculation,
     }
+
+    ////////////////////// Item //////////////////////
+
+    /// <summary>
+    /// 아이템 얻어지는 경로
+    /// </summary>
+    public enum ItemSource
+    {
+        None = -1,  
+        ShopItem,
+        DropItem,
+        CommonItem,
+    }
+
+    /// <summary>
+    /// 아이템 연산 타입
+    /// </summary>
+    public enum ItemCalculation
+    {
+        None = -1,
+        Addition,
+        Multiplication
+    }
+
 }

@@ -1,3 +1,4 @@
+using Definition;
 using UnityEngine;
 
 public interface IItemProcessing
@@ -13,7 +14,7 @@ public interface IItemProcessing
     public float GetMoveSpeed();
     public float GetSpecialAttackDamage();
     public float GetCastingSpeed();
-    public int GetCalculation();
+    public ItemCalculation GetCalculation();
 
     ////////////////////Set////////////////////
     
@@ -27,6 +28,6 @@ public interface IItemProcessing
     public void SetMoveSpeed(float movespeed);
     public void SetSpecialAttackDamage(float specialattackdamage);
     public void SetCastingSpeed(float castingspeed);
-    public void SetCalculation(int calculation);
+    public void SetCalculation(ItemCalculation calculation);
 
 }

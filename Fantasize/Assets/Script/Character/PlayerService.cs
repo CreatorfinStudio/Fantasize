@@ -2,6 +2,7 @@ using BehaviorDesigner.Runtime;
 using Definition;
 using System;
 using UnityEngine;
+using Manager;
 
 namespace Player
 {
@@ -11,11 +12,6 @@ namespace Player
         private Rigidbody2D rb;
 
         public PlayerInfo playerInfo;
-
-        //FSM떄매 임시 주석
-        // private bool isCanUseItem => DefinitionManager.Instance.iItemProcessing.IsUseItem();
-        private Action useItem = () => DefinitionManager.Instance.iItemProcessing.UseItem();
-
         //특수공격 판정용
         public float dPressTime = 0f;
 
@@ -81,7 +77,7 @@ namespace Player
             if (Input.GetKeyUp(KeyCode.D))
             {
                 float elapsedTime = Time.time - dPressTime;
-                if (elapsedTime <= .5f)
+                if (elapsedTime <= GetCastingSpeed())
                 {
                     if (GetIsJumping())
                         SetAttackType(AttackType.AirAttack);
@@ -126,17 +122,19 @@ namespace Player
         public float GetHp() => playerInfo.Hp;
         public float GetMaxHP() => playerInfo.MaxHP;
 
+        public int GetHaveCoin() => playerInfo.HaveCoin;
+
         public bool GetIsDashing() => playerInfo.IsDashing;
         public bool GetIsJumping() => playerInfo.IsJumping;
         public bool GetIsCanJump() => playerInfo.IsCanJump;
         public float GetDashDirection() => playerInfo.DashDirection;
         public AttackType GetAttackType() => playerInfo.AttackType;
+        public float GetCastingSpeed() => playerInfo.CastingSpeed;
 
-        public float GetWalkSpeed() => playerInfo.WalkSpeed;
         public float GetAttackPower() => playerInfo.AttackPower;
         public float GetSpecialAttackPower() => playerInfo.SpecialAttackPower;
         public float GetAttackSpeed() => playerInfo.AttackSpeed;
-        public float GetRunSpeed() => playerInfo.RunSpeed;
+        public float GetMoveSpeed() => playerInfo.MoveSpeed;
         public float GetRunJumpForce() => playerInfo.RunJumpForce;
         public float GetDashSpeed() => playerInfo.DashSpeed;
 
@@ -150,22 +148,66 @@ namespace Player
             if (playerInfo.Hp > playerInfo.MaxHP)
                 playerInfo.Hp = playerInfo.MaxHP;
         }
+
+        public void SetHaveCoin(int haveCoin) => playerInfo.HaveCoin += haveCoin;
+
         public void SetIsDashing(bool isDashing) => playerInfo.IsDashing = isDashing;
         public void SetIsJumping(bool isJumping) => playerInfo.IsJumping = isJumping;
         public void SetIsCanJump(bool isCanJump) => playerInfo.IsCanJump = isCanJump;
         public void SetDashDirection(float dashDirection) => playerInfo.DashDirection = dashDirection;
         public void SetAttackType(AttackType attackType) => playerInfo.AttackType = attackType;
 
-        public void SetWalkSpeed(float moveSpeed) => playerInfo.WalkSpeed += moveSpeed;
         public void SetAttackPower(float attackPower) => playerInfo.AttackPower += attackPower;
         public void SetSpecialAttackPower(float specialAttackPower) => playerInfo.SpecialAttackPower += specialAttackPower;
         public void SetAttackSpeed(float attackSpeed) => playerInfo.AttackSpeed += attackSpeed;
+        public void SetCastingSpeed(float castingSpeed) => playerInfo.CastingSpeed += castingSpeed;
 
-        public void SetRunSpeed(float runSpeed) => playerInfo.RunSpeed += runSpeed;
+        public void SetMoveSpeed(float moveSpeed) => playerInfo.MoveSpeed += moveSpeed;
         public void SetRunJumpForce(float jumpForce) => playerInfo.JumpForce += jumpForce;
         public void SetRangedView(float rangedView) => playerInfo.RangedView += rangedView;
         public void SetForwardView(float forwardView) => playerInfo.ForwardView += forwardView;
         public void SetMaxHP(float maxHP) => playerInfo.MaxHP += maxHP;
+
+        /////////////////// 합/곱연산에 따른 다른 처리 ///////////////////
+
+        /// <summary>
+        /// 합연산
+        /// </summary>
+        /// <param name="itemInfo"></param>
+        public void SetAddItemStatsToPlayer(ItemInfo itemInfo)
+        {
+            playerInfo.Hp += itemInfo.Hp;
+            playerInfo.MaxHP += itemInfo.MaxHp;
+            playerInfo.AttackPower += itemInfo.AttackDamage;
+            playerInfo.AttackSpeed += itemInfo.AttackSpeed;
+            playerInfo.MoveSpeed += itemInfo.MoveSpeed;
+            playerInfo.specialAttackPower += itemInfo.SpecialAttackDamage;
+            playerInfo.castingSpeed += itemInfo.CastingSpeed;
+
+            GameManager.isSelectItem = true;
+        }
+        /// <summary>
+        /// 곱연산
+        /// </summary>
+        /// <param name="itemInfo"></param>
+        public void SetMultiplicationItemStatsToPlayer(ItemInfo itemInfo)
+        {
+            if (GetHaveCoin() > 0)
+            {
+                SetHaveCoin(-itemInfo.price);
+                //if(itemInfo.Hp !=  0)
+                //    playerInfo.Hp *= itemInfo.Hp;
+
+                //playerInfo.MaxHP *= itemInfo.MaxHp;
+                //playerInfo.AttackPower *= itemInfo.AttackDamage;
+                //playerInfo.AttackSpeed *= itemInfo.AttackSpeed;
+                //playerInfo.MoveSpeed *= itemInfo.MoveSpeed;
+                //playerInfo.specialAttackPower *= itemInfo.SpecialAttackDamage;
+                //playerInfo.castingSpeed *= itemInfo.CastingSpeed;
+            }
+            else
+                Debug.LogError("보유한 코인이 부족합니다.");
+        }
 
         /// <summary>
         /// 임시 추가
@@ -184,6 +226,5 @@ namespace Player
         }
 
         #endregion
-
     }
 }

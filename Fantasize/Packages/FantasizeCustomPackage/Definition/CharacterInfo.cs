@@ -7,7 +7,7 @@ namespace Definition
         public float hp;
         public float maxHP;
 
-        public float walkSpeed;
+        public float moveSpeed;
         public float attackPower;
         public float specialAttackPower;
         public float attackSpeed;
@@ -16,14 +16,14 @@ namespace Definition
         /// <summary>
         /// 스킬 재사용 대기시간
         /// </summary>
-        [Header("스킬 재사용 대기시간")]
+        [Tooltip("스킬 재사용 대기시간")]
         public float reloadTime;
 
         #region Property        
         public float Hp { get { return hp; } set { hp = value; } }
         public float MaxHP { get { return maxHP; } set { maxHP = value; } }
 
-        public float WalkSpeed { get { return walkSpeed; } set { walkSpeed = value; } }
+        public float MoveSpeed { get { return moveSpeed; } set { moveSpeed = value; } }
         public float AttackPower { get { return attackPower; } set { attackPower = value; } }
         public float SpecialAttackPower { get { return specialAttackPower; } set { specialAttackPower = value; } }
         public float AttackSpeed { get { return attackSpeed; } set { attackSpeed = value; } }
@@ -35,7 +35,7 @@ namespace Definition
         public CharacterProperty(int hp, float moveSpeed, float attackPower, float attackSpeed)
         {
             this.hp = hp;
-            this.walkSpeed = moveSpeed;
+            this.moveSpeed = moveSpeed;
             this.attackPower = attackPower;
             this.attackSpeed = attackSpeed;
         }
@@ -44,39 +44,46 @@ namespace Definition
     [System.Serializable]
     public class PlayerInfo : CharacterProperty
     {
-        [Header("Behavior")]
+        [Header("☆ HAVE COIN ☆")]
+        [Tooltip("보유한 재화 개수")]
+        public int haveCoin;
+
+        [Header("== Behavior ==")]
+        [Space(7)]
         public bool isDashing;
         public bool isJumping;
 
         public bool isCanJump;
         public float dashDirection;
-
-        [Space(10)]
+        [Header("===========")]
+        [Space(7)]
         public AttackType attackType;
+        [Space(5)]
+        [Tooltip("특수공격 D꾹 시전시간")]
+        public float castingSpeed; //특수공격 D꾹 시전시간
 
-        [Space(10)]
+        [Space(5)]
         public float rangedView;
         public float forwardView;
 
-        [Space(10)]
+        [Space(5)]
         public float dashSpeed;
-
-        public float runSpeed;
         public float runJumpForce;
 
         #region Property
+        public int HaveCoin { get { return haveCoin; } set { haveCoin = value; } }
         public bool IsDashing { get { return isDashing; } set { isDashing = value; } }
         public bool IsJumping { get { return isJumping; } set { isJumping = value; } }
         public bool IsCanJump { get { return isCanJump; } set { isCanJump = value; } }
 
         public float DashDirection { get { return dashDirection; } set { dashDirection = value; } }
         public AttackType AttackType { get { return attackType; } set { attackType = value; } }
+        public float CastingSpeed { get { return castingSpeed; } set { castingSpeed = value; } }
 
         public float RangedView { get { return rangedView; } set { rangedView = value; } }
         public float ForwardView { get { return forwardView; } set { forwardView = value; } }
         public float DashSpeed { get { return dashSpeed; } set { dashSpeed = value; } }
 
-        public float RunSpeed { get { return runSpeed; } set { runSpeed = value; } }
         public float RunJumpForce { get { return runJumpForce; } set { runJumpForce = value; } }
 
 

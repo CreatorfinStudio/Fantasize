@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Monster
 {
-    public class MonsterCollisionChecker : Monster
+    public class MonsterCollisionChecker : MonoBehaviour
     {
         [SerializeField]
         private CircleCollider2D canSeeCollider;
@@ -14,8 +14,12 @@ namespace Monster
 
         private void Update()
         {
-            if (DefinitionManager.Instance.imonsterInfo.GetIsDirectionCheck())
-                SetSpriteFlipX(DefinitionManager.Instance.player.transform);
+            if (DefinitionManager.Instance.imonsterInfo != null &&
+                DefinitionManager.Instance.player != null)
+            {
+                if (DefinitionManager.Instance.imonsterInfo.GetIsDirectionCheck())
+                    SetSpriteFlipX(DefinitionManager.Instance.player.transform);
+            }
         }
 
         /// <summary>
@@ -23,7 +27,7 @@ namespace Monster
         /// 다른 곳에서 사용될 경우 메서드 위치 바꿀 것
         /// </summary>
         /// <param name="trans"></param>
-        protected override void SetSpriteFlipX(Transform trans)
+        protected void SetSpriteFlipX(Transform trans)
         {
             if (trans != null)
             {
@@ -42,22 +46,22 @@ namespace Monster
             if (collision.gameObject.CompareTag("Wall") || collision.gameObject.CompareTag("Player"))
             {
                 if (collision.gameObject.CompareTag("Player"))
-                    imonsterInfo.SetIsCollisionPlayer(true);
-                imonsterInfo?.SetIsCanRush(false);
+                    DefinitionManager.Instance.imonsterInfo.SetIsCollisionPlayer(true);
+                DefinitionManager.Instance.imonsterInfo?.SetIsCanRush(false);
                 StartCoroutine(ReRushToWall());
             }
         }
         private void OnCollisionExit2D(Collision2D collision)
         {
             if (collision.gameObject.CompareTag("Player"))
-                imonsterInfo.SetIsCollisionPlayer(false);
+                DefinitionManager.Instance.imonsterInfo.SetIsCollisionPlayer(false);
         }
 
         IEnumerator ReRushToWall()
         {
             yield return new WaitForSeconds(.1f);
 
-            imonsterInfo?.SetIsCanRush(true);
+            DefinitionManager.Instance.imonsterInfo?.SetIsCanRush(true);
             DefinitionManager.Instance.imonsterInfo.SetIsDirectionCheck(true);
         }
 
@@ -71,14 +75,14 @@ namespace Monster
 
             if (canSeeCollider.IsTouching(other) && other.CompareTag("Player"))
             {
-                imonsterInfo?.SetIsCanAttack(true);
+                DefinitionManager.Instance.imonsterInfo?.SetIsCanAttack(true);
             }
             if (Time.time - lastHitTime > hitCooldown && bodyCollider.IsTouching(other) && other.CompareTag("P_Weapon"))
             {
                 if (attackType.Equals(AttackType.Attack) || attackType.Equals(AttackType.AirAttack))
-                    imonsterInfo?.SetHp(-DefinitionManager.Instance.iplayerInfo.GetAttackPower());
+                    DefinitionManager.Instance.imonsterInfo?.SetHp(-DefinitionManager.Instance.iplayerInfo.GetAttackPower());
                 else if (attackType.Equals(AttackType.SpecialAttack))
-                    imonsterInfo?.SetHp(-DefinitionManager.Instance.iplayerInfo.GetSpecialAttackPower());
+                    DefinitionManager.Instance.imonsterInfo?.SetHp(-DefinitionManager.Instance.iplayerInfo.GetSpecialAttackPower());
 
                 lastHitTime = Time.time; // 마지막 히트 시간 업데이트
             }
@@ -87,14 +91,14 @@ namespace Monster
         {
             if (canSeeCollider.IsTouching(collision) && collision.CompareTag("Player"))
             {
-                imonsterInfo?.SetIsCanAttack(true);
+                DefinitionManager.Instance.imonsterInfo?.SetIsCanAttack(true);
             }
         }
         private void OnTriggerExit2D(Collider2D other)
         {
             if (other.CompareTag("Player"))
             {
-                imonsterInfo?.SetIsCanAttack(false);
+                DefinitionManager.Instance.imonsterInfo?.SetIsCanAttack(false);
             }
         }
 

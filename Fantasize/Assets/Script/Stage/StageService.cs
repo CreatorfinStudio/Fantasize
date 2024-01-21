@@ -1,3 +1,5 @@
+using Definition;
+using Manager;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,5 +12,6 @@ public class StageService : MonoBehaviour
     {
         //나중에 해당 프리팹들에 맞게 로드하는 코드 추가
         SceneManager.LoadScene("RockMan");
+        GameManager.Instance.GameRestart();
     }
 }

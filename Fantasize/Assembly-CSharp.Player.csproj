@@ -66,6 +66,7 @@
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Composites\RandomSelector.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Transform\SetLocalPosition.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\SharedVariables\CompareSharedString.cs" />
+    <Compile Include="Assets\Script\Monster\MonsterCollisionChecker.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Rigidbody\AddTorque.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Rigidbody\Sleep.cs" />
     <Compile Include="Assets\Pixel\Test\BackGround\Cainos\Third Party\Lucid Editor\Runtime\Attributes\GUIColorAttribute.cs" />
@@ -216,6 +217,7 @@
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\AudioSource\SetMinDistance.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\SharedVariables\CompareSharedGameObjectList.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Variables\SharedBool.cs" />
+    <Compile Include="Assets\Script\Monster\MosterService.cs" />
     <Compile Include="Assets\Script\Item\ShopService.cs" />
     <Compile Include="Assets\Behavior Designer Movement\Scripts\Tasks\Queue.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Animation\PlayQueued.cs" />
@@ -249,6 +251,7 @@
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\ParticleSystem\GetLoop.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\String\SetString.cs" />
     <Compile Include="Assets\UniBulletHell\Example\Script\UbhDebugInfo.cs" />
+    <Compile Include="Assets\Script\Player\PlayerCollisionChecker.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Decorators\ReturnFailure.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Math\IsIntPositive.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Vector2\Lerp.cs" />
@@ -658,6 +661,7 @@
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Rigidbody\SetConstraints.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\CharacterController\SetStepOffset.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\CharacterController\Move.cs" />
+    <Compile Include="Assets\Script\Manager\DefinitionManager.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\ParticleSystem\GetDuration.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Rigidbody\AddForceAtPosition.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Math\FloatOperator.cs" />
@@ -1427,10 +1431,6 @@
     <ProjectReference Include="Unity.2D.Common.Runtime.Player.csproj">
       <Project>{385B7A00-5239-8298-5DF8-AB73BD25F1F2}</Project>
       <Name>Unity.2D.Common.Runtime.Player</Name>
-    </ProjectReference>
-    <ProjectReference Include="Monster.Player.csproj">
-      <Project>{02419EEB-F476-CA92-787A-005E11E57FC6}</Project>
-      <Name>Monster.Player</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.2D.SpriteShape.Runtime.Player.csproj">
       <Project>{FF5A8E4C-2DC0-448D-2739-F92253F45105}</Project>

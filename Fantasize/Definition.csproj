@@ -61,8 +61,6 @@
     <Compile Include="Packages\FantasizeCustomPackage\Definition\Enums.cs" />
     <Compile Include="Packages\FantasizeCustomPackage\Definition\Coroutine.cs" />
     <Compile Include="Packages\FantasizeCustomPackage\Definition\ItemInfo.cs" />
-    <Compile Include="Packages\FantasizeCustomPackage\Definition\IItemProcessing.cs" />
-    <Compile Include="Packages\FantasizeCustomPackage\Definition\DefinitionManager.cs" />
     <Compile Include="Packages\FantasizeCustomPackage\Definition\IPlayerInfo.cs" />
   </ItemGroup>
   <ItemGroup>

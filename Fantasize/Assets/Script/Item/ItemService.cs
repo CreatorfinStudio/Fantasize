@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
-using UnityEditor.Presets;
 using UnityEngine;
 
 namespace Item
@@ -29,20 +28,29 @@ namespace Item
         }
 
         /// <summary>
-        /// n개의 아이템 데이터 추출
+        /// 타입에 맞는 n개의 아이템 데이터 추출
         /// </summary>
         /// <param name="numberOfItems"></param>
         /// <returns></returns>
-        public static List<ItemInfo> GetRandomItems(int numberOfItems)
+        public static List<ItemInfo> GetRandomItems(int numberOfItems, ItemSource type)
         {
-            if (itemInfoList.Count < numberOfItems)
+            List<ItemInfo> filteredList = new List<ItemInfo>();
+
+            if (type == ItemSource.ShopItem)
+                filteredList = itemInfoList.Where(item => item.ItemSource == ItemSource.ShopItem || item.ItemSource == ItemSource.CommonItem).ToList();
+            else if (type == ItemSource.DropItem)
+                filteredList = itemInfoList.Where(item => item.ItemSource == ItemSource.DropItem || item.ItemSource == ItemSource.CommonItem).ToList();
+
+
+            if (filteredList.Count < numberOfItems)
             {
                 Debug.LogError("랜덤 추출할 수보다 리스트 크기가 작음");
+                return new List<ItemInfo>(); // 또는 적절한 예외 처리
             }
 
             System.Random ran = new System.Random();
+            return filteredList.OrderBy(x => ran.Next()).Take(numberOfItems).ToList();
 
-            return itemInfoList.OrderBy(x => ran.Next()).Take(numberOfItems).ToList();
         }
 
         IEnumerator SetItemData()
@@ -50,16 +58,24 @@ namespace Item
             while (this.itemInfo.Name.Equals(""))
                 yield return null;
 
-            OnProcessItemStatus(false); 
+            OnProcessItemStatus(false);
         }
 
         public static void OnProcessItemStatus(bool isReset) => processItemStatus?.Invoke(isReset);
 
+        /// <summary>
+        /// 샵 아이템일 경우 로드 데이터를 각 프리팹 상세 슬롯에 적용
+        /// </summary>
+        /// <param name="isReset"></param>
         public void ProcessItemStatus(bool isReset = false)
         {
-            if(isReset)
+            //드롭아이템의 경우에는 상세 정보 표기 X
+            if (statusSlot.Length == 0)
+                return;
+
+            if (isReset)
             {
-                for(int i = 0; i < statusSlot.Length; i++)
+                for (int i = 0; i < statusSlot.Length; i++)
                 {
                     statusSlot[i].SetActive(false);
                 }
@@ -68,9 +84,9 @@ namespace Item
             }
 
             int countA = 0;
-            if (itemInfo == null || statusSlot == null)
+            if (itemInfo == null)
             {
-                Debug.LogError("itemInfo 또는 statusSlot이 null입니다.");
+                Debug.LogError("itemInfo 가 null임");
                 return;
             }
 
@@ -110,16 +126,25 @@ namespace Item
                 countA++;
             }
 
-            priceTxt.text = itemInfo.price.ToString();
+            if (priceTxt != null)
+                priceTxt.text = itemInfo.price.ToString();
 
             void UISetting(float data, string itemIconName = "none")
             {
-                //일단 none
+                //일단 itemIconName none
 
-                statusSlot[countA].SetActive(true);
-                var itemStatusSlot = statusSlot[countA].GetComponent<IItemStatusSlot>();
+                statusSlot[countA]?.SetActive(true);
+                var itemStatusSlot = statusSlot[countA]?.GetComponent<IItemStatusSlot>();
                 itemStatusSlot?.SetItemImage(itemIconName);
                 itemStatusSlot?.SetArrowImage(data > 0 ? "UPArrow" : "DownArrow");
+            }
+        }
+
+        public void OnClickSelectItem()
+        {
+            if (itemInfo.Calculation == ItemCalculation.Addition || itemInfo.Calculation == ItemCalculation.None)
+            {
+                DefinitionManager.Instance.iplayerInfo.SetAddItemStatsToPlayer(itemInfo);
             }
         }
 
@@ -136,7 +161,7 @@ namespace Item
         public float GetMoveSpeed() => itemInfo.MoveSpeed;
         public float GetSpecialAttackDamage() => itemInfo.SpecialAttackDamage;
         public float GetCastingSpeed() => itemInfo.CastingSpeed;
-        public int GetCalculation() => itemInfo.Calculation;
+        public ItemCalculation GetCalculation() => itemInfo.Calculation;
 
         ////////////////////Set////////////////////
         public void SetName(string name) => itemInfo.Name = name;
@@ -149,7 +174,7 @@ namespace Item
         public void SetMoveSpeed(float movespeed) => itemInfo.MoveSpeed = movespeed;
         public void SetSpecialAttackDamage(float specialattackdamage) => itemInfo.SpecialAttackDamage = specialattackdamage;
         public void SetCastingSpeed(float castingspeed) => itemInfo.CastingSpeed = castingspeed;
-        public void SetCalculation(int calculation) => itemInfo.Calculation = calculation;
+        public void SetCalculation(ItemCalculation calculation) => itemInfo.Calculation = calculation;
 
         #endregion
     }

@@ -8,7 +8,7 @@ using Item;
 public class ReadSheetService : MonoBehaviour
 {
     public readonly string ADDRESS = "https://docs.google.com/spreadsheets/d/1pbjnBbcSnE9KC8wAdTDPMVrk7MTEApr83h4D0D4jFO4";
-    public readonly string RANGE = "C5:M15";
+    public readonly string RANGE = "C5:N42";
     public readonly long SHEET_ID = 0;
 
     public static bool itemDataLoadDone = false;
@@ -44,15 +44,19 @@ public class ReadSheetService : MonoBehaviour
             if (!string.IsNullOrWhiteSpace(line))
             {
                 string[] rows = line.Split('\t');
-                SetItemInfo(rows);
+                SetItemDetailInfo(rows);
             }
         }
 
         itemDataLoadDone = true;
     }
 
-
-    private void SetItemInfo(string[] data)
+    /// <summary>
+    /// 데이터 세팅
+    /// 데이터가 없으면 값을 기본(ex.0)으로 처리
+    /// </summary>
+    /// <param name="data"></param>
+    private void SetItemDetailInfo(string[] data)
     {
         ItemInfo itemInfo = new ItemInfo();
 
@@ -98,12 +102,17 @@ public class ReadSheetService : MonoBehaviour
             castingSpeed = 0;
         }
         itemInfo.CastingSpeed = castingSpeed;
-        if (!int.TryParse(data[10], out int calculation))
+        if (!ItemCalculation.TryParse(data[10], out ItemCalculation calculation))
         {
-            calculation = 0;
+            calculation = ItemCalculation.Addition;
         }
         itemInfo.Calculation = calculation;
-
+        if (!ItemSource.TryParse(data[11], out ItemSource itemSource))
+        {
+            itemSource = ItemSource.CommonItem;
+        }
+        itemInfo.ItemSource = itemSource;
+        
         ItemService.itemInfoList.Add(itemInfo);
     }
 }

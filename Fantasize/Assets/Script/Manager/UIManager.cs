@@ -1,5 +1,6 @@
 using Definition;
 using Item;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -40,6 +41,15 @@ namespace Manager
         [SerializeField]
         private GameObject[] dropItems;
 
+        [Header("전투 시작전 팝업 이미지 / 임시")]
+        [SerializeField]
+        private GameObject battleStartImg;
+
+        [Space(5)]
+        [Header("클리어 UI")]
+        [SerializeField]
+        private GameObject clearImg;
+
         [SerializeField]
         private GameObject testInvincibility; //무적 UI. 테스트 끝나면 지우기
 
@@ -56,7 +66,7 @@ namespace Manager
             Init();
 
             GameManager.gameOverEvent += GameOverUION;
-            GameManager.gameClearEvent += ONDropItemUI;
+            GameManager.gameClearEvent += ONClearUINDropItemUI;
             GameManager.gameRestartEvent += Init;
             GameManager.gameRestartEvent += CheckSceneUI;
         }
@@ -67,11 +77,39 @@ namespace Manager
             CurrMonsterHPToUI();
         }
 
-        private void GameOverUION() => gameOverUI.SetActive(true);
-        private void ONDropItemUI()
+        #region 시퀀스 UI
+        /// <summary>
+        /// 샵이 종료되면 배틀 UI 팝업
+        /// </summary>
+        public void LoadStage()
         {
-            if (dropItemParent == null)
-                return;
+            battleStartImg.gameObject.SetActive(true);
+            GameManager.Instance.GameRestart();
+            GameManager.gameRestartEvent += () => { battleStartImg.gameObject.SetActive(false); };
+        }
+
+        /// <summary>
+        /// 게임 오버 UI
+        /// </summary>
+        private void GameOverUION() => gameOverUI.SetActive(true);
+
+        /// <summary>
+        /// 게임 클리어 UI
+        /// </summary>
+        private void ONClearUINDropItemUI()
+        {
+            if(this != null)
+                StartCoroutine(CorONClearUINDropItemUI());
+        }
+
+        IEnumerator CorONClearUINDropItemUI()
+        {
+            if (clearImg == null || dropItemParent == null)
+                yield return null;
+
+            clearImg.SetActive(true);
+            yield return new WaitForSeconds(.5f);
+            clearImg.SetActive(false);       
 
             dropItemParent?.SetActive(true);
             testInvincibility?.SetActive(false);
@@ -83,7 +121,6 @@ namespace Manager
                 dropItems[i].SetActive(true);
                 dropItems[i].GetComponent<ItemService>().itemInfo = data[i];
             }
-
         }
 
         /// <summary>
@@ -92,7 +129,7 @@ namespace Manager
         private void Init()
         {
             monsterHpSlider.value = 1;
-            if(dropItemParent != null)
+            if (dropItemParent != null)
                 dropItemParent.SetActive(false);
             CheckSceneUI();
         }
@@ -121,6 +158,9 @@ namespace Manager
             }
         }
 
+        #endregion
+
+        #region HP Bar
         /// <summary>
         /// 현재 HP 상태에 따른 UI 체력바 표기
         /// </summary>
@@ -161,18 +201,14 @@ namespace Manager
 
         private void CurrMonsterHPToUI()
         {
-            if(DefinitionManager.Instance.imonsterInfo != null) 
+            if (DefinitionManager.Instance.imonsterInfo != null)
                 monsterHpSlider.value = DefinitionManager.Instance.imonsterInfo.GetHp() /
                      DefinitionManager.Instance.imonsterInfo.GetMaxHp();
         }
+        #endregion
 
         public void OnClickSelectItem(Button button)
         {
-            //드랍아이템의 경우 선택창 OFF
-            //있어야댐 씬 다시 돌아왔을때 계속 켜져잇음 ㅡㅡ
-            //if (button.gameObject.name.Contains("DropItem"))
-            //    GameManager.selectItemEvent += () => dropItemParent.SetActive(false);
-            //else
             if (button.gameObject.name.Contains("ShopItem"))
                 GameManager.selectItemEvent += () => shopItemParent.SetActive(false);
         }

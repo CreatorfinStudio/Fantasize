@@ -20,8 +20,8 @@ namespace Control
         /// </summary>
         private void CanBeJump()
         {
-            DefinitionManager.Instance.iplayerInfo.SetIsCanJump(true);
-            DefinitionManager.Instance.iplayerInfo.SetIsJumping(false);
+            DefinitionManager.Instance.iplayerInfo?.SetIsCanJump(true);
+            DefinitionManager.Instance.iplayerInfo?.SetIsJumping(false);
         }
 
         private void OnCollisionEnter2D(Collision2D collision)

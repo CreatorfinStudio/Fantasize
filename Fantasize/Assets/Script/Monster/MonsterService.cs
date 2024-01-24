@@ -1,17 +1,24 @@
 using Definition;
+using Manager;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace Monster
 {
-    public class MosterService : MonoBehaviour, IMonsterInfo
+    public class MonsterService : MonoBehaviour, IMonsterInfo
     {
         public MonsterInfo monsterInfo;
 
         private void Start()
         {
             SetHp(monsterInfo.MaxHP);
+
+            GameManager.gameClearEvent += () =>
+            {
+                if(this != null)
+                    Destroy(this.gameObject);
+            };
         }
 
         #region MonsterInfo Data Interface

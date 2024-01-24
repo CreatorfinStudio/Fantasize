@@ -27,7 +27,6 @@ namespace Item
             var data = ItemService.GetRandomItems(10, ItemSource.ShopItem);
             for (int i = 0; i < data.Count; i++)
             {
-                shopItems[i].SetActive(true);
                 shopItems[i].GetComponent<ItemService>().itemInfo = data[i];
             }
         }

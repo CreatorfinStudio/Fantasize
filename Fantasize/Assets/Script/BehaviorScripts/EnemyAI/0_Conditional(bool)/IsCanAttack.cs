@@ -10,8 +10,12 @@ namespace AI
     {
         public override TaskStatus OnUpdate()
         {
-            return DefinitionManager.Instance.imonsterInfo.GetIsCanAttack()
+            if (DefinitionManager.Instance.imonsterInfo != null)
+            {
+                return DefinitionManager.Instance.imonsterInfo.GetIsCanAttack()
                 ? TaskStatus.Success : TaskStatus.Failure;
+            }
+            return TaskStatus.Running;
         }
     }
 }

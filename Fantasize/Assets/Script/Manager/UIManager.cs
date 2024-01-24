@@ -1,6 +1,7 @@
 using Definition;
 using Item;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace Manager
@@ -8,6 +9,11 @@ namespace Manager
     public class UIManager : MonoBehaviour
     {
         private static UIManager instance;
+
+        [SerializeField]
+        private GameObject stageMapUI;
+        [SerializeField]
+        private GameObject inGameUI;
 
         [Header("플레이어 HP 슬롯")]
         [SerializeField]
@@ -23,7 +29,12 @@ namespace Manager
         private GameObject gameOverUI;
 
         [Space(5)]
-        [Header("드롭 아이템 UI")]
+        [Header("샵 UI")]
+        [SerializeField]
+        private GameObject shopItemParent;
+
+        [Space(5)]
+        [Header("드롭 UI")]
         [SerializeField]
         private GameObject dropItemParent;
         [SerializeField]
@@ -43,8 +54,11 @@ namespace Manager
                 Destroy(gameObject);
 
             Init();
+
             GameManager.gameOverEvent += GameOverUION;
-            GameManager.gameClearEvent += DropItemON;
+            GameManager.gameClearEvent += ONDropItemUI;
+            GameManager.gameRestartEvent += Init;
+            GameManager.gameRestartEvent += CheckSceneUI;
         }
 
         private void Update()
@@ -54,10 +68,13 @@ namespace Manager
         }
 
         private void GameOverUION() => gameOverUI.SetActive(true);
-        private void DropItemON()
+        private void ONDropItemUI()
         {
-            dropItemParent.SetActive(true);
-            testInvincibility.SetActive(false);
+            if (dropItemParent == null)
+                return;
+
+            dropItemParent?.SetActive(true);
+            testInvincibility?.SetActive(false);
 
             var data = ItemService.GetRandomItems(3, ItemSource.DropItem);
 
@@ -75,57 +92,90 @@ namespace Manager
         private void Init()
         {
             monsterHpSlider.value = 1;
+            if(dropItemParent != null)
+                dropItemParent.SetActive(false);
+            CheckSceneUI();
         }
 
+        /// <summary>
+        /// 현재 Scene에 따른 UI 설정
+        /// </summary>
+        private void CheckSceneUI()
+        {
+            if (stageMapUI == null || inGameUI == null)
+            {
+                //Debug.LogError("UI 객체가 참조되지 않았습니다.");
+                return;
+            }
+
+            switch (SceneManager.GetActiveScene().name)
+            {
+                case "StageMap":
+                    stageMapUI.SetActive(true);
+                    inGameUI.SetActive(false);
+                    break;
+                case "Battle":
+                    stageMapUI.SetActive(false);
+                    inGameUI.SetActive(true);
+                    break;
+            }
+        }
 
         /// <summary>
         /// 현재 HP 상태에 따른 UI 체력바 표기
         /// </summary>
         private void CurrHPToUISlot()
         {
-            float hp = DefinitionManager.Instance.iplayerInfo.GetHp();
-
-            for (int i = 0; i < hpSlots.Length; i++)
+            if (DefinitionManager.Instance.iplayerInfo != null)
             {
-                // 현재 슬라이더가 나타내야 하는 HP 범위 계산
-                int sliderHpRangeStart = i * 2;
-                int sliderHpRangeEnd = sliderHpRangeStart + 1;
+                float hp = DefinitionManager.Instance.iplayerInfo.GetHp();
 
-                // HP가 슬라이더 범위를 초과하는 경우 슬라이더를 완전히 채움.
-                if (hp > sliderHpRangeEnd)
+                for (int i = 0; i < hpSlots.Length; i++)
                 {
-                    if (!hpSlots[i].gameObject.activeSelf)
-                        hpSlots[i].gameObject.SetActive(true);
-                    hpSlots[i].value = 1f;
-                }
-                // HP가 슬라이더 범위 내에 있는 경우
-                else if (hp > sliderHpRangeStart)
-                {
-                    if (!hpSlots[i].gameObject.activeSelf)
-                        hpSlots[i].gameObject.SetActive(true);
-                    hpSlots[i].value = (hp % 2 != 0) ? 0.5f : 1f;
-                }
-                else
-                {
-                    hpSlots[i].value = 0f;
+                    // 현재 슬라이더가 나타내야 하는 HP 범위 계산
+                    int sliderHpRangeStart = i * 2;
+                    int sliderHpRangeEnd = sliderHpRangeStart + 1;
+
+                    // HP가 슬라이더 범위를 초과하는 경우 슬라이더를 완전히 채움.
+                    if (hp > sliderHpRangeEnd)
+                    {
+                        if (!hpSlots[i].gameObject.activeSelf)
+                            hpSlots[i].gameObject.SetActive(true);
+                        hpSlots[i].value = 1f;
+                    }
+                    // HP가 슬라이더 범위 내에 있는 경우
+                    else if (hp > sliderHpRangeStart)
+                    {
+                        if (!hpSlots[i].gameObject.activeSelf)
+                            hpSlots[i].gameObject.SetActive(true);
+                        hpSlots[i].value = (hp % 2 != 0) ? 0.5f : 1f;
+                    }
+                    else
+                    {
+                        hpSlots[i].value = 0f;
+                        hpSlots[i].gameObject.SetActive(false);
+                    }
                 }
             }
         }
 
         private void CurrMonsterHPToUI()
         {
-            monsterHpSlider.value = DefinitionManager.Instance.imonsterInfo.GetHp() /
-                 DefinitionManager.Instance.imonsterInfo.GetMaxHp();
+            if(DefinitionManager.Instance.imonsterInfo != null) 
+                monsterHpSlider.value = DefinitionManager.Instance.imonsterInfo.GetHp() /
+                     DefinitionManager.Instance.imonsterInfo.GetMaxHp();
         }
 
         public void OnClickSelectItem(Button button)
         {
             //드랍아이템의 경우 선택창 OFF
-            if (button.gameObject.name.Contains("DropItem"))
-                GameManager.selectItemEvent += OFFDropItemUI;
+            //있어야댐 씬 다시 돌아왔을때 계속 켜져잇음 ㅡㅡ
+            //if (button.gameObject.name.Contains("DropItem"))
+            //    GameManager.selectItemEvent += () => dropItemParent.SetActive(false);
+            //else
+            if (button.gameObject.name.Contains("ShopItem"))
+                GameManager.selectItemEvent += () => shopItemParent.SetActive(false);
         }
-
-        private void OFFDropItemUI() => dropItemParent.SetActive(false);
 
     }
 }

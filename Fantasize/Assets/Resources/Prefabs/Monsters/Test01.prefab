@@ -235,7 +235,7 @@ GameObject:
   - component: {fileID: 5189111407052748558}
   - component: {fileID: 5189111407052748559}
   m_Layer: 7
-  m_Name: Dooggups
+  m_Name: Test01
   m_TagString: M_Body
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -360,7 +360,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8475598678910278199}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8d7b55c7ecdb49a4a89fa5e6f9022861, type: 3}
   m_Name: 

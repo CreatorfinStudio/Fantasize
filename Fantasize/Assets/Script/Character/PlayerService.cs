@@ -1,13 +1,15 @@
 using BehaviorDesigner.Runtime;
 using Definition;
+using Manager;
 using System;
 using UnityEngine;
-using Manager;
 
 namespace Player
 {
     public class PlayerService : MonoBehaviour, IPlayerInfo
     {
+        private static PlayerService instance;
+
         private float h;
         private Rigidbody2D rb;
 
@@ -26,11 +28,31 @@ namespace Player
 
         private void Start()
         {
+            if (instance == null)
+            {
+                instance = this;
+                DontDestroyOnLoad(gameObject);
+            }
+            else if (instance != this)
+                Destroy(gameObject);
+
             dPressTime = 0f;
             behaviorTree = GetComponent<BehaviorTree>();
             rb = GetComponent<Rigidbody2D>();
 
             SetHp(GetMaxHP());
+
+            GameManager.gameRestartEvent += () => {
+                if (this != null)
+                {
+                    this.transform.position = new Vector2(-2.47f, 1.5f);
+
+                    GetComponent<BehaviorTree>().enabled = false;
+                    GetComponent<BehaviorTree>().enabled = true;
+
+                    SetHp(GetMaxHP());
+                }
+            };
         }
 
         private void Update()
@@ -174,8 +196,28 @@ namespace Player
         /// 합연산
         /// </summary>
         /// <param name="itemInfo"></param>
-        public void SetAddItemStatsToPlayer(ItemInfo itemInfo)
+        public void SetAddItemStatsToPlayer(ItemInfo itemInfo, bool isShop = false)
         {
+            //샵 구매일 경우 금액 소진
+            if (isShop)
+            {
+                int haveCoin = DefinitionManager.Instance.iplayerInfo.GetHaveCoin();
+
+                // 아이템 가격보다 보유한 돈이 적으면 구매 불가
+                if (haveCoin < itemInfo.Price)
+                {
+                    Debug.LogError("돈 부족.");
+                    return;
+                }
+
+                // 보유한 돈에서 아이템 가격 차감
+                DefinitionManager.Instance.iplayerInfo.SetHaveCoin(haveCoin - itemInfo.Price);
+                GameManager.isItemSelect.Item2 = ItemSource.ShopItem;
+            }
+            else
+                GameManager.isItemSelect.Item2 = ItemSource.DropItem;
+
+
             playerInfo.Hp += itemInfo.Hp;
             playerInfo.MaxHP += itemInfo.MaxHp;
             playerInfo.AttackPower += itemInfo.AttackDamage;
@@ -184,7 +226,7 @@ namespace Player
             playerInfo.specialAttackPower += itemInfo.SpecialAttackDamage;
             playerInfo.castingSpeed += itemInfo.CastingSpeed;
 
-            GameManager.isSelectItem = true;
+            GameManager.isItemSelect.Item1 = true;
         }
         /// <summary>
         /// 곱연산

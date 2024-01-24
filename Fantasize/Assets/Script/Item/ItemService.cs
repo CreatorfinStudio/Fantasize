@@ -1,9 +1,11 @@
 using Definition;
+using Manager;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Item
 {
@@ -58,7 +60,7 @@ namespace Item
             while (this.itemInfo.Name.Equals(""))
                 yield return null;
 
-            OnProcessItemStatus(false);
+            ProcessItemStatus(false);
         }
 
         public static void OnProcessItemStatus(bool isReset) => processItemStatus?.Invoke(isReset);
@@ -84,7 +86,7 @@ namespace Item
             }
 
             int countA = 0;
-            if (itemInfo == null)
+            if (itemInfo == null || this.itemInfo.Name.Equals(""))
             {
                 Debug.LogError("itemInfo ∞° null¿”");
                 return;
@@ -140,11 +142,14 @@ namespace Item
             }
         }
 
-        public void OnClickSelectItem()
+        public void OnClickSelectItem(Button button)
         {
             if (itemInfo.Calculation == ItemCalculation.Addition || itemInfo.Calculation == ItemCalculation.None)
             {
-                DefinitionManager.Instance.iplayerInfo.SetAddItemStatsToPlayer(itemInfo);
+                if (button.gameObject.name.Contains("ShopItem"))
+                    DefinitionManager.Instance.iplayerInfo.SetAddItemStatsToPlayer(itemInfo , true);
+                else
+                    DefinitionManager.Instance.iplayerInfo.SetAddItemStatsToPlayer(itemInfo, false);
             }
         }
 

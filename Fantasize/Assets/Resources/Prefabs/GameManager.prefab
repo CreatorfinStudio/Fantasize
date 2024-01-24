@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4459601779137745364}
   - component: {fileID: 4459601779137745367}
+  - component: {fileID: 1560377285}
+  - component: {fileID: 1560377286}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -45,5 +47,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  itemDummy: {fileID: 0}
-  monsters: {fileID: 0}
+  monster: {fileID: 0}
+--- !u!114 &1560377285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4459601779137745370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5eb8ab346fd092741baecbe5a05c36fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1560377286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4459601779137745370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0617be0ad3b09b4e85bdc145467d6b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

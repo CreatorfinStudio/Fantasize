@@ -23,7 +23,7 @@ namespace Item
         }
         public void SetArrowImage(string arrowIcon)
         {
-            Sprite loadedSprite = Resources.Load<Sprite>("UI/" + arrowIcon);
+            Sprite loadedSprite = Resources.Load<Sprite>("UIDummy/" + arrowIcon);
 
             if (loadedSprite != null)
             {

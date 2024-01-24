@@ -71,7 +71,7 @@ namespace Monster
         /// <param name="other"></param>
         private void OnTriggerEnter2D(Collider2D other)
         {
-            var attackType = DefinitionManager.Instance.iplayerInfo.GetAttackType();
+            var attackType = DefinitionManager.Instance.iplayerInfo?.GetAttackType();
 
             if (canSeeCollider.IsTouching(other) && other.CompareTag("Player"))
             {

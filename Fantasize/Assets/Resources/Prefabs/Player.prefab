@@ -442,33 +442,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerInfo:
     hp: 6
-    maxHP: 100
-    walkSpeed: 1
-    attackPower: 0
-    specialAttackPower: 0
+    maxHP: 6
+    moveSpeed: 4
+    attackPower: 2
+    specialAttackPower: 50
     attackSpeed: 0
     jumpForce: 7
     reloadTime: 0
+    haveCoin: 500
     isDashing: 0
     isJumping: 0
     isCanJump: 1
     dashDirection: 0
     attackType: 0
-    weaponPosi:
-    - {fileID: 19407668}
-    - {fileID: 0}
-    - {fileID: 1506689500}
-    - {fileID: 0}
-    - {fileID: 1048767510}
-    - {fileID: 0}
-    airAttackPower: 0
-    hungry: 0
+    castingSpeed: 0
     rangedView: 0
     forwardView: 0
     dashSpeed: 8
-    runSpeed: 4
     runJumpForce: 6
-    maxHungry: 100
   dPressTime: 0
   playDashTime: 0.8
 --- !u!114 &2864279689435715553
@@ -484,6 +475,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   floorCheckCollider: {fileID: 1862470748}
+  invincibilit: 0
 --- !u!70 &7699977909096821059
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

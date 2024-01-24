@@ -217,7 +217,7 @@
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\AudioSource\SetMinDistance.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\SharedVariables\CompareSharedGameObjectList.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Variables\SharedBool.cs" />
-    <Compile Include="Assets\Script\Monster\MosterService.cs" />
+    <Compile Include="Assets\Script\Monster\MonsterService.cs" />
     <Compile Include="Assets\Script\Item\ShopService.cs" />
     <Compile Include="Assets\Behavior Designer Movement\Scripts\Tasks\Queue.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Animation\PlayQueued.cs" />
@@ -299,7 +299,6 @@
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\SharedVariables\SharedTransformToGameObject.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Variables\SharedBehaviour.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Rigidbody2D\AddForce.cs" />
-    <Compile Include="Assets\Script\Stage\StageUI.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\PlayerPrefs\GetString.cs" />
     <Compile Include="Assets\UniBulletHell\Example\Script\UbhGameManager.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\SharedVariables\CompareSharedObjectList.cs" />
@@ -680,7 +679,6 @@
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\String\GetRandomString.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Input\GetMouseButton.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Vector2\Normalize.cs" />
-    <Compile Include="Assets\TestCollision.cs" />
     <Compile Include="Assets\UniBulletHell\Script\ShotPattern\UbhWavingNwayLockOnShot.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Rigidbody\SetCenterOfMass.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\String\GetLength.cs" />
@@ -714,6 +712,7 @@
     <Compile Include="Assets\UniBulletHell\Script\ShotPattern\UbhCircleShot.cs" />
     <Compile Include="Assets\UniBulletHell\Example\Script\UbhSetting.cs" />
     <Compile Include="Assets\Pixel\Test\BackGround\Cainos\Third Party\Lucid Editor\Runtime\Attributes\HelpBoxAttribute.cs" />
+    <Compile Include="Assets\Script\Monster\MonsterData.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Variables\SharedLayerMask.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Timeline\Play.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Vector3\GetForwardVector.cs" />

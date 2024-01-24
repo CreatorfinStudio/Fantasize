@@ -235,7 +235,7 @@ GameObject:
   - component: {fileID: 5189111407052748558}
   - component: {fileID: 5189111407052748559}
   m_Layer: 7
-  m_Name: Dooggups 1
+  m_Name: Test00
   m_TagString: M_Body
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -360,7 +360,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8475598678910278199}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8d7b55c7ecdb49a4a89fa5e6f9022861, type: 3}
   m_Name: 
@@ -424,7 +424,7 @@ MonoBehaviour:
   monsterInfo:
     hp: 100
     maxHP: 100
-    walkSpeed: 2
+    moveSpeed: 3
     attackPower: 1
     specialAttackPower: 0
     attackSpeed: 0
@@ -452,7 +452,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3cd0e39f83c2b44b9a8f07da4108519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPosi: {fileID: 0}
   canSeeCollider: {fileID: 913303981}
   bodyCollider: {fileID: 5189111407052748565}
 --- !u!1001 &3490843645138285307

@@ -56,7 +56,7 @@ namespace Definition
         /// 합연산
         /// </summary>
         /// <param name="itemInfo"></param>
-        public void SetAddItemStatsToPlayer(ItemInfo itemInfo);
+        public void SetAddItemStatsToPlayer(ItemInfo itemInfo, bool isShop);
         /// <summary>
         /// 곱연산
         /// </summary>

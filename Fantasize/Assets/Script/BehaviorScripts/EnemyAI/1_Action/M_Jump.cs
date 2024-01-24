@@ -19,11 +19,14 @@ namespace AI
             {
                 return TaskStatus.Failure;
             }
+            if (DefinitionManager.Instance.imonsterInfo != null)
+            {
+                Vector3 moveDirection = rb.velocity.normalized;
+                rb.AddForce((Vector3.up + moveDirection) * DefinitionManager.Instance.imonsterInfo.GetJumpForce(), ForceMode2D.Impulse);
 
-            Vector3 moveDirection = rb.velocity.normalized;
-            rb.AddForce((Vector3.up + moveDirection) * DefinitionManager.Instance.imonsterInfo.GetJumpForce(), ForceMode2D.Impulse);
-
-            return TaskStatus.Success;
+                return TaskStatus.Success;
+            }
+            return TaskStatus.Running;
         }
     }
 }

@@ -1,7 +1,6 @@
-using UnityEngine;
-using System.Collections.Generic;
-using System.Collections;
 using Manager;
+using System.Collections;
+using UnityEngine;
 
 namespace Definition
 {
@@ -30,6 +29,8 @@ namespace Definition
 
         private void Awake()
         {
+            GameManager.gameRestartEvent += DefinitionReset;
+
             if (instance == null)
             {
                 instance = this;
@@ -38,30 +39,54 @@ namespace Definition
             else if (instance != this)
                 Destroy(gameObject);
 
-            SetInit();
+            StartCoroutine(DefinitionInit());
         }
 
-        private void SetInit()
+        private void DefinitionReset()
         {
-            iplayerInfo = player.GetComponent<IPlayerInfo>();
-            imonsterInfo = monster.GetComponent<IMonsterInfo>();
-
-            GameManager.gameRestartEvent += DefinitionReset;
+            if (this != null) // 인스턴스가 유효한지 체크
+            {
+                StartCoroutine(DefinitionInit());
+            }
         }
 
-        private void DefinitionReset() => StartCoroutine(DefinitionInit());
+        public static bool setDone = false;
         IEnumerator DefinitionInit()
         {
+            // Player 찾기
             while (player == null)
             {
                 player = GameObject.Find("Player");
                 yield return null;
             }
-            while (monster == null)
+
+            // Monster 찾기
+            GameObject monsterGameObject = GameObject.Find("Monster");
+            if (monsterGameObject != null && monsterGameObject.transform.childCount > 0)
             {
-                monster = GameObject.Find("Monster")?.transform.GetChild(0).gameObject;
+                monster = monsterGameObject.transform.GetChild(0).gameObject;
+            }
+
+            // Monster와 Player 정보 가져오기
+            while (iplayerInfo == null)
+            {
+                if (player != null)
+                    iplayerInfo = player.GetComponent<IPlayerInfo>();
                 yield return null;
             }
+
+            //몬스터 생성할때 바로 넣어준다면?
+            //while(imonsterInfo == null)
+            //{
+            //    if (monster != null)
+            //    {
+            //        imonsterInfo = monster.GetComponent<IMonsterInfo>();
+            //        setDone = true;
+            //    }
+            //    else
+            //        setDone = false;
+            //    yield return null;
+            //}
         }
     }
 }

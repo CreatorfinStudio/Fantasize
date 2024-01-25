@@ -3,6 +3,9 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System;
 
 namespace Manager
 {
@@ -23,25 +26,35 @@ namespace Manager
         }
         #endregion
 
+        #region Events
+
         //게임오버
-        public delegate void GameOverHandler();
-        public static event GameOverHandler gameOverEvent;
+        //public delegate void GameOverHandler();
+        public static event Action gameOverEvent;
         //게임클리어
-        public delegate void GameClearHandler();
-        public static event GameClearHandler gameClearEvent;
+        //public delegate void GameClearHandler();
+        public static event Action gameClearEvent;
         //게임 클리어 후 한번만 실행
-        private bool isClearSet = false;
+        private static bool isClearSet = false;
 
         //아이템 구매 후 처리
-        public delegate void SelectItemHandler();
-        public static event SelectItemHandler selectItemEvent;
+        //public delegate void SelectItemHandler();
+        public static event Action selectItemEvent;
         //아이템 구매 성공
         public static (bool, ItemSource) isItemSelect;
 
         //스테이지 선택 후 인게임 재진입 시 리셋팅
-        public delegate void GameRestartHandler();
-        public static event GameRestartHandler gameRestartEvent;
+        //public delegate void GameRestartHandler();
+        public static event Action gameRestartEvent;
 
+        #endregion
+
+        public IStageInfo iStageInfo;
+
+        private void Awake()
+        {
+            StartCoroutine(SetIStageInfo());
+        }
         private void Start()
         {
             if (instance == null)
@@ -53,18 +66,12 @@ namespace Manager
                 Destroy(gameObject);
 
             gameOverEvent += PauseEditor;
-            gameRestartEvent += () => { isClearSet = false; };
+            gameRestartEvent += () => { isClearSet = false; };        
         }
         private void Update()
         {
             if (DefinitionManager.Instance.iplayerInfo?.GetHp() <= 0)
                 gameOverEvent?.Invoke();
-            if (DefinitionManager.Instance.imonsterInfo?.GetHp() <= 0 && !isClearSet)
-            {
-                gameClearEvent?.Invoke();
-                DefinitionManager.Instance.iplayerInfo.SetHaveCoin(1);
-                isClearSet = true;
-            }
             if (isItemSelect.Item1)
             {
                 selectItemEvent?.Invoke();
@@ -76,6 +83,28 @@ namespace Manager
             }
         }
 
+        public void StageClear()
+        {
+            if (!isClearSet && DefinitionManager.Instance.monster != null)
+            {
+                isClearSet = true;
+                gameClearEvent?.Invoke();
+                DefinitionManager.Instance.iplayerInfo?.SetHaveCoin(1);                
+            }
+        }
+
+
+        //iStageInfo 세팅
+        IEnumerator SetIStageInfo()
+        {
+            while(iStageInfo == null)
+            {
+                iStageInfo = this.GetComponent<IStageInfo>();
+                yield return null;
+            }
+        }
+
+        #region 씬 전환 시퀀스
         /// <summary>
         /// 게임 일시정지
         /// </summary>
@@ -134,7 +163,9 @@ namespace Manager
             // 씬 로딩이 완료되면 후처리
             //나중에 해당 프리팹들에 맞게 로드하는 코드 추가
             gameRestartEvent?.Invoke();
-
         }
+
+        #endregion
+
     }
 }

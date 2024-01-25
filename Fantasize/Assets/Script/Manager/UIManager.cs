@@ -11,6 +11,8 @@ namespace Manager
     {
         private static UIManager instance;
 
+        #region variable
+
         [SerializeField]
         private GameObject stageMapUI;
         [SerializeField]
@@ -53,6 +55,8 @@ namespace Manager
         [SerializeField]
         private GameObject testInvincibility; //무적 UI. 테스트 끝나면 지우기
 
+        #endregion
+
         private void Start()
         {
             if (instance == null)
@@ -78,6 +82,18 @@ namespace Manager
         }
 
         #region 시퀀스 UI
+
+        /// <summary>
+        /// UI 초기화
+        /// </summary>
+        private void Init()
+        {
+            monsterHpSlider.value = 1;
+            if (dropItemParent != null)
+                dropItemParent.SetActive(false);
+            CheckSceneUI();
+        }
+
         /// <summary>
         /// 샵이 종료되면 배틀 UI 팝업
         /// </summary>
@@ -121,17 +137,6 @@ namespace Manager
                 dropItems[i].SetActive(true);
                 dropItems[i].GetComponent<ItemService>().itemInfo = data[i];
             }
-        }
-
-        /// <summary>
-        /// UI 초기화
-        /// </summary>
-        private void Init()
-        {
-            monsterHpSlider.value = 1;
-            if (dropItemParent != null)
-                dropItemParent.SetActive(false);
-            CheckSceneUI();
         }
 
         /// <summary>

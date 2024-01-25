@@ -60,6 +60,7 @@
     <Compile Include="Packages\FantasizeCustomPackage\Definition\CharacterInfo.cs" />
     <Compile Include="Packages\FantasizeCustomPackage\Definition\Enums.cs" />
     <Compile Include="Packages\FantasizeCustomPackage\Definition\Coroutine.cs" />
+    <Compile Include="Packages\FantasizeCustomPackage\Definition\StageInfo.cs" />
     <Compile Include="Packages\FantasizeCustomPackage\Definition\ItemInfo.cs" />
     <Compile Include="Packages\FantasizeCustomPackage\Definition\IPlayerInfo.cs" />
   </ItemGroup>

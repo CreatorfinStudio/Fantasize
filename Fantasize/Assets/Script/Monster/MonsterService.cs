@@ -43,8 +43,12 @@ namespace Monster
         public void SetHp(float hp)
         {
             monsterInfo.Hp += hp;
-            if(monsterInfo.Hp > monsterInfo.MaxHP)
+            if (monsterInfo.Hp > monsterInfo.MaxHP)
                 monsterInfo.Hp = monsterInfo.MaxHP;
+            else if (monsterInfo.Hp <= 0)
+            {
+                GameManager.Instance?.StageClear();
+            }
         }
 
         public void SetMaxHp(float maxHp) => monsterInfo.MaxHP = maxHp;            

@@ -46,6 +46,7 @@ namespace Player
                 if (this != null)
                 {
                     this.transform.position = new Vector2(-2.47f, 1.5f);
+                    this.transform.localScale = new Vector3(-3, 3, 3);
 
                     GetComponent<BehaviorTree>().enabled = false;
                     GetComponent<BehaviorTree>().enabled = true;

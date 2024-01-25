@@ -31,13 +31,13 @@ namespace Definition
         {
             GameManager.gameRestartEvent += DefinitionReset;
 
-            if (instance == null)
-            {
-                instance = this;
-                DontDestroyOnLoad(gameObject);
-            }
-            else if (instance != this)
-                Destroy(gameObject);
+            //if (instance == null)
+            //{
+            //    instance = this;
+            //    DontDestroyOnLoad(gameObject);
+            //}
+            //else if (instance != this)
+            //    Destroy(gameObject);
 
             StartCoroutine(DefinitionInit());
         }
@@ -75,18 +75,7 @@ namespace Definition
                 yield return null;
             }
 
-            //몬스터 생성할때 바로 넣어준다면?
-            //while(imonsterInfo == null)
-            //{
-            //    if (monster != null)
-            //    {
-            //        imonsterInfo = monster.GetComponent<IMonsterInfo>();
-            //        setDone = true;
-            //    }
-            //    else
-            //        setDone = false;
-            //    yield return null;
-            //}
+            //몬스터는 생성할때 바로 넣어버림.
         }
     }
 }

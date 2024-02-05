@@ -17,11 +17,15 @@ namespace Stage
 
         private void Start()
         {
+            ONLastStage();
+
             GameManager.gameClearEvent += SetStageUI;
             GameManager.gameRestartEvent += CheckOnNextStageBtn;
         }
         private void SetStageUI()
         {
+            ONLastStage();
+
             if (GameManager.Instance.iStageInfo == null)
                 return;
 
@@ -37,6 +41,13 @@ namespace Stage
             if (ColorUtility.TryParseHtmlString(colorCode, out Color newColor))
             {
                 stageSlotImg[index].color = newColor; // 컬러 적용
+
+                // 버튼의 interactable 속성 조정
+                Button buttonComponent = stageSlotImg[index].GetComponent<Button>();
+                if (buttonComponent != null)
+                {
+                    buttonComponent.interactable = colorCode != "#494949";
+                }
             }
             else
             {
@@ -67,5 +78,13 @@ namespace Stage
             }
         }
 
+
+        /// <summary>
+        /// 5구역까지 클리어되면 6구역이 열림
+        /// </summary>
+        public void ONLastStage()
+        {
+            stageSlotImg[5].gameObject.GetComponent<Button>().interactable = GameManager.Instance.iStageInfo.GetCurrStageNum() == 5;
+        }
     }
 }

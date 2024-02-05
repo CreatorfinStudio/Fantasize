@@ -93,6 +93,10 @@ namespace Definition
         SpecialAttackDamage,
         CastingSpeed,
         Calculation,
+        ItemSource,
+        IsLegacy,
+        Grade,
+        UnlockStage
     }
 
     ////////////////////// Item //////////////////////
@@ -102,10 +106,10 @@ namespace Definition
     /// </summary>
     public enum ItemSource
     {
-        None = -1,  
+        None = -1,
+        CommonItem,
         ShopItem,
         DropItem,
-        CommonItem,
     }
 
     /// <summary>
@@ -116,6 +120,15 @@ namespace Definition
         None = -1,
         Addition,
         Multiplication
+    }
+
+    public enum ItemGrade
+    {
+        None = -1,
+        Common,
+        Rare,
+        Unique,
+        Legend,
     }
 
 }

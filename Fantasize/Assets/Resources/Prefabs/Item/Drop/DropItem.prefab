@@ -181,6 +181,9 @@ MonoBehaviour:
     castingSpeed: 0
     calculation: 0
     itemSource: -1
+    isLegacy: 0
+    itemGrade: -1
+    UnlockStage: 0
   statusSlot: []
   priceTxt: {fileID: 0}
 --- !u!114 &4024290681800868991

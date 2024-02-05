@@ -9,7 +9,20 @@ namespace Manager
 {
     public class UIManager : MonoBehaviour
     {
+        #region Singleton
         private static UIManager instance;
+        public static UIManager Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = FindObjectOfType<UIManager>();
+                }
+                return instance;
+            }
+        }
+        #endregion
 
         #region variable
 
@@ -30,6 +43,12 @@ namespace Manager
         [Space(5)]
         [SerializeField]
         private GameObject gameOverUI;
+
+
+        [Space(5)]
+        [Header("======== ≈∏¿‘∫∞ æ∆¿Ã≈€ «¡∏Æ∆’ ========")]
+        [SerializeField]
+        public GameObject[] itemTypePrefabs;
 
         [Space(5)]
         [Header("º• UI")]

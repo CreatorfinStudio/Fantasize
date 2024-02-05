@@ -8,7 +8,7 @@ using Item;
 public class ReadSheetService : MonoBehaviour
 {
     public readonly string ADDRESS = "https://docs.google.com/spreadsheets/d/1pbjnBbcSnE9KC8wAdTDPMVrk7MTEApr83h4D0D4jFO4";
-    public readonly string RANGE = "C5:N42";
+    public readonly string RANGE = "C5:Q43";
     public readonly long SHEET_ID = 0;
 
     public static bool itemDataLoadDone = false;
@@ -112,7 +112,13 @@ public class ReadSheetService : MonoBehaviour
             itemSource = ItemSource.CommonItem;
         }
         itemInfo.ItemSource = itemSource;
-        
+
+        if (!ItemSource.TryParse(data[13], out ItemGrade itemGrade))
+        {
+            itemGrade = ItemGrade.Common;
+        }
+        itemInfo.ItemGrade = itemGrade;
+
         ItemService.itemInfoList.Add(itemInfo);
     }
 }

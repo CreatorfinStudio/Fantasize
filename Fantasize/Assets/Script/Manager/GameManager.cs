@@ -29,22 +29,18 @@ namespace Manager
         #region Events
 
         //게임오버
-        //public delegate void GameOverHandler();
         public static event Action gameOverEvent;
         //게임클리어
-        //public delegate void GameClearHandler();
         public static event Action gameClearEvent;
         //게임 클리어 후 한번만 실행
         private static bool isClearSet = false;
 
         //아이템 구매 후 처리
-        //public delegate void SelectItemHandler();
         public static event Action selectItemEvent;
         //아이템 구매 성공
         public static (bool, ItemSource) isItemSelect;
 
         //스테이지 선택 후 인게임 재진입 시 리셋팅
-        //public delegate void GameRestartHandler();
         public static event Action gameRestartEvent;
 
         #endregion

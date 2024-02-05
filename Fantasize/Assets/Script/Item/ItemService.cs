@@ -19,9 +19,7 @@ namespace Item
         [SerializeField]
         public TMP_Text priceTxt;
 
-        public delegate void ProcessItemStatusEventHandler<T>(T item);
-        public static event ProcessItemStatusEventHandler<bool> processItemStatus;
-
+        public static System.Action<bool> processItemStatus;
 
         private void Start()
         {
@@ -38,21 +36,72 @@ namespace Item
         {
             List<ItemInfo> filteredList = new List<ItemInfo>();
 
-            if (type == ItemSource.ShopItem)
+            // 아이템 소스에 따라 필터링
+            if (type == ItemSource.ShopItem || type == ItemSource.CommonItem)
                 filteredList = itemInfoList.Where(item => item.ItemSource == ItemSource.ShopItem || item.ItemSource == ItemSource.CommonItem).ToList();
-            else if (type == ItemSource.DropItem)
+            else if (type == ItemSource.DropItem || type == ItemSource.CommonItem)
                 filteredList = itemInfoList.Where(item => item.ItemSource == ItemSource.DropItem || item.ItemSource == ItemSource.CommonItem).ToList();
 
-
+            // 필터링된 리스트의 크기 확인
             if (filteredList.Count < numberOfItems)
             {
                 Debug.LogError("랜덤 추출할 수보다 리스트 크기가 작음");
                 return new List<ItemInfo>(); // 또는 적절한 예외 처리
             }
 
-            System.Random ran = new System.Random();
-            return filteredList.OrderBy(x => ran.Next()).Take(numberOfItems).ToList();
+            List<ItemInfo> selectedItems = new List<ItemInfo>();
 
+            // 확률에 따른 아이템 선택
+            while (selectedItems.Count < numberOfItems)
+            {
+                // 각 아이템 등급별 확률에 따라 아이템을 선택
+                double randomNumber = new System.Random().NextDouble();
+                double cumulativeProbability = 0.0;
+
+                foreach (var item in filteredList)
+                {
+                    double itemProbability = GetItemGradeProbability(item.ItemGrade);
+                    cumulativeProbability += itemProbability;
+
+                    if (randomNumber <= cumulativeProbability)
+                    {
+                        selectedItems.Add(item);
+                        filteredList.Remove(item); // 선택된 아이템은 리스트에서 제거하여 중복 선택을 방지
+                        break; // 한 아이템을 선택했으므로 반복 중지
+                    }
+                }
+            }
+
+            return selectedItems;
+
+            //    List<ItemInfo> filteredList = new List<ItemInfo>();
+
+            //    if (type == ItemSource.ShopItem || type == ItemSource.CommonItem)
+            //        filteredList = itemInfoList.Where(item => item.ItemSource == ItemSource.ShopItem || item.ItemSource == ItemSource.CommonItem).ToList();
+            //    else if (type == ItemSource.DropItem || type == ItemSource.CommonItem)
+            //        filteredList = itemInfoList.Where(item => item.ItemSource == ItemSource.DropItem || item.ItemSource == ItemSource.CommonItem).ToList();
+
+            //    if (filteredList.Count < numberOfItems)
+            //    {
+            //        Debug.LogError("랜덤 추출할 수보다 리스트 크기가 작음");
+            //        return new List<ItemInfo>(); // 또는 적절한 예외 처리
+            //    }
+
+            //    System.Random ran = new System.Random();
+            //    return filteredList.OrderBy(x => ran.Next()).Take(numberOfItems).ToList();
+        }
+
+        // 아이템 등급별 확률 반환
+        public static double GetItemGradeProbability(ItemGrade grade)
+        {
+            switch (grade)
+            {
+                case ItemGrade.Common: return 0.4;
+                case ItemGrade.Rare: return 0.3;
+                case ItemGrade.Unique: return 0.2;
+                case ItemGrade.Legend: return 0.1;
+                default: return 0.0;
+            }
         }
 
         IEnumerator SetItemData()
@@ -79,7 +128,8 @@ namespace Item
             {
                 for (int i = 0; i < statusSlot.Length; i++)
                 {
-                    statusSlot[i].SetActive(false);
+                    if (statusSlot[i] != null)
+                        statusSlot[i].SetActive(false);
                 }
 
                 isReset = false;
@@ -134,11 +184,13 @@ namespace Item
             void UISetting(float data, string itemIconName = "none")
             {
                 //일단 itemIconName none
-
-                statusSlot[countA]?.SetActive(true);
-                var itemStatusSlot = statusSlot[countA]?.GetComponent<IItemStatusSlot>();
-                itemStatusSlot?.SetItemImage(itemIconName);
-                itemStatusSlot?.SetArrowImage(data > 0 ? "UPArrow" : "DownArrow");
+                if (statusSlot[countA] != null)
+                {
+                    statusSlot[countA].SetActive(true);
+                    var itemStatusSlot = statusSlot[countA].GetComponent<IItemStatusSlot>();
+                    itemStatusSlot?.SetItemImage(itemIconName);
+                    itemStatusSlot?.SetArrowImage(data > 0 ? "UPArrow" : "DownArrow");
+                }
             }
         }
 

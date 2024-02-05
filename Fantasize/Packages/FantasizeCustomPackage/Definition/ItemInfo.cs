@@ -21,7 +21,13 @@ namespace Definition
         public float castingSpeed; //특수공격 D꾹 시전시간
         public ItemCalculation calculation; //연산구조
 
-        public ItemSource itemSource;
+        public ItemSource itemSource; //획득 위치
+
+        public bool isLegacy; //게임 진행중 단 한번만 생성되는 아이템
+        public ItemGrade itemGrade;
+
+        //기획확인 중 - 보류
+        public int UnlockStage; //아이템 생성 가능한 스테이지
 
         #region Property
         public string Name { get { return name; } set { name = value; } }
@@ -36,6 +42,8 @@ namespace Definition
         public float CastingSpeed { get { return castingSpeed; } set { castingSpeed = value; } }
         public ItemCalculation Calculation { get { return calculation; } set { calculation = value; } }
         public ItemSource ItemSource { get { return itemSource; } set { itemSource = value; } }
+        public bool IsLegacy { get { return isLegacy; } set { isLegacy = value; } }
+        public ItemGrade ItemGrade { get { return itemGrade; } set { itemGrade = value; } }
 
         #endregion
     }

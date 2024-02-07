@@ -14,7 +14,7 @@ namespace Monster
         {
             SetHp(monsterInfo.MaxHP);
 
-            GameManager.gameClearEvent += () =>
+            GameManager.areaClearEvent += () =>
             {
                 if(this != null)
                     Destroy(this.gameObject);
@@ -47,7 +47,7 @@ namespace Monster
                 monsterInfo.Hp = monsterInfo.MaxHP;
             else if (monsterInfo.Hp <= 0)
             {
-                GameManager.Instance?.StageClear();
+                GameManager.Instance?.AreaClear();
             }
         }
 

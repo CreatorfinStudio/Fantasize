@@ -1,11 +1,9 @@
 using Definition;
+using System;
+using System.Collections;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System;
 
 namespace Manager
 {
@@ -31,27 +29,29 @@ namespace Manager
         //게임오버
         public static event Action gameOverEvent;
         //게임클리어
-        public static event Action gameClearEvent;
-        //게임 클리어 후 한번만 실행
-        private static bool isClearSet = false;
+        public static event Action areaClearEvent;
+        //전투구역 클리어 후 한번만 실행
+        private bool isAreaClearSet = false;
+
+        //새 스테이지 시작시 스테이지 정보 초기화
+        public static event Action stageClearEvent;
+        //스테이지 클리어 여부 전달
+        public static bool isStageClear = false;
+        public bool isStageClearSet = false;
 
         //아이템 구매 후 처리
         public static event Action selectItemEvent;
         //아이템 구매 성공
         public static (bool, ItemSource) isItemSelect;
 
-        //스테이지 선택 후 인게임 재진입 시 리셋팅
-        public static event Action gameRestartEvent;
+        //전투구역 선택 후 인게임 재진입 시 초기화
+        public static event Action areaResetEvent;
 
         #endregion
 
         public IStageInfo iStageInfo;
 
         private void Awake()
-        {
-            StartCoroutine(SetIStageInfo());
-        }
-        private void Start()
         {
             if (instance == null)
             {
@@ -61,8 +61,12 @@ namespace Manager
             else if (instance != this)
                 Destroy(gameObject);
 
+            StartCoroutine(SetIStageInfo());
+        }
+        private void Start()
+        {
             gameOverEvent += PauseEditor;
-            gameRestartEvent += () => { isClearSet = false; };        
+            areaResetEvent += () => { isAreaClearSet = false; };
         }
         private void Update()
         {
@@ -77,15 +81,25 @@ namespace Manager
                 else
                     LoadStageMap();
             }
+
+            //스테이지 클리어
+            if (isStageClear && !isStageClearSet)
+            {
+                isStageClearSet = true;
+                isStageClear = false;
+                stageClearEvent?.Invoke();
+            }
+            else if (!isStageClear)
+                isStageClearSet = false;
         }
 
-        public void StageClear()
+        public void AreaClear()
         {
-            if (!isClearSet && DefinitionManager.Instance.monster != null)
+            if (!isAreaClearSet && DefinitionManager.Instance.monster != null)
             {
-                isClearSet = true;
-                gameClearEvent?.Invoke();
-                DefinitionManager.Instance.iplayerInfo?.SetHaveCoin(1);                
+                isAreaClearSet = true;
+                areaClearEvent?.Invoke();
+                DefinitionManager.Instance.iplayerInfo?.SetHaveCoin(1);
             }
         }
 
@@ -93,7 +107,7 @@ namespace Manager
         //iStageInfo 세팅
         IEnumerator SetIStageInfo()
         {
-            while(iStageInfo == null)
+            while (iStageInfo == null)
             {
                 iStageInfo = this.GetComponent<IStageInfo>();
                 yield return null;
@@ -134,7 +148,7 @@ namespace Manager
 
             // 씬 로딩이 완료되면 후처리
             //나중에 해당 프리팹들에 맞게 로드하는 코드 추가
-            gameRestartEvent?.Invoke();
+            areaResetEvent?.Invoke();
 
         }
 
@@ -158,7 +172,7 @@ namespace Manager
 
             // 씬 로딩이 완료되면 후처리
             //나중에 해당 프리팹들에 맞게 로드하는 코드 추가
-            gameRestartEvent?.Invoke();
+            areaResetEvent?.Invoke();
         }
 
         #endregion

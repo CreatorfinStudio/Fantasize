@@ -29,7 +29,7 @@ namespace Definition
 
         private void Awake()
         {
-            GameManager.gameRestartEvent += DefinitionReset;
+            GameManager.areaResetEvent += DefinitionReset;
 
             //if (instance == null)
             //{

@@ -42,7 +42,7 @@ namespace Player
 
             SetHp(GetMaxHP());
 
-            GameManager.gameRestartEvent += () => {
+            GameManager.areaResetEvent += () => {
                 if (this != null)
                 {
                     this.transform.position = new Vector2(-2.47f, 1.5f);

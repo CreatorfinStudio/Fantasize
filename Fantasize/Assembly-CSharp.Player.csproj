@@ -206,6 +206,7 @@
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Rigidbody\GetRotation.cs" />
     <Compile Include="Assets\UniBulletHell\Example\Script\UbhDestroyArea.cs" />
     <Compile Include="Assets\Pixel\Test\BackGround\Cainos\Third Party\Lucid Editor\Runtime\PropertyGroupAttribute.cs" />
+    <Compile Include="Assets\Script\Stage\AreaService.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Debug\DrawLine.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Rigidbody2D\GetDrag.cs" />
     <Compile Include="Assets\Pixel\Test\BackGround\Cainos\Third Party\Lucid Editor\Runtime\Attributes\HideMonoScript.cs" />
@@ -306,6 +307,7 @@
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Timeline\IsPlaying.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Animator\GetFloatParameter.cs" />
     <Compile Include="Assets\Behavior Designer Movement\Scripts\GroupMovement.cs" />
+    <Compile Include="Assets\Script\Stage\IAreaInfo.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Transform\GetRotation.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Rigidbody\GetMass.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Math\BoolComparison.cs" />

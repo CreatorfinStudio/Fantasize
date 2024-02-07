@@ -89,9 +89,9 @@ namespace Manager
             Init();
 
             GameManager.gameOverEvent += GameOverUION;
-            GameManager.gameClearEvent += ONClearUINDropItemUI;
-            GameManager.gameRestartEvent += Init;
-            GameManager.gameRestartEvent += CheckSceneUI;
+            GameManager.areaClearEvent += ONClearUINDropItemUI;
+            GameManager.areaResetEvent += Init;
+            GameManager.areaResetEvent += CheckSceneUI;
         }
 
         private void Update()
@@ -120,7 +120,7 @@ namespace Manager
         {
             battleStartImg.gameObject.SetActive(true);
             GameManager.Instance.GameRestart();
-            GameManager.gameRestartEvent += () => { battleStartImg.gameObject.SetActive(false); };
+            GameManager.areaResetEvent += () => { battleStartImg.gameObject.SetActive(false); };
         }
 
         /// <summary>

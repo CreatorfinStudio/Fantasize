@@ -31,6 +31,8 @@ namespace Item
             while (!ReadSheetService.itemDataLoadDone)
                 yield return null;
 
+            DestroyItemPrefabs();
+
             var data = ItemService.GetRandomItems(itemMaxCount, ItemSource.ShopItem);
             for (int i = 0; i < data.Count; i++)
             {
@@ -42,9 +44,7 @@ namespace Item
 
         public void ResetShopItemInfo()
         {
-            for(int i = 0; i < shopItems.Count;i++)
-                Destroy(shopItems[i]);
-            shopItems.Clear();
+            DestroyItemPrefabs();
 
             var data = ItemService.GetRandomItems(itemMaxCount, ItemSource.ShopItem);
             for (int i = 0; i < data.Count; i++)
@@ -57,5 +57,16 @@ namespace Item
             ItemService.OnProcessItemStatus(true);
         }
 
+        /// <summary>
+        /// 생성되어있는 프리팹 삭제. 
+        /// </summary>
+        private void DestroyItemPrefabs()
+        {
+            if (itemsGridParent.childCount == 0)
+                return;
+            for (int i = 0; i < shopItems.Count; i++)
+                Destroy(shopItems[i]);
+            shopItems.Clear();
+        }    
     }
 }

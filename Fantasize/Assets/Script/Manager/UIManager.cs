@@ -182,6 +182,9 @@ namespace Manager
             {
                 float hp = DefinitionManager.Instance.iplayerInfo.GetHp();
 
+                if (hp > DefinitionManager.Instance.iplayerInfo.GetMaxHP())
+                    hp = DefinitionManager.Instance.iplayerInfo.GetMaxHP();
+
                 for (int i = 0; i < hpSlots.Length; i++)
                 {
                     // 현재 슬라이더가 나타내야 하는 HP 범위 계산

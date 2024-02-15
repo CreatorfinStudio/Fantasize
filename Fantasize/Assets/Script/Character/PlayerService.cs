@@ -212,7 +212,7 @@ namespace Player
                 }
 
                 // 보유한 돈에서 아이템 가격 차감
-                DefinitionManager.Instance.iplayerInfo.SetHaveCoin(haveCoin - itemInfo.Price);
+                DefinitionManager.Instance.iplayerInfo.SetHaveCoin(-itemInfo.Price);
                 GameManager.isItemSelect.Item2 = ItemSource.ShopItem;
             }
             else
@@ -247,7 +247,7 @@ namespace Player
                 }
 
                 // 보유한 돈에서 아이템 가격 차감
-                DefinitionManager.Instance.iplayerInfo.SetHaveCoin(haveCoin - itemInfo.Price);
+                DefinitionManager.Instance.iplayerInfo.SetHaveCoin(-itemInfo.Price);
                 GameManager.isItemSelect.Item2 = ItemSource.ShopItem;
             }
             else

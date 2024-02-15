@@ -66,8 +66,10 @@ namespace Stage
 
             SetLastStageState();
         }
-
-        //수정필요 -- 샵에서 아이템 누르면 다시 뜸
+        
+        /// <summary>
+        /// 스테이지 버튼 활성화
+        /// </summary>
         private void CheckOnNextStageBtn()
         {
             if (nextStageBtn != null && this != null)
@@ -110,23 +112,33 @@ namespace Stage
 
             GameManager.Instance.iStageInfo.GetIsOpenLastArea(isopen =>
             {
-                if (GameManager.Instance.iStageInfo.GetIsBattleAreaCompleted().Item2)
-                    return;
-
-                stageSlotImg[5].gameObject.GetComponent<Button>().interactable = isopen;
-
-                if (isopen)
+                //마지막 구역 깼으면 다시 비활성화 & 회색처리
+                if (GameManager.Instance.iStageInfo.GetIsBattleAreaCompleted().Item1 == 5 &&
+                GameManager.Instance.iStageInfo.GetIsBattleAreaCompleted().Item2)
                 {
-                    if (ColorUtility.TryParseHtmlString("#FFFFFFFF", out newColor))
+                    stageSlotImg[5].gameObject.GetComponent<Button>().interactable = false;
+                    if (ColorUtility.TryParseHtmlString("#494949", out newColor))
                     {
                         stageSlotImg[5].color = newColor;
                     }
                 }
                 else
                 {
-                    if (ColorUtility.TryParseHtmlString("#494949", out newColor)) 
+                    stageSlotImg[5].gameObject.GetComponent<Button>().interactable = isopen;
+
+                    if (isopen)
                     {
-                        stageSlotImg[5].color = newColor;
+                        if (ColorUtility.TryParseHtmlString("#FFFFFFFF", out newColor))
+                        {
+                            stageSlotImg[5].color = newColor;
+                        }
+                    }
+                    else
+                    {
+                        if (ColorUtility.TryParseHtmlString("#494949", out newColor))
+                        {
+                            stageSlotImg[5].color = newColor;
+                        }
                     }
                 }
             });

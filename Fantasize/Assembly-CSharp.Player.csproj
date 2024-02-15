@@ -220,7 +220,7 @@
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\SharedVariables\CompareSharedGameObjectList.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Variables\SharedBool.cs" />
     <Compile Include="Assets\Script\Monster\MonsterService.cs" />
-    <Compile Include="Assets\Script\Item\ShopService.cs" />
+    <Compile Include="Assets\Script\Item\ShopItemService.cs" />
     <Compile Include="Assets\Behavior Designer Movement\Scripts\Tasks\Queue.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Animation\PlayQueued.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Decorators\ReturnSuccess.cs" />
@@ -638,6 +638,7 @@
     <Compile Include="Assets\Behavior Designer Movement\Scripts\Tasks\Patrol.cs" />
     <Compile Include="Assets\Pixel\Test\BackGround\Cainos\Third Party\Lucid Editor\Runtime\Attributes\ShowIfAttribute.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Light\SetCookieSize.cs" />
+    <Compile Include="Assets\Script\Item\DropItemService.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\GameObject\GetComponent.cs" />
     <Compile Include="Assets\Pixel\Test\BackGround\Cainos\Third Party\Lucid Editor\Runtime\Attributes\LabelWidthAttribute.cs" />
     <Compile Include="Assets\Script\Manager\StageManager.cs" />

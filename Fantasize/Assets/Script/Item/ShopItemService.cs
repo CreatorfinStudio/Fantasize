@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Item
 {
-    public class ShopService : MonoBehaviour
+    public class ShopItemService : MonoBehaviour
     {
         [SerializeField]
         private List<GameObject> shopItems = new List<GameObject>();
@@ -31,42 +31,28 @@ namespace Item
             while (!ReadSheetService.itemDataLoadDone)
                 yield return null;
 
-            DestroyItemPrefabs();
-
             var data = ItemService.GetRandomItems(itemMaxCount, ItemSource.ShopItem);
             for (int i = 0; i < data.Count; i++)
             {
-                shopItems.Add(Instantiate(UIManager.Instance.itemTypePrefabs[(int)data[i].ItemGrade],
-                    itemsGridParent));
+                if (shopItems.Count < data.Count)
+                    shopItems.Add(Instantiate(UIManager.Instance.itemTypePrefabs[(int)data[i].ItemGrade],
+                   itemsGridParent));
+                else
+                    shopItems[i] = UIManager.Instance.itemTypePrefabs[(int)data[i].ItemGrade];
                 shopItems[i].GetComponent<ItemService>().itemInfo = data[i];
             }
         }
 
         public void ResetShopItemInfo()
         {
-            DestroyItemPrefabs();
-
             var data = ItemService.GetRandomItems(itemMaxCount, ItemSource.ShopItem);
             for (int i = 0; i < data.Count; i++)
             {
-                shopItems.Add(Instantiate(UIManager.Instance.itemTypePrefabs[(int)data[i].ItemGrade],
-                    itemsGridParent));
+                shopItems[i] = UIManager.Instance.itemTypePrefabs[(int)data[i].ItemGrade];
                 shopItems[i].GetComponent<ItemService>().itemInfo = data[i];
             }
 
             ItemService.OnProcessItemStatus(true);
         }
-
-        /// <summary>
-        /// 생성되어있는 프리팹 삭제. 
-        /// </summary>
-        private void DestroyItemPrefabs()
-        {
-            if (itemsGridParent.childCount == 0)
-                return;
-            for (int i = 0; i < shopItems.Count; i++)
-                Destroy(shopItems[i]);
-            shopItems.Clear();
-        }    
     }
 }

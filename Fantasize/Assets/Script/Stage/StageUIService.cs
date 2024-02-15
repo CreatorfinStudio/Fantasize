@@ -110,6 +110,9 @@ namespace Stage
 
             GameManager.Instance.iStageInfo.GetIsOpenLastArea(isopen =>
             {
+                if (GameManager.Instance.iStageInfo.GetIsBattleAreaCompleted().Item2)
+                    return;
+
                 stageSlotImg[5].gameObject.GetComponent<Button>().interactable = isopen;
 
                 if (isopen)

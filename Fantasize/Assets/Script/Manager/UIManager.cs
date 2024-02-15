@@ -26,8 +26,7 @@ namespace Manager
 
         #region variable
 
-        [SerializeField]
-        private GameObject stageMapUI;
+        public GameObject stageMapUI;
         [SerializeField]
         private GameObject inGameUI;
 
@@ -52,15 +51,12 @@ namespace Manager
 
         [Space(5)]
         [Header("샵 UI")]
-        [SerializeField]
-        private GameObject shopItemParent;
+        public GameObject shopItemParent;
 
         [Space(5)]
         [Header("드롭 UI")]
         [SerializeField]
         private GameObject dropItemParent;
-        [SerializeField]
-        private GameObject[] dropItems;
 
         [Header("전투 시작전 팝업 이미지 / 임시")]
         [SerializeField]
@@ -148,14 +144,6 @@ namespace Manager
 
             dropItemParent?.SetActive(true);
             testInvincibility?.SetActive(false);
-
-            var data = ItemService.GetRandomItems(3, ItemSource.DropItem);
-
-            for (int i = 0; i < data.Count; i++)
-            {
-                dropItems[i].SetActive(true);
-                dropItems[i].GetComponent<ItemService>().itemInfo = data[i];
-            }
         }
 
         /// <summary>
@@ -231,11 +219,16 @@ namespace Manager
         }
         #endregion
 
-        public void OnClickSelectItem(Button button)
-        {
-            if (button.gameObject.name.Contains("ShopItem"))
-                GameManager.selectItemEvent += () => shopItemParent.SetActive(false);
-        }
+        //public void OnClickSelectItem()
+        //{
+        //    if (UIManager.instance.shopItemParent.activeSelf)
+        //    {
+        //        GameManager.selectItemEvent += () => shopItemParent.SetActive(false);
+        //    }
+        //    else
+        //        GameManager.selectItemEvent += () => dropItemParent.SetActive(false);
+
+        //}
 
     }
 }

@@ -61,7 +61,7 @@ namespace Definition
         /// °ö¿¬»ê
         /// </summary>
         /// <param name="itemInfo"></param>
-        public void SetMultiplicationItemStatsToPlayer(ItemInfo itemInfo);
+        public void SetMultiplicationItemStatsToPlayer(ItemInfo itemInfo, bool isShop);
 
 
         /// <summary>

@@ -31,7 +31,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4450201987172027114}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -93,7 +93,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6665688008771960566
 RectTransform:
   m_ObjectHideFlags: 0
@@ -108,7 +108,7 @@ RectTransform:
   m_Children:
   - {fileID: 9060464097776169270}
   m_Father: {fileID: 4450201987172027114}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -185,17 +185,17 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 6665688008771960566}
   - {fileID: 1463763231521278154}
   - {fileID: 4450201987392644862}
   - {fileID: 5109693554884024917}
-  - {fileID: 6665688008771960566}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 320, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4450201987172027116
 CanvasRenderer:
@@ -248,20 +248,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemInfo:
-    name: 
+    name: Test4
     image: {fileID: 0}
-    price: 0
+    price: 1
     hp: 0
-    maxHp: 0
-    attackDamage: 0
-    attackSpeed: 0
+    maxHp: -1
+    attackDamage: -1
+    attackSpeed: 2
     moveSpeed: 0
     specialAttackDamage: 0
     castingSpeed: 0
     calculation: 0
-    itemSource: -1
+    itemSource: 2
     isLegacy: 0
-    itemGrade: -1
+    itemGrade: 2
     UnlockStage: 0
   statusSlot:
   - {fileID: 5672165193525093738}
@@ -313,25 +313,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4450201987172027119}
+      - m_Target: {fileID: 4450201987172027119, guid: 1b9b1147ec540dd4188734413864e376, type: 3}
         m_TargetAssemblyTypeName: Item.ItemService, Assembly-CSharp
         m_MethodName: OnClickSelectItem
-        m_Mode: 2
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 2358480900550582073}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Manager.UIManager, Assembly-CSharp
-        m_MethodName: OnClickSelectItem
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 2358480900550582073}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -368,7 +356,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4450201987172027114}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -582,7 +570,7 @@ RectTransform:
   - {fileID: 4827842602062362281}
   - {fileID: 7244777460881345100}
   m_Father: {fileID: 4450201987172027114}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}

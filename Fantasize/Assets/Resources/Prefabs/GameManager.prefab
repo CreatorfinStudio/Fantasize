@@ -61,6 +61,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5eb8ab346fd092741baecbe5a05c36fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isStageClearSet: 0
 --- !u!114 &1560377286
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -88,3 +89,18 @@ MonoBehaviour:
   currStageInfo:
     currStageNum: 0
     currBattleAreaNum: 0
+  totalStageNum: 10
+  allStagesList: []
+  battleAreaInfos:
+  - isClear: 0
+    isCanPlay: 0
+  - isClear: 0
+    isCanPlay: 0
+  - isClear: 0
+    isCanPlay: 0
+  - isClear: 0
+    isCanPlay: 0
+  - isClear: 0
+    isCanPlay: 0
+  - isClear: 0
+    isCanPlay: 0

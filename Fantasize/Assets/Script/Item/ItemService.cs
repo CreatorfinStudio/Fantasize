@@ -9,6 +9,7 @@ using UnityEngine.UI;
 
 namespace Item
 {
+    //개별 아이템 슬롯에 관한 클래스
     public class ItemService : MonoBehaviour, IItemProcessing
     {
         public ItemInfo itemInfo;
@@ -66,29 +67,13 @@ namespace Item
                     if (randomNumber <= cumulativeProbability)
                     {
                         selectedItems.Add(item);
-                        filteredList.Remove(item); // 선택된 아이템은 리스트에서 제거하여 중복 선택을 방지
-                        break; // 한 아이템을 선택했으므로 반복 중지
+                        filteredList.Remove(item);
+                        break; 
                     }
                 }
             }
 
             return selectedItems;
-
-            //    List<ItemInfo> filteredList = new List<ItemInfo>();
-
-            //    if (type == ItemSource.ShopItem || type == ItemSource.CommonItem)
-            //        filteredList = itemInfoList.Where(item => item.ItemSource == ItemSource.ShopItem || item.ItemSource == ItemSource.CommonItem).ToList();
-            //    else if (type == ItemSource.DropItem || type == ItemSource.CommonItem)
-            //        filteredList = itemInfoList.Where(item => item.ItemSource == ItemSource.DropItem || item.ItemSource == ItemSource.CommonItem).ToList();
-
-            //    if (filteredList.Count < numberOfItems)
-            //    {
-            //        Debug.LogError("랜덤 추출할 수보다 리스트 크기가 작음");
-            //        return new List<ItemInfo>(); // 또는 적절한 예외 처리
-            //    }
-
-            //    System.Random ran = new System.Random();
-            //    return filteredList.OrderBy(x => ran.Next()).Take(numberOfItems).ToList();
         }
 
         // 아이템 등급별 확률 반환
@@ -194,14 +179,28 @@ namespace Item
             }
         }
 
-        public void OnClickSelectItem(Button button)
+        public void OnClickSelectItem()
         {
+            //합연산일때
             if (itemInfo.Calculation == ItemCalculation.Addition || itemInfo.Calculation == ItemCalculation.None)
             {
-                if (button.gameObject.name.Contains("ShopItem"))
-                    DefinitionManager.Instance.iplayerInfo.SetAddItemStatsToPlayer(itemInfo , true);
+                if (UIManager.Instance.stageMapUI.activeSelf)
+                {
+                    DefinitionManager.Instance.iplayerInfo.SetAddItemStatsToPlayer(itemInfo, true);
+                    UIManager.Instance.shopItemParent.SetActive(false);
+                }
                 else
                     DefinitionManager.Instance.iplayerInfo.SetAddItemStatsToPlayer(itemInfo, false);
+            }
+            else
+            {
+                if (UIManager.Instance.stageMapUI.activeSelf)
+                {
+                    DefinitionManager.Instance.iplayerInfo.SetMultiplicationItemStatsToPlayer(itemInfo, true);
+                    UIManager.Instance.shopItemParent.SetActive(false);
+                }
+                else
+                    DefinitionManager.Instance.iplayerInfo.SetMultiplicationItemStatsToPlayer(itemInfo, false);
             }
         }
 

@@ -83,10 +83,6 @@ namespace Stage
 
             //현재 구역 클리어 처리
             allStagesList[stageNum].BattleAreasInfo[areaNum].IsClear = true;
-            //이건 그닥 쓸일은 없지만 깔끔하니까 같이 처리해줌
-            if(areaNum == 4)
-                allStagesList[stageNum].BattleAreasInfo[areaNum+1].IsCanPlay = true;
-
 
             //만약 모든 전투구역이 클리어 되었다면 마지막 스테이지 오픈
             //마지막 스테이지가 클리어되었을때는 패스

@@ -230,26 +230,49 @@ namespace Player
             GameManager.isItemSelect.Item1 = true;
         }
         /// <summary>
-        /// 곱연산
+        /// 곱연산 - 나중에 다른아이템 추가 습득시 곱연산식 추가해야함
         /// </summary>
         /// <param name="itemInfo"></param>
-        public void SetMultiplicationItemStatsToPlayer(ItemInfo itemInfo)
+        public void SetMultiplicationItemStatsToPlayer(ItemInfo itemInfo, bool isShop = false)
         {
-            if (GetHaveCoin() > 0)
+            //샵 구매일 경우 금액 소진
+            if (isShop)
             {
-                SetHaveCoin(-itemInfo.price);
-                //if(itemInfo.Hp !=  0)
-                //    playerInfo.Hp *= itemInfo.Hp;
+                int haveCoin = DefinitionManager.Instance.iplayerInfo.GetHaveCoin();
 
-                //playerInfo.MaxHP *= itemInfo.MaxHp;
-                //playerInfo.AttackPower *= itemInfo.AttackDamage;
-                //playerInfo.AttackSpeed *= itemInfo.AttackSpeed;
-                //playerInfo.MoveSpeed *= itemInfo.MoveSpeed;
-                //playerInfo.specialAttackPower *= itemInfo.SpecialAttackDamage;
-                //playerInfo.castingSpeed *= itemInfo.CastingSpeed;
+                if (haveCoin < itemInfo.Price)
+                {
+                    Debug.LogError("돈 부족.");
+                    return;
+                }
+
+                // 보유한 돈에서 아이템 가격 차감
+                DefinitionManager.Instance.iplayerInfo.SetHaveCoin(haveCoin - itemInfo.Price);
+                GameManager.isItemSelect.Item2 = ItemSource.ShopItem;
             }
             else
-                Debug.LogError("보유한 코인이 부족합니다.");
+                GameManager.isItemSelect.Item2 = ItemSource.DropItem;
+
+            //나중에 수정하셈
+            //0이하면 계산 x
+            playerInfo.Hp += itemInfo.Hp > 0 ? playerInfo.Hp * itemInfo.Hp : 0;
+            playerInfo.MaxHP += itemInfo.MaxHp > 0 ? playerInfo.MaxHP * itemInfo.MaxHp : 0;
+            playerInfo.AttackPower += itemInfo.AttackDamage > 0 ? playerInfo.AttackPower * itemInfo.AttackDamage : 0;
+            playerInfo.AttackSpeed += itemInfo.AttackSpeed > 0 ? playerInfo.AttackSpeed * itemInfo.AttackSpeed : 0;
+            playerInfo.MoveSpeed += itemInfo.MoveSpeed > 0 ? playerInfo.MoveSpeed * itemInfo.MoveSpeed : 0;
+            playerInfo.specialAttackPower += itemInfo.SpecialAttackDamage > 0 ? playerInfo.specialAttackPower * itemInfo.SpecialAttackDamage : 0;
+            playerInfo.castingSpeed += itemInfo.CastingSpeed > 0 ? playerInfo.castingSpeed * itemInfo.CastingSpeed : 0;
+
+
+            //playerInfo.Hp *= itemInfo.Hp;
+            //playerInfo.MaxHP *= itemInfo.MaxHp;
+            //playerInfo.AttackPower *= itemInfo.AttackDamage;
+            //playerInfo.AttackSpeed *= itemInfo.AttackSpeed;
+            //playerInfo.MoveSpeed *= itemInfo.MoveSpeed;
+            //playerInfo.specialAttackPower *= itemInfo.SpecialAttackDamage;
+            //playerInfo.castingSpeed *= itemInfo.CastingSpeed;
+
+            GameManager.isItemSelect.Item1 = true;
         }
 
         /// <summary>
